@@ -37,6 +37,12 @@ header.site-header{
 }
 .logo{font-size:26px;letter-spacing:6px;}
 .logo a{color:var(--purple);}
+.logo-mark{
+  display:inline-block;vertical-align:middle;background-color:currentColor;
+  aspect-ratio:159.048/21.597;height:24px;width:auto;
+  -webkit-mask:url('logo.svg') no-repeat center / contain;
+  mask:url('logo.svg') no-repeat center / contain;
+}
 .header-right{display:flex;align-items:center;gap:18px;}
 
 .lang-switch{position:relative;}
@@ -76,9 +82,10 @@ nav.main-nav a.active{color:var(--purple);font-weight:600;}
 /* Hero */
 .hero{text-align:center;padding:40px 24px 60px;}
 .hero .brand{
-  font-size:clamp(60px,14vw,150px);letter-spacing:0.25em;color:var(--purple);
-  margin-bottom:20px;font-weight:700;
+  color:var(--purple);
+  margin-bottom:20px;
 }
+.hero .brand .logo-mark{height:clamp(60px,14vw,150px);}
 .hero h1{
   font-size:clamp(32px,5vw,56px);color:var(--purple);font-weight:600;line-height:1.15;
   max-width:820px;margin:0 auto 24px;
