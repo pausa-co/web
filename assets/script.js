@@ -19,6 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  var mailtoCtas = document.querySelectorAll('a.btn-pill[href^="mailto:"]');
+  mailtoCtas.forEach(function (cta) {
+    cta.addEventListener('click', function () {
+      if (window.posthog) {
+        var container = cta.closest('section, div');
+        posthog.capture('contact_cta_click', { location: container ? container.className : '', label: cta.textContent.trim() });
+      }
+    });
+  });
+
   var form = document.querySelector('form.contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -28,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
       data.forEach(function (value, key) {
         if (value) lines.push(key + ': ' + value);
       });
+      if (window.posthog) {
+        posthog.capture('contact_form_submit', { subject: form.getAttribute('data-subject') || 'Pausa' });
+      }
       var subject = encodeURIComponent(form.getAttribute('data-subject') || 'Pausa');
       var body = encodeURIComponent(lines.join('\n'));
       window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
