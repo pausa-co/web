@@ -3,13 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Política de Privacidad | PAUSA</title>
-<meta name="description" content="Consulta la Política de Privacidad de Pausa. Conocé las reglas de uso, privacidad y derechos que garantizan una experiencia transparente y segura.">
+<title>Política de Privacidad | Pausa</title>
+<meta name="description" content="Política de Privacidad de PausaCo: qué datos recopilamos, cómo los usamos, con qué subprocesadores los compartimos y cuáles son tus derechos.">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #3D3DC8; text-decoration: none; }
+  a:hover { color: #2D2D99; }
+  :focus-visible { outline: 2px solid #3D3DC8; outline-offset: 3px; }
+  .btn-cta-light:hover { background: #DDE0FF; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle { background: none; border: none; cursor: pointer; font: inherit; color: rgba(255,255,255,0.85); display: inline-flex; align-items: center; gap: 4px; padding: 0; }
+  .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 16px; z-index: 60; }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-panel { background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 45px -12px rgba(10,10,50,0.25); padding: 8px; min-width: 200px; text-align: left; }
+  .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 0.9375rem; font-weight: 500; color: #1A1A3E; white-space: nowrap; }
+  .nav-dropdown-menu a:hover { background: #F4F5FF; color: #3D3DC8; }
+
+  .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; padding: 0; margin-left: auto; color: #FFFFFF; }
+  .mobile-nav-toggle span { width: 22px; height: 2px; border-radius: 2px; background: currentColor; display: block; }
+  .mobile-nav-panel { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #1E1E6B; padding: 8px 24px 24px; flex-direction: column; overflow-y: auto; z-index: 99; }
+  .mobile-nav-panel.open { display: flex; }
+  .mobile-nav-panel a, .mobile-nav-panel .mobile-nav-section-label { padding: 14px 4px; font-size: 1.0625rem; font-weight: 500; color: rgba(255,255,255,0.92); border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9FA6F0; border-bottom: none; padding-bottom: 4px; }
+  .mobile-nav-panel .mobile-nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 48px; margin-top: 16px; border-radius: 999px; font-weight: 700; background: #3D3DC8; color: #FFFFFF !important; border-bottom: none !important; }
+  .mobile-nav-panel .mobile-nav-lang { display: flex; gap: 16px; padding: 14px 4px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-lang a { background: none; border: none; padding: 0; font-weight: 700; color: rgba(255,255,255,0.6); border-bottom: none; }
+  .mobile-nav-panel .mobile-nav-lang a.active { color: #FFFFFF; }
+
+  @media (max-width: 860px) {
+    header nav.desktop-nav { display: none !important; }
+    .mobile-nav-toggle { display: flex; }
+  }
+</style>
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
@@ -21,142 +55,199 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="logo"><a href="index.html"><span class="logo-mark" role="img" aria-label="Pausa"></span></a></div>
-  <div class="header-right">
-    <div class="lang-switch">
-      <button type="button">Español ▾</button>
-      <div class="lang-menu">
-        <a href="en/politicas-de-privacidad.html">English</a>
+<header style="background:#1E1E6B;position:sticky;top:0;z-index:50">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img src="assets/pausa-word-white.png" alt="Pausa" style="height:16px;width:auto;display:block">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Producto</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="index.html">Plataforma</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="index.html#casos">Datos y clientes</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <button class="nav-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
-    <nav class="main-nav">
-      <a href="index.html">Plataforma</a>
-      <a href="index.html#contacto">Contacto</a>
-      <a href="index.html#datos">Datos y clientes</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="reconocimiento.html">Reconocimientos</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Compañía</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="reconocimiento.html">Reconocimientos</a>
+          </div>
+        </div>
+      </div>
+      <a href="preguntas-frecuentes.html" style="color:rgba(255,255,255,0.85)">Preguntas frecuentes</a>
+      <div style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
+        <a href="politicas-de-privacidad.html" style="padding:4px 6px;color:#FFFFFF">ES</a>
+        <a href="en/politicas-de-privacidad.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">EN</a>
+        <a href="pt/politicas-de-privacidad.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">PT</a>
+      </div>
+      <a href="index.html#cierre" class="btn-cta-light" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;background:#FFFFFF;color:#1E1E6B;transition:background-color .15s ease">Agendá una demo</a>
     </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Producto</span>
+    <a href="index.html">Plataforma</a>
+    <a href="metodologia.html">Metodología</a>
+    <a href="index.html#casos">Datos y clientes</a>
+    <span class="mobile-nav-section-label">Compañía</span>
+    <a href="reconocimiento.html">Reconocimientos</a>
+    <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+    <div class="mobile-nav-lang">
+      <a class="active" href="politicas-de-privacidad.html">ES</a>
+      <a href="en/politicas-de-privacidad.html">EN</a>
+      <a href="pt/politicas-de-privacidad.html">PT</a>
+    </div>
+    <a href="index.html#cierre" class="mobile-nav-cta">Agendá una demo</a>
   </div>
 </header>
 
-<section class="legal">
-  <h1>Política de Privacidad</h1>
-  <div class="subtitle">de PausaCo — Versión actualizada: 2026-04-27</div>
+<main style="max-width:820px;margin:0 auto;padding:64px 24px 96px">
+  <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Legales</p>
+  <h1 style="margin:16px 0 0;font-size:clamp(2.25rem,4.5vw,3.25rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#1A1A3E">Política de Privacidad</h1>
+  <p style="margin:12px 0 0;font-size:1.1875rem;color:#5C5C8A">de PausaCo — Versión actualizada: 2026-04-27</p>
 
-  <h2>1. Introducción</h2>
-  <p>En PausaCo valoramos tu privacidad y nos comprometemos a proteger tus datos personales. Esta Política de Privacidad explica qué datos recopilamos, cómo los utilizamos, con qué subprocesadores los compartimos, por cuánto tiempo los conservamos y cuáles son tus derechos como titular.</p>
+  <section style="margin-top:56px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">1. Introducción</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">En PausaCo valoramos tu privacidad y nos comprometemos a proteger tus datos personales. Esta Política de Privacidad explica qué datos recopilamos, cómo los utilizamos, con qué subprocesadores los compartimos, por cuánto tiempo los conservamos y cuáles son tus derechos como titular.</p>
+  </section>
 
-  <h2>2. Información que recopilamos</h2>
-  <p>Recopilamos la siguiente información cuando utilizás nuestra plataforma:</p>
-  <ul>
-    <li><strong>Información de autenticación:</strong> cuando te autenticás con Google o Microsoft, obtenemos acceso a tu dirección de correo electrónico y otra información básica del perfil (como nombre y foto).</li>
-    <li><strong>Eventos del calendario:</strong> con tu permiso, accedemos y almacenamos los eventos de tus calendarios de Google o Microsoft para procesarlos y proporcionarte visualizaciones y análisis.</li>
-    <li><strong>Respuestas a encuestas:</strong> recopilamos tus respuestas a las encuestas vinculadas a los eventos importados.</li>
-    <li><strong>Información de uso:</strong> recopilamos datos de uso de la plataforma, incluyendo interacciones y estadísticas de uso.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">2. Información que recopilamos</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Recopilamos la siguiente información cuando utilizás nuestra plataforma:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Información de autenticación:</strong> cuando te autenticás con Google o Microsoft, obtenemos acceso a tu dirección de correo electrónico y otra información básica del perfil (como nombre y foto).</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Eventos del calendario:</strong> con tu permiso, accedemos y almacenamos los eventos de tus calendarios de Google o Microsoft para procesarlos y proporcionarte visualizaciones y análisis.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Respuestas a encuestas:</strong> recopilamos tus respuestas a las encuestas vinculadas a los eventos importados.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Información de uso:</strong> recopilamos datos de uso de la plataforma, incluyendo interacciones y estadísticas de uso.</li>
+    </ul>
+  </section>
 
-  <h2>3. Uso de la información</h2>
-  <p>Utilizamos la información recopilada para los siguientes propósitos:</p>
-  <ul>
-    <li>Autenticar a los usuarios y permitir el acceso a la plataforma.</li>
-    <li>Procesar y analizar los eventos de los calendarios para proporcionar visualizaciones y estadísticas.</li>
-    <li>Mejorar y optimizar nuestra plataforma en base a patrones de uso.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">3. Uso de la información</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Utilizamos la información recopilada para los siguientes propósitos:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>Autenticar a los usuarios y permitir el acceso a la plataforma.</li>
+      <li>Procesar y analizar los eventos de los calendarios para proporcionar visualizaciones y estadísticas.</li>
+      <li>Mejorar y optimizar nuestra plataforma en base a patrones de uso.</li>
+    </ul>
+  </section>
 
-  <h2>4. Almacenamiento de datos y retención</h2>
-  <p>Tus datos se almacenan de manera segura en servidores ubicados en Brasil (región southamerica-east1, São Paulo), cumpliendo con los estándares de seguridad de la industria. Implementamos medidas técnicas y organizativas adecuadas para proteger tus datos contra accesos no autorizados, pérdidas o alteraciones.</p>
-  <p>Períodos de retención:</p>
-  <ul>
-    <li><strong>Datos de usuario activo:</strong> se conservan durante la vigencia de la cuenta. El tratamiento es necesario para prestar el servicio mientras la cuenta está activa.</li>
-    <li><strong>Datos post-cancelación:</strong> 30 días desde la cancelación. Al vencer el plazo, los datos personales son anonimizados.</li>
-    <li><strong>Backups de base de datos:</strong> 30 días, con purga automática. Los backups son inaccesibles externamente durante ese período.</li>
-    <li><strong>Logs operativos:</strong> 30 días. Incluye logs de acceso y operación de la plataforma.</li>
-    <li><strong>Logs de privacidad:</strong> 2 años. Incluye confirmaciones de eliminación y ejercicio de derechos, retenidos para accountability regulatorio.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">4. Almacenamiento de datos y retención</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Tus datos se almacenan de manera segura en servidores ubicados en Brasil (región southamerica-east1, São Paulo), cumpliendo con los estándares de seguridad de la industria. Implementamos medidas técnicas y organizativas adecuadas para proteger tus datos contra accesos no autorizados, pérdidas o alteraciones.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Períodos de retención:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Datos de usuario activo:</strong> se conservan durante la vigencia de la cuenta. El tratamiento es necesario para prestar el servicio mientras la cuenta está activa.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Datos post-cancelación:</strong> 30 días desde la cancelación. Al vencer el plazo, los datos personales son anonimizados.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Backups de base de datos:</strong> 30 días, con purga automática. Los backups son inaccesibles externamente durante ese período.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Logs operativos:</strong> 30 días. Incluye logs de acceso y operación de la plataforma.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Logs de privacidad:</strong> 2 años. Incluye confirmaciones de eliminación y ejercicio de derechos, retenidos para accountability regulatorio.</li>
+    </ul>
+  </section>
 
-  <h2>5. Subprocesadores</h2>
-  <p>Para operar la plataforma utilizamos los siguientes subprocesadores, todos sujetos a contratos de procesamiento de datos y obligaciones de confidencialidad:</p>
-  <ul>
-    <li><strong>Google Cloud</strong> — Infraestructura: API, base de datos y frontend. Ubicación: southamerica-east1, São Paulo, Brasil.</li>
-    <li><strong>OpenAI</strong> — Clasificación de eventos del calendario en MacroTareas y análisis de carga de agenda. Ubicación: Estados Unidos.</li>
-    <li><strong>n8n Cloud</strong> — Pipeline de automatización: envía datos del calendario a OpenAI para análisis de carga de agenda. Ubicación: Estados Unidos.</li>
-    <li><strong>PostHog</strong> — Analíticas de uso de la plataforma, sin acceso a datos del calendario. Ubicación: us.i.posthog.com, Estados Unidos.</li>
-  </ul>
-  <p>Los datos de calendario y datos personales se almacenan exclusivamente en servidores en Brasil (southamerica-east1). OpenAI y n8n procesan datos del calendario en Estados Unidos con el único fin de clasificación en MacroTareas y análisis de carga de agenda; no los almacenan ni utilizan para otros propósitos. PostHog recibe únicamente datos de uso de la plataforma, sin acceso a datos del calendario.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">5. Subprocesadores</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Para operar la plataforma utilizamos los siguientes subprocesadores, todos sujetos a contratos de procesamiento de datos y obligaciones de confidencialidad:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Google Cloud</strong> — Infraestructura: API, base de datos y frontend. Ubicación: southamerica-east1, São Paulo, Brasil.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">OpenAI</strong> — Clasificación de eventos del calendario en MacroTareas y análisis de carga de agenda. Ubicación: Estados Unidos.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">n8n Cloud</strong> — Pipeline de automatización: envía datos del calendario a OpenAI para análisis de carga de agenda. Ubicación: Estados Unidos.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">PostHog</strong> — Analíticas de uso de la plataforma, sin acceso a datos del calendario. Ubicación: us.i.posthog.com, Estados Unidos.</li>
+    </ul>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Los datos de calendario y datos personales se almacenan exclusivamente en servidores en Brasil (southamerica-east1). OpenAI y n8n procesan datos del calendario en Estados Unidos con el único fin de clasificación en MacroTareas y análisis de carga de agenda; no los almacenan ni utilizan para otros propósitos. PostHog recibe únicamente datos de uso de la plataforma, sin acceso a datos del calendario.</p>
+  </section>
 
-  <h2>6. Compartir información</h2>
-  <p>No compartimos tus datos personales con terceros, excepto en los siguientes casos:</p>
-  <ul>
-    <li>Cuando sea necesario para cumplir con una obligación legal.</li>
-    <li>Con los subprocesadores listados en la sección anterior, sujetos a contratos que los obligan a proteger la confidencialidad de tus datos.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">6. Compartir información</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">No compartimos tus datos personales con terceros, excepto en los siguientes casos:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>Cuando sea necesario para cumplir con una obligación legal.</li>
+      <li>Con los subprocesadores listados en la sección anterior, sujetos a contratos que los obligan a proteger la confidencialidad de tus datos.</li>
+    </ul>
+  </section>
 
-  <h2>7. Derechos del usuario</h2>
-  <p>Dependiendo de tu ubicación, podés tener los siguientes derechos sobre tus datos:</p>
-  <ul>
-    <li>Acceder a los datos personales que almacenamos sobre vos.</li>
-    <li>Solicitar la corrección de datos incorrectos.</li>
-    <li>Solicitar la eliminación de tus datos personales.</li>
-    <li>Oponerte al procesamiento de tus datos en ciertos casos.</li>
-    <li>Solicitar la portabilidad de tus datos en formato estructurado.</li>
-  </ul>
-  <p>Para ejercer cualquiera de estos derechos, contactanos en <a href="mailto:soporte@pausaco.com" style="color:var(--purple);">soporte@pausaco.com</a>.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">7. Derechos del usuario</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Dependiendo de tu ubicación, podés tener los siguientes derechos sobre tus datos:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>Acceder a los datos personales que almacenamos sobre vos.</li>
+      <li>Solicitar la corrección de datos incorrectos.</li>
+      <li>Solicitar la eliminación de tus datos personales.</li>
+      <li>Oponerte al procesamiento de tus datos en ciertos casos.</li>
+      <li>Solicitar la portabilidad de tus datos en formato estructurado.</li>
+    </ul>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Para ejercer cualquiera de estos derechos, contactanos en <a href="mailto:soporte@pausaco.com">soporte@pausaco.com</a>.</p>
+  </section>
 
-  <h2>8. Base legal del tratamiento (LGPD)</h2>
-  <p>Para usuarios en Brasil, el tratamiento de datos personales realizado por Pausa se encuadra en las siguientes bases legales de la Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018):</p>
-  <ul>
-    <li><strong>Ejecución del contrato</strong> (Art. 7, II LGPD): el tratamiento de datos del calendario y del perfil es necesario para prestar el servicio contratado.</li>
-    <li><strong>Interés legítimo</strong> (Art. 7, IX LGPD): el tratamiento de datos de uso y analíticas se realiza para mejorar el servicio, con respeto al derecho de opt-out del titular.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">8. Base legal del tratamiento (LGPD)</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Para usuarios en Brasil, el tratamiento de datos personales realizado por Pausa se encuadra en las siguientes bases legales de la Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018):</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Ejecución del contrato</strong> (Art. 7, II LGPD): el tratamiento de datos del calendario y del perfil es necesario para prestar el servicio contratado.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Interés legítimo</strong> (Art. 7, IX LGPD): el tratamiento de datos de uso y analíticas se realiza para mejorar el servicio, con respeto al derecho de opt-out del titular.</li>
+    </ul>
+  </section>
 
-  <h2>9. Transferencia internacional de datos</h2>
-  <p>Algunos subprocesadores (OpenAI, n8n y PostHog) están ubicados en Estados Unidos. Las transferencias internacionales se realizan con garantías adecuadas de protección conforme a:</p>
-  <ul>
-    <li>Art. 33 de la LGPD para usuarios en Brasil.</li>
-    <li>Ley 25.326 de Protección de Datos Personales para usuarios en Argentina.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">9. Transferencia internacional de datos</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Algunos subprocesadores (OpenAI, n8n y PostHog) están ubicados en Estados Unidos. Las transferencias internacionales se realizan con garantías adecuadas de protección conforme a:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>Art. 33 de la LGPD para usuarios en Brasil.</li>
+      <li>Ley 25.326 de Protección de Datos Personales para usuarios en Argentina.</li>
+    </ul>
+  </section>
 
-  <h2>10. Seguridad</h2>
-  <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales, incluyendo cifrado AES-256 en reposo, TLS 1.2+ en tránsito, controles de acceso estrictos y separación de ambientes de desarrollo, staging y producción.</p>
+  <section id="seguridad" style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">10. Seguridad</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales, incluyendo cifrado AES-256 en reposo, TLS 1.2+ en tránsito, controles de acceso estrictos y separación de ambientes de desarrollo, staging y producción.</p>
+  </section>
 
-  <h2>11. Cambios a esta Política de Privacidad</h2>
-  <p>Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. Te notificaremos de cualquier cambio material a través de la plataforma o por correo electrónico.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">11. Cambios a esta Política de Privacidad</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. Te notificaremos de cualquier cambio material a través de la plataforma o por correo electrónico.</p>
+  </section>
 
-  <h2>12. Contacto</h2>
-  <p>Si tenés alguna pregunta o inquietud sobre esta Política de Privacidad, podés contactarnos en <a href="mailto:soporte@pausaco.com" style="color:var(--purple);">soporte@pausaco.com</a>.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">12. Contacto</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Si tenés alguna pregunta o inquietud sobre esta Política de Privacidad, podés contactarnos en <a href="mailto:soporte@pausaco.com">soporte@pausaco.com</a>.</p>
+  </section>
 
-  <p class="effective-date">Fecha de Vigencia: 31/12/2026</p>
-</section>
+  <p style="margin:48px 0 0;padding-top:24px;border-top:1px solid #CCCCEE;font-size:0.9375rem;color:#5C5C8A">Fecha de Vigencia: 31/12/2026</p>
+</main>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo"><span class="logo-mark" role="img" aria-label="Pausa"></span></div>
-      <a class="email" href="mailto:contactopausa@pausaco.com">contactopausa@pausaco.com</a>
-      <div class="footer-social">
-        <a href="https://wa.me/5491153876359" aria-label="Whatsapp" target="_blank" rel="noopener">WA</a>
-        <a href="https://www.linkedin.com/company/pausaco/" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
-      </div>
-    </div>
-    <nav class="footer-nav">
-      <a href="index.html">Plataforma</a>
-      <a href="index.html#contacto">Contacto</a>
-      <a href="index.html#datos">Datos y clientes</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="reconocimiento.html">Reconocimientos</a>
-    </nav>
-  </div>
-  <div class="footer-bottom">
-    <span>© PAUSA 2026. all rights reserved.</span>
-    <div>
-      <a href="terminos-y-condiciones.html">Términos y Condiciones</a> &nbsp;·&nbsp;
-      <a href="politicas-de-privacidad.html">Política de Privacidad</a>
+<footer style="background:#1A1A3E;padding:32px 24px">
+  <div style="max-width:820px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+    <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. Todos los derechos reservados.</p>
+    <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+      <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Términos y Condiciones</a>
+      <span style="color:rgba(255,255,255,0.35)">·</span>
+      <a href="reconocimiento.html" style="color:#9FA6F0">Reconocimientos</a>
     </div>
   </div>
 </footer>
 
-<script src="assets/script.js"></script>
+<script>
+var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+var mobileNavPanel = document.getElementById('mobile-nav-panel');
+if (mobileNavToggle && mobileNavPanel) {
+  mobileNavToggle.addEventListener('click', function () {
+    var open = mobileNavPanel.classList.toggle('open');
+    mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileNavPanel.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+</script>
 </body>
 </html>
