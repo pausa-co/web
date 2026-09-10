@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.pausaco.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/plataforma.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/plataforma.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/plataforma.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/plataforma.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/plataforma.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/plataforma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/plataforma.html"/>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/metodologia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/metodologia.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/metodologia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/metodologia.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/metodologia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/metodologia.html"/>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/desarrollo-de-habilidades.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/desarrollo-de-habilidades.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/desarrollo-de-habilidades.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/desarrollo-de-habilidades.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/desarrollo-de-habilidades.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/desarrollo-de-habilidades.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/desarrollo-de-habilidades.html"/>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/equipo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/equipo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/equipo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/equipo.html"/>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/equipo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/equipo.html"/>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/prensa.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/prensa.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/prensa.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/prensa.html"/>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/prensa.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/prensa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/prensa.html"/>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/reconocimiento.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/reconocimiento.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/reconocimiento.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/reconocimiento.html"/>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/preguntas-frecuentes.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/preguntas-frecuentes.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/preguntas-frecuentes.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/preguntas-frecuentes.html"/>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/preguntas-frecuentes.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/preguntas-frecuentes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/preguntas-frecuentes.html"/>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/sumate-al-equipo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/sumate-al-equipo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/sumate-al-equipo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/sumate-al-equipo.html"/>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/sumate-al-equipo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/sumate-al-equipo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/sumate-al-equipo.html"/>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/contacto.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/contacto.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/contacto.html"/>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/politicas-de-privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/politicas-de-privacidad.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/politicas-de-privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/politicas-de-privacidad.html"/>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/politicas-de-privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/politicas-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/politicas-de-privacidad.html"/>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pausaco.com/terminos-y-condiciones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/terminos-y-condiciones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
+    <priority>0.1</priority>
+  </url>
+
+</urlset>
