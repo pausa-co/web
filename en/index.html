@@ -248,7 +248,7 @@
         <h1 class="hero-title" style="margin:0;max-width:21ch;font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.12;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">We design work experiences that fuel the growth of <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">your team.</span><span class="hero-title__word">yourself.</span><span class="hero-title__word">your organization.</span></span><span class="sr-only">We design work experiences that fuel the growth of your team.</span></h1>
         <p style="margin:32px 0 0;max-width:54ch;font-size:1.1875rem;line-height:1.6;color:#DDE0FF">A management platform built to help organizations work more efficiently and sustainably.</p>
       </div>
-      <div id="hero-wrap" style="flex:1.5 1 480px;min-width:0;position:relative">
+      <div id="hero-wrap" style="flex:1 1 340px;min-width:0;max-width:380px;position:relative;cursor:pointer">
         <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.55);background:#F4F5FF">
           <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
             <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
@@ -470,7 +470,7 @@
           <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A;text-wrap:pretty">Argentina, Paraguay, Chile, Brazil, Spain, and the United States</p>
         </div>
         <div style="padding:0 32px;border-left:1px solid #C3C7F5">
-          <p style="margin:0;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.2;letter-spacing:-0.01em;font-weight:800;color:#3D3DC8">VISA Award · La Nación</p>
+          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">VISA Award · La Nación</p>
           <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Innovation 2025 — Innovative Startup</p>
         </div>
       </div>
@@ -480,7 +480,7 @@
   <section id="como-funciona" style="background:#FFFFFF;padding:40px 24px 56px">
     <div style="max-width:1160px;margin:0 auto">
       <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">How it works</p>
-      <h2 style="margin:16px 0 0;max-width:34ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Log, reflect, and <span style="color:#3D3DC8">decide with your own data.</span></h2>
+      <h2 style="margin:16px 0 0;max-width:34ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Log, reflect, and <span style="color:#3D3DC8">decide with data.</span></h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px">
         <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">01</span>
@@ -526,7 +526,7 @@
           <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">When you need to go deeper, a senior consultant sits down with your leadership team.</p>
         </div>
         <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
-          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Leaders and middle management</h3>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Leaders</h3>
           <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">You're the one holding the team together every day. With more presence and more clarity about where your time goes, you lead differently — with purpose, not just a full calendar.</p>
         </div>
         <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
@@ -629,7 +629,7 @@
         </div>
       </div>
       <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
-        <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. All rights reserved.</p>
+        <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2022. All rights reserved.</p>
         <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
           <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Terms and Conditions</a>
           <span style="color:rgba(255,255,255,0.35)">·</span>
@@ -770,7 +770,7 @@
     var activeEl = heroScreensEl.querySelector('.mock-screen[data-screen="' + name + '"]');
     if (name === 'dashboard') {
       growHeroBars();
-      heroIdleTimer = setInterval(function () { if (!heroPaused) shuffleHeroBars(); }, 3600);
+      heroIdleTimer = setInterval(function () { if (!heroPaused) shuffleHeroBars(); }, 2000);
     } else if (name === 'rol') {
       growRoleBars(activeEl);
     } else if (name === 'agenda') {
@@ -791,11 +791,12 @@
       heroScreensEl.querySelector('.mock-screen[data-screen="dashboard"]').classList.add('active');
     } else {
       activateHeroScreen(HERO_SCREEN_ORDER[0]);
-      heroScreenTimer = setInterval(function () { if (!heroPaused) advanceHeroScreen(); }, 4200);
-      miniTimer = setInterval(function () { if (!heroPaused) advanceMini(); }, 4000);
+      heroScreenTimer = setInterval(function () { if (!heroPaused) advanceHeroScreen(); }, 2200);
+      miniTimer = setInterval(function () { if (!heroPaused) advanceMini(); }, 2200);
       var heroWrap = document.getElementById('hero-wrap');
       heroWrap.addEventListener('mouseenter', function () { heroPaused = true; });
       heroWrap.addEventListener('mouseleave', function () { heroPaused = false; });
+      heroWrap.addEventListener('click', function () { advanceHeroScreen(); });
     }
   }
 
