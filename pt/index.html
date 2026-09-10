@@ -22,7 +22,7 @@
   input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.06em; min-width: 9ch; color: #BFC5FF; }
+  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.3em; min-width: 9ch; color: #BFC5FF; }
   .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
   .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
   .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
@@ -245,7 +245,7 @@
   <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:152px 24px 88px">
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
       <div style="flex:1 1 380px;min-width:0">
-        <h1 class="hero-title" style="margin:0;max-width:21ch;font-size:clamp(2.5rem,5vw,4rem);line-height:1.06;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Desenhamos experiências de trabalho que potencializam o crescimento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">sua equipe.</span><span class="hero-title__word">você mesmo.</span><span class="hero-title__word">sua organização.</span></span><span class="sr-only">Desenhamos experiências de trabalho que potencializam o crescimento de sua equipe.</span></h1>
+        <h1 class="hero-title" style="margin:0;max-width:21ch;font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.12;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Desenhamos experiências de trabalho que potencializam o crescimento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">sua equipe.</span><span class="hero-title__word">você mesmo.</span><span class="hero-title__word">sua organização.</span></span><span class="sr-only">Desenhamos experiências de trabalho que potencializam o crescimento de sua equipe.</span></h1>
         <p style="margin:32px 0 0;max-width:54ch;font-size:1.1875rem;line-height:1.6;color:#DDE0FF">Uma plataforma de gestão criada para ajudar as organizações a trabalhar de forma mais eficiente e sustentável.</p>
       </div>
       <div id="hero-wrap" style="flex:1.5 1 480px;min-width:0;position:relative">
@@ -864,7 +864,7 @@
     if (words.length < 2) return;
 
     var current = 0;
-    var INTERVAL_MS = 3500;
+    var INTERVAL_MS = 2200;
     var TRANSITION_MS = 350;
     var timer = null;
 

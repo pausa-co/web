@@ -135,7 +135,6 @@
   <section style="background:#FFFFFF;padding:64px 24px 72px">
     <div style="max-width:1160px;margin:0 auto">
       <div id="team-grid" class="team-grid"></div>
-      <p style="margin-top:40px;font-size:0.9375rem;color:#5C5C8A">¿Querés conocer más sobre cómo pensamos la cultura y el rol de cada persona en Pausa? <a href="nosotros.html" style="color:#3D3DC8;font-weight:700">Conocé nuestra historia →</a></p>
     </div>
   </section>
 
@@ -206,11 +205,24 @@
     });
   }
 
-  // Placeholder roster — reemplazar name/role/linkedin/photo con los datos reales de cada persona.
   // photo: null muestra un avatar genérico; poné la ruta de la foto (ej. "assets/nombre.jpg") cuando esté disponible.
-  var TEAM = Array.from({ length: 20 }, function () {
-    return { name: 'Nombre Apellido', role: 'Puesto', photo: null, linkedin: 'https://www.linkedin.com/company/pausaco' };
-  });
+  var TEAM = [
+    { name: 'Santiago Cordone', role: 'CEO', photo: 'assets/santiago-cordone.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Joaquín De La Vega', role: 'Gerente de Producto', photo: 'assets/equipo/joaquin-de-la-vega.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Clara Barthe', role: 'Data Manager', photo: 'assets/clara-barthe.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Milena Fuchs', role: 'Desarrolladora Junior', photo: 'assets/milena-fuchs.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Rodrigo Arce', role: 'Líder de Tecnología', photo: 'assets/rodrigo-arce.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Javier Urtubey', role: 'COO', photo: 'assets/javier-urtubey.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Sofía Ferrari', role: 'Desarrolladora Junior', photo: 'assets/sofia-ferrari.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Federico Acevedo', role: 'CFO', photo: 'assets/federico-acevedo.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Santiago Baya Casal', role: 'Desarrollador Junior', photo: 'assets/equipo/santiago-baya-casal.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Miguel Reynal', role: 'Acompañante Pausa', photo: 'assets/equipo/miguel-reynal.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Ariela Schulman', role: 'Acompañante Pausa', photo: 'assets/ariela-schulman.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Paz Porres', role: 'Acompañante Pausa', photo: 'assets/paz-porres.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Felipe Caracoix', role: 'Desarrollador', photo: 'assets/equipo/felipe-caracoix.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Juan Guyot', role: 'Acompañante Pausa', photo: 'assets/equipo/juan-guyot.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Juan Pedro Arocena', role: 'Líder de Consultoría', photo: 'assets/equipo/juan-pedro-arocena.png', linkedin: 'https://www.linkedin.com/company/pausaco' }
+  ];
 
   var AVATAR_SVG = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" fill="#BFC5FF"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#BFC5FF"/></svg>';
   var LI_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.75 21.5h4.46V9.75H2.75V21.5Zm7.04 0h4.46v-6.4c0-1.69.32-3.33 2.42-3.33 2.07 0 2.1 1.94 2.1 3.44v6.29h4.46v-7.2c0-3.87-.84-6.85-5.36-6.85-2.17 0-3.63 1.19-4.23 2.32h-.06V9.75H9.79V21.5Z"></path></svg>';
