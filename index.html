@@ -22,6 +22,16 @@
   input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.06em; min-width: 9ch; color: #BFC5FF; }
+  .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
+  .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
+  .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title__word { transition: none; }
+    .hero-title__word:not(.is-active) { display: none; }
+  }
+
   #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background-color .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; background: transparent; }
   #site-header.scrolled { background: #FFFFFF; border-bottom-color: #CCCCEE; }
   #site-header .nav-link { color: rgba(255,255,255,0.85); }
@@ -176,12 +186,12 @@
     </a>
     <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
       <div class="nav-dropdown">
-        <button type="button" class="nav-dropdown-toggle nav-link">Producto</button>
+        <button type="button" class="nav-dropdown-toggle nav-link">Nuestra solución</button>
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-panel">
-            <a href="#top">Plataforma</a>
+            <a href="plataforma.html">Plataforma</a>
             <a href="metodologia.html">Metodología</a>
-            <a href="#casos">Datos y clientes</a>
+            <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
           </div>
         </div>
       </div>
@@ -189,11 +199,15 @@
         <button type="button" class="nav-dropdown-toggle nav-link">Compañía</button>
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-panel">
+            <a href="equipo.html">Equipo</a>
+            <a href="prensa.html">Prensa</a>
             <a href="reconocimiento.html">Reconocimientos</a>
+            <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="sumate-al-equipo.html">Sumate al equipo</a>
           </div>
         </div>
       </div>
-      <a href="preguntas-frecuentes.html" class="nav-link">Preguntas frecuentes</a>
       <div id="lang-switch" style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
         <a class="lang-btn active" href="index.html" style="padding:4px 6px;font-weight:700;letter-spacing:inherit">ES</a>
         <a class="lang-btn" href="en/index.html" style="padding:4px 6px;font-weight:700;letter-spacing:inherit">EN</a>
@@ -206,13 +220,17 @@
     </button>
   </div>
   <div class="mobile-nav-panel" id="mobile-nav-panel">
-    <span class="mobile-nav-section-label">Producto</span>
-    <a href="#top">Plataforma</a>
+    <span class="mobile-nav-section-label">Nuestra solución</span>
+    <a href="plataforma.html">Plataforma</a>
     <a href="metodologia.html">Metodología</a>
-    <a href="#casos">Datos y clientes</a>
+    <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
     <span class="mobile-nav-section-label">Compañía</span>
+    <a href="equipo.html">Equipo</a>
+    <a href="prensa.html">Prensa</a>
     <a href="reconocimiento.html">Reconocimientos</a>
     <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="sumate-al-equipo.html">Sumate al equipo</a>
     <div class="mobile-nav-lang">
       <a class="lang-btn active" href="index.html">ES</a>
       <a class="lang-btn" href="en/index.html">EN</a>
@@ -227,7 +245,7 @@
   <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:152px 24px 88px">
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
       <div style="flex:1 1 380px;min-width:0">
-        <h1 style="margin:0;max-width:21ch;font-size:clamp(2.5rem,5vw,4rem);line-height:1.06;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Diseñamos experiencias laborales que <span style="color:#BFC5FF">potencian el crecimiento de tu equipo.</span></h1>
+        <h1 class="hero-title" style="margin:0;max-width:21ch;font-size:clamp(2.5rem,5vw,4rem);line-height:1.06;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Diseñamos experiencias laborales que potencian el crecimiento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">tu equipo</span><span class="hero-title__word">tu persona</span><span class="hero-title__word">la organización</span></span>.<span class="sr-only">Diseñamos experiencias laborales que potencian el crecimiento de tu equipo.</span></h1>
         <p style="margin:32px 0 0;max-width:54ch;font-size:1.1875rem;line-height:1.6;color:#DDE0FF">Una plataforma de gestión creada para ayudar a las organizaciones a trabajar de forma más eficiente y sostenible.</p>
       </div>
       <div id="hero-wrap" style="flex:1.5 1 480px;min-width:0;position:relative">
@@ -590,17 +608,18 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
           <nav style="display:flex;flex-direction:column;gap:12px">
-            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Producto</p>
-            <a href="#top" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Nuestra solución</p>
+            <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
             <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Metodología</a>
-            <a href="#casos" style="color:#DDE0FF;font-size:0.9375rem">Datos y clientes</a>
+            <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Desarrollo de habilidades</a>
           </nav>
           <nav style="display:flex;flex-direction:column;gap:12px">
             <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Compañía</p>
-            <a href="nosotros.html" style="color:#DDE0FF;font-size:0.9375rem">Nosotros</a>
+            <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Equipo</a>
             <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Prensa</a>
             <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Reconocimientos</a>
-            <a href="#cierre" style="color:#DDE0FF;font-size:0.9375rem">Contacto</a>
+            <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contacto</a>
+            <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Sumate al equipo</a>
           </nav>
           <nav style="display:flex;flex-direction:column;gap:12px">
             <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Confianza</p>
@@ -832,6 +851,50 @@
     form.style.display = 'none';
     thanks.style.display = 'flex';
   });
+
+  // Hero title rotator
+  (function () {
+    var rotator = document.querySelector('.hero-title__rotator');
+    if (!rotator) return;
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    var words = Array.from(rotator.querySelectorAll('.hero-title__word'));
+    if (words.length < 2) return;
+
+    var current = 0;
+    var INTERVAL_MS = 3500;
+    var TRANSITION_MS = 350;
+    var timer = null;
+
+    function rotate() {
+      var next = (current + 1) % words.length;
+      words[current].classList.add('is-leaving');
+      words[current].classList.remove('is-active');
+      words[next].classList.add('is-active');
+      setTimeout(function () {
+        words[current].classList.remove('is-leaving');
+      }, TRANSITION_MS);
+      current = next;
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(rotate, INTERVAL_MS);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  })();
 })();
 </script>
 </body>

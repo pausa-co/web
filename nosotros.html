@@ -17,26 +17,94 @@
         person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
     })
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<style>
+  html { scroll-behavior: smooth; }
+  .btn-cta-light:hover { background: #DDE0FF; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle { background: none; border: none; cursor: pointer; font: inherit; color: rgba(255,255,255,0.85); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: inline-flex; align-items: center; gap: 4px; padding: 0; }
+  .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 16px; z-index: 60; }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-panel { background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 45px -12px rgba(10,10,50,0.25); padding: 8px; min-width: 200px; text-align: left; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+  .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 0.9375rem; font-weight: 500; color: #1A1A3E; white-space: nowrap; }
+  .nav-dropdown-menu a:hover { background: #F4F5FF; color: #3D3DC8; }
+  header .lang-switch-new a { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+  .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; padding: 0; margin-left: auto; color: #FFFFFF; }
+  .mobile-nav-toggle span { width: 22px; height: 2px; border-radius: 2px; background: currentColor; display: block; }
+  .mobile-nav-panel { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #1E1E6B; padding: 8px 24px 24px; flex-direction: column; overflow-y: auto; z-index: 99; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+  .mobile-nav-panel.open { display: flex; }
+  .mobile-nav-panel a, .mobile-nav-panel .mobile-nav-section-label { padding: 14px 4px; font-size: 1.0625rem; font-weight: 500; color: rgba(255,255,255,0.92); border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9FA6F0; border-bottom: none; padding-bottom: 4px; }
+  .mobile-nav-panel .mobile-nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 48px; margin-top: 16px; border-radius: 999px; font-weight: 700; background: #3D3DC8; color: #FFFFFF !important; border-bottom: none !important; }
+  .mobile-nav-panel .mobile-nav-lang { display: flex; gap: 16px; padding: 14px 4px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-lang a { background: none; border: none; padding: 0; font-weight: 700; color: rgba(255,255,255,0.6); border-bottom: none; }
+  .mobile-nav-panel .mobile-nav-lang a.active { color: #FFFFFF; }
+  @media (max-width: 860px) {
+    header nav.desktop-nav { display: none !important; }
+    .mobile-nav-toggle { display: flex; }
+  }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="logo"><a href="index.html"><span class="logo-mark" role="img" aria-label="Pausa"></span></a></div>
-  <div class="header-right">
-    <div class="lang-switch">
-      <button type="button">Español ▾</button>
-      <div class="lang-menu">
-        <a href="en/nosotros.html">English</a>
+<header style="background:#1E1E6B;position:sticky;top:0;z-index:50">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img src="assets/pausa-word-white.png" alt="Pausa" style="height:16px;width:auto;display:block">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500;font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Nuestra solución</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="plataforma.html">Plataforma</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <button class="nav-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
-    <nav class="main-nav">
-      <a href="index.html">Plataforma</a>
-      <a href="index.html#contacto">Contacto</a>
-      <a href="index.html#datos">Datos y clientes</a>
-      <a href="nosotros.html" class="active">Nosotros</a>
-      <a href="reconocimiento.html">Reconocimientos</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Compañía</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="equipo.html">Equipo</a>
+            <a href="prensa.html">Prensa</a>
+            <a href="reconocimiento.html">Reconocimientos</a>
+            <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="sumate-al-equipo.html">Sumate al equipo</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
+        <a href="nosotros.html" style="padding:4px 6px;color:#FFFFFF">ES</a>
+        <a href="en/nosotros.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">EN</a>
+      </div>
+      <a href="index.html#cierre" class="btn-cta-light" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;background:#FFFFFF;color:#1E1E6B;transition:background-color .15s ease">Agendá una demo</a>
     </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Nuestra solución</span>
+    <a href="plataforma.html">Plataforma</a>
+    <a href="metodologia.html">Metodología</a>
+    <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+    <span class="mobile-nav-section-label">Compañía</span>
+    <a href="equipo.html">Equipo</a>
+    <a href="prensa.html">Prensa</a>
+    <a href="reconocimiento.html">Reconocimientos</a>
+    <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="sumate-al-equipo.html">Sumate al equipo</a>
+    <div class="mobile-nav-lang">
+      <a class="active" href="nosotros.html">ES</a>
+      <a href="en/nosotros.html">EN</a>
+    </div>
+    <a href="index.html#cierre" class="mobile-nav-cta">Agendá una demo</a>
   </div>
 </header>
 
@@ -158,33 +226,70 @@
   <p>Venimos a construir una cultura que apuesta por crecer en consciencia, sin resignar impacto ni rentabilidad. De atravesar el desafío de escalar sin vaciar el sentido. Creemos que Pausa llega para contribuir a un nuevo paradigma en la forma de trabajar y vivir de las personas.</p>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo"><span class="logo-mark" role="img" aria-label="Pausa"></span></div>
-      <a class="email" href="mailto:contactopausa@pausaco.com">contactopausa@pausaco.com</a>
-      <div class="footer-social">
-        <a href="https://wa.me/5491153876359" aria-label="Whatsapp" target="_blank" rel="noopener">WA</a>
-        <a href="https://www.linkedin.com/company/pausaco/" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+<footer style="background:#1A1A3E;padding:48px 24px 28px;font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+        <img src="assets/pausa-word-white.png" alt="Pausa" style="height:20px;width:auto;display:block">
+        <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
+        <div style="display:flex;gap:12px">
+          <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.19-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.22-8.24Zm-3.1 4.05c-.23 0-.6.09-.91.43-.31.34-.99.97-.99 2.36 0 1.39 1.01 2.73 1.15 2.92.14.19 1.95 3.1 4.81 4.22 2.38.94 2.86.75 3.38.7.52-.05 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.67-.82-1.93-.92-.26-.09-.45-.14-.64.14-.19.28-.73.94-.9 1.13-.16.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.61-1.52-.85-2.08-.19-.44-.38-.45-.55-.46h-.36Z"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/pausaco" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.75 21.5h4.46V9.75H2.75V21.5Zm7.04 0h4.46v-6.4c0-1.69.32-3.33 2.42-3.33 2.07 0 2.1 1.94 2.1 3.44v6.29h4.46v-7.2c0-3.87-.84-6.85-5.36-6.85-2.17 0-3.63 1.19-4.23 2.32h-.06V9.75H9.79V21.5Z"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Nuestra solución</p>
+          <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
+          <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Metodología</a>
+          <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Desarrollo de habilidades</a>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Compañía</p>
+          <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Equipo</a>
+          <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Prensa</a>
+          <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Reconocimientos</a>
+          <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contacto</a>
+          <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Sumate al equipo</a>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Confianza</p>
+          <a href="politicas-de-privacidad.html#seguridad" style="color:#DDE0FF;font-size:0.9375rem">Seguridad y privacidad</a>
+          <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">Preguntas frecuentes</a>
+        </nav>
       </div>
     </div>
-    <nav class="footer-nav">
-      <a href="index.html">Plataforma</a>
-      <a href="index.html#contacto">Contacto</a>
-      <a href="index.html#datos">Datos y clientes</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="reconocimiento.html">Reconocimientos</a>
-    </nav>
-  </div>
-  <div class="footer-bottom">
-    <span>© PAUSA 2026. all rights reserved.</span>
-    <div>
-      <a href="terminos-y-condiciones.html">Términos y Condiciones</a> &nbsp;·&nbsp;
-      <a href="politicas-de-privacidad.html">Política de Privacidad</a>
+    <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+      <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. Todos los derechos reservados.</p>
+      <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+        <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Términos y Condiciones</a>
+        <span style="color:rgba(255,255,255,0.35)">·</span>
+        <a href="politicas-de-privacidad.html" style="color:#9FA6F0">Política de Privacidad</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <script src="assets/script.js"></script>
+<script>
+var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+var mobileNavPanel = document.getElementById('mobile-nav-panel');
+if (mobileNavToggle && mobileNavPanel) {
+  mobileNavToggle.addEventListener('click', function () {
+    var open = mobileNavPanel.classList.toggle('open');
+    mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileNavPanel.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+</script>
 </body>
 </html>
