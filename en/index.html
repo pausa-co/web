@@ -22,6 +22,16 @@
   input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.06em; min-width: 9ch; color: #BFC5FF; }
+  .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
+  .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
+  .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title__word { transition: none; }
+    .hero-title__word:not(.is-active) { display: none; }
+  }
+
   #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background-color .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; background: transparent; }
   #site-header.scrolled { background: #FFFFFF; border-bottom-color: #CCCCEE; }
   #site-header .nav-link { color: rgba(255,255,255,0.85); }
@@ -176,11 +186,12 @@
     </a>
     <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
       <div class="nav-dropdown">
-        <button type="button" class="nav-dropdown-toggle nav-link">Product</button>
+        <button type="button" class="nav-dropdown-toggle nav-link">Our Solution</button>
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-panel">
             <a href="#top">Platform</a>
             <a href="metodologia.html">Methodology</a>
+            <a href="desarrollo-de-habilidades.html">Skill Development</a>
           </div>
         </div>
       </div>
@@ -188,9 +199,12 @@
         <button type="button" class="nav-dropdown-toggle nav-link">Company</button>
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-panel">
-            <a href="nosotros.html">About us</a>
+            <a href="equipo.html">Team</a>
             <a href="prensa.html">Press</a>
             <a href="reconocimiento.html">Recognition</a>
+            <a href="preguntas-frecuentes.html">FAQ</a>
+            <a href="contacto.html">Contact</a>
+            <a href="sumate-al-equipo.html">Join the Team</a>
           </div>
         </div>
       </div>
@@ -206,13 +220,17 @@
     </button>
   </div>
   <div class="mobile-nav-panel" id="mobile-nav-panel">
-    <span class="mobile-nav-section-label">Product</span>
+    <span class="mobile-nav-section-label">Our Solution</span>
     <a href="#top">Platform</a>
     <a href="metodologia.html">Methodology</a>
+    <a href="desarrollo-de-habilidades.html">Skill Development</a>
     <span class="mobile-nav-section-label">Company</span>
-    <a href="nosotros.html">About us</a>
+    <a href="equipo.html">Team</a>
     <a href="prensa.html">Press</a>
     <a href="reconocimiento.html">Recognition</a>
+    <a href="preguntas-frecuentes.html">FAQ</a>
+    <a href="contacto.html">Contact</a>
+    <a href="sumate-al-equipo.html">Join the Team</a>
     <div class="mobile-nav-lang">
       <a class="lang-btn" href="../index.html">ES</a>
       <a class="lang-btn active" href="index.html">EN</a>
@@ -227,7 +245,7 @@
   <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:152px 24px 88px">
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
       <div style="flex:1 1 380px;min-width:0">
-        <h1 style="margin:0;max-width:21ch;font-size:clamp(2.5rem,5vw,4rem);line-height:1.06;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">We design work experiences that <span style="color:#BFC5FF">fuel your team's growth.</span></h1>
+        <h1 class="hero-title" style="margin:0;max-width:21ch;font-size:clamp(2.5rem,5vw,4rem);line-height:1.06;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">We design work experiences that fuel the growth of <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">your team</span><span class="hero-title__word">yourself</span><span class="hero-title__word">your organization</span></span>.<span class="sr-only">We design work experiences that fuel the growth of your team.</span></h1>
         <p style="margin:32px 0 0;max-width:54ch;font-size:1.1875rem;line-height:1.6;color:#DDE0FF">A management platform built to help organizations work more efficiently and sustainably.</p>
       </div>
       <div id="hero-wrap" style="flex:1.5 1 480px;min-width:0;position:relative">
@@ -590,16 +608,18 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
           <nav style="display:flex;flex-direction:column;gap:12px">
-            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Product</p>
-            <a href="#top" style="color:#DDE0FF;font-size:0.9375rem">Platform</a>
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Our Solution</p>
+            <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Platform</a>
             <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Methodology</a>
+            <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Skill Development</a>
           </nav>
           <nav style="display:flex;flex-direction:column;gap:12px">
             <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Company</p>
-            <a href="nosotros.html" style="color:#DDE0FF;font-size:0.9375rem">About us</a>
+            <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Team</a>
             <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Press</a>
             <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Recognition</a>
-            <a href="#cierre" style="color:#DDE0FF;font-size:0.9375rem">Contact</a>
+            <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contact</a>
+            <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Join the Team</a>
           </nav>
           <nav style="display:flex;flex-direction:column;gap:12px">
             <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Trust</p>
@@ -831,6 +851,50 @@
     form.style.display = 'none';
     thanks.style.display = 'flex';
   });
+
+  // Hero title rotator
+  (function () {
+    var rotator = document.querySelector('.hero-title__rotator');
+    if (!rotator) return;
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    var words = Array.from(rotator.querySelectorAll('.hero-title__word'));
+    if (words.length < 2) return;
+
+    var current = 0;
+    var INTERVAL_MS = 3500;
+    var TRANSITION_MS = 350;
+    var timer = null;
+
+    function rotate() {
+      var next = (current + 1) % words.length;
+      words[current].classList.add('is-leaving');
+      words[current].classList.remove('is-active');
+      words[next].classList.add('is-active');
+      setTimeout(function () {
+        words[current].classList.remove('is-leaving');
+      }, TRANSITION_MS);
+      current = next;
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(rotate, INTERVAL_MS);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  })();
 })();
 </script>
 </body>
