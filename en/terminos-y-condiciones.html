@@ -13,7 +13,41 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #3D3DC8; text-decoration: none; }
+  a:hover { color: #2D2D99; }
+  :focus-visible { outline: 2px solid #3D3DC8; outline-offset: 3px; }
+  .btn-cta-light:hover { background: #DDE0FF; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle { background: none; border: none; cursor: pointer; font: inherit; color: rgba(255,255,255,0.85); display: inline-flex; align-items: center; gap: 4px; padding: 0; }
+  .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 16px; z-index: 60; }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-panel { background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 45px -12px rgba(10,10,50,0.25); padding: 8px; min-width: 200px; text-align: left; }
+  .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 0.9375rem; font-weight: 500; color: #1A1A3E; white-space: nowrap; }
+  .nav-dropdown-menu a:hover { background: #F4F5FF; color: #3D3DC8; }
+
+  .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; padding: 0; margin-left: auto; color: #FFFFFF; }
+  .mobile-nav-toggle span { width: 22px; height: 2px; border-radius: 2px; background: currentColor; display: block; }
+  .mobile-nav-panel { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #1E1E6B; padding: 8px 24px 24px; flex-direction: column; overflow-y: auto; z-index: 99; }
+  .mobile-nav-panel.open { display: flex; }
+  .mobile-nav-panel a, .mobile-nav-panel .mobile-nav-section-label { padding: 14px 4px; font-size: 1.0625rem; font-weight: 500; color: rgba(255,255,255,0.92); border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9FA6F0; border-bottom: none; padding-bottom: 4px; }
+  .mobile-nav-panel .mobile-nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 48px; margin-top: 16px; border-radius: 999px; font-weight: 700; background: #3D3DC8; color: #FFFFFF !important; border-bottom: none !important; }
+  .mobile-nav-panel .mobile-nav-lang { display: flex; gap: 16px; padding: 14px 4px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-lang a { background: none; border: none; padding: 0; font-weight: 700; color: rgba(255,255,255,0.6); border-bottom: none; }
+  .mobile-nav-panel .mobile-nav-lang a.active { color: #FFFFFF; }
+
+  @media (max-width: 860px) {
+    header nav.desktop-nav { display: none !important; }
+    .mobile-nav-toggle { display: flex; }
+  }
+</style>
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
@@ -22,37 +56,6 @@
         person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
     })
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
-<style>
-  html { scroll-behavior: smooth; }
-  a { color: #3D3DC8; text-decoration: none; }
-  a:hover { color: #2D2D99; }
-  :focus-visible { outline: 2px solid #3D3DC8; outline-offset: 3px; }
-  .btn-cta-light:hover { background: #DDE0FF; }
-  .nav-dropdown { position: relative; }
-  .nav-dropdown-toggle { background: none; border: none; cursor: pointer; font: inherit; color: rgba(255,255,255,0.85); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; display: inline-flex; align-items: center; gap: 4px; padding: 0; }
-  .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 16px; z-index: 60; }
-  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-  .nav-dropdown-panel { background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 45px -12px rgba(10,10,50,0.25); padding: 8px; min-width: 200px; text-align: left; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-  .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 0.9375rem; font-weight: 500; color: #1A1A3E; white-space: nowrap; }
-  .nav-dropdown-menu a:hover { background: #F4F5FF; color: #3D3DC8; }
-  .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; padding: 0; margin-left: auto; color: #FFFFFF; }
-  .mobile-nav-toggle span { width: 22px; height: 2px; border-radius: 2px; background: currentColor; display: block; }
-  .mobile-nav-panel { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #1E1E6B; padding: 8px 24px 24px; flex-direction: column; overflow-y: auto; z-index: 99; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-  .mobile-nav-panel.open { display: flex; }
-  .mobile-nav-panel a, .mobile-nav-panel .mobile-nav-section-label { padding: 14px 4px; font-size: 1.0625rem; font-weight: 500; color: rgba(255,255,255,0.92); border-bottom: 1px solid rgba(255,255,255,0.14); }
-  .mobile-nav-panel .mobile-nav-section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9FA6F0; border-bottom: none; padding-bottom: 4px; }
-  .mobile-nav-panel .mobile-nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 48px; margin-top: 16px; border-radius: 999px; font-weight: 700; background: #3D3DC8; color: #FFFFFF !important; border-bottom: none !important; }
-  .mobile-nav-panel .mobile-nav-lang { display: flex; gap: 16px; padding: 14px 4px; border-bottom: 1px solid rgba(255,255,255,0.14); }
-  .mobile-nav-panel .mobile-nav-lang a { background: none; border: none; padding: 0; font-weight: 700; color: rgba(255,255,255,0.6); border-bottom: none; }
-  .mobile-nav-panel .mobile-nav-lang a.active { color: #FFFFFF; }
-  @media (max-width: 860px) {
-    header nav.desktop-nav { display: none !important; }
-    .mobile-nav-toggle { display: flex; }
-  }
-</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Pausa","url":"https://www.pausaco.com/en/","logo":"https://www.pausaco.com/assets/pausa-mark-indigo.png","sameAs":["https://www.linkedin.com/company/pausaco"],"email":"contactopausa@pausaco.com"}
 </script>
@@ -67,7 +70,7 @@
     <a href="index.html" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
       <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:16px;width:auto;display:block">
     </a>
-    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500;font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle">Our Solution</button>
         <div class="nav-dropdown-menu">
@@ -121,73 +124,101 @@
   </div>
 </header>
 
-<section class="legal">
-  <h1>Terms and Conditions</h1>
-  <div class="subtitle">of PausaCo</div>
+<main style="max-width:820px;margin:0 auto;padding:64px 24px 96px">
+  <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Legal</p>
+  <h1 style="margin:16px 0 0;font-size:clamp(2.25rem,4.5vw,3.25rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#1A1A3E">Terms and Conditions</h1>
 
-  <h2>1. Introduction</h2>
-  <p>Welcome to Pausa Reflexive Technology, a platform owned and administered by Pausa Co S.A. ("Pausa"), a corporation duly organized and existing under the laws of the Argentine Republic. By using our Application, you accept, by the mere fact of using it, fully and unconditionally, each and every provision described in these Terms and Conditions (the "Terms") and enter into a binding agreement with Pausa. We recommend that you read them carefully before using our services.</p>
+  <section style="margin-top:56px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">1. Introduction</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Welcome to Pausa Reflexive Technology, a platform owned and administered by Pausa Co S.A. ("Pausa"), a corporation duly organized and existing under the laws of the Argentine Republic. By using our Application, you accept, by the mere fact of using it, fully and unconditionally, each and every provision described in these Terms and Conditions (the "Terms") and enter into a binding agreement with Pausa. We recommend that you read them carefully before using our services.</p>
+  </section>
 
-  <h2>2. Description of the Service</h2>
-  <p>Our Application allows users to authenticate through their Google or Microsoft accounts, granting access permissions to read their calendars and obtain basic profile information. Subsequently, users can import events from their calendars to process them through our surveys and obtain personalized visualizations of such records.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">2. Description of the Service</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Our Application allows users to authenticate through their Google or Microsoft accounts, granting access permissions to read their calendars and obtain basic profile information. Subsequently, users can import events from their calendars to process them through our surveys and obtain personalized visualizations of such records.</p>
+  </section>
 
-  <h2>3. Term: Termination</h2>
-  <p><strong>3.1 Term.</strong> These Terms will be effective upon acceptance and will remain in force until terminated.</p>
-  <p><strong>3.2 Termination by the Provider.</strong> Pausa may terminate your right to use the services at any time due to (i) your violation or breach of these Terms; (ii) your improper or abusive use of the services; or (iii) when allowing you access to and use of the services would violate any local, state, provincial, national, or other law, rule, or regulation, or expose Pausa to legal liability. Pausa will make reasonable efforts to notify the user of such termination. The user further agrees that Pausa will not be liable for the termination of their right to use or otherwise access the services. Cancellation of your account will result in the deletion of your personal data.</p>
-  <p><strong>3.3 Termination by the user.</strong> The user may cancel their access to the services and these Terms by deleting their account.</p>
-  <p><strong>3.4 Survival of Clauses.</strong> All provisions contained in these Terms which, by their nature, should survive termination of the contractual relationship shall continue to apply (including, among others, all limitations of liability, disclaimers, indemnification obligations, warranty disclaimers, arbitration agreements, choice of applicable law and jurisdiction, and the protection of intellectual property and licenses).</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">3. Term: Termination</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">3.1 Term.</strong> These Terms will be effective upon acceptance and will remain in force until terminated.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">3.2 Termination by the Provider.</strong> Pausa may terminate your right to use the services at any time due to (i) your violation or breach of these Terms; (ii) your improper or abusive use of the services; or (iii) when allowing you access to and use of the services would violate any local, state, provincial, national, or other law, rule, or regulation, or expose Pausa to legal liability. Pausa will make reasonable efforts to notify the user of such termination. The user further agrees that Pausa will not be liable for the termination of their right to use or otherwise access the services. Cancellation of your account will result in the deletion of your personal data.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">3.3 Termination by the user.</strong> The user may cancel their access to the services and these Terms by deleting their account.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">3.4 Survival of Clauses.</strong> All provisions contained in these Terms which, by their nature, should survive termination of the contractual relationship shall continue to apply (including, among others, all limitations of liability, disclaimers, indemnification obligations, warranty disclaimers, arbitration agreements, choice of applicable law and jurisdiction, and the protection of intellectual property and licenses).</p>
+  </section>
 
-  <h2>4. Use of the Platform</h2>
-  <ul>
-    <li>To access our services, you must authenticate with a Google or Microsoft account, granting the necessary permissions to access your calendar data.</li>
-    <li>Use of the platform is intended for personal and business purposes, provided it complies with the terms established in this document.</li>
-    <li>Misuse of our platform is prohibited, including, but not limited to, data manipulation, unauthorized access to other users' systems, publication of illegal content, participation in activities that promote illegal behavior — such as illegal gambling —, copyright infringement, and the promotion of hatred and violence.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">4. Use of the Platform</h2>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>To access our services, you must authenticate with a Google or Microsoft account, granting the necessary permissions to access your calendar data.</li>
+      <li>Use of the platform is intended for personal and business purposes, provided it complies with the terms established in this document.</li>
+      <li>Misuse of our platform is prohibited, including, but not limited to, data manipulation, unauthorized access to other users' systems, publication of illegal content, participation in activities that promote illegal behavior — such as illegal gambling —, copyright infringement, and the promotion of hatred and violence.</li>
+    </ul>
+  </section>
 
-  <h2>5. Account, Password, and Security</h2>
-  <p><strong>5.1 Registration.</strong> As part of certain service registration procedures, the user will create an account or change or add information about their account. The user agrees to (i) provide true, accurate, current, and complete information about themselves and (ii) maintain and promptly update their personal data to keep it true, accurate, current, and complete. In the event of a dispute between two or more parties regarding ownership of the account, the user agrees that Pausa will be the sole arbiter of the dispute, at its discretion, and that the decision (which may include termination or suspension of any account subject to dispute) will be final and binding on all parties.</p>
-  <p><strong>5.2 Security.</strong> The user is responsible for maintaining the confidentiality of their password and account details, and is fully responsible for all activity that occurs on their account. The user agrees to immediately notify Pausa of any unauthorized use of their password or account, or of any other security breach.</p>
-  <p><strong>5.3 Age restrictions.</strong> Pausa cares about the safety and privacy of minors. For this reason, and to be consistent with the terms of use of third-party service providers used by Pausa, the user must be at least eighteen (18) years of age. Otherwise, they may only use the services with the involvement of a parent or guardian. In any case, the services may not be used if the user is under thirteen (13) years of age.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">5. Account, Password, and Security</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">5.1 Registration.</strong> As part of certain service registration procedures, the user will create an account or change or add information about their account. The user agrees to (i) provide true, accurate, current, and complete information about themselves and (ii) maintain and promptly update their personal data to keep it true, accurate, current, and complete. In the event of a dispute between two or more parties regarding ownership of the account, the user agrees that Pausa will be the sole arbiter of the dispute, at its discretion, and that the decision (which may include termination or suspension of any account subject to dispute) will be final and binding on all parties.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">5.2 Security.</strong> The user is responsible for maintaining the confidentiality of their password and account details, and is fully responsible for all activity that occurs on their account. The user agrees to immediately notify Pausa of any unauthorized use of their password or account, or of any other security breach.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A"><strong style="color:#1A1A3E;font-weight:700">5.3 Age restrictions.</strong> Pausa cares about the safety and privacy of minors. For this reason, and to be consistent with the terms of use of third-party service providers used by Pausa, the user must be at least eighteen (18) years of age. Otherwise, they may only use the services with the involvement of a parent or guardian. In any case, the services may not be used if the user is under thirteen (13) years of age.</p>
+  </section>
 
-  <h2>6. Intellectual Property</h2>
-  <p>The user agrees that all material, including, but not limited to, data, text, editorial content, design elements, appearance, format, graphics, images, photographs, videos, music, sounds, and other content included in or delivered through the services or otherwise provided by Pausa in connection with the services, is protected by copyright, trademarks, service marks, trade secrets, or other intellectual property rights, other proprietary rights, and applicable laws. All intellectual property rights in the Application, including code, design, graphics, and functionality, are our exclusive property. Users do not acquire any ownership rights over the Application or its content.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">6. Intellectual Property</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">The user agrees that all material, including, but not limited to, data, text, editorial content, design elements, appearance, format, graphics, images, photographs, videos, music, sounds, and other content included in or delivered through the services or otherwise provided by Pausa in connection with the services, is protected by copyright, trademarks, service marks, trade secrets, or other intellectual property rights, other proprietary rights, and applicable laws. All intellectual property rights in the Application, including code, design, graphics, and functionality, are our exclusive property. Users do not acquire any ownership rights over the Application or its content.</p>
+  </section>
 
-  <h2>7. Collection and Use of Personal Data</h2>
-  <ul>
-    <li>By accepting these Terms, the user agrees that the Application will collect and process data from their calendar events in order to provide the services offered. The user will give their prior, express, and informed consent to collect and store, in Pausa's databases, the personal data provided when using the Application.</li>
-    <li>The user understands that, if they do not provide such data or provide it inaccurately, they may not be able to use the Application.</li>
-    <li>The user also understands that, as the data subject, they have the right to request access to, rectification, updating, and, where applicable, deletion of their personal data.</li>
-    <li>Pausa agrees not to sell and/or transfer or use users' personal data without their authorization.</li>
-    <li>The information collected will be stored in secure databases on Google Cloud and will be protected according to industry standards.</li>
-    <li>The data subject has the right to exercise their right of access free of charge at intervals of no less than six months, unless a legitimate interest is demonstrated in accordance with Article 14, paragraph 3 of Argentina's Personal Data Protection Law No. 25,326. The enforcement authority (in Argentina, the Access to Information Agency, the oversight body of Law No. 25,326) has the authority to address complaints and claims filed in relation to non-compliance with personal data protection regulations.</li>
-    <li>For more information on how we handle data, please see our Privacy Policy.</li>
-  </ul>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">7. Collection and Use of Personal Data</h2>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>By accepting these Terms, the user agrees that the Application will collect and process data from their calendar events in order to provide the services offered. The user will give their prior, express, and informed consent to collect and store, in Pausa's databases, the personal data provided when using the Application.</li>
+      <li>The user understands that, if they do not provide such data or provide it inaccurately, they may not be able to use the Application.</li>
+      <li>The user also understands that, as the data subject, they have the right to request access to, rectification, updating, and, where applicable, deletion of their personal data.</li>
+      <li>Pausa agrees not to sell and/or transfer or use users' personal data without their authorization.</li>
+      <li>The information collected will be stored in secure databases on Google Cloud and will be protected according to industry standards.</li>
+      <li>The data subject has the right to exercise their right of access free of charge at intervals of no less than six months, unless a legitimate interest is demonstrated in accordance with Article 14, paragraph 3 of Argentina's Personal Data Protection Law No. 25,326. The enforcement authority (in Argentina, the Access to Information Agency, the oversight body of Law No. 25,326) has the authority to address complaints and claims filed in relation to non-compliance with personal data protection regulations.</li>
+      <li>For more information on how we handle data, please see our Privacy Policy.</li>
+    </ul>
+  </section>
 
-  <h2>8. Liability</h2>
-  <p>The Application is provided "as is," without warranties of any kind, express or implied. We are not responsible for any damages or losses that may arise from the use of the platform, including any service interruption, data loss, or damage to devices. It is the user's responsibility to have the hardware and/or software necessary for proper use of the Application.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">8. Liability</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">The Application is provided "as is," without warranties of any kind, express or implied. We are not responsible for any damages or losses that may arise from the use of the platform, including any service interruption, data loss, or damage to devices. It is the user's responsibility to have the hardware and/or software necessary for proper use of the Application.</p>
+  </section>
 
-  <h2>9. Modifications to the Terms</h2>
-  <p>We reserve the right to modify these Terms at any time. Changes will be published in our Application, and continued use of the platform after modification will constitute acceptance of the new terms. Under certain circumstances, the Application may send additional notices of such modifications, for example, via email or in-app notifications. Modifications will take effect thirty (30) days after the date of such update, or on an earlier date required by law or specified in any notice; except for changes made to address new service functionalities that do not impose any additional burden or obligations on users, which will take effect immediately. It is the users' responsibility to periodically review these Terms to check for modifications. If the user does not accept any modification to these Terms, they must cease accessing, browsing, and any other form of use of the Application.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">9. Modifications to the Terms</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">We reserve the right to modify these Terms at any time. Changes will be published in our Application, and continued use of the platform after modification will constitute acceptance of the new terms. Under certain circumstances, the Application may send additional notices of such modifications, for example, via email or in-app notifications. Modifications will take effect thirty (30) days after the date of such update, or on an earlier date required by law or specified in any notice; except for changes made to address new service functionalities that do not impose any additional burden or obligations on users, which will take effect immediately. It is the users' responsibility to periodically review these Terms to check for modifications. If the user does not accept any modification to these Terms, they must cease accessing, browsing, and any other form of use of the Application.</p>
+  </section>
 
-  <h2>10. Entire Agreement</h2>
-  <p>These Terms, together with the Privacy Policy, constitute the entire agreement between users and Pausa and govern the use of the Application, superseding any prior or contemporaneous agreement, proposals, discussions, communications, or understandings between users and Pausa.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">10. Entire Agreement</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">These Terms, together with the Privacy Policy, constitute the entire agreement between users and Pausa and govern the use of the Application, superseding any prior or contemporaneous agreement, proposals, discussions, communications, or understandings between users and Pausa.</p>
+  </section>
 
-  <h2>11. Relationship</h2>
-  <p>These Terms are not intended to create any independent contractor, agency, partnership, joint venture, employer-employee, or franchisor-franchisee relationship between users and Pausa.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">11. Relationship</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">These Terms are not intended to create any independent contractor, agency, partnership, joint venture, employer-employee, or franchisor-franchisee relationship between users and Pausa.</p>
+  </section>
 
-  <h2>12. Waiver: Invalidity of Clauses</h2>
-  <p>Pausa's failure or delay in exercising or enforcing any right or provision of these Terms shall not constitute a waiver of that right or provision. No waivers, amendments, or modifications made verbally shall be valid for any reason or circumstance.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">12. Waiver: Invalidity of Clauses</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Pausa's failure or delay in exercising or enforcing any right or provision of these Terms shall not constitute a waiver of that right or provision. No waivers, amendments, or modifications made verbally shall be valid for any reason or circumstance.</p>
+  </section>
 
-  <h2>13. Indemnification</h2>
-  <p>The user agrees to defend, indemnify, and hold harmless Pausa, its affiliates and subsidiaries, and each of their respective officers, directors, representatives, co-brand promoters, licensors, payment processing partners, other partners, and employees, from any and all damages (whether direct, indirect, incidental, consequential, or otherwise), losses, liabilities, costs, and expenses (including, but not limited to, reasonable attorneys' and accountants' fees) arising from any claim, demand, lawsuit, proceeding (whether before an arbitrator, court, mediator, or otherwise), or investigation by third parties arising from or related to: (i) your violation of these Terms; (ii) your improper use of the services; or (iii) the violation of any local, state, provincial, national, or other law, rule, or regulation, or the rights of third parties.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">13. Indemnification</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">The user agrees to defend, indemnify, and hold harmless Pausa, its affiliates and subsidiaries, and each of their respective officers, directors, representatives, co-brand promoters, licensors, payment processing partners, other partners, and employees, from any and all damages (whether direct, indirect, incidental, consequential, or otherwise), losses, liabilities, costs, and expenses (including, but not limited to, reasonable attorneys' and accountants' fees) arising from any claim, demand, lawsuit, proceeding (whether before an arbitrator, court, mediator, or otherwise), or investigation by third parties arising from or related to: (i) your violation of these Terms; (ii) your improper use of the services; or (iii) the violation of any local, state, provincial, national, or other law, rule, or regulation, or the rights of third parties.</p>
+  </section>
 
-  <h2>14. Jurisdiction and Governing Law</h2>
-  <p>These Terms and any future matter arising therefrom shall be governed by and interpreted in accordance with the laws of the Argentine Republic. For any dispute, the parties agree to submit to the exclusive jurisdiction of the competent ordinary courts located in the City of Buenos Aires, or the jurisdiction that corresponds to the User by law, whatever the cause of action or claim, with the User expressly waiving any other venue or jurisdiction that may correspond to them.</p>
+  <section style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">14. Jurisdiction and Governing Law</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">These Terms and any future matter arising therefrom shall be governed by and interpreted in accordance with the laws of the Argentine Republic. For any dispute, the parties agree to submit to the exclusive jurisdiction of the competent ordinary courts located in the City of Buenos Aires, or the jurisdiction that corresponds to the User by law, whatever the cause of action or claim, with the User expressly waiving any other venue or jurisdiction that may correspond to them.</p>
+  </section>
 
-  <p class="effective-date">Effective Date: 12/31/2026</p>
-</section>
+  <p style="margin:48px 0 0;padding-top:24px;border-top:1px solid #CCCCEE;font-size:0.9375rem;color:#5C5C8A">Effective Date: 12/31/2026</p>
+</main>
 
-<footer style="background:#1A1A3E;padding:32px 24px;font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+<footer style="background:#1A1A3E;padding:32px 24px">
   <div style="max-width:820px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
     <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2022. All rights reserved.</p>
     <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
@@ -198,7 +229,6 @@
   </div>
 </footer>
 
-<script src="../assets/script.js"></script>
 <script>
 var mobileNavToggle = document.getElementById('mobile-nav-toggle');
 var mobileNavPanel = document.getElementById('mobile-nav-panel');

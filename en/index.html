@@ -27,7 +27,7 @@
   input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.3em; min-width: 18ch; color: #BFC5FF; }
+  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.3em; min-width: 14ch; color: #BFC5FF; }
   .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
   .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
   .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
@@ -75,6 +75,8 @@
   .hero-media .layer-cur { z-index: 1; }
   .hero-media .layer-prev { z-index: 2; opacity: 0; transition: opacity .6s ease; }
   .hero-media .layer-prev.visible { opacity: 1; }
+  .step-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.3); border: none; padding: 0; cursor: pointer; }
+  .step-dot.active { background: #FFFFFF; }
 
   #hero-screens { position: absolute; inset: 0; }
   .mock-screen { position: absolute; inset: 0; display: flex; background: #FFFFFF; opacity: 0; pointer-events: none; transition: opacity .6s ease; z-index: 0; }
@@ -262,7 +264,7 @@
   <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;min-height:82vh;min-height:82svh;display:flex;align-items:center;padding:140px 24px 60px">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:72px;align-items:center;width:100%">
       <div style="flex:1 1 420px;min-width:0">
-        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">We design work experiences that fuel the growth of <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">your team</span><span class="hero-title__word">yourself</span><span class="hero-title__word">your organization</span></span><span class="sr-only">We design work experiences that fuel the growth of your team.</span></h1>
+        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">We design work experiences that fuel the growth of <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">teams</span><span class="hero-title__word">people</span><span class="hero-title__word">organizations</span></span><span class="sr-only">We design work experiences that fuel the growth of teams.</span></h1>
         <p style="margin:24px 0 0;max-width:50ch;font-size:1.1875rem;line-height:1.55;color:#DDE0FF">A management platform built to help organizations work more efficiently and sustainably.</p>
         <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:16px">
           <a href="#cierre" class="btn-cta-primary" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease">Book a demo</a>
@@ -524,7 +526,7 @@
           <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">That gap turns into something concrete: delegating, reorganizing your schedule, having the conversation with the team you'd been putting off, or even changing a structural decision outright. If the pattern repeats, a specific development recommendation appears — not before.</p>
         </div>
       </div>
-      <div style="margin-top:32px;background:#1E1E6B;border-radius:24px;padding:24px">
+      <div id="como-wrap" style="margin:32px auto 0;max-width:760px;background:#1E1E6B;border-radius:24px;padding:24px;cursor:pointer">
         <div style="border-radius:12px;overflow:hidden;background:#F4F5FF">
           <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
             <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
@@ -536,6 +538,11 @@
             <img class="layer-cur" id="step-img-cur" src="../assets/uploads/hero-poster-1.png" alt="Real view of the Pausa platform">
             <img class="layer-prev" id="step-img-prev" alt="">
           </div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:8px;margin-top:16px">
+          <button type="button" class="step-dot active" data-step="0" aria-label="Step 1"></button>
+          <button type="button" class="step-dot" data-step="1" aria-label="Step 2"></button>
+          <button type="button" class="step-dot" data-step="2" aria-label="Step 3"></button>
         </div>
       </div>
       <p style="margin:32px 0 0;font-size:clamp(1rem,1.55vw,1.1875rem);line-height:1.4;font-weight:700;color:#1A1A3E">Proprietary methodology. AI-powered technology. Human support.</p>
@@ -832,14 +839,40 @@
   var stepCur = document.getElementById('step-img-cur');
   var stepPrev = document.getElementById('step-img-prev');
 
-  function advanceStep() {
+  function updateStepDots() {
+    document.querySelectorAll('.step-dot').forEach(function (dot, i) {
+      dot.classList.toggle('active', i === stepIndex);
+    });
+  }
+  function renderStep(newIndex) {
     stepPrev.src = STEP_SHOTS[stepIndex];
     stepPrev.classList.add('visible');
-    stepIndex = (stepIndex + 1) % STEP_SHOTS.length;
+    stepIndex = newIndex;
     stepCur.src = STEP_SHOTS[stepIndex];
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         stepPrev.classList.remove('visible');
+      });
+    });
+    updateStepDots();
+  }
+  function advanceStep() {
+    renderStep((stepIndex + 1) % STEP_SHOTS.length);
+  }
+
+  var stepPaused = false;
+  var comoWrap = document.getElementById('como-wrap');
+  if (comoWrap) {
+    comoWrap.addEventListener('mouseenter', function () { stepPaused = true; });
+    comoWrap.addEventListener('mouseleave', function () { stepPaused = false; });
+    comoWrap.addEventListener('click', function (e) {
+      if (e.target.closest('.step-dot')) return;
+      advanceStep();
+    });
+    comoWrap.querySelectorAll('.step-dot').forEach(function (dot) {
+      dot.addEventListener('click', function (e) {
+        e.stopPropagation();
+        renderStep(parseInt(dot.dataset.step, 10));
       });
     });
   }
@@ -850,7 +883,7 @@
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            stepTimer = setInterval(advanceStep, 4200);
+            stepTimer = setInterval(function () { if (!stepPaused) advanceStep(); }, 2600);
             observer.disconnect();
           }
         });

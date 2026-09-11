@@ -219,20 +219,20 @@
   // photo: null exibe um avatar genérico; use o caminho da foto (ex. "assets/nome.jpg") quando disponível.
   var TEAM = [
     { name: 'Santiago Cordone', role: 'CEO', photo: '../assets/santiago-cordone.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Joaquín De La Vega', role: 'Gerente de Produto', photo: '../assets/equipo/joaquin-de-la-vega.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Joaquín De La Vega', role: 'Gerente de Produto', photo: '../assets/equipo/joaquin-de-la-vega.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Clara Barthe', role: 'Data Manager', photo: '../assets/clara-barthe.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Milena Fuchs', role: 'Desenvolvedora Júnior', photo: '../assets/milena-fuchs.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Rodrigo Arce', role: 'Líder de Tecnologia', photo: '../assets/rodrigo-arce.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Javier Urtubey', role: 'COO', photo: '../assets/javier-urtubey.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Sofía Ferrari', role: 'Desenvolvedora Júnior', photo: '../assets/sofia-ferrari.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Federico Acevedo', role: 'CFO', photo: '../assets/federico-acevedo.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Santiago Baya Casal', role: 'Desenvolvedor Júnior', photo: '../assets/equipo/santiago-baya-casal.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Miguel Reynal', role: 'Facilitador Pausa', photo: '../assets/equipo/miguel-reynal.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Santiago Baya Casal', role: 'Desenvolvedor Júnior', photo: '../assets/equipo/santiago-baya-casal.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Miguel Reynal', role: 'Facilitador Pausa', photo: '../assets/equipo/miguel-reynal.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Ariela Schulman', role: 'Facilitadora Pausa', photo: '../assets/ariela-schulman.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
     { name: 'Paz Porres', role: 'Facilitadora Pausa', photo: '../assets/paz-porres.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Felipe Caracoix', role: 'Desenvolvedor', photo: '../assets/equipo/felipe-caracoix.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Juan Guyot', role: 'Facilitador Pausa', photo: '../assets/equipo/juan-guyot.png', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Juan Pedro Arocena', role: 'Líder de Consultoria', photo: '../assets/equipo/juan-pedro-arocena.png', linkedin: 'https://www.linkedin.com/company/pausaco' }
+    { name: 'Felipe Caracoix', role: 'Desenvolvedor', photo: '../assets/equipo/felipe-caracoix.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Juan Guyot', role: 'Facilitador Pausa', photo: '../assets/equipo/juan-guyot.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
+    { name: 'Juan Pedro Arocena', role: 'Líder de Consultoria', photo: '../assets/equipo/juan-pedro-arocena.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' }
   ];
 
   var AVATAR_SVG = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" fill="#BFC5FF"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#BFC5FF"/></svg>';
@@ -248,7 +248,6 @@
         '<div class="team-card-photo">' + photoInner + '</div>' +
         '<p class="team-card-name">' + person.name + '</p>' +
         '<p class="team-card-role">' + person.role + '</p>' +
-        '<a class="team-card-li" href="' + person.linkedin + '" target="_blank" rel="noopener" aria-label="LinkedIn de ' + person.name + '">' + LI_SVG + '</a>' +
       '</div>';
   }).join('');
   grid.innerHTML = html;
