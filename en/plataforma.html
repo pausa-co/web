@@ -106,6 +106,7 @@
   @media (max-width: 860px) {
     header nav.desktop-nav { display: none !important; }
     .mobile-nav-toggle { display: flex; }
+    #hero-wrap { flex-basis: 100% !important; max-width: 420px !important; }
   }
 </style>
 <script>
@@ -189,14 +190,14 @@
 <main style="display:block">
 
   <!-- Block 1 — Hero -->
-  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:72px 24px 0">
-    <div style="max-width:1160px;margin:0 auto">
-      <div style="max-width:700px">
+  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:96px 24px 64px">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+      <div style="flex:1 1 420px;min-width:0">
         <p style="margin:0;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,0.14);font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#DDE0FF">The platform</p>
         <h1 style="margin:24px 0 0;font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.08;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Role, time, and deviations, all in one place</h1>
         <p style="margin:20px 0 0;font-size:1.125rem;line-height:1.6;color:#DDE0FF">Pausa digitizes each leader's role, compares it against what actually happened during their week, and turns the gap into decisions. With an AI agent that analyzes and suggests — without asking anyone to fill out a spreadsheet.</p>
       </div>
-      <div id="hero-wrap" style="margin-top:40px;position:relative;max-width:420px;cursor:pointer">
+      <div id="hero-wrap" style="flex:1 1 380px;min-width:0;max-width:440px;position:relative;cursor:pointer">
         <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(6,6,30,0.55);background:#F4F5FF">
           <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
             <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
@@ -372,10 +373,10 @@
       <h2 style="margin:16px 0 0;max-width:26ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.15;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Three screens, three steps</h2>
 
       <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
-        <img src="../assets/uploads/hero-poster-1.png" alt="Rol Vivo, loaded" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
+        <img src="../assets/uploads/hero-poster-1.png" alt="Digitized role" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
         <div>
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums">01</span>
-          <h3 style="margin:12px 0 0;font-size:1.375rem;font-weight:700;color:#1A1A3E">Rol Vivo, loaded</h3>
+          <h3 style="margin:12px 0 0;font-size:1.375rem;font-weight:700;color:#1A1A3E">Digitized role</h3>
           <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">The macro-tasks grouped together, with their dedication targets.</p>
         </div>
       </div>

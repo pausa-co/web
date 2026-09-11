@@ -62,7 +62,12 @@
 
   .btn-cta-primary:hover { background: #2D2D99; }
   .btn-cta-light:hover { background: #DDE0FF; }
+  .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
   .social-icon:hover { background: rgba(255,255,255,0.22); }
+  .premio-stat-link { display: block; text-decoration: none; color: inherit; }
+  .premio-stat-link:hover .premio-stat-title { text-decoration: underline; }
+  .premio-stat-arrow { display: inline-block; transition: transform .15s ease; }
+  .premio-stat-link:hover .premio-stat-arrow { transform: translateX(4px); }
 
   .hero-media-wrap { position: relative; }
   .hero-media { position: relative; width: 100%; aspect-ratio: 16/9; background: #FFFFFF; overflow: hidden; }
@@ -167,6 +172,7 @@
     .grid-logos-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; }
     .grid-stats-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     #hero-wrap { flex-basis: 100% !important; }
+    #top > section:first-child { min-height: auto !important; padding-top: 128px !important; padding-bottom: 56px !important; }
   }
   @media (max-width: 480px) {
     .grid-logos-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -253,13 +259,20 @@
 
 <main id="top" style="display:block">
 
-  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:152px 24px 88px">
-    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
-      <div style="flex:1 1 380px;min-width:0">
-        <h1 class="hero-title" style="margin:0;max-width:21ch;font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.12;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Diseñamos experiencias laborales que potencian el crecimiento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">tu equipo</span><span class="hero-title__word">tu persona</span><span class="hero-title__word">la organización</span></span><span class="sr-only">Diseñamos experiencias laborales que potencian el crecimiento de tu equipo.</span></h1>
-        <p style="margin:32px 0 0;max-width:54ch;font-size:1.1875rem;line-height:1.6;color:#DDE0FF">Una plataforma de gestión creada para ayudar a las organizaciones a trabajar de forma más eficiente y sostenible.</p>
+  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;min-height:82vh;min-height:82svh;display:flex;align-items:center;padding:140px 24px 60px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:72px;align-items:center;width:100%">
+      <div style="flex:1 1 420px;min-width:0">
+        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Diseñamos experiencias laborales que potencian el crecimiento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">tu equipo</span><span class="hero-title__word">tu persona</span><span class="hero-title__word">la organización</span></span><span class="sr-only">Diseñamos experiencias laborales que potencian el crecimiento de tu equipo.</span></h1>
+        <p style="margin:24px 0 0;max-width:50ch;font-size:1.1875rem;line-height:1.55;color:#DDE0FF">Una plataforma de gestión creada para ayudar a las organizaciones a trabajar de forma más eficiente y sostenible.</p>
+        <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:16px">
+          <a href="#cierre" class="btn-cta-primary" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease">Agendá una demo</a>
+          <a href="#como-funciona" class="btn-cta-outline" style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease, border-color .15s ease">
+            Ver cómo funciona
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
+          </a>
+        </div>
       </div>
-      <div id="hero-wrap" style="flex:1 1 340px;min-width:0;max-width:380px;position:relative;cursor:pointer">
+      <div id="hero-wrap" style="flex:1 1 420px;min-width:0;max-width:480px;position:relative;cursor:pointer">
         <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.55);background:#F4F5FF">
           <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
             <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
@@ -473,16 +486,18 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:48px;background:#EAECFF;border-radius:20px;padding:32px 8px">
         <div style="padding:0 32px">
-          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">+1.000.000</p>
-          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">de datos procesados</p>
+          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8;font-variant-numeric:tabular-nums">+<span id="stat-datos-count" data-count-target="1000000">0</span></p>
+          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Datos de gestión procesados</p>
         </div>
         <div style="padding:0 32px;border-left:1px solid #C3C7F5">
           <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">6 países</p>
           <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A;text-wrap:pretty">Argentina, Paraguay, Chile, Brasil, España y Estados Unidos</p>
         </div>
         <div style="padding:0 32px;border-left:1px solid #C3C7F5">
-          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8"><a href="prensa.html" style="color:inherit">Premio VISA · La Nación</a></p>
-          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Innovación 2025 — Startup Innovadora</p>
+          <a href="reconocimiento.html" class="premio-stat-link">
+            <p class="premio-stat-title" style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">Premio VISA · La Nación</p>
+            <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Innovación 2025 — Startup Innovadora <span class="premio-stat-arrow" aria-hidden="true">→</span></p>
+          </a>
         </div>
       </div>
     </div>
@@ -843,6 +858,47 @@
       observer.observe(comoSection);
     }
   }
+
+  // Datos procesados: incremental count-up on scroll into view
+  (function () {
+    var countEl = document.getElementById('stat-datos-count');
+    if (!countEl) return;
+    var target = parseInt(countEl.dataset.countTarget, 10) || 0;
+    var formatter = (window.Intl && Intl.NumberFormat) ? new Intl.NumberFormat('es-AR') : null;
+    function formatNumber(n) {
+      return formatter ? formatter.format(n) : String(n);
+    }
+    if (REDUCED) {
+      countEl.textContent = formatNumber(target);
+      return;
+    }
+    function runCount() {
+      var duration = 1400;
+      var start = null;
+      function easeOutExpo(t) { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var value = Math.round(easeOutExpo(progress) * target);
+        countEl.textContent = formatNumber(value);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if ('IntersectionObserver' in window) {
+      var countObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCount();
+            countObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      countObserver.observe(countEl);
+    } else {
+      countEl.textContent = formatNumber(target);
+    }
+  })();
 
   // Contact form: mailto + thank-you swap
   var form = document.getElementById('cierre-form');
