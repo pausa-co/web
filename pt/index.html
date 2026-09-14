@@ -27,16 +27,6 @@
   input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.3em; min-width: 14ch; color: #BFC5FF; }
-  .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
-  .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
-  .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-title__word { transition: none; }
-    .hero-title__word:not(.is-active) { display: none; }
-  }
-
   #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background-color .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; background: transparent; }
   #site-header.scrolled { background: #FFFFFF; border-bottom-color: #CCCCEE; }
   #site-header .nav-link { color: rgba(255,255,255,0.85); }
@@ -78,76 +68,9 @@
   .step-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.3); border: none; padding: 0; cursor: pointer; }
   .step-dot.active { background: #FFFFFF; }
 
-  #hero-screens { position: absolute; inset: 0; }
-  .mock-screen { position: absolute; inset: 0; display: flex; background: #FFFFFF; opacity: 0; pointer-events: none; transition: opacity .6s ease; z-index: 0; }
-  .mock-screen.active { opacity: 1; pointer-events: auto; z-index: 1; }
-  .mock-dash-sidebar { width: 44px; flex: none; background: #F8F8FF; border-right: 1px solid #EAECFF; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0; }
-  .mock-dash-icon { width: 18px; height: 18px; border-radius: 6px; background: #DADCF5; }
-  .mock-dash-icon.active { background: #3D3DC8; }
-  .mock-dash-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 18px 22px; gap: 16px; }
-  .mock-dash-topbar { display: flex; gap: 8px; }
-  .mock-dash-pill { height: 10px; border-radius: 999px; background: #EAECFF; width: 46px; }
-  .mock-dash-pill.wide { width: 92px; }
-  .mock-dash-content { flex: 1; display: flex; gap: 22px; min-height: 0; }
-  .mock-dash-chart { flex: 1; display: flex; align-items: flex-end; gap: 10px; border-bottom: 1px solid #F0F1FC; padding-bottom: 2px; }
-  .mock-bar { flex: 1; border-radius: 5px 5px 0 0; height: var(--h, 0%); transition: height 1.1s cubic-bezier(.22,1,.36,1); }
-  .mock-dash-legend { flex: none; width: 122px; display: flex; flex-direction: column; gap: 9px; justify-content: center; }
-  .mock-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.5625rem; font-weight: 600; color: #5C5C8A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .mock-legend-item .dot { width: 7px; height: 7px; border-radius: 999px; flex: none; }
-  .mock-dash-kpi { display: flex; align-items: center; gap: 8px; padding-bottom: 9px; margin-bottom: 4px; border-bottom: 1px solid #F0F1FC; }
-  .mock-donut { width: 32px; height: 32px; flex: none; transform: rotate(-90deg); }
-  .mock-donut-bg { fill: none; stroke: #EAECFF; stroke-width: 3; }
-  .mock-donut-fg { fill: none; stroke: #3D3DC8; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 97.4; transition: stroke-dashoffset 1.3s cubic-bezier(.22,1,.36,1); }
-  .mock-kpi-value { display: block; font-size: 0.9375rem; font-weight: 800; color: #1A1A3E; letter-spacing: -0.01em; }
-  .mock-kpi-label { display: block; font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9A9AC0; }
-
-  .mock-cal-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 16px 20px; gap: 10px; }
-  .mock-cal-header { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9A9AC0; }
-  .mock-cal-grid { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-  .mock-cal-day { display: flex; flex-direction: column; gap: 5px; }
-  .mock-cal-day-label { font-size: 0.5rem; font-weight: 700; color: #9A9AC0; text-align: center; }
-  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; }
-  .mock-cal-event.shown { opacity: 1; transform: translateY(0) scale(1); }
-
-  .mock-chat-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 16px; gap: 8px; }
-  .mock-chat-header { display: flex; align-items: center; gap: 6px; padding-bottom: 8px; border-bottom: 1px solid #F0F1FC; }
-  .mock-chat-avatar { width: 18px; height: 18px; border-radius: 999px; background: #3D3DC8; flex: none; }
-  .mock-chat-title { font-size: 0.5625rem; font-weight: 700; color: #1A1A3E; }
-  .mock-chat-body { flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
-  .mock-bubble { max-width: 82%; padding: 7px 10px; border-radius: 12px; font-size: 0.5625rem; line-height: 1.4; opacity: 0; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease; }
-  .mock-bubble.agent { align-self: flex-start; background: #F4F5FF; color: #1A1A3E; border-bottom-left-radius: 4px; }
+  .mock-bubble { max-width: 82%; padding: 10px 14px; border-radius: 14px; font-size: 0.875rem; line-height: 1.5; }
+  .mock-bubble.agent { align-self: flex-start; background: #FFFFFF; color: #1A1A3E; border-bottom-left-radius: 4px; }
   .mock-bubble.user { align-self: flex-end; background: #3D3DC8; color: #FFFFFF; border-bottom-right-radius: 4px; }
-  .mock-bubble.shown { opacity: 1; transform: translateY(0); }
-  .mock-chat-inputbar { margin-top: 8px; height: 22px; border-radius: 999px; background: #F4F5FF; border: 1px solid #E4E6FA; display: flex; align-items: center; padding: 0 8px; gap: 6px; flex: none; }
-  .mock-chat-inputbar span { font-size: 0.5rem; color: #9A9AC0; flex: 1; }
-  .mock-chat-send { width: 14px; height: 14px; border-radius: 999px; background: #3D3DC8; flex: none; }
-
-  .mock-role-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 18px 22px; gap: 12px; }
-  .mock-role-header { display: flex; align-items: center; justify-content: space-between; }
-  .mock-role-title { font-size: 0.6875rem; font-weight: 700; color: #1A1A3E; }
-  .mock-role-badge { font-size: 0.4375rem; font-weight: 700; color: #3D3DC8; background: #EAECFF; border-radius: 999px; padding: 3px 8px; }
-  .mock-role-list { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 6px; gap: 16px; }
-  .mock-role-item { display: flex; flex-direction: column; gap: 4px; }
-  .mock-role-item-top { display: flex; justify-content: space-between; font-size: 0.5625rem; font-weight: 600; color: #1A1A3E; }
-  .mock-role-bar { height: 5px; border-radius: 999px; background: #E4E6FA; overflow: hidden; }
-  .mock-role-bar-fill { height: 100%; width: var(--w, 0%); transition: width 1s cubic-bezier(.22,1,.36,1); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .mock-screen { transition: none; }
-    .mock-bar, .mock-donut-fg, .mock-role-bar-fill { transition: none; }
-    .mock-cal-event, .mock-bubble { transition: none; }
-  }
-
-  .stat-card { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
-  .stat-card.visible { opacity: 1; transform: translateY(0); }
-  .stat-card.screen-hide { opacity: 0 !important; transform: translateY(6px) !important; }
-  .mini-frame-stack { position: relative; min-height: 64px; }
-  .mini-frame { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
-  .mini-frame.cur { position: relative; opacity: 1; z-index: 1; }
-  .mini-frame.prev { opacity: 1; z-index: 2; }
-  .mini-frame.prev.fading { opacity: 0; }
-
-  @keyframes pausaFrameFade { from { opacity: 0; } to { opacity: 1; } }
 
   #cierre-thanks { display: none; }
   #cierre-form.hidden { display: none; }
@@ -173,8 +96,7 @@
     .mobile-nav-toggle { display: flex; }
     .grid-logos-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; }
     .grid-stats-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    #hero-wrap { flex-basis: 100% !important; }
-    #top > section:first-child { min-height: auto !important; padding-top: 128px !important; padding-bottom: 56px !important; }
+    #top > section:first-child { padding-top: 128px !important; padding-bottom: 56px !important; }
   }
   @media (max-width: 480px) {
     .grid-logos-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -261,210 +183,17 @@
 
 <main id="top" style="display:block">
 
-  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;min-height:82vh;min-height:82svh;display:flex;align-items:center;padding:140px 24px 60px">
-    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:72px;align-items:center;width:100%">
-      <div style="flex:1 1 420px;min-width:0">
-        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Desenhamos uma forma de trabalhar que potencializa o crescimento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">sua equipe</span><span class="hero-title__word">cada pessoa</span><span class="hero-title__word">a organização</span></span><span class="sr-only">Desenhamos uma forma de trabalhar que potencializa o crescimento de sua equipe.</span></h1>
-        <p style="margin:24px 0 0;max-width:50ch;font-size:1.1875rem;line-height:1.55;color:#DDE0FF">Uma plataforma de gestão criada para ajudar as organizações a trabalhar de forma mais eficiente e sustentável.</p>
-        <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:16px">
-          <a href="#cierre" class="btn-cta-primary" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease">Agende uma demo</a>
-          <a href="#como-funciona" class="btn-cta-outline" style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease, border-color .15s ease">
-            Veja como funciona
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
-          </a>
-        </div>
-      </div>
-      <div id="hero-wrap" style="flex:1 1 420px;min-width:0;max-width:480px;position:relative;cursor:pointer">
-        <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.55);background:#F4F5FF">
-          <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
-            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
-            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
-            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
-            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">app.pausaco</div>
-          </div>
-          <div class="hero-media" id="hero-media">
-            <div id="hero-screens">
-
-              <div class="mock-screen" data-screen="agenda">
-                <div class="mock-dash-sidebar">
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon active"></span>
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon"></span>
-                </div>
-                <div class="mock-cal-main">
-                  <p class="mock-cal-header" style="margin:0">Registro semanal — 18 a 22 de agosto</p>
-                  <div class="mock-cal-grid">
-                    <div class="mock-cal-day">
-                      <span class="mock-cal-day-label">S</span>
-                      <div class="mock-cal-event" style="background:#3D3DC8">Reunião 1:1</div>
-                      <div class="mock-cal-event" style="background:#9FA6F0;height:34px">Planejamento</div>
-                    </div>
-                    <div class="mock-cal-day">
-                      <span class="mock-cal-day-label">T</span>
-                      <div class="mock-cal-event" style="background:#6A6AD6;height:22px">Vendas</div>
-                      <div class="mock-cal-event" style="background:#BFC5FF;height:44px;color:#1A1A3E">Administração</div>
-                    </div>
-                    <div class="mock-cal-day">
-                      <span class="mock-cal-day-label">Q</span>
-                      <div class="mock-cal-event" style="background:#3D3DC8;height:50px">Gestão de Equipe</div>
-                    </div>
-                    <div class="mock-cal-day">
-                      <span class="mock-cal-day-label">Q</span>
-                      <div class="mock-cal-event" style="background:#9FA6F0;height:26px">Reuniões</div>
-                      <div class="mock-cal-event" style="background:#6A6AD6;height:30px">Estratégia</div>
-                    </div>
-                    <div class="mock-cal-day">
-                      <span class="mock-cal-day-label">S</span>
-                      <div class="mock-cal-event" style="background:#BFC5FF;height:20px;color:#1A1A3E">Reflexão</div>
-                      <div class="mock-cal-event" style="background:#3D3DC8;height:38px">Fechamento semanal</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mock-screen" data-screen="dashboard" id="hero-dash">
-                <div class="mock-dash-sidebar">
-                  <span class="mock-dash-icon active"></span>
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon"></span>
-                </div>
-                <div class="mock-dash-main">
-                  <div class="mock-dash-topbar">
-                    <span class="mock-dash-pill wide"></span>
-                    <span class="mock-dash-pill"></span>
-                    <span class="mock-dash-pill"></span>
-                  </div>
-                  <div class="mock-dash-content">
-                    <div class="mock-dash-chart">
-                      <div class="mock-bar" data-base="72" style="--h:0%;background:#3D3DC8"></div>
-                      <div class="mock-bar" data-base="48" style="--h:0%;background:#6A6AD6"></div>
-                      <div class="mock-bar" data-base="60" style="--h:0%;background:#9FA6F0"></div>
-                      <div class="mock-bar" data-base="38" style="--h:0%;background:#BFC5FF"></div>
-                    </div>
-                    <div class="mock-dash-legend">
-                      <div class="mock-dash-kpi">
-                        <svg class="mock-donut" viewBox="0 0 36 36" aria-hidden="true">
-                          <circle class="mock-donut-bg" cx="18" cy="18" r="15.5"></circle>
-                          <circle class="mock-donut-fg" id="hero-donut-fg" cx="18" cy="18" r="15.5" style="stroke-dashoffset:97.4"></circle>
-                        </svg>
-                        <div>
-                          <span class="mock-kpi-value" id="hero-kpi-value">0%</span>
-                          <span class="mock-kpi-label">Correspond. ao cargo</span>
-                        </div>
-                      </div>
-                      <div class="mock-legend-item"><span class="dot" style="background:#3D3DC8"></span>Gestão de Equipe</div>
-                      <div class="mock-legend-item"><span class="dot" style="background:#6A6AD6"></span>Planejamento Comercial</div>
-                      <div class="mock-legend-item"><span class="dot" style="background:#9FA6F0"></span>Administração</div>
-                      <div class="mock-legend-item"><span class="dot" style="background:#BFC5FF"></span>Reuniões Internas</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mock-screen" data-screen="chat">
-                <div class="mock-dash-sidebar">
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon active"></span>
-                  <span class="mock-dash-icon"></span>
-                </div>
-                <div class="mock-chat-main">
-                  <div class="mock-chat-header">
-                    <span class="mock-chat-avatar"></span>
-                    <span class="mock-chat-title">Agente Pausa</span>
-                  </div>
-                  <div class="mock-chat-body">
-                    <div class="mock-bubble agent">Esta semana seu Desvío foi de 32% em tarefas administrativas, acima do seu Foco semanal.</div>
-                    <div class="mock-bubble user">O que eu poderia delegar?</div>
-                    <div class="mock-bubble agent">Delegar "Envio de relatórios mensais" ao seu Coordenador de Operações libera ~4h nesta semana.</div>
-                  </div>
-                  <div class="mock-chat-inputbar">
-                    <span>Escreva sua resposta…</span>
-                    <span class="mock-chat-send"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mock-screen" data-screen="rol">
-                <div class="mock-dash-sidebar">
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon"></span>
-                  <span class="mock-dash-icon active"></span>
-                </div>
-                <div class="mock-role-main">
-                  <div class="mock-role-header">
-                    <span class="mock-role-title">Rol Vivo — Product Owner</span>
-                    <span class="mock-role-badge">Atualizado hoje</span>
-                  </div>
-                  <div class="mock-role-list">
-                    <div class="mock-role-item">
-                      <div class="mock-role-item-top"><span>Gestão de Produto</span><span>82%</span></div>
-                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="82" style="--w:0%;background:#3D3DC8"></div></div>
-                    </div>
-                    <div class="mock-role-item">
-                      <div class="mock-role-item-top"><span>Planejamento Estratégico</span><span>64%</span></div>
-                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="64" style="--w:0%;background:#6A6AD6"></div></div>
-                    </div>
-                    <div class="mock-role-item">
-                      <div class="mock-role-item-top"><span>Coordenação de Equipe</span><span>45%</span></div>
-                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="45" style="--w:0%;background:#9FA6F0"></div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="stat-card" id="stat-card" style="position:absolute;left:-18px;bottom:-22px;width:184px;z-index:5;background:#FFFFFF;border-radius:14px;padding:12px;box-shadow:0 18px 40px -14px rgba(10,10,50,0.35)">
-          <div class="mini-frame-stack" id="mini-stack">
-            <div class="mini-frame cur" data-frame="stat">
-              <div style="display:flex;align-items:center;gap:10px;padding:4px 2px">
-                <span style="width:8px;height:8px;border-radius:999px;background:#28C840;display:block;flex:none"></span>
-                <div>
-                  <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#5C5C8A">Correspondência ao cargo</p>
-                  <p style="margin:2px 0 0;font-size:1.25rem;font-weight:800;letter-spacing:-0.02em;color:#1A1A3E">98%</p>
-                </div>
-              </div>
-            </div>
-            <div class="mini-frame" data-frame="rol">
-              <div style="display:flex;flex-direction:column;gap:8px">
-                <div style="display:flex;flex-direction:column;gap:4px">
-                  <div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:999px;background:#3D3DC8;display:block;flex:none"></span><span style="font-size:0.6875rem;font-weight:700;color:#1A1A3E">Product Owner</span></div>
-                  <div style="height:4px;border-radius:999px;background:#E4E6FA;overflow:hidden"><div style="width:70%;height:100%;background:#3D3DC8"></div></div>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:4px">
-                  <div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:999px;background:#FEBC2E;display:block;flex:none"></span><span style="font-size:0.6875rem;font-weight:700;color:#1A1A3E">Gestão da Área</span></div>
-                  <div style="height:4px;border-radius:999px;background:#E4E6FA;overflow:hidden"><div style="width:40%;height:100%;background:#5C5C8A"></div></div>
-                </div>
-                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Rol Vivo</p>
-              </div>
-            </div>
-            <div class="mini-frame" data-frame="foco">
-              <div style="display:flex;flex-direction:column;gap:8px">
-                <div style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:#F4F5FF;border:1px solid #DADCF5">
-                  <span style="font-size:0.625rem;color:#5C5C8A;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">O que eu poderia delegar?</span>
-                  <span style="width:18px;height:18px;border-radius:999px;background:#3D3DC8;display:flex;align-items:center;justify-content:center;flex:none">
-                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
-                  </span>
-                </div>
-                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Foco</p>
-              </div>
-            </div>
-            <div class="mini-frame" data-frame="desvio">
-              <div style="display:flex;flex-direction:column;gap:6px">
-                <div style="display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:8px;background:#F4F5FF">
-                  <span style="font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#3D3DC8">Insight</span>
-                  <p style="margin:0;font-size:0.6875rem;line-height:1.4;color:#5C5C8A">Vale a pena delegar duas tarefas operacionais.</p>
-                </div>
-                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Desvío</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:160px 24px 88px">
+    <div style="max-width:800px;margin:0 auto;text-align:center">
+      <h1 class="hero-title" style="margin:0;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Sua estratégia diz uma coisa. O tempo da sua equipe diz o mesmo?</h1>
+      <p style="margin:24px auto 0;max-width:56ch;font-size:1.1875rem;line-height:1.55;color:#DDE0FF">A Pausa torna visível a lacuna entre o que sua organização deveria estar fazendo e o que realmente acontece a cada semana.</p>
+      <p style="margin:12px auto 0;max-width:52ch;font-size:1.1875rem;line-height:1.55;color:#DDE0FF">Tecnologia, metodologia própria e acompanhamento humano para transformar essa lacuna em decisões.</p>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;justify-content:center;gap:16px">
+        <a href="#cierre" class="btn-cta-primary" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease">Agende uma demo</a>
+        <a href="#como-funciona" class="btn-cta-outline" style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease, border-color .15s ease">
+          Veja como funciona
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -508,22 +237,27 @@
   <section id="como-funciona" style="background:#FFFFFF;padding:40px 24px 56px">
     <div style="max-width:1160px;margin:0 auto">
       <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Como funciona</p>
-      <h2 style="margin:16px 0 0;max-width:34ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Registre, reflita e <span style="color:#3D3DC8">decida com dados.</span></h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px">
+      <h2 style="margin:16px 0 0;max-width:40ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Sem Rol Vivo não há desvío. Sem desvío não há insight. <span style="color:#3D3DC8">Sem insight não há transformação.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:32px">
         <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">01</span>
           <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Rol Vivo</h3>
-          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Não é o cargo perfeito de um organograma, nem uma foto que fica desatualizada. É o que você realmente vive: o que o negócio pede de você hoje, suas responsabilidades atuais e para onde você deveria caminhar, tudo em um só lugar que se atualiza com você.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Não é o cargo perfeito de um organograma. É o que você realmente vive: o que pedem de você, o que você consegue fazer e o que você não consegue fazer, tudo em um só lugar.</p>
         </div>
         <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">02</span>
           <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Foco</h3>
-          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Sua agenda e sua própria reflexão mostram onde ficou sua semana, com o agente te ajudando a registrar isso para que não vire mais uma tarefa. Cruzado com o Rol Vivo, aparece a lacuna real — não a que você supunha, a que realmente aconteceu.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Sua agenda e sua própria reflexão mostram onde ficou sua semana. Cruzado com o Rol Vivo, aparece a lacuna real — não a que você supunha.</p>
         </div>
         <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">03</span>
           <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Desvío</h3>
-          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Essa lacuna se transforma em algo concreto: delegar, reorganizar a agenda, ter a conversa com a equipe que estava faltando, ou até mudar diretamente uma decisão de estrutura. Se o padrão se repete, aí sim aparece uma recomendação pontual de desenvolvimento — não antes.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Essa lacuna fica visível: onde esteve o foco e onde deveria ter estado.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">04</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Ação</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">A lacuna vira algo concreto: delegar, reorganizar a agenda, ou uma conversa com a equipe baseada em dados. Não mais um alerta.</p>
         </div>
       </div>
       <div id="como-wrap" style="margin:32px auto 0;max-width:760px;background:#1E1E6B;border-radius:24px;padding:24px;cursor:pointer">
@@ -549,21 +283,64 @@
     </div>
   </section>
 
+  <section style="background:#EAECFF;padding:56px 24px">
+    <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+      <div style="flex:1 1 380px;min-width:0">
+        <p style="margin:0;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:#FFFFFF;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#3D3DC8">Inteligência artificial com propósito</p>
+        <h2 style="margin:20px 0 0;max-width:24ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Uma IA treinada com nossa metodologia e nossos dados</h2>
+        <p style="margin:16px 0 0;max-width:48ch;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Os agentes da Pausa são treinados com a metodologia e o conhecimento acumulado da plataforma — não com dados genéricos.</p>
+        <ul style="margin:24px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Detecta padrões em como o tempo real é usado em relação ao cargo definido.</span>
+          </li>
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Encontra desvíos antes que alguém precise pedir.</span>
+          </li>
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Gera recomendações concretas: o que reorganizar, qual conversa ter, para quem delegar.</span>
+          </li>
+        </ul>
+        <a href="metodologia.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-weight:700;color:#3D3DC8">Veja como a IA funciona em detalhe <span aria-hidden="true">→</span></a>
+      </div>
+      <div style="flex:1 1 340px;min-width:0;max-width:400px">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.35);background:#FFFFFF">
+          <div style="height:38px;background:#F4F5FF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">Agente Pausa</div>
+          </div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="mock-bubble agent">Esta semana seu Desvío foi de 32% em tarefas administrativas, acima do seu Foco semanal.</div>
+            <div class="mock-bubble user">O que eu poderia delegar?</div>
+            <div class="mock-bubble agent">Delegar "Envio de relatórios mensais" ao seu Coordenador de Operações libera ~4h nesta semana.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="para-quien" style="background:#F4F5FF;padding:56px 24px">
     <div style="max-width:1160px;margin:0 auto">
       <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Para quem</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px">
         <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
           <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Donos e diretores</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">O crescimento da organização.</p>
           <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Crescimento sustentável, com retorno. Você define o rumo. Nós tornamos visível se o trabalho da sua equipe está indo para lá.</p>
           <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Quando é preciso ir mais fundo, um consultor sênior se senta com a sua diretoria.</p>
         </div>
         <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
           <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Líderes</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">O crescimento da sua equipe.</p>
           <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">É você quem sustenta a equipe todos os dias. Com mais presença e mais clareza sobre para onde vai o seu tempo, você lidera diferente: com propósito, não só com a agenda cheia.</p>
         </div>
         <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
           <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Colaboradores</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">O crescimento de cada pessoa.</p>
           <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Você vive o resultado de como sua equipe trabalha, mesmo que não seja você quem decide isso. A Pausa devolve o espaço para você voltar para si mesmo: menos ruído, mais sentido no que você faz todos os dias.</p>
         </div>
       </div>
@@ -611,9 +388,6 @@
           </label>
           <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Email
             <input type="email" name="Email" required placeholder="nome@empresa.com" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
-          </label>
-          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Telefone
-            <input type="tel" name="Telefone" required placeholder="+54 9 11 0000 0000" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
           </label>
           <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Empresa
             <input type="text" name="Empresa" required placeholder="Onde você trabalha" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
@@ -707,130 +481,6 @@
         mobileNavToggle.setAttribute('aria-expanded', 'false');
       });
     });
-  }
-
-  // Floating stat card fade-in
-  setTimeout(function () {
-    var card = document.getElementById('stat-card');
-    if (card) card.classList.add('visible');
-  }, 900);
-
-  // Mini frame cycling inside the floating stat card
-  var MINI_FRAMES = ['stat', 'rol', 'foco', 'desvio'];
-  var miniIndex = 0;
-  var miniTimer = null;
-  function advanceMini() {
-    var stack = document.getElementById('mini-stack');
-    if (!stack) return;
-    var frames = stack.querySelectorAll('.mini-frame');
-    var prevFrame = stack.querySelector('.mini-frame.cur');
-    miniIndex = (miniIndex + 1) % MINI_FRAMES.length;
-    var nextFrame = stack.querySelector('.mini-frame[data-frame="' + MINI_FRAMES[miniIndex] + '"]');
-    frames.forEach(function (f) { f.classList.remove('cur', 'prev', 'fading'); });
-    if (prevFrame) prevFrame.classList.add('prev');
-    if (nextFrame) nextFrame.classList.add('cur');
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        if (prevFrame) prevFrame.classList.add('fading');
-      });
-    });
-    setTimeout(function () {
-      if (prevFrame) prevFrame.classList.remove('prev', 'fading');
-    }, 700);
-  }
-
-  // Hero mock screens — synthetic, always-smooth stand-ins for real screen recordings.
-  // Cycles through 4 fake product moments: agenda (registro), dashboard, AI agent chat, rol digital.
-  var heroPaused = false;
-  var heroScreensEl = document.getElementById('hero-screens');
-  var heroDash = document.getElementById('hero-dash');
-  var heroBars = heroDash ? heroDash.querySelectorAll('.mock-bar') : [];
-  var heroDonut = document.getElementById('hero-donut-fg');
-  var heroKpiValue = document.getElementById('hero-kpi-value');
-  var HERO_DONUT_CIRC = 97.4;
-  var heroIdleTimer = null;
-  var heroScreenTimer = null;
-  var HERO_SCREEN_ORDER = ['agenda', 'dashboard', 'chat', 'rol'];
-  var heroScreenIndex = 0;
-
-  function setHeroDonut(pct) {
-    if (heroDonut) heroDonut.style.strokeDashoffset = (HERO_DONUT_CIRC * (1 - pct / 100)).toFixed(2);
-    if (heroKpiValue) heroKpiValue.textContent = pct + '%';
-  }
-  function shuffleHeroBars() {
-    heroBars.forEach(function (bar) {
-      var base = parseFloat(bar.dataset.base);
-      var delta = (Math.random() * 20) - 10;
-      var h = Math.max(18, Math.min(92, base + delta));
-      bar.style.setProperty('--h', h + '%');
-    });
-    setHeroDonut(94 + Math.round(Math.random() * 5));
-  }
-  function growHeroBars() {
-    heroBars.forEach(function (bar) { bar.style.setProperty('--h', '0%'); });
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        heroBars.forEach(function (bar) { bar.style.setProperty('--h', bar.dataset.base + '%'); });
-        setHeroDonut(98);
-      });
-    });
-  }
-  function growRoleBars(root) {
-    var fills = root.querySelectorAll('.mock-role-bar-fill');
-    fills.forEach(function (f) { f.style.setProperty('--w', '0%'); });
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        fills.forEach(function (f) { f.style.setProperty('--w', f.dataset.base + '%'); });
-      });
-    });
-  }
-  function revealStagger(root, selector, gap, startDelay) {
-    var els = root.querySelectorAll(selector);
-    els.forEach(function (el) { el.classList.remove('shown'); });
-    els.forEach(function (el, i) {
-      setTimeout(function () { el.classList.add('shown'); }, (startDelay || 0) + i * gap);
-    });
-  }
-
-  function activateHeroScreen(name) {
-    if (!heroScreensEl) return;
-    clearInterval(heroIdleTimer);
-    heroScreensEl.querySelectorAll('.mock-screen').forEach(function (s) {
-      s.classList.toggle('active', s.dataset.screen === name);
-    });
-    var statCard = document.getElementById('stat-card');
-    if (statCard) statCard.classList.toggle('screen-hide', name === 'chat');
-    var activeEl = heroScreensEl.querySelector('.mock-screen[data-screen="' + name + '"]');
-    if (name === 'dashboard') {
-      growHeroBars();
-      heroIdleTimer = setInterval(function () { if (!heroPaused) shuffleHeroBars(); }, 2000);
-    } else if (name === 'rol') {
-      growRoleBars(activeEl);
-    } else if (name === 'agenda') {
-      revealStagger(activeEl, '.mock-cal-event', 60, 100);
-    } else if (name === 'chat') {
-      revealStagger(activeEl, '.mock-bubble', 550, 250);
-    }
-  }
-  function advanceHeroScreen() {
-    heroScreenIndex = (heroScreenIndex + 1) % HERO_SCREEN_ORDER.length;
-    activateHeroScreen(HERO_SCREEN_ORDER[heroScreenIndex]);
-  }
-
-  if (heroScreensEl) {
-    if (REDUCED) {
-      heroBars.forEach(function (bar) { bar.style.setProperty('--h', bar.dataset.base + '%'); });
-      setHeroDonut(98);
-      heroScreensEl.querySelector('.mock-screen[data-screen="dashboard"]').classList.add('active');
-    } else {
-      activateHeroScreen(HERO_SCREEN_ORDER[0]);
-      heroScreenTimer = setInterval(function () { if (!heroPaused) advanceHeroScreen(); }, 2200);
-      miniTimer = setInterval(function () { if (!heroPaused) advanceMini(); }, 2200);
-      var heroWrap = document.getElementById('hero-wrap');
-      heroWrap.addEventListener('mouseenter', function () { heroPaused = true; });
-      heroWrap.addEventListener('mouseleave', function () { heroPaused = false; });
-      heroWrap.addEventListener('click', function () { advanceHeroScreen(); });
-    }
   }
 
   // "Cómo funciona": real static screenshots of the platform, crossfading — no video, no jank.
@@ -953,49 +603,6 @@
     thanks.style.display = 'flex';
   });
 
-  // Hero title rotator
-  (function () {
-    var rotator = document.querySelector('.hero-title__rotator');
-    if (!rotator) return;
-
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    var words = Array.from(rotator.querySelectorAll('.hero-title__word'));
-    if (words.length < 2) return;
-
-    var current = 0;
-    var INTERVAL_MS = 2200;
-    var TRANSITION_MS = 350;
-    var timer = null;
-
-    function rotate() {
-      var next = (current + 1) % words.length;
-      words[current].classList.add('is-leaving');
-      words[current].classList.remove('is-active');
-      words[next].classList.add('is-active');
-      setTimeout(function () {
-        words[current].classList.remove('is-leaving');
-      }, TRANSITION_MS);
-      current = next;
-    }
-
-    function start() {
-      if (timer) return;
-      timer = setInterval(rotate, INTERVAL_MS);
-    }
-
-    function stop() {
-      clearInterval(timer);
-      timer = null;
-    }
-
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { stop(); } else { start(); }
-    });
-
-    start();
-  })();
 })();
 </script>
 </body>
