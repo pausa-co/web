@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pausa | Plataforma de gestión de roles y tiempo</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Plataforma de gestión de roles y tiempo con IA y acompañamiento humano. Cruzá el rol real de tu equipo con su tiempo y convertí la brecha en decisiones.">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #3D3DC8; text-decoration: none; }
+  a:hover { color: #2D2D99; }
+  :focus-visible { outline: 2px solid #3D3DC8; outline-offset: 3px; }
+  input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.3em; min-width: 16ch; color: #BFC5FF; }
+  .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
+  .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
+  .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title__word { transition: none; }
+    .hero-title__word:not(.is-active) { display: none; }
+  }
+
+  #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background-color .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; background: transparent; }
+  #site-header.scrolled { background: #FFFFFF; border-bottom-color: #CCCCEE; }
+  #site-header .nav-link { color: rgba(255,255,255,0.85); }
+  #site-header.scrolled .nav-link { color: #1A1A3E; }
+  #site-header .lang-btn { color: rgba(255,255,255,0.55); }
+  #site-header.scrolled .lang-btn { color: #9A9AC0; }
+  #site-header .lang-btn.active { color: #FFFFFF; }
+  #site-header.scrolled .lang-btn.active { color: #3D3DC8; }
+  #site-header .cta-pill { background: #FFFFFF; color: #1E1E6B; }
+  #site-header.scrolled .cta-pill { background: #3D3DC8; color: #FFFFFF; }
+  #word-logo-white { display: block; }
+  #word-logo-indigo { display: none; }
+  #site-header.scrolled #word-logo-white { display: none; }
+  #site-header.scrolled #word-logo-indigo { display: block; }
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle { background: none; border: none; cursor: pointer; font: inherit; color: inherit; display: inline-flex; align-items: center; gap: 4px; padding: 0; }
+  .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 16px; z-index: 60; }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-panel { background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 45px -12px rgba(10,10,50,0.25); padding: 8px; min-width: 200px; text-align: left; }
+  .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 0.9375rem; font-weight: 500; color: #1A1A3E; white-space: nowrap; }
+  .nav-dropdown-menu a:hover { background: #F4F5FF; color: #3D3DC8; }
+
+  .btn-cta-primary:hover { background: #2D2D99; }
+  .btn-cta-light:hover { background: #DDE0FF; }
+  .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+  .social-icon:hover { background: rgba(255,255,255,0.22); }
+  .premio-stat-link { display: block; text-decoration: none; color: inherit; }
+  .premio-stat-link:hover .premio-stat-title { text-decoration: underline; }
+  .premio-stat-arrow { display: inline-block; transition: transform .15s ease; }
+  .premio-stat-link:hover .premio-stat-arrow { transform: translateX(4px); }
+
+  .hero-media-wrap { position: relative; }
+  .hero-media { position: relative; width: 100%; aspect-ratio: 16/9; background: #FFFFFF; overflow: hidden; }
+  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #FFFFFF; }
+  .hero-media .layer-cur { z-index: 1; }
+  .hero-media .layer-prev { z-index: 2; opacity: 0; transition: opacity .6s ease; }
+  .hero-media .layer-prev.visible { opacity: 1; }
+  .step-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.3); border: none; padding: 0; cursor: pointer; }
+  .step-dot.active { background: #FFFFFF; }
+
+  #hero-screens { position: absolute; inset: 0; }
+  .mock-screen { position: absolute; inset: 0; display: flex; background: #FFFFFF; opacity: 0; pointer-events: none; transition: opacity .6s ease; z-index: 0; }
+  .mock-screen.active { opacity: 1; pointer-events: auto; z-index: 1; }
+  .mock-dash-sidebar { width: 44px; flex: none; background: #F8F8FF; border-right: 1px solid #EAECFF; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0; }
+  .mock-dash-icon { width: 18px; height: 18px; border-radius: 6px; background: #DADCF5; }
+  .mock-dash-icon.active { background: #3D3DC8; }
+  .mock-dash-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 18px 22px; gap: 16px; }
+  .mock-dash-topbar { display: flex; gap: 8px; }
+  .mock-dash-pill { height: 10px; border-radius: 999px; background: #EAECFF; width: 46px; }
+  .mock-dash-pill.wide { width: 92px; }
+  .mock-dash-content { flex: 1; display: flex; gap: 22px; min-height: 0; }
+  .mock-dash-chart { flex: 1; display: flex; align-items: flex-end; gap: 10px; border-bottom: 1px solid #F0F1FC; padding-bottom: 2px; }
+  .mock-bar { flex: 1; border-radius: 5px 5px 0 0; height: var(--h, 0%); transition: height 1.1s cubic-bezier(.22,1,.36,1); }
+  .mock-dash-legend { flex: none; width: 122px; display: flex; flex-direction: column; gap: 9px; justify-content: center; }
+  .mock-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.5625rem; font-weight: 600; color: #5C5C8A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mock-legend-item .dot { width: 7px; height: 7px; border-radius: 999px; flex: none; }
+  .mock-dash-kpi { display: flex; align-items: center; gap: 8px; padding-bottom: 9px; margin-bottom: 4px; border-bottom: 1px solid #F0F1FC; }
+  .mock-donut { width: 32px; height: 32px; flex: none; transform: rotate(-90deg); }
+  .mock-donut-bg { fill: none; stroke: #EAECFF; stroke-width: 3; }
+  .mock-donut-fg { fill: none; stroke: #3D3DC8; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 97.4; transition: stroke-dashoffset 1.3s cubic-bezier(.22,1,.36,1); }
+  .mock-kpi-value { display: block; font-size: 0.9375rem; font-weight: 800; color: #1A1A3E; letter-spacing: -0.01em; }
+  .mock-kpi-label { display: block; font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9A9AC0; }
+
+  .mock-cal-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 16px 20px; gap: 10px; }
+  .mock-cal-header { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9A9AC0; }
+  .mock-cal-grid { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .mock-cal-day { display: flex; flex-direction: column; gap: 5px; }
+  .mock-cal-day-label { font-size: 0.5rem; font-weight: 700; color: #9A9AC0; text-align: center; }
+  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; }
+  .mock-cal-event.shown { opacity: 1; transform: translateY(0) scale(1); }
+
+  .mock-chat-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 16px; gap: 8px; }
+  .mock-chat-header { display: flex; align-items: center; gap: 6px; padding-bottom: 8px; border-bottom: 1px solid #F0F1FC; }
+  .mock-chat-avatar { width: 18px; height: 18px; border-radius: 999px; background: #3D3DC8; flex: none; }
+  .mock-chat-title { font-size: 0.5625rem; font-weight: 700; color: #1A1A3E; }
+  .mock-chat-body { flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
+  .mock-bubble { max-width: 82%; padding: 7px 10px; border-radius: 12px; font-size: 0.5625rem; line-height: 1.4; opacity: 0; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease; }
+  .mock-bubble.agent { align-self: flex-start; background: #F4F5FF; color: #1A1A3E; border-bottom-left-radius: 4px; }
+  .mock-bubble.user { align-self: flex-end; background: #3D3DC8; color: #FFFFFF; border-bottom-right-radius: 4px; }
+  .mock-bubble.shown { opacity: 1; transform: translateY(0); }
+  .mock-chat-inputbar { margin-top: 8px; height: 22px; border-radius: 999px; background: #F4F5FF; border: 1px solid #E4E6FA; display: flex; align-items: center; padding: 0 8px; gap: 6px; flex: none; }
+  .mock-chat-inputbar span { font-size: 0.5rem; color: #9A9AC0; flex: 1; }
+  .mock-chat-send { width: 14px; height: 14px; border-radius: 999px; background: #3D3DC8; flex: none; }
+
+  .mock-role-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 18px 22px; gap: 12px; }
+  .mock-role-header { display: flex; align-items: center; justify-content: space-between; }
+  .mock-role-title { font-size: 0.6875rem; font-weight: 700; color: #1A1A3E; }
+  .mock-role-badge { font-size: 0.4375rem; font-weight: 700; color: #3D3DC8; background: #EAECFF; border-radius: 999px; padding: 3px 8px; }
+  .mock-role-list { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 6px; gap: 16px; }
+  .mock-role-item { display: flex; flex-direction: column; gap: 4px; }
+  .mock-role-item-top { display: flex; justify-content: space-between; font-size: 0.5625rem; font-weight: 600; color: #1A1A3E; }
+  .mock-role-bar { height: 5px; border-radius: 999px; background: #E4E6FA; overflow: hidden; }
+  .mock-role-bar-fill { height: 100%; width: var(--w, 0%); transition: width 1s cubic-bezier(.22,1,.36,1); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mock-screen { transition: none; }
+    .mock-bar, .mock-donut-fg, .mock-role-bar-fill { transition: none; }
+    .mock-cal-event, .mock-bubble { transition: none; }
+  }
+
+  .stat-card { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+  .stat-card.visible { opacity: 1; transform: translateY(0); }
+  .stat-card.screen-hide { opacity: 0 !important; transform: translateY(6px) !important; }
+  .mini-frame-stack { position: relative; min-height: 64px; }
+  .mini-frame { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
+  .mini-frame.cur { position: relative; opacity: 1; z-index: 1; }
+  .mini-frame.prev { opacity: 1; z-index: 2; }
+  .mini-frame.prev.fading { opacity: 0; }
+
+  #cierre-thanks { display: none; }
+  #cierre-form.hidden { display: none; }
+
+  .grid-logos-6 { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 28px; align-items: center; margin-top: 32px; }
+  .grid-stats-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+
+  .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; padding: 0; margin-left: auto; }
+  .mobile-nav-toggle span { width: 22px; height: 2px; border-radius: 2px; background: currentColor; display: block; }
+  #site-header .mobile-nav-toggle { color: #FFFFFF; }
+  #site-header.scrolled .mobile-nav-toggle { color: #1A1A3E; }
+  .mobile-nav-panel { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: #1E1E6B; padding: 8px 24px 24px; flex-direction: column; overflow-y: auto; z-index: 99; }
+  .mobile-nav-panel.open { display: flex; }
+  .mobile-nav-panel a, .mobile-nav-panel .mobile-nav-section-label { padding: 14px 4px; font-size: 1.0625rem; font-weight: 500; color: rgba(255,255,255,0.92); border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9FA6F0; border-bottom: none; padding-bottom: 4px; }
+  .mobile-nav-panel .mobile-nav-lang { display: flex; gap: 16px; padding: 14px 4px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .mobile-nav-panel .mobile-nav-lang a { background: none; border: none; padding: 0; font-weight: 700; color: rgba(255,255,255,0.6); border-bottom: none; }
+  .mobile-nav-panel .mobile-nav-lang a.active { color: #FFFFFF; }
+  .mobile-nav-panel .mobile-nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 48px; margin-top: 16px; border-radius: 999px; font-weight: 700; background: #3D3DC8; color: #FFFFFF !important; border-bottom: none !important; }
+
+  @media (max-width: 860px) {
+    #site-header nav.desktop-nav { display: none !important; }
+    .mobile-nav-toggle { display: flex; }
+    .grid-logos-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; }
+    .grid-stats-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #hero-wrap { flex-basis: 100% !important; }
+    #top > section:first-child { min-height: auto !important; padding-top: 128px !important; padding-bottom: 56px !important; }
+  }
+  @media (max-width: 480px) {
+    .grid-logos-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+
+<header id="site-header">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="#top" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img id="word-logo-white" src="assets/pausa-word-white.png" alt="Pausa" style="height:16px;width:auto">
+      <img id="word-logo-indigo" src="assets/pausa-word-indigo.png" alt="Pausa" style="height:16px;width:auto">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle nav-link">Nuestra solución</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="plataforma.html">Plataforma</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle nav-link">Compañía</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="equipo.html">Equipo</a>
+            <a href="prensa.html">Prensa</a>
+            <a href="reconocimiento.html">Reconocimientos</a>
+            <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="sumate-al-equipo.html">Sumate al equipo</a>
+          </div>
+        </div>
+      </div>
+      <a href="#cierre" class="cta-pill" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;font-size:0.9375rem">Agendá una demo</a>
+    </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Nuestra solución</span>
+    <a href="plataforma.html">Plataforma</a>
+    <a href="metodologia.html">Metodología</a>
+    <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+    <span class="mobile-nav-section-label">Compañía</span>
+    <a href="equipo.html">Equipo</a>
+    <a href="prensa.html">Prensa</a>
+    <a href="reconocimiento.html">Reconocimientos</a>
+    <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="sumate-al-equipo.html">Sumate al equipo</a>
+    <a href="#cierre" class="mobile-nav-cta">Agendá una demo</a>
+  </div>
+</header>
+
+<main id="top" style="display:block">
+
+  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;min-height:82vh;min-height:82svh;display:flex;align-items:center;padding:140px 24px 60px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:72px;align-items:center;width:100%">
+      <div style="flex:1 1 420px;min-width:0">
+        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Diseñamos una forma de trabajar que potencia el crecimiento de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">tu equipo</span><span class="hero-title__word">cada persona</span><span class="hero-title__word">la organización</span></span><span class="sr-only">Diseñamos una forma de trabajar que potencia el crecimiento de tu equipo.</span></h1>
+        <p style="margin:24px 0 0;max-width:50ch;font-size:1.1875rem;line-height:1.55;color:#DDE0FF">Una plataforma de gestión creada para ayudar a las organizaciones a trabajar de forma más eficiente y sostenible.</p>
+        <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:16px">
+          <a href="#cierre" class="btn-cta-primary" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease">Agendá una demo</a>
+          <a href="#como-funciona" class="btn-cta-outline" style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;font-weight:700;font-size:1.0625rem;transition:background-color .15s ease, border-color .15s ease">
+            Ver cómo funciona
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div id="hero-wrap" style="flex:1 1 420px;min-width:0;max-width:480px;position:relative;cursor:pointer">
+        <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.55);background:#F4F5FF">
+          <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">app.pausaco</div>
+          </div>
+          <div class="hero-media" id="hero-media">
+            <div id="hero-screens">
+
+              <div class="mock-screen" data-screen="agenda">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon active"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                </div>
+                <div class="mock-cal-main">
+                  <p class="mock-cal-header" style="margin:0">Registro semanal — 18 al 22 de agosto</p>
+                  <div class="mock-cal-grid">
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">L</span>
+                      <div class="mock-cal-event" style="background:#3D3DC8">Reunión 1:1</div>
+                      <div class="mock-cal-event" style="background:#9FA6F0;height:34px">Planificación</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">M</span>
+                      <div class="mock-cal-event" style="background:#6A6AD6;height:22px">Ventas</div>
+                      <div class="mock-cal-event" style="background:#BFC5FF;height:44px;color:#1A1A3E">Administración</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">X</span>
+                      <div class="mock-cal-event" style="background:#3D3DC8;height:50px">Gestión de Equipo</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">J</span>
+                      <div class="mock-cal-event" style="background:#9FA6F0;height:26px">Reuniones</div>
+                      <div class="mock-cal-event" style="background:#6A6AD6;height:30px">Estrategia</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">V</span>
+                      <div class="mock-cal-event" style="background:#BFC5FF;height:20px;color:#1A1A3E">Reflexión</div>
+                      <div class="mock-cal-event" style="background:#3D3DC8;height:38px">Cierre semanal</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-screen" data-screen="dashboard" id="hero-dash">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon active"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                </div>
+                <div class="mock-dash-main">
+                  <div class="mock-dash-topbar">
+                    <span class="mock-dash-pill wide"></span>
+                    <span class="mock-dash-pill"></span>
+                    <span class="mock-dash-pill"></span>
+                  </div>
+                  <div class="mock-dash-content">
+                    <div class="mock-dash-chart">
+                      <div class="mock-bar" data-base="72" style="--h:0%;background:#3D3DC8"></div>
+                      <div class="mock-bar" data-base="48" style="--h:0%;background:#6A6AD6"></div>
+                      <div class="mock-bar" data-base="60" style="--h:0%;background:#9FA6F0"></div>
+                      <div class="mock-bar" data-base="38" style="--h:0%;background:#BFC5FF"></div>
+                    </div>
+                    <div class="mock-dash-legend">
+                      <div class="mock-dash-kpi">
+                        <svg class="mock-donut" viewBox="0 0 36 36" aria-hidden="true">
+                          <circle class="mock-donut-bg" cx="18" cy="18" r="15.5"></circle>
+                          <circle class="mock-donut-fg" id="hero-donut-fg" cx="18" cy="18" r="15.5" style="stroke-dashoffset:97.4"></circle>
+                        </svg>
+                        <div>
+                          <span class="mock-kpi-value" id="hero-kpi-value">0%</span>
+                          <span class="mock-kpi-label">Corresp. al rol</span>
+                        </div>
+                      </div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#3D3DC8"></span>Gestión de Equipo</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#6A6AD6"></span>Planificación Comercial</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#9FA6F0"></span>Administración</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#BFC5FF"></span>Reuniones Internas</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-screen" data-screen="chat">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon active"></span>
+                  <span class="mock-dash-icon"></span>
+                </div>
+                <div class="mock-chat-main">
+                  <div class="mock-chat-header">
+                    <span class="mock-chat-avatar"></span>
+                    <span class="mock-chat-title">Agente Pausa</span>
+                  </div>
+                  <div class="mock-chat-body">
+                    <div class="mock-bubble agent">Esta semana tu Desvío fue del 32% hacia tareas administrativas, por encima de tu Foco semanal.</div>
+                    <div class="mock-bubble user">¿Qué podría delegar?</div>
+                    <div class="mock-bubble agent">Delegar "Carga de reportes mensuales" a tu Coordinador de Operaciones libera ~4hs esta semana.</div>
+                  </div>
+                  <div class="mock-chat-inputbar">
+                    <span>Escribí tu respuesta…</span>
+                    <span class="mock-chat-send"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-screen" data-screen="rol">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon active"></span>
+                </div>
+                <div class="mock-role-main">
+                  <div class="mock-role-header">
+                    <span class="mock-role-title">Rol Vivo — Product Owner</span>
+                    <span class="mock-role-badge">Actualizado hoy</span>
+                  </div>
+                  <div class="mock-role-list">
+                    <div class="mock-role-item">
+                      <div class="mock-role-item-top"><span>Gestión de Producto</span><span>82%</span></div>
+                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="82" style="--w:0%;background:#3D3DC8"></div></div>
+                    </div>
+                    <div class="mock-role-item">
+                      <div class="mock-role-item-top"><span>Planificación Estratégica</span><span>64%</span></div>
+                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="64" style="--w:0%;background:#6A6AD6"></div></div>
+                    </div>
+                    <div class="mock-role-item">
+                      <div class="mock-role-item-top"><span>Coordinación de Equipo</span><span>45%</span></div>
+                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="45" style="--w:0%;background:#9FA6F0"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="stat-card" id="stat-card" style="position:absolute;left:-18px;bottom:-22px;width:184px;z-index:5;background:#FFFFFF;border-radius:14px;padding:12px;box-shadow:0 18px 40px -14px rgba(10,10,50,0.35)">
+          <div class="mini-frame-stack" id="mini-stack">
+            <div class="mini-frame cur" data-frame="stat">
+              <div style="display:flex;align-items:center;gap:10px;padding:4px 2px">
+                <span style="width:8px;height:8px;border-radius:999px;background:#28C840;display:block;flex:none"></span>
+                <div>
+                  <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#5C5C8A">Correspondencia al rol</p>
+                  <p style="margin:2px 0 0;font-size:1.25rem;font-weight:800;letter-spacing:-0.02em;color:#1A1A3E">98%</p>
+                </div>
+              </div>
+            </div>
+            <div class="mini-frame" data-frame="rol">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:999px;background:#3D3DC8;display:block;flex:none"></span><span style="font-size:0.6875rem;font-weight:700;color:#1A1A3E">Product Owner</span></div>
+                  <div style="height:4px;border-radius:999px;background:#E4E6FA;overflow:hidden"><div style="width:70%;height:100%;background:#3D3DC8"></div></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:999px;background:#FEBC2E;display:block;flex:none"></span><span style="font-size:0.6875rem;font-weight:700;color:#1A1A3E">Gestión del Área</span></div>
+                  <div style="height:4px;border-radius:999px;background:#E4E6FA;overflow:hidden"><div style="width:40%;height:100%;background:#5C5C8A"></div></div>
+                </div>
+                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Rol Vivo</p>
+              </div>
+            </div>
+            <div class="mini-frame" data-frame="foco">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:#F4F5FF;border:1px solid #DADCF5">
+                  <span style="font-size:0.625rem;color:#5C5C8A;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">¿Qué podría delegar?</span>
+                  <span style="width:18px;height:18px;border-radius:999px;background:#3D3DC8;display:flex;align-items:center;justify-content:center;flex:none">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
+                  </span>
+                </div>
+                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Foco</p>
+              </div>
+            </div>
+            <div class="mini-frame" data-frame="desvio">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:8px;background:#F4F5FF">
+                  <span style="font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#3D3DC8">Insight</span>
+                  <p style="margin:0;font-size:0.6875rem;line-height:1.4;color:#5C5C8A">Conviene delegar dos tareas operativas.</p>
+                </div>
+                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Desvío</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos" style="background:#FFFFFF;padding:56px 24px 40px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Ya confían en Pausa</p>
+      <div class="grid-logos-6">
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/adecoagro.png" alt="Adecoagro" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/abinbev.png" alt="AB InBev" style="max-width:100%;max-height:29px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/inauco.png" alt="Inauco" style="max-width:100%;max-height:36px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/bioeutectics.png" alt="Bioeutectics" style="max-width:100%;max-height:42px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/lanegra.png" alt="Establecimientos La Negra" style="max-width:100%;max-height:34px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/trf.png" alt="TRF" style="max-width:100%;max-height:46px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/modo.png" alt="Modo" style="max-width:100%;max-height:27px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/aller-intl.png" alt="Aller &amp; Co." style="max-width:100%;max-height:32px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/mercovan.png" alt="Mercovan" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/atria.png" alt="Atria Soluciones Logísticas" style="max-width:100%;max-height:38px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/martinez.png" alt="Martinez Sinisgalli &amp; Abogados" style="max-width:100%;max-height:68px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="assets/ink/takenos-word.png" alt="Takenos" style="max-width:100%;max-height:26px;width:auto;object-fit:contain;display:block"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:48px;background:#EAECFF;border-radius:20px;padding:32px 8px">
+        <div style="padding:0 32px">
+          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8;font-variant-numeric:tabular-nums">+<span id="stat-datos-count" data-count-target="1000000">0</span></p>
+          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Datos de gestión procesados</p>
+        </div>
+        <div style="padding:0 32px;border-left:1px solid #C3C7F5">
+          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">6 países</p>
+          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A;text-wrap:pretty">Argentina, Paraguay, Chile, Brasil, España y Estados Unidos</p>
+        </div>
+        <div style="padding:0 32px;border-left:1px solid #C3C7F5">
+          <a href="reconocimiento.html" class="premio-stat-link">
+            <p class="premio-stat-title" style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">Premio VISA · La Nación</p>
+            <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Innovación 2025 — Startup Innovadora <span class="premio-stat-arrow" aria-hidden="true">→</span></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" style="background:#FFFFFF;padding:40px 24px 56px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Cómo funciona</p>
+      <h2 style="margin:16px 0 0;max-width:40ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Sin Rol Vivo no hay desvío. Sin desvío no hay insight. <span style="color:#3D3DC8">Sin insight no hay transformación.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:32px">
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">01</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Rol Vivo</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">No es el rol perfecto de un organigrama. Es el que vivís de verdad: lo que te piden, lo que podés hacer y lo que no llegás a hacer, en un solo lugar.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">02</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Foco</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Tu calendario y tu propia reflexión muestran dónde estuvo tu semana. Cruzado con el Rol Vivo, aparece la brecha real — no la que suponías.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">03</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Desvío</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Esa brecha queda visible: dónde estuvo el foco y dónde debería haber estado.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">04</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Acción</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">La brecha se convierte en algo concreto: delegar, reorganizar la agenda, o una conversación con el equipo basada en datos. No una alarma más.</p>
+        </div>
+      </div>
+      <div id="como-wrap" style="margin:32px auto 0;max-width:760px;background:#1E1E6B;border-radius:24px;padding:24px;cursor:pointer">
+        <div style="border-radius:12px;overflow:hidden;background:#F4F5FF">
+          <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">app.pausaco</div>
+          </div>
+          <div class="hero-media" id="step-media">
+            <img class="layer-cur" id="step-img-cur" src="assets/uploads/hero-poster-1.png" alt="Vista real de la plataforma Pausa">
+            <img class="layer-prev" id="step-img-prev" alt="">
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:8px;margin-top:16px">
+          <button type="button" class="step-dot active" data-step="0" aria-label="Paso 1"></button>
+          <button type="button" class="step-dot" data-step="1" aria-label="Paso 2"></button>
+          <button type="button" class="step-dot" data-step="2" aria-label="Paso 3"></button>
+        </div>
+      </div>
+      <p style="margin:32px 0 0;font-size:clamp(1rem,1.55vw,1.1875rem);line-height:1.4;font-weight:700;color:#1A1A3E">Metodología propia. Tecnología con IA. Acompañamiento humano.</p>
+    </div>
+  </section>
+
+  <section style="background:#EAECFF;padding:56px 24px">
+    <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+      <div style="flex:1 1 380px;min-width:0">
+        <p style="margin:0;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:#FFFFFF;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#3D3DC8">Inteligencia artificial con propósito</p>
+        <h2 style="margin:20px 0 0;max-width:22ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Una IA entrenada con nuestra metodología y nuestros datos</h2>
+        <p style="margin:16px 0 0;max-width:48ch;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Los agentes de Pausa están entrenados con la metodología y el conocimiento acumulado de la plataforma — no con datos genéricos.</p>
+        <ul style="margin:24px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Detecta patrones en cómo se usa el tiempo real frente al rol definido.</span>
+          </li>
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Encuentra desvíos antes de que alguien tenga que pedirlo.</span>
+          </li>
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Genera recomendaciones concretas: qué reorganizar, qué conversación tener, a quién delegar.</span>
+          </li>
+        </ul>
+        <a href="metodologia.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-weight:700;color:#3D3DC8">Ver cómo funciona la IA en detalle <span aria-hidden="true">→</span></a>
+      </div>
+      <div style="flex:1 1 340px;min-width:0;max-width:400px">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.35);background:#FFFFFF">
+          <div style="height:38px;background:#F4F5FF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">Agente Pausa</div>
+          </div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="mock-bubble agent" style="opacity:1;transform:none">Esta semana tu Desvío fue del 32% hacia tareas administrativas, por encima de tu Foco semanal.</div>
+            <div class="mock-bubble user" style="opacity:1;transform:none">¿Qué podría delegar?</div>
+            <div class="mock-bubble agent" style="opacity:1;transform:none">Delegar "Carga de reportes mensuales" a tu Coordinador de Operaciones libera ~4hs esta semana.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="para-quien" style="background:#F4F5FF;padding:56px 24px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Para quién</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px">
+        <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Dueños y directores</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">El crecimiento de la organización.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Crecimiento sostenible, con retorno. Vos ponés el rumbo. Nosotros hacemos visible si el trabajo de tu equipo va para ahí.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Cuando hace falta ir más profundo, un consultor senior se sienta con tu dirección.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Líderes</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">El crecimiento de tu equipo.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Sos vos quien sostiene al equipo todos los días. Con más presencia y más claridad sobre dónde va tu tiempo, lideras distinto: con propósito, no solo con la agenda llena.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Colaboradores</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">El crecimiento de cada persona.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Vivís el resultado de cómo trabaja tu equipo, aunque no lo decidas vos. Pausa te devuelve el lugar para volver a vos: menos ruido, más sentido en lo que hacés cada día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#FFFFFF;padding:16px 24px 56px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">La prueba</p>
+      <div class="grid-stats-4">
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+40%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">del tiempo ganado en tareas que no son relevantes.</p>
+        </div>
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+38%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">más control del tiempo dentro de la organización.</p>
+        </div>
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+19%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">más claridad de metas y objetivos.</p>
+        </div>
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+17%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">más claridad de prioridades por área.</p>
+        </div>
+      </div>
+      <p style="margin:24px 0 0;font-size:0.875rem;line-height:1.6;color:#5C5C8A;max-width:60ch">Medido durante seis meses por un Research Fellow del People's Lab de Harvard.</p>
+    </div>
+  </section>
+
+  <section id="cierre" style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:72px 24px">
+    <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center">
+      <div>
+        <h2 style="margin:0;max-width:16ch;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Más claridad. <span style="color:#BFC5FF">Empecemos por ahí.</span></h2>
+      </div>
+      <div style="background:#FFFFFF;border-radius:24px;padding:32px">
+        <div id="cierre-thanks" style="min-height:280px;flex-direction:column;justify-content:center;gap:12px">
+          <p style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Gracias. Te escribimos en breve.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Un miembro del equipo se pone en contacto para coordinar una primera conversación.</p>
+        </div>
+        <form id="cierre-form" style="display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Nombre
+            <input type="text" name="Nombre" required placeholder="Cómo te llamás" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Email
+            <input type="email" name="Email" required placeholder="nombre@empresa.com" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Empresa
+            <input type="text" name="Empresa" required placeholder="Dónde trabajás" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
+          </label>
+          <button type="submit" class="btn-cta-primary" style="margin-top:8px;height:52px;border:none;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:background-color .15s ease">Agendá una demo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#1E1E6B;padding:56px 24px 32px">
+    <div style="max-width:1160px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+          <img src="assets/pausa-word-white.png" alt="Pausa" style="height:20px;width:auto;display:block">
+          <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
+          <div style="display:flex;gap:12px">
+            <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.19-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.22-8.24Zm-3.1 4.05c-.23 0-.6.09-.91.43-.31.34-.99.97-.99 2.36 0 1.39 1.01 2.73 1.15 2.92.14.19 1.95 3.1 4.81 4.22 2.38.94 2.86.75 3.38.7.52-.05 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.67-.82-1.93-.92-.26-.09-.45-.14-.64.14-.19.28-.73.94-.9 1.13-.16.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.61-1.52-.85-2.08-.19-.44-.38-.45-.55-.46h-.36Z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/pausaco" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.75 21.5h4.46V9.75H2.75V21.5Zm7.04 0h4.46v-6.4c0-1.69.32-3.33 2.42-3.33 2.07 0 2.1 1.94 2.1 3.44v6.29h4.46v-7.2c0-3.87-.84-6.85-5.36-6.85-2.17 0-3.63 1.19-4.23 2.32h-.06V9.75H9.79V21.5Z"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Nuestra solución</p>
+            <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
+            <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Metodología</a>
+            <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Desarrollo de habilidades</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Compañía</p>
+            <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Equipo</a>
+            <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Prensa</a>
+            <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Reconocimientos</a>
+            <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contacto</a>
+            <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Sumate al equipo</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Confianza</p>
+            <a href="politicas-de-privacidad.html#seguridad" style="color:#DDE0FF;font-size:0.9375rem">Seguridad y privacidad</a>
+            <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">Preguntas frecuentes</a>
+          </nav>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+        <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. Todos los derechos reservados.</p>
+        <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+          <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Términos y Condiciones</a>
+          <span style="color:rgba(255,255,255,0.35)">·</span>
+          <a href="politicas-de-privacidad.html" style="color:#9FA6F0">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var STEP_SHOTS = [
+    'assets/uploads/hero-poster-1.png',
+    'assets/uploads/hero-poster-2.png',
+    'assets/uploads/hero-poster-3.png'
+  ];
+
+  // Header scroll state
+  var header = document.getElementById('site-header');
+  function onScroll() {
+    var scrolled = window.scrollY > 60;
+    header.classList.toggle('scrolled', scrolled);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+
+  // Mobile nav toggle
+  var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+  var mobileNavPanel = document.getElementById('mobile-nav-panel');
+  if (mobileNavToggle && mobileNavPanel) {
+    mobileNavToggle.addEventListener('click', function () {
+      var open = mobileNavPanel.classList.toggle('open');
+      mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileNavPanel.classList.remove('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Floating stat card fade-in
+  setTimeout(function () {
+    var card = document.getElementById('stat-card');
+    if (card) card.classList.add('visible');
+  }, 900);
+
+  // Mini frame cycling inside the floating stat card
+  var MINI_FRAMES = ['stat', 'rol', 'foco', 'desvio'];
+  var miniIndex = 0;
+  var miniTimer = null;
+  function advanceMini() {
+    var stack = document.getElementById('mini-stack');
+    if (!stack) return;
+    var frames = stack.querySelectorAll('.mini-frame');
+    var prevFrame = stack.querySelector('.mini-frame.cur');
+    miniIndex = (miniIndex + 1) % MINI_FRAMES.length;
+    var nextFrame = stack.querySelector('.mini-frame[data-frame="' + MINI_FRAMES[miniIndex] + '"]');
+    frames.forEach(function (f) { f.classList.remove('cur', 'prev', 'fading'); });
+    if (prevFrame) prevFrame.classList.add('prev');
+    if (nextFrame) nextFrame.classList.add('cur');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (prevFrame) prevFrame.classList.add('fading');
+      });
+    });
+    setTimeout(function () {
+      if (prevFrame) prevFrame.classList.remove('prev', 'fading');
+    }, 700);
+  }
+
+  // Hero mock screens — synthetic, always-smooth stand-ins for real screen recordings.
+  // Cycles through 4 fake product moments: agenda (registro), dashboard, AI agent chat, rol digital.
+  var heroPaused = false;
+  var heroScreensEl = document.getElementById('hero-screens');
+  var heroDash = document.getElementById('hero-dash');
+  var heroBars = heroDash ? heroDash.querySelectorAll('.mock-bar') : [];
+  var heroDonut = document.getElementById('hero-donut-fg');
+  var heroKpiValue = document.getElementById('hero-kpi-value');
+  var HERO_DONUT_CIRC = 97.4;
+  var heroIdleTimer = null;
+  var heroScreenTimer = null;
+  var HERO_SCREEN_ORDER = ['agenda', 'dashboard', 'chat', 'rol'];
+  var heroScreenIndex = 0;
+
+  function setHeroDonut(pct) {
+    if (heroDonut) heroDonut.style.strokeDashoffset = (HERO_DONUT_CIRC * (1 - pct / 100)).toFixed(2);
+    if (heroKpiValue) heroKpiValue.textContent = pct + '%';
+  }
+  function shuffleHeroBars() {
+    heroBars.forEach(function (bar) {
+      var base = parseFloat(bar.dataset.base);
+      var delta = (Math.random() * 20) - 10;
+      var h = Math.max(18, Math.min(92, base + delta));
+      bar.style.setProperty('--h', h + '%');
+    });
+    setHeroDonut(94 + Math.round(Math.random() * 5));
+  }
+  function growHeroBars() {
+    heroBars.forEach(function (bar) { bar.style.setProperty('--h', '0%'); });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        heroBars.forEach(function (bar) { bar.style.setProperty('--h', bar.dataset.base + '%'); });
+        setHeroDonut(98);
+      });
+    });
+  }
+  function growRoleBars(root) {
+    var fills = root.querySelectorAll('.mock-role-bar-fill');
+    fills.forEach(function (f) { f.style.setProperty('--w', '0%'); });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fills.forEach(function (f) { f.style.setProperty('--w', f.dataset.base + '%'); });
+      });
+    });
+  }
+  function revealStagger(root, selector, gap, startDelay) {
+    var els = root.querySelectorAll(selector);
+    els.forEach(function (el) { el.classList.remove('shown'); });
+    els.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('shown'); }, (startDelay || 0) + i * gap);
+    });
+  }
+
+  function activateHeroScreen(name) {
+    if (!heroScreensEl) return;
+    clearInterval(heroIdleTimer);
+    heroScreensEl.querySelectorAll('.mock-screen').forEach(function (s) {
+      s.classList.toggle('active', s.dataset.screen === name);
+    });
+    var statCard = document.getElementById('stat-card');
+    if (statCard) statCard.classList.toggle('screen-hide', name === 'chat');
+    var activeEl = heroScreensEl.querySelector('.mock-screen[data-screen="' + name + '"]');
+    if (name === 'dashboard') {
+      growHeroBars();
+      heroIdleTimer = setInterval(function () { if (!heroPaused) shuffleHeroBars(); }, 2000);
+    } else if (name === 'rol') {
+      growRoleBars(activeEl);
+    } else if (name === 'agenda') {
+      revealStagger(activeEl, '.mock-cal-event', 60, 100);
+    } else if (name === 'chat') {
+      revealStagger(activeEl, '.mock-bubble', 550, 250);
+    }
+  }
+  function advanceHeroScreen() {
+    heroScreenIndex = (heroScreenIndex + 1) % HERO_SCREEN_ORDER.length;
+    activateHeroScreen(HERO_SCREEN_ORDER[heroScreenIndex]);
+  }
+
+  if (heroScreensEl) {
+    if (REDUCED) {
+      heroBars.forEach(function (bar) { bar.style.setProperty('--h', bar.dataset.base + '%'); });
+      setHeroDonut(98);
+      heroScreensEl.querySelector('.mock-screen[data-screen="dashboard"]').classList.add('active');
+    } else {
+      activateHeroScreen(HERO_SCREEN_ORDER[0]);
+      heroScreenTimer = setInterval(function () { if (!heroPaused) advanceHeroScreen(); }, 2200);
+      miniTimer = setInterval(function () { if (!heroPaused) advanceMini(); }, 2200);
+      var heroWrap = document.getElementById('hero-wrap');
+      heroWrap.addEventListener('mouseenter', function () { heroPaused = true; });
+      heroWrap.addEventListener('mouseleave', function () { heroPaused = false; });
+      heroWrap.addEventListener('click', function () { advanceHeroScreen(); });
+    }
+  }
+
+  // "Cómo funciona": real static screenshots of the platform, crossfading — no video, no jank.
+  var stepIndex = 0;
+  var stepTimer = null;
+  var stepCur = document.getElementById('step-img-cur');
+  var stepPrev = document.getElementById('step-img-prev');
+
+  function updateStepDots() {
+    document.querySelectorAll('.step-dot').forEach(function (dot, i) {
+      dot.classList.toggle('active', i === stepIndex);
+    });
+  }
+  function renderStep(newIndex) {
+    stepPrev.src = STEP_SHOTS[stepIndex];
+    stepPrev.classList.add('visible');
+    stepIndex = newIndex;
+    stepCur.src = STEP_SHOTS[stepIndex];
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        stepPrev.classList.remove('visible');
+      });
+    });
+    updateStepDots();
+  }
+  function advanceStep() {
+    renderStep((stepIndex + 1) % STEP_SHOTS.length);
+  }
+
+  var stepPaused = false;
+  var comoWrap = document.getElementById('como-wrap');
+  if (comoWrap) {
+    comoWrap.addEventListener('mouseenter', function () { stepPaused = true; });
+    comoWrap.addEventListener('mouseleave', function () { stepPaused = false; });
+    comoWrap.addEventListener('click', function (e) {
+      if (e.target.closest('.step-dot')) return;
+      advanceStep();
+    });
+    comoWrap.querySelectorAll('.step-dot').forEach(function (dot) {
+      dot.addEventListener('click', function (e) {
+        e.stopPropagation();
+        renderStep(parseInt(dot.dataset.step, 10));
+      });
+    });
+  }
+
+  if (!REDUCED) {
+    var comoSection = document.getElementById('como-funciona');
+    if (comoSection && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            stepTimer = setInterval(function () { if (!stepPaused) advanceStep(); }, 2600);
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(comoSection);
+    }
+  }
+
+  // Datos procesados: incremental count-up on scroll into view
+  (function () {
+    var countEl = document.getElementById('stat-datos-count');
+    if (!countEl) return;
+    var target = parseInt(countEl.dataset.countTarget, 10) || 0;
+    var formatter = (window.Intl && Intl.NumberFormat) ? new Intl.NumberFormat('es-AR') : null;
+    function formatNumber(n) {
+      return formatter ? formatter.format(n) : String(n);
+    }
+    if (REDUCED) {
+      countEl.textContent = formatNumber(target);
+      return;
+    }
+    function runCount() {
+      var duration = 1400;
+      var start = null;
+      function easeOutExpo(t) { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var value = Math.round(easeOutExpo(progress) * target);
+        countEl.textContent = formatNumber(value);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if ('IntersectionObserver' in window) {
+      var countObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCount();
+            countObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      countObserver.observe(countEl);
+    } else {
+      countEl.textContent = formatNumber(target);
+    }
+  })();
+
+  // Contact form: mailto + thank-you swap
+  var form = document.getElementById('cierre-form');
+  var thanks = document.getElementById('cierre-thanks');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    var lines = [];
+    data.forEach(function (value, key) {
+      if (value) lines.push(key + ': ' + value);
+    });
+    if (window.posthog) {
+      posthog.capture('contact_form_submit', { subject: 'Nueva conversación con Pausa' });
+    }
+    var subject = encodeURIComponent('Nueva conversación con Pausa');
+    var body = encodeURIComponent(lines.join('\n'));
+    window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
+    form.style.display = 'none';
+    thanks.style.display = 'flex';
+  });
+
+  // Hero title rotator
+  (function () {
+    var rotator = document.querySelector('.hero-title__rotator');
+    if (!rotator) return;
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    var words = Array.from(rotator.querySelectorAll('.hero-title__word'));
+    if (words.length < 2) return;
+
+    var current = 0;
+    var INTERVAL_MS = 2200;
+    var TRANSITION_MS = 350;
+    var timer = null;
+
+    function rotate() {
+      var next = (current + 1) % words.length;
+      words[current].classList.add('is-leaving');
+      words[current].classList.remove('is-active');
+      words[next].classList.add('is-active');
+      setTimeout(function () {
+        words[current].classList.remove('is-leaving');
+      }, TRANSITION_MS);
+      current = next;
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(rotate, INTERVAL_MS);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  })();
+})();
+</script>
+</body>
+</html>
