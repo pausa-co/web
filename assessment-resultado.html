@@ -292,6 +292,12 @@
 
   var form = document.getElementById('contact-form');
   var thanks = document.getElementById('thanks');
+  var LEAD_WEBHOOK_URL = 'https://pausa.app.n8n.cloud/webhook/pausa-contacto-lead';
+
+  function getUtmParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = new FormData(form);
@@ -303,11 +309,44 @@
     if (window.posthog) {
       posthog.capture('contact_form_submit', { subject: 'Nueva conversación con Pausa', location: 'assessment-resultado' });
     }
-    var subject = encodeURIComponent('Nueva conversación con Pausa – Assessment (' + band + ')');
-    var body = encodeURIComponent(lines.join('\n'));
-    window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
-    form.style.display = 'none';
-    thanks.style.display = 'flex';
+
+    var payload = {
+      Nombre: data.get('Nombre') || '',
+      Email: data.get('Email') || '',
+      Teléfono: data.get('Teléfono') || '',
+      Empresa: data.get('Empresa') || '',
+      idioma: 'ES',
+      paginaOrigen: window.location.href,
+      referrer: document.referrer || '',
+      utmSource: getUtmParam('utm_source'),
+      utmMedium: getUtmParam('utm_medium'),
+      utmCampaign: getUtmParam('utm_campaign'),
+      posthogDistinctId: (window.posthog && posthog.get_distinct_id()) || '',
+      notasComerciales: 'Resultado assessment: ' + total + '/50 (nivel ' + band + ')'
+    };
+
+    function showThanks() {
+      form.style.display = 'none';
+      thanks.style.display = 'flex';
+    }
+
+    function fallbackMailto() {
+      var subject = encodeURIComponent('Nueva conversación con Pausa – Assessment (' + band + ')');
+      var body = encodeURIComponent(lines.join('\n'));
+      window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
+    }
+
+    fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook error');
+      showThanks();
+    }).catch(function () {
+      fallbackMailto();
+      showThanks();
+    });
   });
 })();
 </script>

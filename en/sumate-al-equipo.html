@@ -258,6 +258,12 @@ if (mobileNavToggle && mobileNavPanel) {
 
 var postulateForm = document.getElementById('postulate-form');
 var postulateThanks = document.getElementById('postulate-thanks');
+var POSTULATE_WEBHOOK_URL = 'https://pausa.app.n8n.cloud/webhook/pausa-postulacion';
+
+function getUtmParam(name) {
+  return new URLSearchParams(window.location.search).get(name) || '';
+}
+
 postulateForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var data = new FormData(postulateForm);
@@ -268,11 +274,44 @@ postulateForm.addEventListener('submit', function (e) {
   if (window.posthog) {
     posthog.capture('contact_form_submit', { subject: 'Job application - Join the team', location: 'sumate-al-equipo' });
   }
-  var subject = encodeURIComponent('Job application - Join the team');
-  var body = encodeURIComponent(lines.join('\n'));
-  window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
-  postulateForm.style.display = 'none';
-  postulateThanks.style.display = 'flex';
+
+  var payload = {
+    Nombre: data.get('Name') || '',
+    Email: data.get('Email') || '',
+    Teléfono: data.get('Phone') || '',
+    LinkedIn: data.get('LinkedIn') || '',
+    Mensaje: data.get('Message') || '',
+    idioma: 'EN',
+    paginaOrigen: window.location.href,
+    referrer: document.referrer || '',
+    utmSource: getUtmParam('utm_source'),
+    utmMedium: getUtmParam('utm_medium'),
+    utmCampaign: getUtmParam('utm_campaign'),
+    posthogDistinctId: (window.posthog && posthog.get_distinct_id()) || ''
+  };
+
+  function showThanks() {
+    postulateForm.style.display = 'none';
+    postulateThanks.style.display = 'flex';
+  }
+
+  function fallbackMailto() {
+    var subject = encodeURIComponent('Job application - Join the team');
+    var body = encodeURIComponent(lines.join('\n'));
+    window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
+  }
+
+  fetch(POSTULATE_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function (res) {
+    if (!res.ok) throw new Error('Webhook error');
+    showThanks();
+  }).catch(function () {
+    fallbackMailto();
+    showThanks();
+  });
 });
 </script>
 </body>

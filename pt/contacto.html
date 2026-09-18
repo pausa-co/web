@@ -236,6 +236,12 @@
 
   var form = document.getElementById('cierre-form');
   var thanks = document.getElementById('cierre-thanks');
+  var LEAD_WEBHOOK_URL = 'https://pausa.app.n8n.cloud/webhook/pausa-contacto-lead';
+
+  function getUtmParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = new FormData(form);
@@ -246,11 +252,43 @@
     if (window.posthog) {
       posthog.capture('contact_form_submit', { subject: 'Nova conversa com a Pausa', location: 'contacto' });
     }
-    var subject = encodeURIComponent('Nova conversa com a Pausa');
-    var body = encodeURIComponent(lines.join('\n'));
-    window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
-    form.style.display = 'none';
-    thanks.style.display = 'flex';
+
+    var payload = {
+      Nombre: data.get('Nome') || '',
+      Email: data.get('Email') || '',
+      Teléfono: data.get('Telefone') || '',
+      Empresa: data.get('Empresa') || '',
+      idioma: 'PT',
+      paginaOrigen: window.location.href,
+      referrer: document.referrer || '',
+      utmSource: getUtmParam('utm_source'),
+      utmMedium: getUtmParam('utm_medium'),
+      utmCampaign: getUtmParam('utm_campaign'),
+      posthogDistinctId: (window.posthog && posthog.get_distinct_id()) || ''
+    };
+
+    function showThanks() {
+      form.style.display = 'none';
+      thanks.style.display = 'flex';
+    }
+
+    function fallbackMailto() {
+      var subject = encodeURIComponent('Nova conversa com a Pausa');
+      var body = encodeURIComponent(lines.join('\n'));
+      window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
+    }
+
+    fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook error');
+      showThanks();
+    }).catch(function () {
+      fallbackMailto();
+      showThanks();
+    });
   });
 })();
 </script>
