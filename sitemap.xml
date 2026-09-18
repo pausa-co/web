@@ -164,6 +164,7 @@
     <loc>https://www.pausaco.com/reconocimiento.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/reconocimiento.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/reconocimiento.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/reconocimiento.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
@@ -172,6 +173,15 @@
     <loc>https://www.pausaco.com/en/reconocimiento.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/reconocimiento.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/reconocimiento.html"/>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/reconocimiento.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/reconocimiento.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/reconocimiento.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/reconocimiento.html"/>
     <priority>0.3</priority>
   </url>
@@ -284,6 +294,7 @@
     <loc>https://www.pausaco.com/terminos-y-condiciones.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/terminos-y-condiciones.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
@@ -292,6 +303,15 @@
     <loc>https://www.pausaco.com/en/terminos-y-condiciones.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
+    <priority>0.1</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/terminos-y-condiciones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/terminos-y-condiciones.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/terminos-y-condiciones.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
     <priority>0.1</priority>
   </url>
