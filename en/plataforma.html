@@ -14,9 +14,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/fonts.css">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
@@ -195,7 +193,7 @@
       <div style="flex:1 1 420px;min-width:0">
         <p style="margin:0;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,0.14);font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#DDE0FF">The platform</p>
         <h1 style="margin:24px 0 0;font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.08;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Role, time, and deviations, all in one place</h1>
-        <p style="margin:20px 0 0;font-size:1.125rem;line-height:1.6;color:#DDE0FF">Pausa digitizes the role of every user — leader, team member, sponsor, or director —, compares it against what actually happened during their week, and turns the gap into decisions. With an AI agent that classifies and suggests — the person corrects with one click, no spreadsheets.</p>
+        <p style="margin:20px 0 0;font-size:1.125rem;line-height:1.6;color:#DDE0FF">Pausa digitizes the role of every user — leader, team member, sponsor, or director — compares it against what actually happened during their week, and turns the gap into decisions. With an AI agent that classifies and suggests — the person corrects with one click, no spreadsheets.</p>
       </div>
       <div id="hero-wrap" style="flex:1 1 380px;min-width:0;max-width:440px;position:relative;cursor:pointer">
         <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(6,6,30,0.55);background:#F4F5FF">
@@ -226,7 +224,7 @@
                     <div class="mock-cal-day">
                       <span class="mock-cal-day-label">T</span>
                       <div class="mock-cal-event" style="background:#6A6AD6;height:22px">Sales</div>
-                      <div class="mock-cal-event" style="background:#BFC5FF;height:44px;color:#1A1A3E">Administration</div>
+                      <div class="mock-cal-event" style="background:#BFC5FF;height:44px;color:#1A1A3E">Admin</div>
                     </div>
                     <div class="mock-cal-day">
                       <span class="mock-cal-day-label">W</span>
@@ -240,7 +238,7 @@
                     <div class="mock-cal-day">
                       <span class="mock-cal-day-label">F</span>
                       <div class="mock-cal-event" style="background:#BFC5FF;height:20px;color:#1A1A3E">Reflection</div>
-                      <div class="mock-cal-event" style="background:#3D3DC8;height:38px">Weekly close</div>
+                      <div class="mock-cal-event" style="background:#3D3DC8;height:38px">Weekly wrap-up</div>
                     </div>
                   </div>
                 </div>
@@ -279,7 +277,7 @@
                       </div>
                       <div class="mock-legend-item"><span class="dot" style="background:#3D3DC8"></span>Team Management</div>
                       <div class="mock-legend-item"><span class="dot" style="background:#6A6AD6"></span>Sales Planning</div>
-                      <div class="mock-legend-item"><span class="dot" style="background:#9FA6F0"></span>Administration</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#9FA6F0"></span>Admin</div>
                       <div class="mock-legend-item"><span class="dot" style="background:#BFC5FF"></span>Internal Meetings</div>
                     </div>
                   </div>
@@ -299,7 +297,7 @@
                     <span class="mock-chat-title">Pausa Agent</span>
                   </div>
                   <div class="mock-chat-body">
-                    <div class="mock-bubble agent">This week your Desvío was 32% toward administrative tasks, above your Foco semanal.</div>
+                    <div class="mock-bubble agent">This week your Desvío was 32% toward administrative tasks, above your weekly Foco.</div>
                     <div class="mock-bubble user">What could I delegate?</div>
                     <div class="mock-bubble agent">Delegating "Monthly report uploads" to your Operations Coordinator frees up ~4 hrs this week.</div>
                   </div>
@@ -373,7 +371,7 @@
       <h2 style="margin:16px 0 0;max-width:26ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.15;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Three screens, three steps</h2>
 
       <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
-        <img src="../assets/uploads/hero-poster-1.png" alt="Digitized role" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
+        <img src="../assets/uploads/hero-poster-1.png" loading="lazy" alt="Digitized role" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
         <div>
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums">01</span>
           <h3 style="margin:12px 0 0;font-size:1.375rem;font-weight:700;color:#1A1A3E">Digitized role</h3>
@@ -387,11 +385,11 @@
           <h3 style="margin:12px 0 0;font-size:1.375rem;font-weight:700;color:#1A1A3E">The week's schedule</h3>
           <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Events imported from the calendar, mapped against your role — with space to reflect on whether they matched.</p>
         </div>
-        <img src="../assets/uploads/hero-poster-2.png" alt="The week's schedule" style="order:1;width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
+        <img src="../assets/uploads/hero-poster-2.png" loading="lazy" alt="The week's schedule" style="order:1;width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
       </div>
 
       <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
-        <img src="../assets/uploads/hero-poster-3.png" alt="The leader's dashboard" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
+        <img src="../assets/uploads/hero-poster-3.png" loading="lazy" alt="The leader's dashboard" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 24px 48px -24px rgba(10,10,50,0.35)">
         <div>
           <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums">03</span>
           <h3 style="margin:12px 0 0;font-size:1.375rem;font-weight:700;color:#1A1A3E">The leader's dashboard</h3>
@@ -513,7 +511,7 @@
     <div style="max-width:1160px;margin:0 auto">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;align-items:start">
         <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
-          <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:20px;width:auto;display:block">
+          <img src="../assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
           <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
           <div style="display:flex;gap:12px">
             <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF">

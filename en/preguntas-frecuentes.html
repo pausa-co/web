@@ -14,9 +14,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/fonts.css">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
@@ -69,6 +67,19 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Pausa","url":"https://www.pausaco.com/en/","inLanguage":"en"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Does Pausa watch my screen or my messages?","acceptedAnswer":{"@type":"Answer","text":"No. Pausa only reads your calendar — nothing else. We don't monitor your screen, keyboard, or mouse, and we never see the content of your emails. Reflecting on how you spend your time is something you do yourself, inside the platform."}},
+{"@type":"Question","name":"Can Pausa modify my calendar?","acceptedAnswer":{"@type":"Answer","text":"No. Access is read-only: we can see your events, but we can't create, edit, or delete any of them."}},
+{"@type":"Question","name":"What if my organization doesn't use Google Calendar?","acceptedAnswer":{"@type":"Answer","text":"Pausa also integrates with Microsoft Outlook / Microsoft 365, under the same read-only access principle."}},
+{"@type":"Question","name":"What does the implementation process look like?","acceptedAnswer":{"@type":"Answer","text":"It has three phases. The first two months are onboarding, with close, hands-on support: the Rol Vivo is built, tracking begins, and the first data-driven conversations start happening. From month 3 to 5, the organization gains independence and the focus shifts to leading with data. From month 6 onward, support is about sustaining the habit and fine-tuning direction — not about being constantly hands-on."}},
+{"@type":"Question","name":"Is human support included, or is it extra?","acceptedAnswer":{"@type":"Answer","text":"The AI-powered platform is the foundation, and it's always there. A specialized human coach for each leader is activated during implementation, and their involvement tapers off as the habit becomes established. If the organization needs to go deeper, additional levels are available — targeted interventions, workshops and programs, and strategic consulting for leadership — discussed based on need."}},
+{"@type":"Question","name":"How much does Pausa cost?","acceptedAnswer":{"@type":"Answer","text":"We don't publish pricing, because each implementation is sized according to the number of leaders and team members involved. Tell us how your team is organized in an initial conversation, and we'll put together a proposal tailored to you."}},
+{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"Exclusively in São Paulo, Brazil, encrypted at rest (AES-256) and in transit (TLS 1.2+). Full details are on the Security & Privacy page."}},
+{"@type":"Question","name":"Can I revoke access whenever I want?","acceptedAnswer":{"@type":"Answer","text":"Yes, at any time, directly from your Google or Microsoft account security settings — no need to ask us."}},
+{"@type":"Question","name":"What countries does Pausa operate in?","acceptedAnswer":{"@type":"Answer","text":"Currently in Argentina, Paraguay, Chile, Brazil, Spain, and the United States."}}
+]}
 </script>
 </head>
 <body>
@@ -171,7 +182,7 @@
           <span class="faq-question-text">What does the implementation process look like?</span>
           <span class="faq-sign">+</span>
         </button>
-        <p class="faq-answer">It has three phases. The first two months are onboarding, with close, hands-on support: the Living Role is built, tracking begins, and the first data-driven conversations start happening. From month 3 to 5, the organization gains independence and the focus shifts to leading with data. From month 6 onward, support is about sustaining the habit and fine-tuning direction — not about being constantly hands-on.</p>
+        <p class="faq-answer">It has three phases. The first two months are onboarding, with close, hands-on support: the Rol Vivo is built, tracking begins, and the first data-driven conversations start happening. From month 3 to 5, the organization gains independence and the focus shifts to leading with data. From month 6 onward, support is about sustaining the habit and fine-tuning direction — not about being constantly hands-on.</p>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-question" aria-expanded="false">
@@ -224,7 +235,7 @@
   <div style="max-width:1160px;margin:0 auto">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;align-items:start">
       <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
-        <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:20px;width:auto;display:block">
+        <img src="../assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
         <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
@@ -245,7 +256,7 @@
         <nav style="display:flex;flex-direction:column;gap:12px">
           <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Trust</p>
           <a href="politicas-de-privacidad.html#seguridad" style="color:#DDE0FF;font-size:0.9375rem">Security & privacy</a>
-          <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">Frequently asked questions</a>
+          <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">FAQ</a>
         </nav>
       </div>
     </div>

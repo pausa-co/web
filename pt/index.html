@@ -14,9 +14,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/fonts.css">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
@@ -549,8 +547,8 @@
             <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">app.pausaco</div>
           </div>
           <div class="hero-media" id="step-media">
-            <img class="layer-cur" id="step-img-cur" src="../assets/uploads/hero-poster-1.png" alt="Visão real da plataforma Pausa">
-            <img class="layer-prev" id="step-img-prev" alt="">
+            <img class="layer-cur" id="step-img-cur" src="../assets/uploads/hero-poster-1.png" loading="lazy" alt="Visão real da plataforma Pausa">
+            <img loading="lazy" class="layer-prev" id="step-img-prev" alt="">
           </div>
         </div>
         <div style="display:flex;justify-content:center;gap:8px;margin-top:16px">
@@ -576,7 +574,7 @@
           </li>
           <li style="display:flex;gap:12px;align-items:flex-start">
             <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
-            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Encontra desvíos antes que alguém precise pedir.</span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Encontra desvios antes que alguém precise pedir.</span>
           </li>
           <li style="display:flex;gap:12px;align-items:flex-start">
             <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
@@ -606,18 +604,18 @@
   <section id="casos" style="background:#FFFFFF;padding:56px 24px 40px">
     <div style="max-width:1160px;margin:0 auto">
       <div class="grid-logos-6">
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/adecoagro.png" alt="Adecoagro" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/abinbev.png" alt="AB InBev" style="max-width:100%;max-height:29px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/inauco.png" alt="Inauco" style="max-width:100%;max-height:36px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/bioeutectics.png" alt="Bioeutectics" style="max-width:100%;max-height:42px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/lanegra.png" alt="Establecimientos La Negra" style="max-width:100%;max-height:34px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/trf.png" alt="TRF" style="max-width:100%;max-height:46px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/modo.png" alt="Modo" style="max-width:100%;max-height:27px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/aller-intl.png" alt="Aller &amp; Co." style="max-width:100%;max-height:32px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/mercovan.png" alt="Mercovan" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/atria.png" alt="Atria Soluciones Logísticas" style="max-width:100%;max-height:38px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/martinez.png" alt="Martinez Sinisgalli &amp; Abogados" style="max-width:100%;max-height:68px;width:auto;object-fit:contain;display:block"></div>
-        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/gdm.png" alt="GDM" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/adecoagro.png" loading="lazy" alt="Adecoagro" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/abinbev.png" loading="lazy" alt="AB InBev" style="max-width:100%;max-height:29px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/inauco.png" loading="lazy" alt="Inauco" style="max-width:100%;max-height:36px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/bioeutectics.png" loading="lazy" alt="Bioeutectics" style="max-width:100%;max-height:42px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/lanegra.png" loading="lazy" alt="Establecimientos La Negra" style="max-width:100%;max-height:34px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/trf.png" loading="lazy" alt="TRF" style="max-width:100%;max-height:46px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/modo.png" loading="lazy" alt="Modo" style="max-width:100%;max-height:27px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/aller-intl.png" loading="lazy" alt="Aller &amp; Co." style="max-width:100%;max-height:32px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/mercovan.png" loading="lazy" alt="Mercovan" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/atria.png" loading="lazy" alt="Atria Soluciones Logísticas" style="max-width:100%;max-height:38px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/martinez.png" loading="lazy" alt="Martinez Sinisgalli &amp; Abogados" style="max-width:100%;max-height:68px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/gdm.png" loading="lazy" alt="GDM" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:48px;background:#EAECFF;border-radius:20px;padding:32px 8px">
         <div style="padding:0 32px">
@@ -630,7 +628,7 @@
         </div>
         <div style="padding:0 32px;border-left:1px solid #C3C7F5">
           <a href="../reconocimiento.html" class="premio-stat-link">
-            <p class="premio-stat-title" style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">Prêmio VISA · La Nación</p>
+            <p class="premio-stat-title" style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">Prêmio VISA | La Nación</p>
             <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Inovação 2025 — Startup Inovadora <span class="premio-stat-arrow" aria-hidden="true">→</span></p>
           </a>
         </div>
@@ -729,7 +727,7 @@
     <div style="max-width:1160px;margin:0 auto">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
         <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
-          <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:20px;width:auto;display:block">
+          <img src="../assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
           <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
           <div style="display:flex;gap:12px">
             <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">

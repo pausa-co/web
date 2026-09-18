@@ -258,7 +258,7 @@
   if (total >= 32) {
     band = 'Alto';
     bandClass = 'band-alto';
-    message = 'Es una señal fuerte de sobrecarga, falta de foco o desalineación de rol. Conviene priorizar a esta persona para sumarla al acompañamiento de Pausa cuanto antes.';
+    message = 'Es una señal fuerte de sobrecarga, falta de foco o desalineación de rol. Conviene priorizar tu acompañamiento con Pausa cuanto antes.';
     showCta = true;
   } else if (total >= 17) {
     band = 'Medio';
@@ -306,7 +306,7 @@
     var subject = encodeURIComponent('Nueva conversación con Pausa – Assessment (' + band + ')');
     var body = encodeURIComponent(lines.join('\n'));
     window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
-    form.classList.add('hidden');
+    form.style.display = 'none';
     thanks.style.display = 'flex';
   });
 })();

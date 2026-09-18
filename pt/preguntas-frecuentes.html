@@ -14,9 +14,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/fonts.css">
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; background: #FFFFFF; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
@@ -69,6 +67,19 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Pausa","url":"https://www.pausaco.com/pt/","inLanguage":"pt-BR"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"A Pausa vê minha tela ou minhas mensagens?","acceptedAnswer":{"@type":"Answer","text":"Não. A Pausa lê apenas o seu calendário, mais nada. Não observamos sua tela, seu teclado nem seu mouse, e não vemos o conteúdo dos seus e-mails. A reflexão sobre o seu tempo é feita por você, dentro da plataforma."}},
+{"@type":"Question","name":"A Pausa pode modificar meu calendário?","acceptedAnswer":{"@type":"Answer","text":"Não. O acesso é somente leitura: conseguimos ver seus eventos, mas não podemos criar, editar ou excluir nenhum deles."}},
+{"@type":"Question","name":"E se a minha organização não usa o Google Calendar?","acceptedAnswer":{"@type":"Answer","text":"A Pausa também se integra com o Microsoft Outlook / Microsoft 365, seguindo o mesmo princípio de acesso somente leitura."}},
+{"@type":"Question","name":"Como é o processo de implementação?","acceptedAnswer":{"@type":"Answer","text":"Ele tem três fases. Os dois primeiros meses são de onboarding, com acompanhamento intensivo: constrói-se o Rol Vivo, o registro começa e surgem as primeiras conversas com dados. Do mês 3 ao 5, a organização ganha independência e o foco passa a ser conduzir com dados. A partir do mês 6, o acompanhamento se concentra em sustentar o hábito e ajustar o rumo — não em estar sempre em cima."}},
+{"@type":"Question","name":"O acompanhamento humano está incluído, ou é à parte?","acceptedAnswer":{"@type":"Answer","text":"A plataforma com IA é a base e está sempre presente. O acompanhante humano especializado para cada líder é ativado na implementação, e sua intensidade diminui à medida que o hábito se consolida. Se a organização precisar ir mais fundo, existem níveis adicionais — intervenções pontuais, workshops e programas, e consultoria estratégica para a diretoria — que são combinados conforme a necessidade."}},
+{"@type":"Question","name":"Quanto custa a Pausa?","acceptedAnswer":{"@type":"Answer","text":"Não publicamos preços porque cada implementação é dimensionada de acordo com a quantidade de líderes e colaboradores a acompanhar. Conte para a gente como o seu time está organizado em uma primeira conversa, e montamos uma proposta sob medida."}},
+{"@type":"Question","name":"Onde meus dados são armazenados?","acceptedAnswer":{"@type":"Answer","text":"Exclusivamente em São Paulo, Brasil, criptografados em repouso (AES-256) e em trânsito (TLS 1.2+). Todos os detalhes estão na página de Segurança e privacidade."}},
+{"@type":"Question","name":"Posso revogar o acesso quando eu quiser?","acceptedAnswer":{"@type":"Answer","text":"Sim, a qualquer momento, diretamente nas configurações de segurança da sua conta Google ou Microsoft — não é preciso nos pedir."}},
+{"@type":"Question","name":"Em quais países a Pausa opera?","acceptedAnswer":{"@type":"Answer","text":"Hoje na Argentina, Paraguai, Chile, Brasil, Espanha e Estados Unidos."}}
+]}
 </script>
 </head>
 <body>
@@ -171,7 +182,7 @@
           <span class="faq-question-text">Como é o processo de implementação?</span>
           <span class="faq-sign">+</span>
         </button>
-        <p class="faq-answer">Ele tem três fases. Os dois primeiros meses são de onboarding, com acompanhamento intensivo: constrói-se o Papel Vivo, o registro começa e surgem as primeiras conversas com dados. Do mês 3 ao 5, a organização ganha independência e o foco passa a ser conduzir com dados. A partir do mês 6, o acompanhamento se concentra em sustentar o hábito e ajustar o rumo — não em estar sempre em cima.</p>
+        <p class="faq-answer">Ele tem três fases. Os dois primeiros meses são de onboarding, com acompanhamento intensivo: constrói-se o Rol Vivo, o registro começa e surgem as primeiras conversas com dados. Do mês 3 ao 5, a organização ganha independência e o foco passa a ser conduzir com dados. A partir do mês 6, o acompanhamento se concentra em sustentar o hábito e ajustar o rumo — não em estar sempre em cima.</p>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-question" aria-expanded="false">
@@ -224,7 +235,7 @@
   <div style="max-width:1160px;margin:0 auto">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;align-items:start">
       <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
-        <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:20px;width:auto;display:block">
+        <img src="../assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
         <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
