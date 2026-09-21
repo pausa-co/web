@@ -22,6 +22,10 @@ a:hover { color: #2D2D99; }
 .mobile-nav-panel .mobile-nav-lang { display: flex; gap: 4px; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
 .mobile-nav-panel .mobile-nav-lang a { display: inline-flex; align-items: center; background: none; border: none; padding: 12px 10px; font-weight: 700; color: rgba(255,255,255,0.6); border-bottom: none; }
 .mobile-nav-panel .mobile-nav-lang a.active { color: #FFFFFF; }
+.perm-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.perm-table th { text-align: left; padding: 10px 12px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #5C5C8A; border-bottom: 1px solid #CCCCEE; }
+.perm-table td { padding: 12px; border-bottom: 1px solid #EAECFF; color: #1A1A3E; vertical-align: top; }
+.perm-table td:first-child { font-weight: 700; color: #3D3DC8; white-space: nowrap; font-family: ui-monospace, SFMono-Regular, monospace; font-size: 0.875rem; }
 @media (max-width: 860px) {
   header nav.desktop-nav { display: none !important; }
   .mobile-nav-toggle { display: flex; }

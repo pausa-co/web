@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security and Privacy of Your Data | Pausa</title>
+<link rel="canonical" href="https://www.pausaco.com/en/seguridad.html">
+<link rel="alternate" hreflang="es" href="https://www.pausaco.com/seguridad.html">
+<link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/seguridad.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/seguridad.html">
+<link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/seguridad.html">
+<meta name="description" content="How Pausa protects your data: read-only permissions on your calendar, AES-256 encryption, TLS 1.2+, app verification with Microsoft and Google, subprocessors, and an IT admin setup guide.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pausa">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://www.pausaco.com/en/seguridad.html">
+<meta property="og:title" content="Security and Privacy of Your Data | Pausa">
+<meta property="og:description" content="How Pausa protects your data: read-only permissions on your calendar, AES-256 encryption, TLS 1.2+, app verification with Microsoft and Google, subprocessors, and an IT admin setup guide.">
+<meta property="og:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Security and Privacy of Your Data | Pausa">
+<meta name="twitter:description" content="How Pausa protects your data: read-only permissions on your calendar, AES-256 encryption, TLS 1.2+, app verification with Microsoft and Google, subprocessors, and an IT admin setup guide.">
+<meta name="twitter:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Pausa","url":"https://www.pausaco.com/","logo":"https://www.pausaco.com/assets/pausa-mark-indigo.png","sameAs":["https://www.linkedin.com/company/pausaco"],"email":"contactopausa@pausaco.com"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Pausa","url":"https://www.pausaco.com/","inLanguage":"en"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.pausaco.com/en/"},{"@type":"ListItem","position":2,"name":"Security and privacy","item":"https://www.pausaco.com/en/seguridad.html"}]}
+</script>
+</head>
+<body>
+
+<header style="background:#1E1E6B;position:sticky;top:0;z-index:50">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:18px;width:auto;display:block">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Our solution</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="plataforma.html">Platform</a>
+            <a href="metodologia.html">Methodology</a>
+            <a href="desarrollo-de-habilidades.html">Skills development</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Company</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="equipo.html">Team</a>
+            <a href="prensa.html">Press</a>
+            <a href="reconocimiento.html">Recognition</a>
+            <a href="preguntas-frecuentes.html">FAQ</a>
+            <a href="contacto.html">Contact</a>
+            <a href="sumate-al-equipo.html">Join us</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
+        <a href="../seguridad.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">ES</a>
+        <a href="seguridad.html" style="padding:4px 6px;color:#FFFFFF">EN</a>
+        <a href="../pt/seguridad.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">PT</a>
+      </div>
+      <a href="index.html#cierre" class="btn-cta-light" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;background:#FFFFFF;color:#1E1E6B;transition:background-color .15s ease">Book a demo</a>
+    </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Our solution</span>
+    <a href="plataforma.html">Platform</a>
+    <a href="metodologia.html">Methodology</a>
+    <a href="desarrollo-de-habilidades.html">Skills development</a>
+    <span class="mobile-nav-section-label">Company</span>
+    <a href="equipo.html">Team</a>
+    <a href="prensa.html">Press</a>
+    <a href="reconocimiento.html">Recognition</a>
+    <a href="preguntas-frecuentes.html">FAQ</a>
+    <a href="contacto.html">Contact</a>
+    <a href="sumate-al-equipo.html">Join us</a>
+    <div class="mobile-nav-lang">
+      <a href="../seguridad.html">ES</a>
+      <a class="active" href="seguridad.html">EN</a>
+      <a href="../pt/seguridad.html">PT</a>
+    </div>
+    <a href="index.html#cierre" class="mobile-nav-cta">Book a demo</a>
+  </div>
+</header>
+
+<main style="max-width:900px;margin:0 auto;padding:64px 24px 96px">
+  <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Trust and security</p>
+  <h1 style="margin:16px 0 0;font-size:clamp(2.25rem,4.5vw,3.25rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#1A1A3E">Security and privacy of your data</h1>
+  <p style="margin:20px 0 0;max-width:62ch;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Trust is built with transparency. This page explains exactly what data we access, why we need it and, just as importantly, what we never do with your information.</p>
+
+  <section style="margin-top:56px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">What permissions do we request?</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">When you connect your Google or Microsoft account, we request read-only access to your calendar. We can see your events, but we can never create, modify, or delete anything in your account.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:8px">
+      <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto">
+        <h3 style="margin:0 0 14px;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Google Calendar</h3>
+        <table class="perm-table">
+          <thead><tr><th>Permission</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td>calendar.readonly</td><td>We can read your events. We can't create, edit, or delete them.</td></tr>
+            <tr><td>userinfo.email</td><td>We access your email to identify your account.</td></tr>
+            <tr><td>openid</td><td>We verify your identity via OpenID Connect.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto">
+        <h3 style="margin:0 0 14px;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Microsoft Outlook</h3>
+        <table class="perm-table">
+          <thead><tr><th>Permission</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td>User.Read</td><td>We read your basic profile: name and email.</td></tr>
+            <tr><td>Calendars.Read</td><td>We can read your events. We can't create, edit, or delete them.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E"><strong>Read-only.</strong> We don't touch, modify, or delete anything — with either provider.</p>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Security infrastructure</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Protecting your data doesn't rely on permissions alone — it's backed by multiple layers of security at the infrastructure level.</p>
+
+    <h3 style="margin:8px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Encryption and secure transport</h3>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">TLS/SSL in transit</strong> — all communication between your browser and our servers is encrypted using TLS 1.2+, the same standard used by banks and financial platforms.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">AES-256 encryption at rest</strong> — access tokens and sensitive data are stored encrypted with AES-256, the standard used by the U.S. government for classified information.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">HTTPS enforced</strong> — there's no unencrypted version of Pausa. All traffic is forced to HTTPS via HSTS.</li>
+    </ul>
+
+    <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Authentication and authorization</h3>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">OAuth 2.0 / OpenID Connect</strong> — we don't store your Google or Microsoft password. You authorize directly with your provider.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Minimal-scope tokens</strong> — the tokens we receive have permissions strictly limited to read-only. Even if compromised, they couldn't modify your calendar.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Encrypted refresh tokens</strong> — long-lived tokens are stored with application-level encryption, separate from the main database.</li>
+    </ul>
+
+    <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Security practices</h3>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Principle of least privilege</strong> — we only request the permissions strictly necessary for Pausa to work.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">No credential storage</strong> — we never see or store your password. Authentication happens directly between you and Google/Microsoft.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Environment separation</strong> — development, staging, and production are fully isolated from each other.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Audit logs</strong> — we keep access logs to detect and respond to any unusual activity.</li>
+    </ul>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">App validation and registration</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Pausa is registered and verified with the major identity providers. This guarantees that when you connect your account, you're authorizing a legitimate, audited application.</p>
+
+    <h3 style="margin:8px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Microsoft Entra ID (Azure AD)</h3>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Verified publisher</strong> — Microsoft validated our identity as a company through the Microsoft Partner Network. You'll see the blue verification badge next to "PausaCo."</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Verified MPN ID</strong> — we hold an active, validated Microsoft Partner Network ID.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Verified domain</strong> — our publisher domain is verified via DNS with Microsoft.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Privacy policy and terms</strong> — loaded and visible directly on Microsoft's consent screen.</li>
+    </ul>
+    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E">Pausa isn't listed on the Microsoft AppSource marketplace — it doesn't need to be: it works as a direct OAuth application where you authorize access from your own account. Publisher verification is the security validation Microsoft applies to this type of integration.</p>
+
+    <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Google Cloud / OAuth</h3>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Verified Google Cloud project</strong> — our app goes through Google's verification process for apps that access user data.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Verified consent screen</strong> — Google reviews and approves the consent screen you see when connecting your account.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Read-only, non-sensitive scopes only</strong> — by requesting read-only permissions only, we meet Google's strictest security requirements.</li>
+      <li>We comply with <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google's API Services User Data Policy</a>, including limited use of data.</li>
+    </ul>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Admin configuration guide</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">If your organization uses Microsoft 365 or Google Workspace with controlled access policies, an admin may need to approve Pausa before users can connect their calendars.</p>
+
+    <h3 style="margin:8px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Microsoft 365 / Entra ID</h3>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">If your organization restricts which applications can access user data, an IT admin needs to grant <strong style="color:#1A1A3E">admin consent</strong> for Pausa:</p>
+    <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>Sign in to the <a href="https://entra.microsoft.com" target="_blank" rel="noopener">Microsoft Entra admin center</a>.</li>
+      <li>Go to <strong style="color:#1A1A3E">Enterprise applications</strong> → <strong style="color:#1A1A3E">All applications</strong>.</li>
+      <li>Search for "Pausa" in the list (or ask a user to attempt to connect so it appears).</li>
+      <li>Click the application → <strong style="color:#1A1A3E">Permissions</strong> → <strong style="color:#1A1A3E">Grant admin consent</strong>.</li>
+      <li>Review the requested permissions (<code>User.Read</code> and <code>Calendars.Read</code>) and approve.</li>
+    </ol>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Once approved, all users in your organization will be able to connect their Microsoft account to Pausa without individual approval.</p>
+
+    <h4 style="margin:8px 0 0;font-size:0.9375rem;font-weight:700;color:#1A1A3E">Restrict access to specific users (Assignment Required)</h4>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">By default, once an admin approves Pausa, all users in the organization can connect their account. If you need to restrict access to certain users or groups, you can enable <strong style="color:#1A1A3E">Assignment Required</strong>:</p>
+    <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>In the <a href="https://entra.microsoft.com" target="_blank" rel="noopener">Microsoft Entra admin center</a>, go to <strong style="color:#1A1A3E">Enterprise applications</strong> → search for <strong style="color:#1A1A3E">Pausa</strong>.</li>
+      <li>In the left panel, click <strong style="color:#1A1A3E">Properties</strong>.</li>
+      <li>Turn on <strong style="color:#1A1A3E">Assignment required?</strong> → <strong style="color:#1A1A3E">Yes</strong>.</li>
+      <li>Click <strong style="color:#1A1A3E">Save</strong>.</li>
+    </ol>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Now only the users or groups you explicitly assign will have access to Pausa. To add them: on the same Pausa application screen in Entra, go to <strong style="color:#1A1A3E">Users and groups</strong> → <strong style="color:#1A1A3E">Add user/group</strong> → select the individual users or security groups → <strong style="color:#1A1A3E">Assign</strong>.</p>
+
+    <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto;margin-top:8px">
+      <h4 style="margin:0 0 14px;font-size:0.9375rem;font-weight:700;color:#1A1A3E">Common scenarios</h4>
+      <table class="perm-table">
+        <thead><tr><th>Scenario</th><th>Recommended setup</th></tr></thead>
+        <tbody>
+          <tr><td>Whole company</td><td>Assignment Required: No (default)</td></tr>
+          <tr><td>One team</td><td>Assignment Required: Yes — assign the team's group</td></tr>
+          <tr><td>Pilot</td><td>Assignment Required: Yes — assign individual users</td></tr>
+          <tr><td>Gradual rollout</td><td>Assignment Required: Yes — add groups progressively</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E"><strong>Tip:</strong> if you use Entra ID security groups, you can manage access to Pausa dynamically: adding or removing a user from the group automatically grants or revokes their access to the app.</p>
+
+    <h3 style="margin:24px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Google Workspace</h3>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">If your organization uses Google Workspace with third-party app access controls:</p>
+    <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>Sign in to the <a href="https://admin.google.com" target="_blank" rel="noopener">Google Admin console</a>.</li>
+      <li>Go to <strong style="color:#1A1A3E">Security</strong> → <strong style="color:#1A1A3E">API controls</strong> → <strong style="color:#1A1A3E">Manage third-party app access</strong>.</li>
+      <li>Click <strong style="color:#1A1A3E">Configure new app</strong> → <strong style="color:#1A1A3E">OAuth app name or client ID</strong>.</li>
+      <li>Search for "Pausa" or enter the application's Client ID.</li>
+      <li>Select access level: <strong style="color:#1A1A3E">Trusted</strong> (recommended) to allow the read-only scopes.</li>
+      <li>Click <strong style="color:#1A1A3E">Configure</strong>.</li>
+    </ol>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Once configured, users in your domain will be able to authorize Pausa without restrictions.</p>
+
+    <h3 style="margin:24px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Network / Firewall configuration</h3>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">If your organization has network or firewall restrictions that block external domains, you'll need to allow access to Pausa's domains for the application to work correctly.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">The simplest, future-proof option is to allow <code>*.pausaco.com</code>. This covers all current services and any subdomain Pausa adds in the future, with no need to update firewall rules later.</p>
+    <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto">
+      <h4 style="margin:0 0 14px;font-size:0.9375rem;font-weight:700;color:#1A1A3E">Specific domains (if your firewall doesn't support wildcards)</h4>
+      <table class="perm-table">
+        <thead><tr><th>Domain</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>app.pausaco.com</td><td>Main web application (user interface)</td></tr>
+          <tr><td>api.pausaco.com</td><td>Backend API (calendar and data sync)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Subprocessors</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">To operate Pausa, we use the following subprocessors, all subject to data processing agreements and confidentiality obligations:</p>
+    <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto">
+      <table class="perm-table">
+        <thead><tr><th>Provider</th><th>Service</th><th>Location</th></tr></thead>
+        <tbody>
+          <tr><td>Google Cloud</td><td>Infrastructure: API, database, and frontend</td><td>São Paulo, Brazil</td></tr>
+          <tr><td>OpenAI</td><td>Classifying calendar events into MacroTasks and workload analysis</td><td>United States</td></tr>
+          <tr><td>n8n Cloud</td><td>Automation pipeline into OpenAI</td><td>United States</td></tr>
+          <tr><td>PostHog</td><td>Platform usage analytics (no access to calendar data)</td><td>United States</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Calendar and personal data are stored exclusively on servers in Brazil. OpenAI and n8n process calendar data in the United States solely to classify MacroTasks and analyze workload; they don't store or use it for any other purpose. PostHog only receives platform usage data.</p>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">What do we do with your data?</h2>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>We read and store your calendar events on servers in Brazil to help you manage your time. They're stored encrypted with AES-256 and processed by OpenAI and n8n solely to classify MacroTasks and analyze workload.</li>
+      <li>We use your email to identify your account within Pausa.</li>
+      <li>OAuth access tokens are stored encrypted with AES-256, in a database separate from calendar data.</li>
+      <li>All communication travels protected with TLS/SSL.</li>
+    </ul>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">What do we never do?</h2>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li>We never write, edit, or delete events on your calendar.</li>
+      <li>We never share your data with unauthorized third parties — only with the subprocessors listed above, subject to confidentiality agreements.</li>
+      <li>We never access more information than strictly necessary.</li>
+      <li>We never store calendar events in plain text — always encrypted with AES-256.</li>
+      <li>We never see or store your Google or Microsoft password.</li>
+      <li>We never transmit data without encryption.</li>
+    </ul>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Your data, your control</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">You can revoke Pausa's access to your account at any time, directly from your provider's security settings:</p>
+    <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
+      <li><strong style="color:#1A1A3E;font-weight:700">Google:</strong> <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Manage third-party access</a></li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Microsoft:</strong> <a href="https://account.live.com/consent/Manage" target="_blank" rel="noopener">Manage connected apps</a></li>
+    </ul>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Once revoked, Pausa immediately loses the ability to read your calendar.</p>
+  </section>
+
+  <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Legal basis and full documentation</h2>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">The full detail on legal bases for processing (LGPD for Brazil, Law 25.326 for Argentina), data retention, and your rights as a data subject is in our <a href="politicas-de-privacidad.html">Privacy Policy</a>. For the platform's terms of use, see our <a href="terminos-y-condiciones.html">Terms and Conditions</a>.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">If you have questions about the security of your data, write to us at <a href="mailto:soporte@pausaco.com">soporte@pausaco.com</a>. Transparency is part of who we are.</p>
+  </section>
+
+  <p style="margin:48px 0 0;padding-top:24px;border-top:1px solid #CCCCEE;font-size:0.9375rem;color:#5C5C8A">Last updated: 09/21/2026</p>
+</main>
+
+<footer style="background:#1A1A3E;padding:48px 24px 32px">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+        <img src="../assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
+        <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Our solution</p>
+          <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Platform</a>
+          <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Methodology</a>
+          <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Skills development</a>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Company</p>
+          <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Team</a>
+          <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Press</a>
+          <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Recognition</a>
+          <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contact</a>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Trust</p>
+          <a href="seguridad.html" style="color:#DDE0FF;font-size:0.9375rem">Security and privacy</a>
+          <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">FAQ</a>
+        </nav>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+      <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. All rights reserved.</p>
+      <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+        <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Terms and Conditions</a>
+        <span style="color:rgba(255,255,255,0.35)">·</span>
+        <a href="politicas-de-privacidad.html" style="color:#9FA6F0">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+var mobileNavPanel = document.getElementById('mobile-nav-panel');
+if (mobileNavToggle && mobileNavPanel) {
+  mobileNavToggle.addEventListener('click', function () {
+    var open = mobileNavPanel.classList.toggle('open');
+    mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileNavPanel.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+</script>
+</body>
+</html>

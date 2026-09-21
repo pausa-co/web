@@ -213,6 +213,32 @@
   </url>
 
   <url>
+    <loc>https://www.pausaco.com/seguridad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/seguridad.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/seguridad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/seguridad.html"/>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/seguridad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/seguridad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/seguridad.html"/>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
     <loc>https://www.pausaco.com/sumate-al-equipo.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/sumate-al-equipo.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/sumate-al-equipo.html"/>
