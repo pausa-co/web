@@ -990,6 +990,13 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.style.opacity = '0.7';
+      submitBtn.style.cursor = 'not-allowed';
+    }
     var data = new FormData(form);
     var lines = [];
     data.forEach(function (value, key) {

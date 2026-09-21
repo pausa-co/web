@@ -254,6 +254,13 @@ function getUtmParam(name) {
 
 postulateForm.addEventListener('submit', function (e) {
   e.preventDefault();
+  var submitBtn = postulateForm.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.style.opacity = '0.7';
+    submitBtn.style.cursor = 'not-allowed';
+  }
   var data = new FormData(postulateForm);
   var lines = [];
   data.forEach(function (value, key) {
