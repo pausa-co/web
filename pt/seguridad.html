@@ -9,17 +9,17 @@
 <link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/seguridad.html">
 <link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/seguridad.html">
 <link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/seguridad.html">
-<meta name="description" content="Como a Pausa protege seus dados: permissões somente leitura sobre seu calendário, criptografia AES-256, TLS 1.2+, verificação do app na Microsoft e no Google, subprocessadores e guia de configuração para administradores de TI.">
+<meta name="description" content="Como a Pausa protege seus dados: permissões de leitura (e escrita opcional) sobre seu calendário, criptografia AES-256, TLS 1.2+, verificação do app na Microsoft e no Google, subprocessadores e guia de configuração para administradores de TI.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pausa">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://www.pausaco.com/pt/seguridad.html">
 <meta property="og:title" content="Segurança e Privacidade dos seus Dados | Pausa">
-<meta property="og:description" content="Como a Pausa protege seus dados: permissões somente leitura sobre seu calendário, criptografia AES-256, TLS 1.2+, verificação do app na Microsoft e no Google, subprocessadores e guia de configuração para administradores de TI.">
+<meta property="og:description" content="Como a Pausa protege seus dados: permissões de leitura (e escrita opcional) sobre seu calendário, criptografia AES-256, TLS 1.2+, verificação do app na Microsoft e no Google, subprocessadores e guia de configuração para administradores de TI.">
 <meta property="og:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Segurança e Privacidade dos seus Dados | Pausa">
-<meta name="twitter:description" content="Como a Pausa protege seus dados: permissões somente leitura sobre seu calendário, criptografia AES-256, TLS 1.2+, verificação do app na Microsoft e no Google, subprocessadores e guia de configuração para administradores de TI.">
+<meta name="twitter:description" content="Como a Pausa protege seus dados: permissões de leitura (e escrita opcional) sobre seu calendário, criptografia AES-256, TLS 1.2+, verificação do app na Microsoft e no Google, subprocessadores e guia de configuração para administradores de TI.">
 <meta name="twitter:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
 <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -115,7 +115,7 @@
 
   <section style="margin-top:56px;display:flex;flex-direction:column;gap:16px">
     <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Quais permissões solicitamos?</h2>
-    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Ao conectar sua conta Google ou Microsoft, solicitamos apenas acesso de leitura ao seu calendário. Podemos ver seus eventos, mas nunca podemos criar, modificar ou excluir nada na sua conta.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Ao conectar sua conta Google ou Microsoft, a permissão base é o acesso de leitura ao seu calendário: podemos ver seus eventos, mas não os criamos, editamos ou excluímos. Para o Google Agenda, existe também uma permissão opcional e separada de escrita — explicamos em detalhe mais abaixo.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:8px">
       <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto">
         <h3 style="margin:0 0 14px;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Google Agenda</h3>
@@ -139,7 +139,10 @@
         </table>
       </div>
     </div>
-    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E"><strong>Somente leitura.</strong> Não tocamos, não modificamos, não excluímos — em nenhum dos dois provedores.</p>
+    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E"><strong>Conexão base: somente leitura.</strong> Com essas permissões não tocamos, não modificamos, não excluímos nada — em nenhum dos dois provedores.</p>
+
+    <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Permissão opcional de escrita (Google Agenda)</h3>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Se você também conceder a permissão de escrita do Google Agenda — opcional, separada da permissão de leitura e solicitada separadamente — a Pausa pode criar, editar e excluir eventos no seu Google Agenda em seu nome, somente quando você realiza essas ações a partir da plataforma (por exemplo, ao criar uma tarefa, mudar seu horário, adicionar convidados ou um link de videochamada, ou excluí-la). Nunca criamos, editamos ou excluímos nada por iniciativa própria — somente quando você pede isso explicitamente.</p>
   </section>
 
   <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
@@ -156,7 +159,7 @@
     <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Autenticação e autorização</h3>
     <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
       <li><strong style="color:#1A1A3E;font-weight:700">OAuth 2.0 / OpenID Connect</strong> — não armazenamos sua senha do Google nem da Microsoft. Você autoriza diretamente com seu provedor.</li>
-      <li><strong style="color:#1A1A3E;font-weight:700">Tokens com escopo mínimo</strong> — os tokens que recebemos têm permissões estritamente limitadas a somente leitura. Mesmo se fossem comprometidos, não poderiam modificar seu calendário.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Tokens com escopo mínimo</strong> — cada token que recebemos tem permissões limitadas exatamente ao que você autorizou: se você só concedeu leitura, esse token não pode modificar seu calendário mesmo se comprometido; o de escrita (se concedido) só permite as ações que você inicia a partir da plataforma.</li>
       <li><strong style="color:#1A1A3E;font-weight:700">Refresh tokens criptografados</strong> — os tokens de longa duração são armazenados com criptografia em nível de aplicação, separados do banco de dados principal.</li>
     </ul>
 
@@ -278,6 +281,7 @@
     <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">O que fazemos com seus dados?</h2>
     <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
       <li>Lemos e armazenamos seus eventos de calendário em servidores no Brasil para ajudá-lo a gerenciar seu tempo. Os eventos são armazenados criptografados com AES-256 e processados pela OpenAI e n8n com a única finalidade de classificação em MacroTarefas e análise de carga de agenda.</li>
+      <li>Se você concedeu a permissão opcional de escrita do Google Agenda, criamos, editamos ou excluímos eventos em seu nome — somente quando você pede isso explicitamente a partir da plataforma.</li>
       <li>Usamos seu email para identificar sua conta dentro da Pausa.</li>
       <li>Os tokens de acesso OAuth são armazenados criptografados com AES-256, em um banco de dados separado dos dados do calendário.</li>
       <li>Toda a comunicação trafega protegida com TLS/SSL.</li>
@@ -287,7 +291,7 @@
   <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
     <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">O que nunca fazemos?</h2>
     <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
-      <li>Nunca escrevemos, editamos ou excluímos eventos no seu calendário.</li>
+      <li>Nunca criamos, editamos ou excluímos eventos no seu calendário sem que você peça isso explicitamente a partir da plataforma — e somente se você concedeu a permissão de escrita separadamente.</li>
       <li>Nunca compartilhamos seus dados com terceiros não autorizados — apenas com os subprocessadores listados acima, sujeitos a contratos de confidencialidade.</li>
       <li>Nunca acessamos mais informações do que o estritamente necessário.</li>
       <li>Nunca armazenamos eventos de calendário em texto simples — sempre criptografados com AES-256.</li>

@@ -9,17 +9,17 @@
 <link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/seguridad.html">
 <link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/seguridad.html">
 <link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/seguridad.html">
-<meta name="description" content="Cómo protegemos tus datos en Pausa: permisos de solo lectura sobre tu calendario, cifrado AES-256, TLS 1.2+, verificación de la app en Microsoft y Google, subprocesadores y guía de configuración para administradores de IT.">
+<meta name="description" content="Cómo protegemos tus datos en Pausa: permisos de lectura (y escritura opcional) sobre tu calendario, cifrado AES-256, TLS 1.2+, verificación de la app en Microsoft y Google, subprocesadores y guía de configuración para administradores de IT.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pausa">
 <meta property="og:locale" content="es_AR">
 <meta property="og:url" content="https://www.pausaco.com/seguridad.html">
 <meta property="og:title" content="Seguridad y Privacidad de tus Datos | Pausa">
-<meta property="og:description" content="Cómo protegemos tus datos en Pausa: permisos de solo lectura sobre tu calendario, cifrado AES-256, TLS 1.2+, verificación de la app en Microsoft y Google, subprocesadores y guía de configuración para administradores de IT.">
+<meta property="og:description" content="Cómo protegemos tus datos en Pausa: permisos de lectura (y escritura opcional) sobre tu calendario, cifrado AES-256, TLS 1.2+, verificación de la app en Microsoft y Google, subprocesadores y guía de configuración para administradores de IT.">
 <meta property="og:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Seguridad y Privacidad de tus Datos | Pausa">
-<meta name="twitter:description" content="Cómo protegemos tus datos en Pausa: permisos de solo lectura sobre tu calendario, cifrado AES-256, TLS 1.2+, verificación de la app en Microsoft y Google, subprocesadores y guía de configuración para administradores de IT.">
+<meta name="twitter:description" content="Cómo protegemos tus datos en Pausa: permisos de lectura (y escritura opcional) sobre tu calendario, cifrado AES-256, TLS 1.2+, verificación de la app en Microsoft y Google, subprocesadores y guía de configuración para administradores de IT.">
 <meta name="twitter:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -115,7 +115,7 @@
 
   <section style="margin-top:56px;display:flex;flex-direction:column;gap:16px">
     <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">¿Qué permisos solicitamos?</h2>
-    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Cuando conectás tu cuenta de Google o Microsoft, solicitamos acceso únicamente de lectura a tu calendario. Podemos ver tus eventos, pero nunca podemos crear, modificar o eliminar nada en tu cuenta.</p>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Cuando conectás tu cuenta de Google o Microsoft, el permiso base es de solo lectura sobre tu calendario: podemos ver tus eventos, pero no los creamos, editamos ni borramos. Para Google Calendar existe además un permiso opcional y separado de escritura — lo explicamos en detalle más abajo.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:8px">
       <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px;overflow-x:auto">
         <h3 style="margin:0 0 14px;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Google Calendar</h3>
@@ -139,7 +139,10 @@
         </table>
       </div>
     </div>
-    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E"><strong>Solo lectura.</strong> No tocamos, no modificamos, no borramos — en ninguno de los dos proveedores.</p>
+    <p style="margin:0;padding:16px 20px;background:#EAECFF;border-radius:12px;font-size:0.9375rem;line-height:1.6;color:#1A1A3E"><strong>Conexión base: solo lectura.</strong> Con estos permisos no tocamos, no modificamos, no borramos nada — en ninguno de los dos proveedores.</p>
+
+    <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Permiso opcional de escritura (Google Calendar)</h3>
+    <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Si además otorgás el permiso de escritura de Google Calendar — opcional, separado del permiso de lectura y solicitado por separado — Pausa puede crear, editar y borrar eventos en tu Google Calendar en tu nombre, únicamente cuando realizás esas acciones desde la plataforma (por ejemplo, al crear una tarea, mover su horario, agregar invitados o un link de videollamada, o eliminarla). Nunca creamos, editamos ni borramos nada por iniciativa propia — solo cuando vos lo pedís explícitamente.</p>
   </section>
 
   <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
@@ -156,7 +159,7 @@
     <h3 style="margin:16px 0 0;font-size:1.0625rem;font-weight:700;color:#1A1A3E">Autenticación y autorización</h3>
     <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
       <li><strong style="color:#1A1A3E;font-weight:700">OAuth 2.0 / OpenID Connect</strong> — no almacenamos tu contraseña de Google ni de Microsoft. Autorizás directamente con tu proveedor.</li>
-      <li><strong style="color:#1A1A3E;font-weight:700">Tokens con alcance mínimo</strong> — los tokens que recibimos tienen permisos estrictamente limitados a solo lectura. Incluso si fueran comprometidos, no podrían modificar tu calendario.</li>
+      <li><strong style="color:#1A1A3E;font-weight:700">Tokens con alcance mínimo</strong> — cada token que recibimos tiene permisos limitados exactamente a lo que autorizaste: si solo diste lectura, ese token no puede modificar tu calendario aunque fuera comprometido; el de escritura (si lo otorgaste) solo permite las acciones que vos iniciás desde la plataforma.</li>
       <li><strong style="color:#1A1A3E;font-weight:700">Refresh tokens cifrados</strong> — los tokens de larga duración se almacenan con cifrado a nivel de aplicación, separados de la base de datos principal.</li>
     </ul>
 
@@ -278,6 +281,7 @@
     <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">¿Qué hacemos con tus datos?</h2>
     <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
       <li>Leemos y almacenamos tus eventos del calendario en servidores en Brasil para ayudarte a gestionar tu tiempo. Se almacenan cifrados con AES-256 y son procesados por OpenAI y n8n con el único fin de clasificación en MacroTareas y análisis de carga de agenda.</li>
+      <li>Si otorgaste el permiso opcional de escritura de Google Calendar, creamos, editamos o borramos eventos en tu nombre — solo cuando vos lo pedís explícitamente desde la plataforma.</li>
       <li>Usamos tu email para identificar tu cuenta dentro de Pausa.</li>
       <li>Los tokens de acceso OAuth se almacenan cifrados con AES-256, en una base de datos separada de los datos del calendario.</li>
       <li>Toda la comunicación viaja protegida con TLS/SSL.</li>
@@ -287,7 +291,7 @@
   <section style="margin-top:48px;display:flex;flex-direction:column;gap:16px">
     <h2 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">¿Qué nunca hacemos?</h2>
     <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">
-      <li>Nunca escribimos, editamos o borramos eventos en tu calendario.</li>
+      <li>Nunca creamos, editamos ni borramos eventos en tu calendario sin que vos lo pidas explícitamente desde la plataforma — y solo si otorgaste el permiso de escritura por separado.</li>
       <li>Nunca compartimos tus datos con terceros no autorizados — solo con los subprocesadores listados arriba, sujetos a contratos de confidencialidad.</li>
       <li>Nunca accedemos a más información de la estrictamente necesaria.</li>
       <li>Nunca almacenamos eventos del calendario en texto plano — siempre cifrados con AES-256.</li>
