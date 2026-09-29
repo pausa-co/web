@@ -99,9 +99,9 @@
   .mock-cal-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 16px 20px; gap: 10px; }
   .mock-cal-header { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9A9AC0; }
   .mock-cal-grid { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-  .mock-cal-day { display: flex; flex-direction: column; gap: 5px; }
+  .mock-cal-day { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
   .mock-cal-day-label { font-size: 0.5rem; font-weight: 700; color: #9A9AC0; text-align: center; }
-  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; }
+  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; overflow-wrap: anywhere; }
   .mock-cal-event.shown { opacity: 1; transform: translateY(0) scale(1); }
 
   .mock-chat-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 16px; gap: 8px; }
