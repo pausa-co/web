@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tu resultado | Assessment Pausa</title>
 <link rel="canonical" href="https://www.pausaco.com/assessment-resultado.html">
+<link rel="alternate" hreflang="es" href="https://www.pausaco.com/assessment-resultado.html">
+<link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/assessment-resultado.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/assessment-resultado.html">
+<link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/assessment-resultado.html">
 <meta name="description" content="Resultado de tu assessment de liderazgo Pausa.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pausa">
@@ -80,6 +84,11 @@
           </div>
         </div>
       </div>
+      <div style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
+        <a href="assessment-resultado.html" data-keep-query style="padding:4px 6px;color:#FFFFFF">ES</a>
+        <a href="en/assessment-resultado.html" data-keep-query style="padding:4px 6px;color:rgba(255,255,255,0.55)">EN</a>
+        <a href="pt/assessment-resultado.html" data-keep-query style="padding:4px 6px;color:rgba(255,255,255,0.55)">PT</a>
+      </div>
       <a href="contacto.html#form" class="btn-cta-light" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;background:#FFFFFF;color:#1E1E6B;transition:background-color .15s ease">Agendá una demo</a>
     </nav>
     <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menú" aria-expanded="false">
@@ -98,6 +107,11 @@
     <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
     <a href="contacto.html">Contacto</a>
     <a href="sumate-al-equipo.html">Sumate al equipo</a>
+    <div class="mobile-nav-lang">
+      <a class="active" href="assessment-resultado.html" data-keep-query>ES</a>
+      <a href="en/assessment-resultado.html" data-keep-query>EN</a>
+      <a href="pt/assessment-resultado.html" data-keep-query>PT</a>
+    </div>
     <a href="contacto.html#form" class="mobile-nav-cta">Agendá una demo</a>
   </div>
 </header>
@@ -229,6 +243,10 @@
       });
     });
   }
+
+  document.querySelectorAll('a[data-keep-query]').forEach(function (a) {
+    a.setAttribute('href', a.getAttribute('href') + window.location.search);
+  });
 
   var params = new URLSearchParams(window.location.search);
   var total = parseInt(params.get('s'), 10);
