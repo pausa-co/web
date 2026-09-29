@@ -101,8 +101,14 @@
   .mock-cal-grid { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
   .mock-cal-day { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
   .mock-cal-day-label { font-size: 0.5rem; font-weight: 700; color: #9A9AC0; text-align: center; }
-  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; overflow-wrap: anywhere; }
+  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
   .mock-cal-event.shown { opacity: 1; transform: translateY(0) scale(1); }
+  @media (max-width: 480px) {
+    .mock-dash-sidebar { display: none; }
+    .mock-cal-main { padding: 12px 10px; }
+    .mock-cal-grid { gap: 4px; }
+    .mock-cal-event { padding: 4px 3px; }
+  }
 
   .mock-chat-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 16px; gap: 8px; }
   .mock-chat-header { display: flex; align-items: center; gap: 6px; padding-bottom: 8px; border-bottom: 1px solid #F0F1FC; }
@@ -335,8 +341,8 @@
   <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;min-height:82vh;min-height:82svh;display:flex;align-items:center;padding:140px 24px 60px">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:72px;align-items:center;width:100%">
       <div style="flex:1 1 420px;min-width:0">
-        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF"><span style="display:block;font-size:0.8em;margin-bottom:14px">Your strategy says one thing.</span>Where is the focus of <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">your team?</span><span class="hero-title__word">your business?</span><span class="hero-title__word">each person?</span></span><span class="sr-only">Your strategy says one thing. Where is the focus of your team?</span></h1>
-        <p style="margin:28px 0 0;max-width:50ch;font-size:1.0625rem;line-height:1.55;color:#B9C0F5">PAUSA is a management platform built to help organizations work more efficiently and sustainably.</p>
+        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF"><span style="display:block;font-size:0.72em;margin-bottom:14px;text-wrap:balance">Your strategy sets a course.</span>Is the focus of <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">your organization</span><span class="hero-title__word">your team</span><span class="hero-title__word">your leaders</span><span class="hero-title__word">each person</span></span> heading that way?<span class="sr-only">Your strategy sets a course. Is the focus of your organization heading that way?</span></h1>
+        <p style="margin:28px 0 0;max-width:50ch;font-size:1.0625rem;line-height:1.55;color:#B9C0F5">A management platform built to help organizations work more efficiently and sustainably.</p>
       </div>
       <div id="hero-wrap" style="flex:1 1 420px;min-width:0;max-width:480px;position:relative;cursor:pointer">
         <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.55);background:#F4F5FF">
