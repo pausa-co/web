@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pausa | Plataforma de gestão de cargos e tempo</title>
+<link rel="canonical" href="https://www.pausaco.com/pt/">
+<link rel="alternate" hreflang="es" href="https://www.pausaco.com/">
+<link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/">
+<link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/">
+<meta name="description" content="Desenhamos experiências de trabalho que potencializam o crescimento da sua equipe: gestão para organizações mais eficientes e sustentáveis.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pausa">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://www.pausaco.com/pt/">
+<meta property="og:title" content="Pausa | Plataforma de gestão de cargos e tempo">
+<meta property="og:description" content="Desenhamos experiências de trabalho que potencializam o crescimento da sua equipe: gestão para organizações mais eficientes e sustentáveis.">
+<meta property="og:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pausa | Plataforma de gestão de cargos e tempo">
+<meta name="twitter:description" content="Desenhamos experiências de trabalho que potencializam o crescimento da sua equipe: gestão para organizações mais eficientes e sustentáveis.">
+<meta name="twitter:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  input:focus-visible { outline: 2px solid #3D3DC8; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  .hero-title__rotator { position: relative; display: inline-block; vertical-align: bottom; overflow: hidden; height: 1.25em; margin-bottom: -0.15em; min-width: 16ch; color: #BFC5FF; }
+  .hero-title__word { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(100%); transition: opacity 350ms ease, transform 350ms ease; white-space: nowrap; }
+  .hero-title__word.is-active { position: relative; opacity: 1; transform: translateY(0); }
+  .hero-title__word.is-leaving { opacity: 0; transform: translateY(-100%); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title__word { transition: none; }
+    .hero-title__word:not(.is-active) { display: none; }
+  }
+
+  #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background-color .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; background: transparent; }
+  #site-header.scrolled { background: #FFFFFF; border-bottom-color: #CCCCEE; }
+  #site-header .nav-link { color: rgba(255,255,255,0.85); }
+  #site-header.scrolled .nav-link { color: #1A1A3E; }
+  #site-header .lang-btn { color: rgba(255,255,255,0.55); }
+  #site-header.scrolled .lang-btn { color: #9A9AC0; }
+  #site-header .lang-btn.active { color: #FFFFFF; }
+  #site-header.scrolled .lang-btn.active { color: #3D3DC8; }
+  #site-header .cta-pill { background: #FFFFFF; color: #1E1E6B; }
+  #site-header.scrolled .cta-pill { background: #3D3DC8; color: #FFFFFF; }
+  #word-logo-white { display: block; }
+  #word-logo-indigo { display: none; }
+  #site-header.scrolled #word-logo-white { display: none; }
+  #site-header.scrolled #word-logo-indigo { display: block; }
+
+  .nav-dropdown-toggle { background: none; border: none; cursor: pointer; font: inherit; color: inherit; display: inline-flex; align-items: center; gap: 4px; padding: 0; }
+
+  .btn-cta-primary:hover { background: #2D2D99; }
+  .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+  .social-icon:hover { background: rgba(255,255,255,0.22); }
+  .premio-stat-link { display: block; text-decoration: none; color: inherit; }
+  .premio-stat-link:hover .premio-stat-title { text-decoration: underline; }
+  .premio-stat-arrow { display: inline-block; transition: transform .15s ease; }
+  .premio-stat-link:hover .premio-stat-arrow { transform: translateX(4px); }
+
+  .hero-media-wrap { position: relative; }
+  .hero-media { position: relative; width: 100%; aspect-ratio: 16/9; background: #FFFFFF; overflow: hidden; }
+  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #FFFFFF; }
+  .hero-media .layer-cur { z-index: 1; }
+  .hero-media .layer-prev { z-index: 2; opacity: 0; transition: opacity .6s ease; }
+  .hero-media .layer-prev.visible { opacity: 1; }
+
+  #hero-screens { position: absolute; inset: 0; }
+  .mock-screen { position: absolute; inset: 0; display: flex; background: #FFFFFF; opacity: 0; pointer-events: none; transition: opacity .6s ease; z-index: 0; }
+  .mock-screen.active { opacity: 1; pointer-events: auto; z-index: 1; }
+  .mock-dash-sidebar { width: 44px; flex: none; background: #F8F8FF; border-right: 1px solid #EAECFF; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0; }
+  .mock-dash-icon { width: 18px; height: 18px; border-radius: 6px; background: #DADCF5; }
+  .mock-dash-icon.active { background: #3D3DC8; }
+  .mock-dash-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 18px 22px; gap: 16px; }
+  .mock-dash-topbar { display: flex; gap: 8px; }
+  .mock-dash-pill { height: 10px; border-radius: 999px; background: #EAECFF; width: 46px; }
+  .mock-dash-pill.wide { width: 92px; }
+  .mock-dash-content { flex: 1; display: flex; gap: 22px; min-height: 0; }
+  .mock-dash-chart { flex: 1; display: flex; align-items: flex-end; gap: 10px; border-bottom: 1px solid #F0F1FC; padding-bottom: 2px; }
+  .mock-bar { flex: 1; border-radius: 5px 5px 0 0; height: var(--h, 0%); transition: height 1.1s cubic-bezier(.22,1,.36,1); }
+  .mock-dash-legend { flex: none; width: 122px; display: flex; flex-direction: column; gap: 9px; justify-content: center; }
+  .mock-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.5625rem; font-weight: 600; color: #5C5C8A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mock-legend-item .dot { width: 7px; height: 7px; border-radius: 999px; flex: none; }
+  .mock-dash-kpi { display: flex; align-items: center; gap: 8px; padding-bottom: 9px; margin-bottom: 4px; border-bottom: 1px solid #F0F1FC; }
+  .mock-donut { width: 32px; height: 32px; flex: none; transform: rotate(-90deg); }
+  .mock-donut-bg { fill: none; stroke: #EAECFF; stroke-width: 3; }
+  .mock-donut-fg { fill: none; stroke: #3D3DC8; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 97.4; transition: stroke-dashoffset 1.3s cubic-bezier(.22,1,.36,1); }
+  .mock-kpi-value { display: block; font-size: 0.9375rem; font-weight: 800; color: #1A1A3E; letter-spacing: -0.01em; }
+  .mock-kpi-label { display: block; font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9A9AC0; }
+
+  .mock-cal-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 16px 20px; gap: 10px; }
+  .mock-cal-header { font-size: 0.5625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9A9AC0; }
+  .mock-cal-grid { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .mock-cal-day { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .mock-cal-day-label { font-size: 0.5rem; font-weight: 700; color: #9A9AC0; text-align: center; }
+  .mock-cal-event { border-radius: 5px; padding: 4px 5px; font-size: 0.4375rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; opacity: 0; transform: translateY(6px) scale(.95); transition: opacity .4s ease, transform .4s ease; overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
+  .mock-cal-event.shown { opacity: 1; transform: translateY(0) scale(1); }
+  @media (max-width: 480px) {
+    .mock-dash-sidebar { display: none; }
+    .mock-cal-main { padding: 12px 10px; }
+    .mock-cal-grid { gap: 4px; }
+    .mock-cal-event { padding: 4px 3px; }
+  }
+
+  .mock-chat-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 16px; gap: 8px; }
+  .mock-chat-header { display: flex; align-items: center; gap: 6px; padding-bottom: 8px; border-bottom: 1px solid #F0F1FC; }
+  .mock-chat-avatar { width: 18px; height: 18px; border-radius: 999px; background: #3D3DC8; flex: none; }
+  .mock-chat-title { font-size: 0.5625rem; font-weight: 700; color: #1A1A3E; }
+  .mock-chat-body { flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
+  .mock-chat-main .mock-bubble { max-width: 82%; padding: 7px 10px; border-radius: 12px; font-size: 0.5625rem; line-height: 1.4; opacity: 0; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease; }
+  .mock-chat-main .mock-bubble.agent { align-self: flex-start; background: #F4F5FF; color: #1A1A3E; border-bottom-left-radius: 4px; }
+  .mock-chat-main .mock-bubble.user { align-self: flex-end; background: #3D3DC8; color: #FFFFFF; border-bottom-right-radius: 4px; }
+  .mock-chat-main .mock-bubble.shown { opacity: 1; transform: translateY(0); }
+  .mock-chat-inputbar { margin-top: 8px; height: 22px; border-radius: 999px; background: #F4F5FF; border: 1px solid #E4E6FA; display: flex; align-items: center; padding: 0 8px; gap: 6px; flex: none; }
+  .mock-chat-inputbar span { font-size: 0.5rem; color: #9A9AC0; flex: 1; }
+  .mock-chat-send { width: 14px; height: 14px; border-radius: 999px; background: #3D3DC8; flex: none; }
+
+  .mock-role-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 18px 22px; gap: 12px; }
+  .mock-role-header { display: flex; align-items: center; justify-content: space-between; }
+  .mock-role-title { font-size: 0.6875rem; font-weight: 700; color: #1A1A3E; }
+  .mock-role-badge { font-size: 0.4375rem; font-weight: 700; color: #3D3DC8; background: #EAECFF; border-radius: 999px; padding: 3px 8px; }
+  .mock-role-list { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 6px; gap: 16px; }
+  .mock-role-item { display: flex; flex-direction: column; gap: 4px; }
+  .mock-role-item-top { display: flex; justify-content: space-between; font-size: 0.5625rem; font-weight: 600; color: #1A1A3E; }
+  .mock-role-bar { height: 5px; border-radius: 999px; background: #E4E6FA; overflow: hidden; }
+  .mock-role-bar-fill { height: 100%; width: var(--w, 0%); transition: width 1s cubic-bezier(.22,1,.36,1); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mock-screen { transition: none; }
+    .mock-bar, .mock-donut-fg, .mock-role-bar-fill { transition: none; }
+    .mock-cal-event, .mock-chat-main .mock-bubble { transition: none; }
+  }
+
+  .stat-card { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+  .stat-card.visible { opacity: 1; transform: translateY(0); }
+  .stat-card.screen-hide { opacity: 0 !important; transform: translateY(6px) !important; }
+  .mini-frame-stack { position: relative; min-height: 64px; }
+  .mini-frame { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
+  .mini-frame.cur { position: relative; opacity: 1; z-index: 1; }
+  .mini-frame.prev { opacity: 1; z-index: 2; }
+  .mini-frame.prev.fading { opacity: 0; }
+
+  .mock-bubble { max-width: 82%; padding: 10px 14px; border-radius: 14px; font-size: 0.875rem; line-height: 1.5; }
+  .mock-bubble.agent { align-self: flex-start; background: #FFFFFF; color: #1A1A3E; border-bottom-left-radius: 4px; }
+  .mock-bubble.user { align-self: flex-end; background: #3D3DC8; color: #FFFFFF; border-bottom-right-radius: 4px; }
+
+  #cierre-thanks { display: none; }
+  #cierre-form.hidden { display: none; }
+
+  .grid-logos-6 { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 28px; align-items: center; margin-top: 32px; }
+  .grid-stats-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+  .grid-problema-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+
+  #site-header .mobile-nav-toggle { color: #FFFFFF; }
+  #site-header.scrolled .mobile-nav-toggle { color: #1A1A3E; }
+
+  @media (max-width: 860px) {
+    #site-header nav.desktop-nav { display: none !important; }
+    .grid-logos-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; }
+    .grid-stats-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-problema-3 { grid-template-columns: 1fr; }
+    #hero-wrap { flex-basis: 100% !important; }
+    #top > section:first-child { min-height: auto !important; padding-top: 128px !important; padding-bottom: 56px !important; }
+  }
+  @media (max-width: 480px) {
+    .grid-logos-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: clamp(1.7rem, 8.5vw, 2.5rem) !important; }
+    .hero-title__rotator { min-width: 0 !important; }
+  }
+  @keyframes cIn{from{opacity:0;transform:translateY(6px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes cIO{0%{opacity:0;transform:translateY(6px)}15%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
+  @keyframes dr{to{stroke-dashoffset:0}}
+  @keyframes ring{0%{opacity:0;r:4}30%{opacity:1}100%{opacity:0;r:16}}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes fillw{from{width:0}to{width:100%}}
+  #como-demo .ci{opacity:0;animation:cIn .5s cubic-bezier(.2,.8,.3,1.15) forwards}
+  #como-demo .cio{opacity:0;animation:cIO 2.4s ease forwards}
+  #como-demo .draw{stroke-dasharray:260;stroke-dashoffset:260;animation:dr .6s ease forwards}
+  #como-demo .ring{opacity:0;animation:ring 1.6s ease-out 2}
+  #como-demo .grow{transform-origin:left center;animation:grow .9s cubic-bezier(.2,.8,.3,1) both}
+  #como-demo .fill{display:block;height:100%;width:0;background:#FFB422;border-radius:99px;animation:fillw linear forwards}
+  #como-demo .ev{border-radius:6px;padding:5px 7px;font-size:11px;line-height:1.25;font-weight:700;color:#1A1A3E;border-left:3px solid #3D3DC8;box-sizing:border-box;overflow:hidden}
+  #como-demo .ev span{display:block;font-weight:500;color:#4A4A72;font-size:10px;margin-top:2px}
+  #como-demo .g-none{background:#F1F1F5;border-left-color:#C4C4D2;color:#6B6B80}
+  #como-demo .g-prod{background:#ECECFF;border-left-color:#3D3DC8}
+  #como-demo .g-tec{background:#FFF1D6;border-left-color:#D98A00}
+  #como-demo .g-eq{background:#F0ECFF;border-left-color:#7B5CE0}
+  #como-demo .g-coord{background:#E6F2FF;border-left-color:#2F7FCC}
+  @media (prefers-reduced-motion: reduce){#como-demo .ci,#como-demo .cio,#como-demo .draw,#como-demo .grow,#como-demo .ring,#como-demo .fill{animation-duration:.01s!important;animation-delay:0s!important}}
+  /* Cómo funciona: demo interactiva */
+  /* alto de la demo acotado al de la ventana, para que entre entera */
+  #como-demo { max-width: min(920px, max(520px, calc((100vh - 340px) * 1.86 + 48px))); }
+  #como-demo .cd-viewport { position: relative; overflow: hidden; height: 560px; }
+  #como-demo .cd-stage { position: absolute; left: 0; top: 0; width: 1040px; height: 560px; transform-origin: 0 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1A3E; }
+  #como-demo .cd-scene[hidden] { display: none !important; }
+  #como-demo .cd-steps { margin-top: 18px; display: flex; align-items: stretch; gap: 10px; }
+  #como-demo .cd-step { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 12px 16px; border-radius: 14px; cursor: pointer; font-family: inherit; color: #FFFFFF; background: transparent; border: 1px solid rgba(255,255,255,.14); }
+  #como-demo .cd-step.on { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35); }
+  #como-demo .cd-num { font-size: 12px; font-weight: 800; color: #9FA6F0; }
+  #como-demo .cd-step.on .cd-num { color: #FFB422; }
+  #como-demo .cd-sub { font-size: 12.5px; color: #9FA6F0; }
+  #como-demo .cd-step.on .cd-sub { color: #DDE0FF; }
+  #como-demo .cd-track { display: block; height: 4px; border-radius: 99px; background: rgba(255,255,255,.14); overflow: hidden; margin-top: 4px; }
+  #como-demo .cd-fill { display: block; height: 100%; width: 0; background: #FFB422; border-radius: 99px; }
+  #como-demo .cd-fill.run { animation: fillw linear forwards; }
+  #como-demo .cd-toggle { flex: none; width: 52px; border-radius: 14px; border: 1px solid rgba(255,255,255,.2); background: transparent; color: #FFFFFF; font-size: 16px; cursor: pointer; }
+  #como-demo.paused .cd-fill, #como-demo.paused .cd-scene * { animation-play-state: paused !important; }
+  @media (max-width: 699px) {
+    #como-demo { padding: 12px !important; border-radius: 20px !important; }
+    #como-demo .cd-side { display: none !important; }
+    /* versión celular: escenario vertical de 520 x 720 con las escenas reacomodadas */
+    #como-demo .cd-scene { height:720px !important; }
+    #como-demo .cd-main { width:520px !important;height:720px !important; }
+    #como-demo .cd-main svg[width="840"] { display:none !important; }
+    #como-demo .cd-main [style*="width:792px"] { width:472px !important; }
+    #como-demo .cd-call { font-size:20px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="top:62px"] > span:nth-child(2) { display:none !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="height:56px"] { height:76px !important;align-items:flex-start !important;padding-top:16px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="top:256px"][style*="height:56px"] { top:276px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="top:322px"][style*="height:56px"] { top:362px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="top:388px"][style*="height:56px"] { top:448px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="height:56px"] > [style*="left:500px"] { left:52px !important;top:auto !important;bottom:14px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main [style*="letter-spacing:.8em"] { display:none !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main .cd-call[style*="left:210px"] { left:182px !important;top:184px !important;font-size:17px !important;white-space:nowrap !important;padding:9px 14px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main .cd-call[style*="left:500px"] { left:24px !important;top:548px !important;width:472px !important; }
+    #como-demo .cd-scene[data-scene="0"] .cd-main .cd-call[style*="left:24px"][style*="top:470px"] { top:630px !important; }
+    #como-demo .cd-main [style*="left:498px"][style*="width:150px"], #como-demo .cd-main [style*="left:656px"][style*="width:150px"] { display:none !important; }
+    #como-demo .cd-scene[data-scene="1"] .cd-main [style*="top:18px"] > span:last-child, #como-demo .cd-scene[data-scene="3"] .cd-main [style*="top:18px"] > span:last-child { display:none !important; }
+    #como-demo .cd-scene[data-scene="1"] .cd-main [style*="top:60px"] > span:last-child, #como-demo .cd-scene[data-scene="3"] .cd-main [style*="top:60px"] > span:last-child { display:none !important; }
+    #como-demo .cd-scene[data-scene="1"] .cd-main [style*="left:498px"][style*="width:170px"] { left:326px !important;top:380px !important; }
+    #como-demo .cd-scene[data-scene="1"] .cd-main .cd-call[style*="left:40px"] { left:24px !important;top:380px !important;max-width:290px !important; }
+    #como-demo .cd-scene[data-scene="1"] .cd-main .cd-call[style*="left:190px"] { left:24px !important;top:380px !important;width:290px !important; }
+    #como-demo .cd-scene[data-scene="1"] .cd-main .cd-call[style*="left:498px"] { left:24px !important;top:520px !important;width:472px !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main [style*="top:18px"] > span:nth-child(n+5) { display:none !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main [style*="width:500px"] { width:472px !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main [style*="width:492px"] { width:464px !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main [style*="left:540px"] { left:24px !important;top:378px !important;width:472px !important;height:170px !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main [style*="top:378px"][style*="width:792px"] { top:562px !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main .cd-call[style*="left:330px"] { left:328px !important;top:250px !important;font-size:16px !important;white-space:nowrap !important;padding:8px 12px !important; }
+    #como-demo .cd-scene[data-scene="2"] .cd-main .cd-call[style*="left:360px"] { left:24px !important;top:660px !important; }
+    #como-demo .cd-scene[data-scene="3"] .cd-main [style*="left:430px"] { left:24px !important;top:104px !important;width:472px !important;height:600px !important; }
+    #como-demo .cd-scene[data-scene="3"] .cd-main .cd-call[style*="left:40px"] { left:24px !important;top:14px !important;width:472px !important; }
+    #como-demo .cd-demo-label { display: none; }
+    #como-demo .cd-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    #como-demo .cd-step { padding: 10px 12px; }
+    #como-demo .cd-sub { display: none; }
+    #como-demo .cd-toggle { grid-column: 1 / -1; width: auto; height: 40px; }
+  }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Pausa","url":"https://www.pausaco.com/pt/","logo":"https://www.pausaco.com/assets/pausa-mark-indigo.png","sameAs":["https://www.linkedin.com/company/pausaco"],"email":"contactopausa@pausaco.com"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Pausa","url":"https://www.pausaco.com/pt/","inLanguage":"pt-BR"}
+</script>
+</head>
+<body>
+
+<header id="site-header">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="#top" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img id="word-logo-white" src="../assets/pausa-word-white.png" alt="Pausa" style="height:18px;width:auto">
+      <img id="word-logo-indigo" src="../assets/pausa-word-indigo.png" alt="Pausa" style="height:18px;width:auto">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle nav-link">Nossa solução</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="#top">Plataforma</a>
+            <a href="metodologia.html">Metodologia</a>
+            <a href="desarrollo-de-habilidades.html">Desenvolvimento de habilidades</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle nav-link">Empresa</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="equipo.html">Equipe</a>
+            <a href="prensa.html">Imprensa</a>
+            <a href="reconocimiento.html">Reconhecimentos</a>
+            <a href="preguntas-frecuentes.html">Perguntas frequentes</a>
+            <a href="contacto.html">Contato</a>
+            <a href="sumate-al-equipo.html">Junte-se à equipe</a>
+          </div>
+        </div>
+      </div>
+      <div id="lang-switch" style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
+        <a class="lang-btn" href="../index.html" style="padding:4px 6px;font-weight:700;letter-spacing:inherit">ES</a>
+        <a class="lang-btn" href="../en/index.html" style="padding:4px 6px;font-weight:700;letter-spacing:inherit">EN</a>
+        <a class="lang-btn active" href="index.html" style="padding:4px 6px;font-weight:700;letter-spacing:inherit">PT</a>
+      </div>
+      <a href="#cierre" class="cta-pill" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;font-size:0.9375rem">Agende uma demo</a>
+    </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Nossa solução</span>
+    <a href="#top">Plataforma</a>
+    <a href="metodologia.html">Metodologia</a>
+    <a href="desarrollo-de-habilidades.html">Desenvolvimento de habilidades</a>
+    <span class="mobile-nav-section-label">Empresa</span>
+    <a href="equipo.html">Equipe</a>
+    <a href="prensa.html">Imprensa</a>
+    <a href="reconocimiento.html">Reconhecimentos</a>
+    <a href="preguntas-frecuentes.html">Perguntas frequentes</a>
+    <a href="contacto.html">Contato</a>
+    <a href="sumate-al-equipo.html">Junte-se à equipe</a>
+    <div class="mobile-nav-lang">
+      <a class="lang-btn" href="../index.html">ES</a>
+      <a class="lang-btn" href="../en/index.html">EN</a>
+      <a class="lang-btn active" href="index.html">PT</a>
+    </div>
+    <a href="#cierre" class="mobile-nav-cta">Agende uma demo</a>
+  </div>
+</header>
+
+<main id="top" style="display:block">
+
+  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;min-height:82vh;min-height:82svh;display:flex;align-items:center;padding:140px 24px 60px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:72px;align-items:center;width:100%">
+      <div style="flex:1 1 420px;min-width:0">
+        <h1 class="hero-title" style="margin:0;max-width:23ch;font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF"><span style="display:block;font-size:0.72em;margin-bottom:14px;text-wrap:balance">Sua estratégia define um rumo.</span>O foco de <span class="hero-title__rotator" aria-hidden="true"><span class="hero-title__word is-active">sua organização</span><span class="hero-title__word">sua equipe</span><span class="hero-title__word">seus líderes</span><span class="hero-title__word">cada pessoa</span></span> vai nessa direção?<span class="sr-only">Sua estratégia define um rumo. O foco de sua organização vai nessa direção?</span></h1>
+        <p style="margin:28px 0 0;max-width:50ch;font-size:1.0625rem;line-height:1.55;color:#B9C0F5">Uma plataforma de gestão criada para ajudar as organizações a trabalhar de forma mais eficiente e sustentável.</p>
+      </div>
+      <div id="hero-wrap" style="flex:1 1 420px;min-width:0;max-width:480px;position:relative;cursor:pointer">
+        <div class="hero-media-wrap" style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.55);background:#F4F5FF">
+          <div style="height:38px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">app.pausaco</div>
+          </div>
+          <div class="hero-media" id="hero-media">
+            <div id="hero-screens">
+
+              <div class="mock-screen" data-screen="agenda">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon active"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                </div>
+                <div class="mock-cal-main">
+                  <p class="mock-cal-header" style="margin:0">Registro semanal — 18 a 22 de agosto</p>
+                  <div class="mock-cal-grid">
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">S</span>
+                      <div class="mock-cal-event" style="background:#3D3DC8">Reunião 1:1</div>
+                      <div class="mock-cal-event" style="background:#9FA6F0;height:34px">Planejamento</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">T</span>
+                      <div class="mock-cal-event" style="background:#6A6AD6;height:22px">Vendas</div>
+                      <div class="mock-cal-event" style="background:#BFC5FF;height:44px;color:#1A1A3E">Administração</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">Q</span>
+                      <div class="mock-cal-event" style="background:#3D3DC8;height:50px">Gestão de Equipe</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">Q</span>
+                      <div class="mock-cal-event" style="background:#9FA6F0;height:26px">Reuniões</div>
+                      <div class="mock-cal-event" style="background:#6A6AD6;height:30px">Estratégia</div>
+                    </div>
+                    <div class="mock-cal-day">
+                      <span class="mock-cal-day-label">S</span>
+                      <div class="mock-cal-event" style="background:#BFC5FF;height:20px;color:#1A1A3E">Reflexão</div>
+                      <div class="mock-cal-event" style="background:#3D3DC8;height:38px">Fechamento semanal</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-screen" data-screen="dashboard" id="hero-dash">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon active"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                </div>
+                <div class="mock-dash-main">
+                  <div class="mock-dash-topbar">
+                    <span class="mock-dash-pill wide"></span>
+                    <span class="mock-dash-pill"></span>
+                    <span class="mock-dash-pill"></span>
+                  </div>
+                  <div class="mock-dash-content">
+                    <div class="mock-dash-chart">
+                      <div class="mock-bar" data-base="72" style="--h:0%;background:#3D3DC8"></div>
+                      <div class="mock-bar" data-base="48" style="--h:0%;background:#6A6AD6"></div>
+                      <div class="mock-bar" data-base="60" style="--h:0%;background:#9FA6F0"></div>
+                      <div class="mock-bar" data-base="38" style="--h:0%;background:#BFC5FF"></div>
+                    </div>
+                    <div class="mock-dash-legend">
+                      <div class="mock-dash-kpi">
+                        <svg class="mock-donut" viewBox="0 0 36 36" aria-hidden="true">
+                          <circle class="mock-donut-bg" cx="18" cy="18" r="15.5"></circle>
+                          <circle class="mock-donut-fg" id="hero-donut-fg" cx="18" cy="18" r="15.5" style="stroke-dashoffset:97.4"></circle>
+                        </svg>
+                        <div>
+                          <span class="mock-kpi-value" id="hero-kpi-value">0%</span>
+                          <span class="mock-kpi-label">Corresp. ao cargo</span>
+                        </div>
+                      </div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#3D3DC8"></span>Gestão de Equipe</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#6A6AD6"></span>Planejamento Comercial</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#9FA6F0"></span>Administração</div>
+                      <div class="mock-legend-item"><span class="dot" style="background:#BFC5FF"></span>Reuniões Internas</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-screen" data-screen="chat">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon active"></span>
+                  <span class="mock-dash-icon"></span>
+                </div>
+                <div class="mock-chat-main">
+                  <div class="mock-chat-header">
+                    <span class="mock-chat-avatar"></span>
+                    <span class="mock-chat-title">Agente Pausa</span>
+                  </div>
+                  <div class="mock-chat-body">
+                    <div class="mock-bubble agent">Esta semana seu Desvio foi de 32% em tarefas administrativas, acima do seu Foco semanal.</div>
+                    <div class="mock-bubble user">O que eu poderia delegar?</div>
+                    <div class="mock-bubble agent">Delegar "Envio de relatórios mensais" ao seu Coordenador de Operações libera ~4h nesta semana.</div>
+                  </div>
+                  <div class="mock-chat-inputbar">
+                    <span>Escreva sua resposta…</span>
+                    <span class="mock-chat-send"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-screen" data-screen="rol">
+                <div class="mock-dash-sidebar">
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon"></span>
+                  <span class="mock-dash-icon active"></span>
+                </div>
+                <div class="mock-role-main">
+                  <div class="mock-role-header">
+                    <span class="mock-role-title">Rol Vivo — Product Owner</span>
+                    <span class="mock-role-badge">Atualizado hoje</span>
+                  </div>
+                  <div class="mock-role-list">
+                    <div class="mock-role-item">
+                      <div class="mock-role-item-top"><span>Gestão de Produto</span><span>82%</span></div>
+                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="82" style="--w:0%;background:#3D3DC8"></div></div>
+                    </div>
+                    <div class="mock-role-item">
+                      <div class="mock-role-item-top"><span>Planejamento Estratégico</span><span>64%</span></div>
+                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="64" style="--w:0%;background:#6A6AD6"></div></div>
+                    </div>
+                    <div class="mock-role-item">
+                      <div class="mock-role-item-top"><span>Coordenação de Equipe</span><span>45%</span></div>
+                      <div class="mock-role-bar"><div class="mock-role-bar-fill" data-base="45" style="--w:0%;background:#9FA6F0"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="stat-card" id="stat-card" style="position:absolute;left:-18px;bottom:-22px;width:184px;z-index:5;background:#FFFFFF;border-radius:14px;padding:12px;box-shadow:0 18px 40px -14px rgba(10,10,50,0.35)">
+          <div class="mini-frame-stack" id="mini-stack">
+            <div class="mini-frame cur" data-frame="stat">
+              <div style="display:flex;align-items:center;gap:10px;padding:4px 2px">
+                <span style="width:8px;height:8px;border-radius:999px;background:#28C840;display:block;flex:none"></span>
+                <div>
+                  <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#5C5C8A">Correspondência ao cargo</p>
+                  <p style="margin:2px 0 0;font-size:1.25rem;font-weight:800;letter-spacing:-0.02em;color:#1A1A3E">98%</p>
+                </div>
+              </div>
+            </div>
+            <div class="mini-frame" data-frame="rol">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:999px;background:#3D3DC8;display:block;flex:none"></span><span style="font-size:0.6875rem;font-weight:700;color:#1A1A3E">Product Owner</span></div>
+                  <div style="height:4px;border-radius:999px;background:#E4E6FA;overflow:hidden"><div style="width:70%;height:100%;background:#3D3DC8"></div></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:999px;background:#FEBC2E;display:block;flex:none"></span><span style="font-size:0.6875rem;font-weight:700;color:#1A1A3E">Gestão da Área</span></div>
+                  <div style="height:4px;border-radius:999px;background:#E4E6FA;overflow:hidden"><div style="width:40%;height:100%;background:#5C5C8A"></div></div>
+                </div>
+                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Rol Vivo</p>
+              </div>
+            </div>
+            <div class="mini-frame" data-frame="foco">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:#F4F5FF;border:1px solid #DADCF5">
+                  <span style="font-size:0.625rem;color:#5C5C8A;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">O que eu poderia delegar?</span>
+                  <span style="width:18px;height:18px;border-radius:999px;background:#3D3DC8;display:flex;align-items:center;justify-content:center;flex:none">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
+                  </span>
+                </div>
+                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Foco</p>
+              </div>
+            </div>
+            <div class="mini-frame" data-frame="desvio">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:8px;background:#F4F5FF">
+                  <span style="font-size:0.625rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#3D3DC8">Insight</span>
+                  <p style="margin:0;font-size:0.6875rem;line-height:1.4;color:#5C5C8A">Convém delegar duas tarefas operacionais.</p>
+                </div>
+                <p style="margin:0;font-size:0.75rem;font-weight:700;color:#1A1A3E">Desvio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F4F5FF;padding:56px 24px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:#FFFFFF;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#3D3DC8">O problema</p>
+      <h2 style="margin:16px 0 0;max-width:26ch;font-size:clamp(2rem,3.4vw,2.875rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Nas organizações, <span style="color:#3D3DC8">ouvimos…</span></h2>
+      <div class="grid-problema-3">
+        <div style="background:#FFFFFF;border:1px solid #EAECFF;border-left:3px solid #3D3DC8;border-radius:16px;padding:28px;box-shadow:0 16px 36px -28px rgba(10,10,50,0.35);display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:none;width:28px;height:28px;border-radius:8px;background:#EAECFF;color:#3D3DC8;font-size:1.125rem;font-weight:800;font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;line-height:1">"</span>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.55;color:#1A1A3E">Minha agenda enche de reuniões que eu nem sei para que servem.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #EAECFF;border-left:3px solid #3D3DC8;border-radius:16px;padding:28px;box-shadow:0 16px 36px -28px rgba(10,10,50,0.35);display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:none;width:28px;height:28px;border-radius:8px;background:#EAECFF;color:#3D3DC8;font-size:1.125rem;font-weight:800;font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;line-height:1">"</span>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.55;color:#1A1A3E">Sou medido por A, mas me pedem B.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #EAECFF;border-left:3px solid #3D3DC8;border-radius:16px;padding:28px;box-shadow:0 16px 36px -28px rgba(10,10,50,0.35);display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:none;width:28px;height:28px;border-radius:8px;background:#EAECFF;color:#3D3DC8;font-size:1.125rem;font-weight:800;font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;line-height:1">"</span>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.55;color:#1A1A3E">O dia passa e eu não sei em quê.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #EAECFF;border-left:3px solid #3D3DC8;border-radius:16px;padding:28px;box-shadow:0 16px 36px -28px rgba(10,10,50,0.35);display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:none;width:28px;height:28px;border-radius:8px;background:#EAECFF;color:#3D3DC8;font-size:1.125rem;font-weight:800;font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;line-height:1">"</span>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.55;color:#1A1A3E">Eu mesmo faço e pronto.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #EAECFF;border-left:3px solid #3D3DC8;border-radius:16px;padding:28px;box-shadow:0 16px 36px -28px rgba(10,10,50,0.35);display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:none;width:28px;height:28px;border-radius:8px;background:#EAECFF;color:#3D3DC8;font-size:1.125rem;font-weight:800;font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;line-height:1">"</span>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.55;color:#1A1A3E">Sinto que devo o tempo todo.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #EAECFF;border-left:3px solid #3D3DC8;border-radius:16px;padding:28px;box-shadow:0 16px 36px -28px rgba(10,10,50,0.35);display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:none;width:28px;height:28px;border-radius:8px;background:#EAECFF;color:#3D3DC8;font-size:1.125rem;font-weight:800;font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;line-height:1">"</span>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.55;color:#1A1A3E">A operação me consome e eu não consigo enxergar o longo prazo.</p>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding-top:32px;border-top:1px solid #D5D8F5">
+        <p style="margin:0 0 16px;font-size:1rem;font-weight:700;color:#1A1A3E">Principais motivos</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+          <span style="display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #CCCCEE;font-size:0.875rem;font-weight:500;color:#5C5C8A;white-space:nowrap">Cargo pouco claro</span>
+          <span style="display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #CCCCEE;font-size:0.875rem;font-weight:500;color:#5C5C8A;white-space:nowrap">Uso do tempo sem consciência</span>
+          <span style="display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #CCCCEE;font-size:0.875rem;font-weight:500;color:#5C5C8A;white-space:nowrap">Tudo centralizado em uma pessoa</span>
+          <span style="display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #CCCCEE;font-size:0.875rem;font-weight:500;color:#5C5C8A;white-space:nowrap">Decisões por percepção</span>
+          <span style="display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #CCCCEE;font-size:0.875rem;font-weight:500;color:#5C5C8A;white-space:nowrap">Reflexão adiada pela urgência</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" style="background:#FFFFFF;padding:40px 24px 56px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Como funciona</p>
+      <h2 style="margin:16px 0 0;max-width:40ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Uma metodologia que se repete a cada semana: mede o que acontece, traz dados e <span style="color:#3D3DC8">torna a lacuna visível.</span></h2>
+      <p style="margin:12px 0 0;max-width:56ch;font-size:1.0625rem;line-height:1.5;color:#5C5C8A">Identificar desvios facilita a tomada de decisões.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:32px">
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">01</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Cargo Vivo</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Não é o cargo descrito no organograma, nem uma descrição de cargo arquivada. É o cargo que você realmente vive: o que pedem de você, o que você consegue fazer e o que você não consegue fazer.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">02</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Foco</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Sua agenda e sua própria reflexão mostram onde ficou sua semana. Cruzado com o Cargo Vivo, aparece a lacuna real — não a que você supunha.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">03</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Desvio</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Essa lacuna fica visível: onde esteve o foco e onde deveria ter estado.</p>
+        </div>
+        <div style="text-align:left;background:none;border:1px solid #CCCCEE;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:2.25rem;font-weight:800;letter-spacing:-0.02em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">04</span>
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Ação</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">A lacuna fica visível, para que você tome ações concretas: delegar, reorganizar a agenda, conversar com a equipe, entre outras.</p>
+        </div>
+      </div>
+      <p style="margin:28px 0 0;font-size:1.125rem;line-height:1.6;font-weight:700;color:#1A1A3E">Afastar-nos da percepção <span style="color:#3D3DC8">para gerir com dados.</span></p>
+      <div id="como-demo" style="margin:32px auto 0;box-sizing:border-box;background:#1E1E6B;border-radius:28px;padding:24px">
+        <div style="border-radius:14px;overflow:hidden;background:#FFFFFF;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)"><div style="height:36px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5"><span style="width:10px;height:10px;border-radius:99px;background:#FF5F57"></span><span style="width:10px;height:10px;border-radius:99px;background:#FEBC2E"></span><span style="width:10px;height:10px;border-radius:99px;background:#28C840"></span><div style="margin-left:10px;height:20px;padding:0 12px;border-radius:99px;background:#FFFFFF;display:flex;align-items:center;font-size:11px;color:#5C5C8A">app.pausaco.com</div><span style="flex:1"></span><span class="cd-demo-label" style="font-size:11px;font-weight:600;color:#5C5C8A">Demo com dados de exemplo</span></div><div class="cd-viewport" id="cd-viewport"><div class="cd-stage" id="cd-stage"><div class="cd-scene" data-scene="0" style="display:flex;height:560px"><div class="cd-side" style="width:200px;flex:none;border-right:1px solid #ECEDF3;background:#FFFFFF;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:4px"><p style="margin:0 0 18px 12px;font-size:15px;font-weight:800;letter-spacing:.42em;color:#14142B">PAUSA</p><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Painel</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;background:#F2F0FF;font-size:13.5px;font-weight:600;color:#6D3FF2"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #6D3FF2;box-sizing:border-box"></span>Cargo Digital</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Agenda</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Relatório</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Organização</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Insights</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Usuários</div></div><div class="cd-main" style="position:relative;width:840px;height:560px;flex:none;background:#FAFAFC;overflow:hidden"><div style="position:absolute;left:24px;top:18px;right:24px;height:32px;display:flex;align-items:center;gap:14px"><span style="font-size:20px;color:#14142B">Cargo Digital</span><span style="width:1px;height:20px;background:#E3E4EC"></span><span style="font-size:12px;font-weight:600;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:5px 10px">Meu Cargo</span></div><div class="ci" style="position:absolute;left:24px;top:62px;width:792px;height:62px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:24px;padding:0 20px;animation-delay:.05s"><span style="font-size:13px;color:#6B6B80">Time de Produto</span><span style="font-size:13px;color:#6B6B80">Empresa Demo</span><span style="flex:1"></span><div style="text-align:center"><p style="margin:0;font-size:22px;font-weight:700;color:#6D3FF2">24</p><p style="margin:0;font-size:10.5px;color:#6B6B80">MacroTarefas</p></div><div style="text-align:center"><p style="margin:0;font-size:22px;font-weight:700;color:#6D3FF2">6</p><p style="margin:0;font-size:10.5px;color:#6B6B80">Grupos</p></div><div style="text-align:center"><p style="margin:0;font-size:22px;font-weight:700;color:#6D3FF2">7</p><p style="margin:0;font-size:10.5px;color:#6B6B80">Metas ativas</p></div></div><div class="ci" style="position:absolute;left:24px;top:136px;width:792px;height:40px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:14px;padding:0 18px;animation-delay:.15s"><span style="font-size:12.5px;color:#6B6B80">Total de metas</span><span style="position:relative;flex:1;height:7px;border-radius:99px;background:#EEEEF3"><span class="grow" style="position:absolute;left:0;top:0;bottom:0;width:60%;border-radius:99px;background:#6D3FF2;animation-delay:.3s"></span></span><span style="font-size:14px;font-weight:600">60%</span></div><div class="ci" style="position:absolute;left:24px;top:190px;width:792px;height:56px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:12px;padding:0 18px;animation-delay:0.30s"><span style="width:16px;height:16px;border-radius:99px;background:#3D3DC8;flex:none"></span><span style="font-size:11px;color:#6B6B80">›</span><span style="font-size:16px;font-weight:600;color:#14142B">Produto</span><span style="font-size:11px;color:#6B6B80;background:#F5F5F8;border:1px solid #E3E4EC;border-radius:5px;padding:1px 7px">7</span><span style="position:absolute;left:500px;top:0;bottom:0;display:flex;align-items:center;gap:12px"><span style="position:relative;display:block;width:150px;height:7px;border-radius:99px;background:#ECEDF2"><span class="grow" style="position:absolute;left:0;top:0;bottom:0;width:54%;border-radius:99px;background:#3D3DC8;animation-delay:0.60s"></span></span><span style="font-size:12.5px;color:#6B6B80">Mínimo 20%</span></span><span style="flex:1"></span><span style="font-size:13px;color:#1A1A2E;letter-spacing:.8em">✎+</span></div><div class="ci" style="position:absolute;left:24px;top:256px;width:792px;height:56px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:12px;padding:0 18px;animation-delay:0.42s"><span style="width:16px;height:16px;border-radius:99px;background:#1F8A55;flex:none"></span><span style="font-size:11px;color:#6B6B80">›</span><span style="font-size:16px;font-weight:600;color:#14142B">Pesquisa com usuários</span><span style="font-size:11px;color:#6B6B80;background:#F5F5F8;border:1px solid #E3E4EC;border-radius:5px;padding:1px 7px">3</span><span style="position:absolute;left:500px;top:0;bottom:0;display:flex;align-items:center;gap:12px"><span style="position:relative;display:block;width:150px;height:7px;border-radius:99px;background:#ECEDF2"><span class="grow" style="position:absolute;left:0;top:0;bottom:0;width:10%;border-radius:99px;background:#1F8A55;animation-delay:0.72s"></span></span><span style="font-size:12.5px;color:#6B6B80">Mínimo 5%</span></span><span style="flex:1"></span><span style="font-size:13px;color:#1A1A2E;letter-spacing:.8em">✎+</span></div><div class="ci" style="position:absolute;left:24px;top:322px;width:792px;height:56px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:12px;padding:0 18px;animation-delay:0.54s"><span style="width:16px;height:16px;border-radius:99px;background:#D98A00;flex:none"></span><span style="font-size:11px;color:#6B6B80">›</span><span style="font-size:16px;font-weight:600;color:#14142B">Execução técnica</span><span style="font-size:11px;color:#6B6B80;background:#F5F5F8;border:1px solid #E3E4EC;border-radius:5px;padding:1px 7px">4</span><span style="position:absolute;left:500px;top:0;bottom:0;display:flex;align-items:center;gap:12px"><span style="position:relative;display:block;width:150px;height:7px;border-radius:99px;background:#ECEDF2"><span class="grow" style="position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:99px;background:#D98A00;animation-delay:0.84s"></span></span><span style="font-size:12.5px;color:#6B6B80">Máximo 10%</span></span><span style="flex:1"></span><span style="font-size:13px;color:#1A1A2E;letter-spacing:.8em">✎+</span></div><div class="ci" style="position:absolute;left:24px;top:388px;width:792px;height:56px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:12px;padding:0 18px;animation-delay:0.66s"><span style="width:16px;height:16px;border-radius:99px;background:#7B5CE0;flex:none"></span><span style="font-size:11px;color:#6B6B80">›</span><span style="font-size:16px;font-weight:600;color:#14142B">Gestão de time</span><span style="font-size:11px;color:#6B6B80;background:#F5F5F8;border:1px solid #E3E4EC;border-radius:5px;padding:1px 7px">5</span><span style="position:absolute;left:500px;top:0;bottom:0;display:flex;align-items:center;gap:12px"><span style="position:relative;display:block;width:150px;height:7px;border-radius:99px;background:#ECEDF2"><span class="grow" style="position:absolute;left:0;top:0;bottom:0;width:82%;border-radius:99px;background:#7B5CE0;animation-delay:0.96s"></span></span><span style="font-size:12.5px;color:#6B6B80">Máximo 15%</span></span><span style="flex:1"></span><span style="font-size:13px;color:#1A1A2E;letter-spacing:.8em">✎+</span></div><div class="ci cd-call" style="position:absolute;left:210px;top:199px;animation-delay:1.0s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">← Seu cargo, em grupos de tarefas</div><svg class="ci" width="840" height="560" viewBox="0 0 840 560" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible;animation-delay:3.1s;" aria-hidden="true"><defs><marker id="ah1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FFB422"></path></marker></defs><path d="M600 470 Q606 444 590 424" fill="none" stroke="#FFB422" stroke-width="3" stroke-linecap="round" marker-end="url(#ah1)" class="draw" style="animation-delay:3.25s"></path><circle cx="590" cy="424" r="9" fill="none" stroke="#FFB422" stroke-width="2" class="ring" style="animation-delay:3.6s"></circle></svg><div class="ci cd-call" style="position:absolute;left:500px;top:470px;width:316px;animation-delay:3.1s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">Quanto tempo você quer dar a cada um</div><div class="ci cd-call" style="position:absolute;left:24px;top:470px;animation-delay:5.87s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">A IA ajuda você a montá-lo</div></div></div><div class="cd-scene" data-scene="1" hidden style="display:flex;height:560px"><div class="cd-side" style="width:200px;flex:none;border-right:1px solid #ECEDF3;background:#FFFFFF;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:4px"><p style="margin:0 0 18px 12px;font-size:15px;font-weight:800;letter-spacing:.42em;color:#14142B">PAUSA</p><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Painel</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Cargo Digital</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;background:#F2F0FF;font-size:13.5px;font-weight:600;color:#6D3FF2"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #6D3FF2;box-sizing:border-box"></span>Agenda</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Relatório</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Organização</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Insights</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Usuários</div></div><div class="cd-main" style="position:relative;width:840px;height:560px;flex:none;background:#FAFAFC;overflow:hidden"><div style="position:absolute;left:24px;top:18px;right:24px;height:32px;display:flex;align-items:center;gap:14px"><span style="font-size:20px;color:#14142B">Agenda</span><span style="width:1px;height:20px;background:#E3E4EC"></span><span style="font-size:12px;font-weight:600;background:#F0F1F7;border-radius:7px;padding:5px 10px">Calendário Pausa</span><span style="flex:1"></span><span style="font-size:12px;color:#6B6B80">Falta algo? <span style="color:#6D3FF2;font-weight:700;text-decoration:underline">Sincronizar calendário</span></span></div><div style="position:absolute;left:24px;top:60px;width:792px;height:32px;display:flex;align-items:center;gap:8px"><span style="font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:6px 12px">Hoje</span><span style="flex:1;text-align:center;font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:6px 12px">22 de SETEMBRO – 26 de SETEMBRO</span><span style="font-size:12px;font-weight:700;color:#FFFFFF;background:#6D3FF2;border-radius:8px;padding:7px 12px">+ Criar</span><span style="font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:6px 12px">Por voz</span></div><p style="position:absolute;left:24px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">SEG 22</p><p style="position:absolute;left:182px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">TER 23</p><p style="position:absolute;left:340px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">QUA 24</p><p style="position:absolute;left:498px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">QUI 25</p><p style="position:absolute;left:656px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">SEX 26</p><div class="ev g-none ci" style="position:absolute;left:24px;top:136px;width:150px;height:40px;animation-delay:0.2s">Weekly de produto<span>9:00 – 9:45</span></div><div class="ev g-prod ci" style="position:absolute;left:24px;top:136px;width:150px;height:40px;animation-delay:3.33s;animation-duration:.6s;">Weekly de produto<span>9:00 – 9:45</span></div><div class="ev g-none ci" style="position:absolute;left:24px;top:182px;width:150px;height:70px;animation-delay:0.25s">Correção de erros<span>10:00 – 12:00</span></div><div class="ev g-tec ci" style="position:absolute;left:24px;top:182px;width:150px;height:70px;animation-delay:3.38s;animation-duration:.6s;">Correção de erros<span>10:00 – 12:00</span></div><div class="ev g-none ci" style="position:absolute;left:24px;top:258px;width:150px;height:46px;animation-delay:0.30000000000000004s">Revisão de QA<span>14:30 – 15:30</span></div><div class="ev g-coord ci" style="position:absolute;left:24px;top:258px;width:150px;height:46px;animation-delay:3.43s;animation-duration:.6s;">Revisão de QA<span>14:30 – 15:30</span></div><div class="ev g-none ci" style="position:absolute;left:182px;top:136px;width:150px;height:40px;animation-delay:0.35000000000000003s">1:1 com Martín<span>9:30 – 10:15</span></div><div class="ev g-eq ci" style="position:absolute;left:182px;top:136px;width:150px;height:40px;animation-delay:3.48s;animation-duration:.6s;">1:1 com Martín<span>9:30 – 10:15</span></div><div class="ev g-none ci" style="position:absolute;left:182px;top:182px;width:150px;height:84px;animation-delay:0.4s">Ajustes de integração<span>10:30 – 13:00</span></div><div class="ev g-tec ci" style="position:absolute;left:182px;top:182px;width:150px;height:84px;animation-delay:3.53s;animation-duration:.6s;">Ajustes de integração<span>10:30 – 13:00</span></div><div class="ev g-none ci" style="position:absolute;left:182px;top:272px;width:150px;height:46px;animation-delay:0.45s">Definir escopo v2<span>15:00 – 16:00</span></div><div class="ev g-prod ci" style="position:absolute;left:182px;top:272px;width:150px;height:46px;animation-delay:3.58s;animation-duration:.6s;">Definir escopo v2<span>15:00 – 16:00</span></div><div class="ev g-none ci" style="position:absolute;left:340px;top:136px;width:150px;height:48px;animation-delay:0.5s">Suporte a dúvidas<span>9:00 – 10:00</span></div><div class="ev g-coord ci" style="position:absolute;left:340px;top:136px;width:150px;height:48px;animation-delay:3.63s;animation-duration:.6s;">Suporte a dúvidas<span>9:00 – 10:00</span></div><div class="ev g-none ci" style="position:absolute;left:340px;top:190px;width:150px;height:62px;animation-delay:0.55s">Correção de erros<span>10:30 – 12:00</span></div><div class="ev g-tec ci" style="position:absolute;left:340px;top:190px;width:150px;height:62px;animation-delay:3.68s;animation-duration:.6s;">Correção de erros<span>10:30 – 12:00</span></div><div class="ev g-none ci" style="position:absolute;left:340px;top:258px;width:150px;height:44px;animation-delay:0.6000000000000001s">Retro do time<span>16:00 – 17:00</span></div><div class="ev g-eq ci" style="position:absolute;left:340px;top:258px;width:150px;height:44px;animation-delay:3.73s;animation-duration:.6s;">Retro do time<span>16:00 – 17:00</span></div><div class="ev g-none ci" style="position:absolute;left:498px;top:136px;width:150px;height:56px;animation-delay:0.65s">Brainstorming de produto<span>9:30 – 10:45</span></div><div class="ev g-prod ci" style="position:absolute;left:498px;top:136px;width:150px;height:56px;animation-delay:3.78s;animation-duration:.6s;">Brainstorming de produto<span>9:30 – 10:45</span></div><div class="ev g-none ci" style="position:absolute;left:498px;top:198px;width:150px;height:40px;animation-delay:0.7s">Revisão de QA<span>11:00 – 11:45</span></div><div class="ev g-coord ci" style="position:absolute;left:498px;top:198px;width:150px;height:40px;animation-delay:3.83s;animation-duration:.6s;">Revisão de QA<span>11:00 – 11:45</span></div><div class="ev g-none ci" style="position:absolute;left:498px;top:244px;width:150px;height:62px;animation-delay:0.75s">Correção de erros<span>12:00 – 14:00</span></div><div class="ev g-tec ci" style="position:absolute;left:498px;top:244px;width:150px;height:62px;animation-delay:3.88s;animation-duration:.6s;">Correção de erros<span>12:00 – 14:00</span></div><div class="ev g-none ci" style="position:absolute;left:656px;top:136px;width:150px;height:40px;animation-delay:0.8s">Atualizar quadro<span>9:00 – 9:45</span></div><div class="ev g-coord ci" style="position:absolute;left:656px;top:136px;width:150px;height:40px;animation-delay:3.93s;animation-duration:.6s;">Atualizar quadro<span>9:00 – 9:45</span></div><div class="ev g-none ci" style="position:absolute;left:656px;top:182px;width:150px;height:56px;animation-delay:0.8500000000000001s">Priorizar backlog<span>10:00 – 11:15</span></div><div class="ev g-prod ci" style="position:absolute;left:656px;top:182px;width:150px;height:56px;animation-delay:3.98s;animation-duration:.6s;">Priorizar backlog<span>10:00 – 11:15</span></div><div class="ev g-none ci" style="position:absolute;left:656px;top:244px;width:150px;height:44px;animation-delay:0.9000000000000001s">Fechamento semanal<span>16:30 – 17:15</span></div><div class="ev g-eq ci" style="position:absolute;left:656px;top:244px;width:150px;height:44px;animation-delay:4.03s;animation-duration:.6s;">Fechamento semanal<span>16:30 – 17:15</span></div><div class="ci" style="position:absolute;left:24px;top:330px;width:792px;display:flex;align-items:center;gap:12px;animation-delay:4.13s"><span style="font-size:11px;font-weight:600;color:#6B6B80">Sua semana</span><div class="grow" style="flex:1;height:10px;border-radius:99px;overflow:hidden;display:flex;animation-delay:4.23s"><span style="width:22%;background:#3D3DC8"></span><span style="width:30%;background:#D98A00"></span><span style="width:16%;background:#7B5CE0"></span><span style="width:18%;background:#2F7FCC"></span><span style="width:14%;background:#9C9CB8"></span></div></div><div class="ci" style="position:absolute;left:498px;top:360px;width:170px;box-sizing:border-box;background:#FFFFFF;border:1px solid #DDE0F5;border-radius:12px;padding:10px 12px;box-shadow:0 16px 32px -14px rgba(30,30,107,.45);display:flex;flex-direction:column;gap:8px;animation-delay:6.03s"><span style="font-size:11px;color:#6B6B80">Correção de erros</span><span style="font-size:13px;font-weight:700;color:#14142B">É seu?</span><div style="position:relative;display:flex;gap:6px"><span style="flex:1;text-align:center;font-size:12px;font-weight:600;border:1px solid #E0E2F0;border-radius:7px;padding:5px 0">Sim</span><span style="flex:1;text-align:center;font-size:12px;font-weight:600;border:1px solid #E0E2F0;border-radius:7px;padding:5px 0">Não</span><span style="flex:1;text-align:center;font-size:12px;font-weight:600;border:1px solid #E0E2F0;border-radius:7px;padding:5px 0">Dúvida</span><span class="ci" style="position:absolute;left:0;top:0;width:calc((100% - 12px) / 3);text-align:center;font-size:12px;font-weight:700;color:#FFFFFF;background:#3D3DC8;border:1px solid #3D3DC8;border-radius:7px;padding:5px 0;box-sizing:border-box;animation-delay:7.33s">Sim</span></div></div><svg class="ci" width="840" height="560" style="position:absolute;left:0;top:0;pointer-events:none;animation-delay:6.03s" aria-hidden="true"><path d="M573 306 L573 360" stroke="#DDE0F5" stroke-width="1.5" stroke-dasharray="3 3"></path></svg><svg class="cio" width="840" height="560" viewBox="0 0 840 560" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible;animation-delay:0.9s;animation-duration:2.73s;" aria-hidden="true"><defs><marker id="ah2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FFB422"></path></marker></defs><path d="M140 380 Q136 338 100 316" fill="none" stroke="#FFB422" stroke-width="3" stroke-linecap="round" marker-end="url(#ah2)" class="draw" style="animation-delay:1.05s"></path><circle cx="100" cy="316" r="9" fill="none" stroke="#FFB422" stroke-width="2" class="ring" style="animation-delay:1.4s"></circle></svg><div class="cio cd-call" style="position:absolute;left:40px;top:380px;animation-delay:0.9s;animation-duration:2.73s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">Seu calendário sincroniza sozinho</div><svg class="ci" width="840" height="560" viewBox="0 0 840 560" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible;animation-delay:3.53s;" aria-hidden="true"><defs><marker id="ah3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FFB422"></path></marker></defs><path d="M300 380 Q310 311 260 262" fill="none" stroke="#FFB422" stroke-width="3" stroke-linecap="round" marker-end="url(#ah3)" class="draw" style="animation-delay:3.6799999999999997s"></path><circle cx="260" cy="262" r="9" fill="none" stroke="#FFB422" stroke-width="2" class="ring" style="animation-delay:4.029999999999999s"></circle></svg><div class="ci cd-call" style="position:absolute;left:190px;top:380px;width:290px;animation-delay:3.53s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">A IA atribui cada evento ao seu cargo</div><svg class="ci" width="840" height="560" viewBox="0 0 840 560" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible;animation-delay:6.33s;" aria-hidden="true"><defs><marker id="ah4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FFB422"></path></marker></defs><path d="M560 478 Q564 470 560 462" fill="none" stroke="#FFB422" stroke-width="3" stroke-linecap="round" marker-end="url(#ah4)" class="draw" style="animation-delay:6.48s"></path><circle cx="560" cy="462" r="9" fill="none" stroke="#FFB422" stroke-width="2" class="ring" style="animation-delay:6.83s"></circle></svg><div class="ci cd-call" style="position:absolute;left:498px;top:478px;width:320px;animation-delay:6.33s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">E você reflete: é seu?</div></div></div><div class="cd-scene" data-scene="2" hidden style="display:flex;height:560px"><div class="cd-side" style="width:200px;flex:none;border-right:1px solid #ECEDF3;background:#FFFFFF;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:4px"><p style="margin:0 0 18px 12px;font-size:15px;font-weight:800;letter-spacing:.42em;color:#14142B">PAUSA</p><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Painel</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Cargo Digital</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Agenda</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;background:#F2F0FF;font-size:13.5px;font-weight:600;color:#6D3FF2"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #6D3FF2;box-sizing:border-box"></span>Relatório</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Organização</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Insights</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Usuários</div></div><div class="cd-main" style="position:relative;width:840px;height:560px;flex:none;background:#FAFAFC;overflow:hidden"><div style="position:absolute;left:24px;top:18px;right:24px;height:32px;display:flex;align-items:center;gap:14px"><span style="font-size:20px;color:#14142B">Relatório</span><span style="width:1px;height:20px;background:#E3E4EC"></span><span style="font-size:12px;font-weight:600;background:#F0F1F7;border-radius:7px;padding:5px 10px">Geral</span><span style="font-size:12px;color:#6B6B80">Evolutivo</span><span style="font-size:12px;color:#6B6B80">Evolutivo Registros</span><span style="font-size:12px;color:#6B6B80">Reflexão Profunda</span></div><div style="position:absolute;left:24px;top:60px;display:flex;gap:10px;align-items:center"><div style="border:1px solid #E3E4EC;background:#FFFFFF;border-radius:10px;padding:4px 14px;text-align:center"><p style="margin:0;font-size:10px;color:#6B6B80">Horas</p><p style="margin:0;font-size:17px">32,5</p></div><span style="font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:8px 12px">Pessoas: 1</span><span style="font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:8px 12px">22 de setembro – 26 de setembro</span></div><div style="position:absolute;left:24px;top:116px;width:500px;height:246px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;padding:12px 16px"><p style="margin:0;font-size:13px;color:#14142B">Tempo por Grupo de MacroTarefas</p></div><span style="position:absolute;left:40px;top:156px;width:120px;font-size:11px;color:#4A4A6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Execução técnica</span><span class="grow" style="position:absolute;left:168px;top:155px;height:16px;width:197px;border-radius:3px;background:#6B63F5;animation-delay:0.30s"></span><span class="ci" style="position:absolute;left:371px;top:156px;font-size:10.5px;font-weight:700;color:#9A5B00;white-space:nowrap;animation-delay:0.80s">24,6%  &lt;10%</span><span style="position:absolute;left:40px;top:190px;width:120px;font-size:11px;color:#4A4A6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Coordenação</span><span class="grow" style="position:absolute;left:168px;top:189px;height:16px;width:135px;border-radius:3px;background:#6B63F5;animation-delay:0.38s"></span><span class="ci" style="position:absolute;left:309px;top:190px;font-size:10.5px;font-weight:700;color:#9A5B00;white-space:nowrap;animation-delay:0.88s">16,9%  &lt;10%</span><span style="position:absolute;left:40px;top:224px;width:120px;font-size:11px;color:#4A4A6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Gestão de time</span><span class="grow" style="position:absolute;left:168px;top:223px;height:16px;width:98px;border-radius:3px;background:#6B63F5;animation-delay:0.46s"></span><span class="ci" style="position:absolute;left:272px;top:224px;font-size:10.5px;font-weight:500;color:#4F7FD0;white-space:nowrap;animation-delay:0.96s">12,3%  &lt;15%</span><span style="position:absolute;left:40px;top:258px;width:120px;font-size:11px;color:#4A4A6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;color:#14142B">Produto</span><span class="grow" style="position:absolute;left:168px;top:257px;height:16px;width:86px;border-radius:3px;background:#6B63F5;animation-delay:0.54s"></span><span class="ci" style="position:absolute;left:260px;top:258px;font-size:10.5px;font-weight:700;color:#9A5B00;white-space:nowrap;animation-delay:1.04s">10,8%  &gt;20%</span><span style="position:absolute;left:40px;top:292px;width:120px;font-size:11px;color:#4A4A6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Descanso</span><span class="grow" style="position:absolute;left:168px;top:291px;height:16px;width:74px;border-radius:3px;background:#6AA8F7;animation-delay:0.62s"></span><span class="ci" style="position:absolute;left:248px;top:292px;font-size:10.5px;font-weight:500;color:#4F7FD0;white-space:nowrap;animation-delay:1.12s">9,2%  </span><span style="position:absolute;left:40px;top:326px;width:120px;font-size:11px;color:#4A4A6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Pesquisa com usuários</span><span class="grow" style="position:absolute;left:168px;top:325px;height:16px;width:3px;border-radius:3px;background:#6B63F5;animation-delay:0.70s"></span><span class="ci" style="position:absolute;left:177px;top:326px;font-size:10.5px;font-weight:700;color:#9A5B00;white-space:nowrap;animation-delay:1.20s">0%  &gt;5%</span><div class="ci" style="position:absolute;left:28px;top:250px;width:492px;height:34px;border-radius:8px;box-shadow:0 0 0 2px #FFB422;animation-delay:1.3s"></div><div style="position:absolute;left:540px;top:116px;width:276px;height:246px;box-sizing:border-box;border:1px solid #E6E7EE;border-radius:12px;background:#FFFFFF;padding:12px 16px"><p style="margin:0;font-size:13px;color:#14142B">Correspondência ao Cargo</p><div style="margin-top:24px;display:flex;align-items:center;gap:14px"><svg class="ci" width="104" height="104" viewBox="0 0 42 42" style="transform:rotate(-90deg);animation-delay:.5s" aria-hidden="true"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#2F6FD6" stroke-width="7" stroke-dasharray="78 22"></circle><circle cx="21" cy="21" r="15.9" fill="none" stroke="#1E1E6B" stroke-width="7" stroke-dasharray="14 86" stroke-dashoffset="-78"></circle><circle cx="21" cy="21" r="15.9" fill="none" stroke="#A9B4F5" stroke-width="7" stroke-dasharray="8 92" stroke-dashoffset="-92"></circle></svg><div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:#2A2A4A"><span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#2F6FD6;margin-right:6px"></span>Sim: 78%</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#1E1E6B;margin-right:6px"></span>Não: 14%</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#A9B4F5;margin-right:6px"></span>Dúvida: 8%</span></div></div></div><div class="ci" style="position:absolute;left:24px;top:378px;width:792px;box-sizing:border-box;background:#F7F8FD;border:1px solid #DDE0F5;border-radius:12px;padding:14px 18px;animation-delay:2.8s"><p style="margin:0;font-size:14px;font-weight:700;color:#14142B">✦ Análise do relatório</p><p style="margin:6px 0 0;font-size:14px;line-height:1.5;color:#2A2A4A"><strong>Produto</strong> ficou em 10,8%, longe dos 20% que você busca. Foi uma semana pontual?</p></div><div class="ci cd-call" style="position:absolute;left:330px;top:244px;animation-delay:1.3s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">← Real vs. meta</div><svg class="ci" width="840" height="560" viewBox="0 0 840 560" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible;animation-delay:2.8s;" aria-hidden="true"><defs><marker id="ah5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FFB422"></path></marker></defs><path d="M420 490 Q420 478 410 470" fill="none" stroke="#FFB422" stroke-width="3" stroke-linecap="round" marker-end="url(#ah5)" class="draw" style="animation-delay:2.9499999999999997s"></path><circle cx="410" cy="470" r="9" fill="none" stroke="#FFB422" stroke-width="2" class="ring" style="animation-delay:3.3s"></circle></svg><div class="ci cd-call" style="position:absolute;left:360px;top:490px;animation-delay:2.8s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">A IA explica o que vê e pergunta a você</div></div></div><div class="cd-scene" data-scene="3" hidden style="display:flex;height:560px"><div class="cd-side" style="width:200px;flex:none;border-right:1px solid #ECEDF3;background:#FFFFFF;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:4px"><p style="margin:0 0 18px 12px;font-size:15px;font-weight:800;letter-spacing:.42em;color:#14142B">PAUSA</p><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Painel</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Cargo Digital</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;background:#F2F0FF;font-size:13.5px;font-weight:600;color:#6D3FF2"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #6D3FF2;box-sizing:border-box"></span>Agenda</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Relatório</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Organização</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Insights</div><div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#3A3A55"><span style="width:14px;height:14px;border-radius:4px;border:1.8px solid #3A3A55;box-sizing:border-box"></span>Usuários</div></div><div class="cd-main" style="position:relative;width:840px;height:560px;flex:none;background:#FAFAFC;overflow:hidden"><div style="position:absolute;inset:0;opacity:.35"><div style="position:absolute;left:24px;top:18px;right:24px;height:32px;display:flex;align-items:center;gap:14px"><span style="font-size:20px;color:#14142B">Agenda</span><span style="width:1px;height:20px;background:#E3E4EC"></span><span style="font-size:12px;font-weight:600;background:#F0F1F7;border-radius:7px;padding:5px 10px">Calendário Pausa</span><span style="flex:1"></span><span style="font-size:12px;color:#6B6B80">Falta algo? <span style="color:#6D3FF2;font-weight:700;text-decoration:underline">Sincronizar calendário</span></span></div><div style="position:absolute;left:24px;top:60px;width:792px;height:32px;display:flex;align-items:center;gap:8px"><span style="font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:6px 12px">Hoje</span><span style="flex:1;text-align:center;font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:6px 12px">22 de SETEMBRO – 26 de SETEMBRO</span><span style="font-size:12px;font-weight:700;color:#FFFFFF;background:#6D3FF2;border-radius:8px;padding:7px 12px">+ Criar</span><span style="font-size:12px;border:1px solid #E3E4EC;background:#FFFFFF;border-radius:8px;padding:6px 12px">Por voz</span></div><p style="position:absolute;left:24px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">SEG 22</p><p style="position:absolute;left:182px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">TER 23</p><p style="position:absolute;left:340px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">QUA 24</p><p style="position:absolute;left:498px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">QUI 25</p><p style="position:absolute;left:656px;top:108px;width:150px;margin:0;text-align:center;font-size:10.5px;font-weight:700;color:#6B6B80">SEX 26</p><div class="ev g-prod" style="position:absolute;left:24px;top:136px;width:150px;height:40px">Weekly de produto<span>9:00 – 9:45</span></div><div class="ev g-tec" style="position:absolute;left:24px;top:182px;width:150px;height:70px">Correção de erros<span>10:00 – 12:00</span></div><div class="ev g-coord" style="position:absolute;left:24px;top:258px;width:150px;height:46px">Revisão de QA<span>14:30 – 15:30</span></div><div class="ev g-eq" style="position:absolute;left:182px;top:136px;width:150px;height:40px">1:1 com Martín<span>9:30 – 10:15</span></div><div class="ev g-tec" style="position:absolute;left:182px;top:182px;width:150px;height:84px">Ajustes de integração<span>10:30 – 13:00</span></div><div class="ev g-prod" style="position:absolute;left:182px;top:272px;width:150px;height:46px">Definir escopo v2<span>15:00 – 16:00</span></div><div class="ev g-coord" style="position:absolute;left:340px;top:136px;width:150px;height:48px">Suporte a dúvidas<span>9:00 – 10:00</span></div><div class="ev g-tec" style="position:absolute;left:340px;top:190px;width:150px;height:62px">Correção de erros<span>10:30 – 12:00</span></div><div class="ev g-eq" style="position:absolute;left:340px;top:258px;width:150px;height:44px">Retro do time<span>16:00 – 17:00</span></div><div class="ev g-prod" style="position:absolute;left:498px;top:136px;width:150px;height:56px">Brainstorming de produto<span>9:30 – 10:45</span></div><div class="ev g-coord" style="position:absolute;left:498px;top:198px;width:150px;height:40px">Revisão de QA<span>11:00 – 11:45</span></div><div class="ev g-tec" style="position:absolute;left:498px;top:244px;width:150px;height:62px">Correção de erros<span>12:00 – 14:00</span></div><div class="ev g-coord" style="position:absolute;left:656px;top:136px;width:150px;height:40px">Atualizar quadro<span>9:00 – 9:45</span></div><div class="ev g-prod" style="position:absolute;left:656px;top:182px;width:150px;height:56px">Priorizar backlog<span>10:00 – 11:15</span></div><div class="ev g-eq" style="position:absolute;left:656px;top:244px;width:150px;height:44px">Fechamento semanal<span>16:30 – 17:15</span></div></div><div class="ci" style="position:absolute;left:430px;top:14px;width:396px;height:532px;box-sizing:border-box;background:#FFFFFF;border:1px solid #E3E6F5;border-radius:16px;box-shadow:0 24px 48px -24px rgba(30,30,107,.45);display:flex;flex-direction:column;overflow:hidden;animation-delay:.05s"><div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #EEF0F8"><span style="width:30px;height:30px;border-radius:9px;background:#3D3DC8"></span><div><p style="margin:0;font-size:13px;font-weight:700">Assistente Digital</p><p style="margin:0;font-size:11px;color:#1F8A55">Online</p></div></div><div style="flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;background:#FBFBFE"><div class="ci" style="align-self:flex-end;max-width:290px;background:#2F5BEA;color:#FFFFFF;border-radius:14px 14px 4px 14px;padding:10px 14px;font-size:14px;animation-delay:4.23s">O que eu poderia delegar esta semana?</div><div class="cio" style="align-self:flex-start;background:#FFFFFF;border:1px solid #E3E6F7;border-radius:12px;padding:8px 12px;font-size:16px;letter-spacing:.2em;color:#6B6B80;animation-delay:6.67s;animation-duration:.8s;height:14px;line-height:10px">•••</div><div class="ci" style="align-self:flex-start;max-width:330px;background:#FFFFFF;border:1px solid #E3E6F7;border-radius:14px 14px 14px 4px;padding:12px 16px;animation-delay:7.27s"><p style="margin:0;font-size:14px;font-weight:700;color:#1E1E6B">Tarefas que você poderia delegar</p><ul style="margin:8px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55;color:#3A3A5E;display:flex;flex-direction:column;gap:4px"><li><strong style="color:#1E1E6B">Revisão de QA</strong>: é coordenação operacional.</li><li><strong style="color:#1E1E6B">Atualizar quadro</strong>: sem peso nos seus focos.</li><li><strong style="color:#1E1E6B">Suporte a dúvidas</strong>: não está ligado ao seu cargo.</li></ul></div></div><div style="padding:10px 12px;border-top:1px solid #EEF0F8"><div style="height:36px;border:1px solid #E0E2F0;border-radius:10px;display:flex;align-items:center;padding:0 12px;font-size:12px;color:#8A8AA0">Escreva a sua mensagem…</div></div></div><svg class="ci" width="840" height="560" viewBox="0 0 840 560" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible;animation-delay:0.4s;" aria-hidden="true"><defs><marker id="ah6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FFB422"></path></marker></defs><path d="M370 250 Q400 258 424 240" fill="none" stroke="#FFB422" stroke-width="3" stroke-linecap="round" marker-end="url(#ah6)" class="draw" style="animation-delay:0.55s"></path><circle cx="424" cy="240" r="9" fill="none" stroke="#FFB422" stroke-width="2" class="ring" style="animation-delay:0.9s"></circle></svg><div class="ci cd-call" style="position:absolute;left:40px;top:214px;width:320px;animation-delay:0.4s;z-index:5;background:#FFB422;color:#1E1E6B;border-radius:12px;padding:11px 16px;font-size:16.5px;line-height:1.35;font-weight:700;letter-spacing:-0.005em;box-shadow:0 0 0 4px rgba(255,180,34,.28),0 14px 30px -10px rgba(30,30,107,.55)">Pergunte o que fazer: delegar, reorganizar, conversar</div></div></div></div></div></div>
+        <div class="cd-steps">
+          <button type="button" class="cd-step on" data-step="0"><span style="display:flex;align-items:baseline;gap:10px"><span class="cd-num">01</span><span style="font-size:15px;font-weight:700">Cargo Vivo</span></span><span class="cd-sub">Você define onde quer estar</span><span class="cd-track"><span class="cd-fill"></span></span></button>
+          <button type="button" class="cd-step" data-step="1"><span style="display:flex;align-items:baseline;gap:10px"><span class="cd-num">02</span><span style="font-size:15px;font-weight:700">Foco</span></span><span class="cd-sub">Sua semana, classificada contra o seu cargo</span><span class="cd-track"><span class="cd-fill"></span></span></button>
+          <button type="button" class="cd-step" data-step="2"><span style="display:flex;align-items:baseline;gap:10px"><span class="cd-num">03</span><span style="font-size:15px;font-weight:700">Desvio</span></span><span class="cd-sub">A lacuna, à vista</span><span class="cd-track"><span class="cd-fill"></span></span></button>
+          <button type="button" class="cd-step" data-step="3"><span style="display:flex;align-items:baseline;gap:10px"><span class="cd-num">04</span><span style="font-size:15px;font-weight:700">Ação</span></span><span class="cd-sub">Da lacuna a uma decisão</span><span class="cd-track"><span class="cd-fill"></span></span></button>
+          <button type="button" class="cd-toggle" id="cd-toggle" aria-label="Pausar">❚❚</button>
+        </div>
+      </div>
+      <p style="margin:32px 0 0;font-size:clamp(1rem,1.55vw,1.1875rem);line-height:1.4;font-weight:700;color:#1A1A3E">Metodologia própria. Tecnologia com IA. Acompanhamento humano.</p>
+    </div>
+  </section>
+
+  <section style="background:#EAECFF;padding:56px 24px">
+    <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+      <div style="flex:1 1 380px;min-width:0">
+        <p style="margin:0;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:#FFFFFF;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#3D3DC8">Inteligência artificial com propósito</p>
+        <h2 style="margin:20px 0 0;max-width:24ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.18;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Uma IA treinada com nossa metodologia e nossos dados</h2>
+        <p style="margin:16px 0 0;max-width:48ch;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Os agentes da Pausa são treinados com a metodologia e o conhecimento acumulado da plataforma — não com dados genéricos.</p>
+        <ul style="margin:24px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Detecta padrões em como o tempo real é usado em relação ao cargo definido.</span>
+          </li>
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Encontra desvios antes que alguém precise pedir.</span>
+          </li>
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:#3D3DC8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span style="font-size:1.0625rem;line-height:1.5;color:#1A1A3E">Gera recomendações concretas: o que reorganizar, qual conversa ter, para quem delegar.</span>
+          </li>
+        </ul>
+        <a href="metodologia.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-weight:700;color:#3D3DC8">Veja como a IA funciona em detalhe <span aria-hidden="true">→</span></a>
+      </div>
+      <div style="flex:1 1 340px;min-width:0;max-width:400px">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:0 32px 70px -24px rgba(10,10,50,0.35);background:#FFFFFF">
+          <div style="height:38px;background:#F4F5FF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E;display:block"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840;display:block"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:0.6875rem;color:#5C5C8A">Agente Pausa</div>
+          </div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="mock-bubble agent">Esta semana seu Desvio foi de 32% em tarefas administrativas, acima do seu Foco semanal.</div>
+            <div class="mock-bubble user">O que eu poderia delegar?</div>
+            <div class="mock-bubble agent">Delegar "Envio de relatórios mensais" ao seu Coordenador de Operações libera ~4h nesta semana.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos" style="background:#FFFFFF;padding:56px 24px 40px">
+    <div style="max-width:1160px;margin:0 auto">
+      <div class="grid-logos-6">
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/adecoagro.png" loading="lazy" alt="Adecoagro" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/abinbev.png" loading="lazy" alt="AB InBev" style="max-width:100%;max-height:29px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/inauco.png" loading="lazy" alt="Inauco" style="max-width:100%;max-height:36px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/bioeutectics.png" loading="lazy" alt="Bioeutectics" style="max-width:100%;max-height:42px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/lanegra.png" loading="lazy" alt="Establecimientos La Negra" style="max-width:100%;max-height:34px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/trf.png" loading="lazy" alt="TRF" style="max-width:100%;max-height:46px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/modo.png" loading="lazy" alt="Modo" style="max-width:100%;max-height:27px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/aller-intl.png" loading="lazy" alt="Aller &amp; Co." style="max-width:100%;max-height:32px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/mercovan.png" loading="lazy" alt="Mercovan" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/atria.png" loading="lazy" alt="Atria Soluciones Logísticas" style="max-width:100%;max-height:38px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/martinez.png" loading="lazy" alt="Martinez Sinisgalli &amp; Abogados" style="max-width:100%;max-height:68px;width:auto;object-fit:contain;display:block"></div>
+        <div style="display:flex;align-items:center;justify-content:center;height:68px;min-width:0"><img src="../assets/ink/gdm.png" loading="lazy" alt="GDM" style="max-width:100%;max-height:30px;width:auto;object-fit:contain;display:block"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:48px;background:#EAECFF;border-radius:20px;padding:32px 8px">
+        <div style="padding:0 32px">
+          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8;font-variant-numeric:tabular-nums">+1.000.000</p>
+          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Dados de gestão processados</p>
+        </div>
+        <div style="padding:0 32px;border-left:1px solid #C3C7F5">
+          <p style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">6 países</p>
+          <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A;text-wrap:pretty">Argentina, Paraguai, Chile, Brasil, Espanha e Estados Unidos</p>
+        </div>
+        <div style="padding:0 32px;border-left:1px solid #C3C7F5">
+          <a href="reconocimiento.html" class="premio-stat-link">
+            <p class="premio-stat-title" style="margin:0;font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#3D3DC8">Prêmio VISA | La Nación</p>
+            <p style="margin:12px 0 0;font-size:0.9375rem;line-height:1.5;color:#5C5C8A">Inovação 2025 — Startup Inovadora <span class="premio-stat-arrow" aria-hidden="true">→</span></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="para-quien" style="background:#F4F5FF;padding:56px 24px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Para quem</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px">
+        <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Donos e diretores</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">O crescimento da organização.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Crescimento sustentável, com retorno. Você define o rumo. Nós tornamos visível se o trabalho da sua equipe está indo para lá.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Quando é preciso ir mais fundo, um consultor sênior se senta com a sua diretoria.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Líderes</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">O crescimento da sua equipe.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">É você quem sustenta a equipe todos os dias. Com mais presença e mais clareza sobre para onde vai o seu foco, você lidera diferente: com sentido, não só com a agenda cheia.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Colaboradores</h3>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#3D3DC8;font-style:italic">O crescimento de cada pessoa.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.65;color:#5C5C8A">Você vive o resultado de como sua equipe trabalha, mesmo que não seja você quem decide isso. A Pausa devolve o espaço para você voltar para si mesmo: assumir sua agenda, com menos ruído e mais sentido no que você faz todos os dias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#FFFFFF;padding:16px 24px 56px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">A prova</p>
+      <div class="grid-stats-4">
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+40%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">do tempo recuperado em tarefas que não são relevantes.</p>
+        </div>
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+38%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">mais controle do tempo dentro da organização.</p>
+        </div>
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+19%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">mais clareza de metas e objetivos.</p>
+        </div>
+        <div style="background:#EAECFF;border-radius:16px;padding:24px 24px 28px;min-width:0">
+          <div style="font-size:clamp(2rem,2.8vw,3rem);font-weight:800;letter-spacing:-0.03em;color:#3D3DC8;font-variant-numeric:tabular-nums;line-height:1">+17%</div>
+          <p style="margin:14px 0 0;font-size:0.9375rem;line-height:1.5;color:#1A1A3E">mais clareza de prioridades por área.</p>
+        </div>
+      </div>
+      <p style="margin:24px 0 0;font-size:0.875rem;line-height:1.6;color:#5C5C8A;max-width:60ch">Medido durante seis meses por um Research Fellow do People's Lab de Harvard.</p>
+    </div>
+  </section>
+
+  <section id="cierre" style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:72px 24px">
+    <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center">
+      <div>
+        <h2 style="margin:0;max-width:16ch;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Mais clareza. <span style="color:#BFC5FF">Vamos agendar uma conversa.</span></h2>
+      </div>
+      <div style="background:#FFFFFF;border-radius:24px;padding:32px">
+        <div id="cierre-thanks" style="min-height:280px;flex-direction:column;justify-content:center;gap:12px">
+          <p style="margin:0;font-size:1.25rem;font-weight:700;color:#1A1A3E">Obrigado. Entraremos em contato em breve.</p>
+          <p style="margin:0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Um membro da nossa equipe entrará em contato para agendar uma primeira conversa.</p>
+        </div>
+        <form id="cierre-form" style="display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Nome
+            <input type="text" name="Nome" required placeholder="Como você se chama" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Email
+            <input type="email" name="Email" required placeholder="nome@empresa.com" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:0.875rem;font-weight:500;color:#1A1A3E">Empresa
+            <input type="text" name="Empresa" required placeholder="Onde você trabalha" style="height:48px;padding:0 16px;border:1px solid #CCCCEE;border-radius:12px;font-family:inherit;font-size:1rem;color:#1A1A3E;background:#FFFFFF">
+          </label>
+          <button type="submit" class="btn-cta-primary" style="margin-top:8px;height:52px;border:none;border-radius:999px;background:#3D3DC8;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:background-color .15s ease">Agende uma demo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#1E1E6B;padding:56px 24px 32px">
+    <div style="max-width:1160px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+          <img src="../assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
+          <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
+          <div style="display:flex;gap:12px">
+            <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.19-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.22-8.24Zm-3.1 4.05c-.23 0-.6.09-.91.43-.31.34-.99.97-.99 2.36 0 1.39 1.01 2.73 1.15 2.92.14.19 1.95 3.1 4.81 4.22 2.38.94 2.86.75 3.38.7.52-.05 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.67-.82-1.93-.92-.26-.09-.45-.14-.64.14-.19.28-.73.94-.9 1.13-.16.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.61-1.52-.85-2.08-.19-.44-.38-.45-.55-.46h-.36Z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/pausaco" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.75 21.5h4.46V9.75H2.75V21.5Zm7.04 0h4.46v-6.4c0-1.69.32-3.33 2.42-3.33 2.07 0 2.1 1.94 2.1 3.44v6.29h4.46v-7.2c0-3.87-.84-6.85-5.36-6.85-2.17 0-3.63 1.19-4.23 2.32h-.06V9.75H9.79V21.5Z"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Nossa solução</p>
+            <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
+            <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Metodologia</a>
+            <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Desenvolvimento de habilidades</a>
+            <a href="assessment.html" style="color:#DDE0FF;font-size:0.9375rem">Assessment para líderes</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Empresa</p>
+            <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Equipe</a>
+            <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Imprensa</a>
+            <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Reconhecimentos</a>
+            <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contato</a>
+            <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Junte-se à equipe</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Confiança</p>
+            <a href="seguridad.html" style="color:#DDE0FF;font-size:0.9375rem">Segurança e privacidade</a>
+            <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">Perguntas frequentes</a>
+          </nav>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+        <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. Todos os direitos reservados.</p>
+        <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+          <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Termos e Condições</a>
+          <span style="color:rgba(255,255,255,0.35)">·</span>
+          <a href="politicas-de-privacidad.html" style="color:#9FA6F0">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Header scroll state
+  var header = document.getElementById('site-header');
+  function onScroll() {
+    var scrolled = window.scrollY > 60;
+    header.classList.toggle('scrolled', scrolled);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+
+  // Mobile nav toggle
+  var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+  var mobileNavPanel = document.getElementById('mobile-nav-panel');
+  if (mobileNavToggle && mobileNavPanel) {
+    mobileNavToggle.addEventListener('click', function () {
+      var open = mobileNavPanel.classList.toggle('open');
+      mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileNavPanel.classList.remove('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Floating stat card fade-in
+  setTimeout(function () {
+    var card = document.getElementById('stat-card');
+    if (card) card.classList.add('visible');
+  }, 900);
+
+  // Mini frame cycling inside the floating stat card
+  var MINI_FRAMES = ['stat', 'rol', 'foco', 'desvio'];
+  var miniIndex = 0;
+  var miniTimer = null;
+  function advanceMini() {
+    var stack = document.getElementById('mini-stack');
+    if (!stack) return;
+    var frames = stack.querySelectorAll('.mini-frame');
+    var prevFrame = stack.querySelector('.mini-frame.cur');
+    miniIndex = (miniIndex + 1) % MINI_FRAMES.length;
+    var nextFrame = stack.querySelector('.mini-frame[data-frame="' + MINI_FRAMES[miniIndex] + '"]');
+    frames.forEach(function (f) { f.classList.remove('cur', 'prev', 'fading'); });
+    if (prevFrame) prevFrame.classList.add('prev');
+    if (nextFrame) nextFrame.classList.add('cur');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (prevFrame) prevFrame.classList.add('fading');
+      });
+    });
+    setTimeout(function () {
+      if (prevFrame) prevFrame.classList.remove('prev', 'fading');
+    }, 700);
+  }
+
+  // Hero mock screens — synthetic, always-smooth stand-ins for real screen recordings.
+  var heroPaused = false;
+  var heroScreensEl = document.getElementById('hero-screens');
+  var heroDash = document.getElementById('hero-dash');
+  var heroBars = heroDash ? heroDash.querySelectorAll('.mock-bar') : [];
+  var heroDonut = document.getElementById('hero-donut-fg');
+  var heroKpiValue = document.getElementById('hero-kpi-value');
+  var HERO_DONUT_CIRC = 97.4;
+  var heroIdleTimer = null;
+  var heroScreenTimer = null;
+  var HERO_SCREEN_ORDER = ['agenda', 'dashboard', 'chat', 'rol'];
+  var heroScreenIndex = 0;
+
+  function setHeroDonut(pct) {
+    if (heroDonut) heroDonut.style.strokeDashoffset = (HERO_DONUT_CIRC * (1 - pct / 100)).toFixed(2);
+    if (heroKpiValue) heroKpiValue.textContent = pct + '%';
+  }
+  function shuffleHeroBars() {
+    heroBars.forEach(function (bar) {
+      var base = parseFloat(bar.dataset.base);
+      var delta = (Math.random() * 20) - 10;
+      var h = Math.max(18, Math.min(92, base + delta));
+      bar.style.setProperty('--h', h + '%');
+    });
+    setHeroDonut(94 + Math.round(Math.random() * 5));
+  }
+  function growHeroBars() {
+    heroBars.forEach(function (bar) { bar.style.setProperty('--h', '0%'); });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        heroBars.forEach(function (bar) { bar.style.setProperty('--h', bar.dataset.base + '%'); });
+        setHeroDonut(98);
+      });
+    });
+  }
+  function growRoleBars(root) {
+    var fills = root.querySelectorAll('.mock-role-bar-fill');
+    fills.forEach(function (f) { f.style.setProperty('--w', '0%'); });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fills.forEach(function (f) { f.style.setProperty('--w', f.dataset.base + '%'); });
+      });
+    });
+  }
+  function revealStagger(root, selector, gap, startDelay) {
+    var els = root.querySelectorAll(selector);
+    els.forEach(function (el) { el.classList.remove('shown'); });
+    els.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('shown'); }, (startDelay || 0) + i * gap);
+    });
+  }
+
+  function activateHeroScreen(name) {
+    if (!heroScreensEl) return;
+    clearInterval(heroIdleTimer);
+    heroScreensEl.querySelectorAll('.mock-screen').forEach(function (s) {
+      s.classList.toggle('active', s.dataset.screen === name);
+    });
+    var statCard = document.getElementById('stat-card');
+    if (statCard) statCard.classList.toggle('screen-hide', name === 'chat');
+    var activeEl = heroScreensEl.querySelector('.mock-screen[data-screen="' + name + '"]');
+    if (name === 'dashboard') {
+      growHeroBars();
+      heroIdleTimer = setInterval(function () { if (!heroPaused) shuffleHeroBars(); }, 2000);
+    } else if (name === 'rol') {
+      growRoleBars(activeEl);
+    } else if (name === 'agenda') {
+      revealStagger(activeEl, '.mock-cal-event', 60, 100);
+    } else if (name === 'chat') {
+      revealStagger(activeEl, '.mock-bubble', 550, 250);
+    }
+  }
+  function advanceHeroScreen() {
+    heroScreenIndex = (heroScreenIndex + 1) % HERO_SCREEN_ORDER.length;
+    activateHeroScreen(HERO_SCREEN_ORDER[heroScreenIndex]);
+  }
+
+  if (heroScreensEl) {
+    if (REDUCED) {
+      heroBars.forEach(function (bar) { bar.style.setProperty('--h', bar.dataset.base + '%'); });
+      setHeroDonut(98);
+      heroScreensEl.querySelector('.mock-screen[data-screen="dashboard"]').classList.add('active');
+    } else {
+      activateHeroScreen(HERO_SCREEN_ORDER[0]);
+      heroScreenTimer = setInterval(function () { if (!heroPaused) advanceHeroScreen(); }, 2200);
+      miniTimer = setInterval(function () { if (!heroPaused) advanceMini(); }, 2200);
+      var heroWrap = document.getElementById('hero-wrap');
+      heroWrap.addEventListener('mouseenter', function () { heroPaused = true; });
+      heroWrap.addEventListener('mouseleave', function () { heroPaused = false; });
+      heroWrap.addEventListener('click', function () { advanceHeroScreen(); });
+    }
+  }
+
+  // "Como funciona": demo interativa por cenas (Cargo Vivo, Foco, Desvio, Ação)
+  (function () {
+    var demo = document.getElementById('como-demo');
+    if (!demo) return;
+    var vp = document.getElementById('cd-viewport');
+    var stage = document.getElementById('cd-stage');
+    var steps = demo.querySelectorAll('.cd-step');
+    var toggle = document.getElementById('cd-toggle');
+    var DUR = [8367, 9567, 11467, 18767];
+    var scene = 0, timer = null, paused = false;
+
+    function fit() {
+      var mobile = window.innerWidth < 700;
+      var w = mobile ? 520 : 1040, h = mobile ? 720 : 560;
+      var s = vp.clientWidth / w;
+      stage.style.width = w + 'px';
+      stage.style.height = h + 'px';
+      stage.style.transform = 'scale(' + s + ')';
+      vp.style.height = Math.round(h * s) + 'px';
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (paused) return;
+      timer = setTimeout(function () { show((scene + 1) % DUR.length); }, DUR[scene]);
+    }
+    function show(i) {
+      scene = i;
+      // clonar a cena reinicia as animações
+      stage.querySelectorAll('.cd-scene').forEach(function (el) {
+        if (+el.dataset.scene === i) {
+          var c = el.cloneNode(true);
+          c.hidden = false;
+          el.parentNode.replaceChild(c, el);
+        } else {
+          el.hidden = true;
+        }
+      });
+      steps.forEach(function (b, j) {
+        b.classList.toggle('on', j === i);
+        var f = b.querySelector('.cd-fill');
+        var nf = f.cloneNode(false);
+        nf.className = 'cd-fill' + (j === i ? ' run' : '');
+        nf.style.animationDuration = DUR[j] + 'ms';
+        f.parentNode.replaceChild(nf, f);
+      });
+      schedule();
+    }
+    function setPaused(p) {
+      paused = p;
+      demo.classList.toggle('paused', p);
+      toggle.textContent = p ? '▶' : '❚❚';
+      toggle.setAttribute('aria-label', p ? 'Reproduzir' : 'Pausar');
+    }
+
+    steps.forEach(function (b) {
+      b.addEventListener('click', function () { setPaused(false); show(+b.dataset.step); });
+    });
+    toggle.addEventListener('click', function () {
+      if (paused) { setPaused(false); show(scene); }
+      else { clearTimeout(timer); setPaused(true); }
+    });
+    window.addEventListener('resize', fit);
+    fit();
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); show(0); }
+      }, { threshold: 0.3 });
+      io.observe(demo);
+    } else {
+      show(0);
+    }
+  })();
+
+  // Contact form: send lead to n8n (salva no Notion + notifica a equipe); se a rede falhar, cai para mailto
+  var form = document.getElementById('cierre-form');
+  var thanks = document.getElementById('cierre-thanks');
+  var LEAD_WEBHOOK_URL = 'https://pausa.app.n8n.cloud/webhook/pausa-home-lead';
+
+  function getUtmParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.style.opacity = '0.7';
+      submitBtn.style.cursor = 'not-allowed';
+    }
+    var data = new FormData(form);
+    var lines = [];
+    data.forEach(function (value, key) {
+      if (value) lines.push(key + ': ' + value);
+    });
+    if (window.posthog) {
+      posthog.capture('contact_form_submit', { subject: 'Nova conversa com a Pausa' });
+    }
+
+    var payload = {
+      Nombre: data.get('Nome') || '',
+      Email: data.get('Email') || '',
+      Empresa: data.get('Empresa') || '',
+      idioma: 'PT',
+      paginaOrigen: window.location.href,
+      referrer: document.referrer || '',
+      utmSource: getUtmParam('utm_source'),
+      utmMedium: getUtmParam('utm_medium'),
+      utmCampaign: getUtmParam('utm_campaign'),
+      posthogDistinctId: (window.posthog && posthog.get_distinct_id()) || ''
+    };
+
+    function showThanks() {
+      form.style.display = 'none';
+      thanks.style.display = 'flex';
+    }
+
+    function fallbackMailto() {
+      var subject = encodeURIComponent('Nova conversa com a Pausa');
+      var body = encodeURIComponent(lines.join('\n'));
+      window.location.href = 'mailto:contactopausa@pausaco.com?subject=' + subject + '&body=' + body;
+    }
+
+    fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook error');
+      showThanks();
+    }).catch(function () {
+      fallbackMailto();
+      showThanks();
+    });
+  });
+
+  // Hero title rotator
+  (function () {
+    var rotator = document.querySelector('.hero-title__rotator');
+    if (!rotator) return;
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    var words = Array.from(rotator.querySelectorAll('.hero-title__word'));
+    if (words.length < 2) return;
+
+    var current = 0;
+    var INTERVAL_MS = 2200;
+    var TRANSITION_MS = 350;
+    var timer = null;
+
+    function rotate() {
+      var next = (current + 1) % words.length;
+      words[current].classList.add('is-leaving');
+      words[current].classList.remove('is-active');
+      words[next].classList.add('is-active');
+      setTimeout(function () {
+        words[current].classList.remove('is-leaving');
+      }, TRANSITION_MS);
+      current = next;
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(rotate, INTERVAL_MS);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  })();
+})();
+</script>
+</body>
+</html>

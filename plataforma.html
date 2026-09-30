@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plataforma de gestión de roles y tiempo | Pausa</title>
+<link rel="canonical" href="https://www.pausaco.com/plataforma.html">
+<link rel="alternate" hreflang="es" href="https://www.pausaco.com/plataforma.html">
+<link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/plataforma.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/plataforma.html">
+<link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/plataforma.html">
+<meta name="description" content="Rol Vivo, registro semanal y agentes de IA en un solo lugar. Cruzá el rol de tu equipo con su tiempo real y convertí la brecha en decisiones.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pausa">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://www.pausaco.com/plataforma.html">
+<meta property="og:title" content="Plataforma de gestión de roles y tiempo | Pausa">
+<meta property="og:description" content="Rol Vivo, registro semanal y agentes de IA en un solo lugar. Cruzá el rol de tu equipo con su tiempo real y convertí la brecha en decisiones.">
+<meta property="og:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plataforma de gestión de roles y tiempo | Pausa">
+<meta name="twitter:description" content="Rol Vivo, registro semanal y agentes de IA en un solo lugar. Cruzá el rol de tu equipo con su tiempo real y convertí la brecha en decisiones.">
+<meta name="twitter:image" content="https://www.pausaco.com/assets/pausa-logo-indigo.png">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .pf-wrap { max-width: 1240px; margin: 0 auto; }
+  [hidden] { display: none !important; }
+  @keyframes evIn { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,180,34,.55); } 50% { box-shadow: 0 0 0 7px rgba(255,180,34,0); } }
+  @keyframes typing { from { max-width: 0; } to { max-width: 100%; } }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .ev { position: relative; border-radius: 6px; padding: 5px 7px; font-size: 11px; line-height: 1.25; font-weight: 700; color: #1A1A3E; border-left: 3px solid #3D3DC8; box-sizing: border-box; overflow: hidden; animation: evIn .5s cubic-bezier(.22,1,.36,1) both; }
+  .ev span { display: block; font-weight: 500; color: #4A4A72; font-size: 10px; margin-top: 2px; }
+  .g-prod { background: #ECECFF; border-left-color: #3D3DC8; }
+  .g-tec { background: #FFF1D6; border-left-color: #D98A00; }
+  .g-eq { background: #F0ECFF; border-left-color: #7B5CE0; }
+  .g-coord { background: #E6F2FF; border-left-color: #2F7FCC; }
+  .g-pers { background: #F3F3F8; border-left-color: #9C9CB8; }
+  .g-inv { background: #E8F7EF; border-left-color: #1F8A55; }
+  .bar-grow { transform-origin: left center; animation: grow 1.1s cubic-bezier(.22,1,.36,1) both; }
+  .caret { display: inline-block; width: 1px; height: 14px; background: #3D3DC8; margin-left: 2px; vertical-align: middle; animation: blink 1s step-end infinite; }
+  .typed { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: middle; animation: typing 2.6s steps(48) .8s both; }
+  .pf-chip { font-size: 10px; font-weight: 600; color: #4A4A72; border: 1px solid #E0E2F0; border-radius: 6px; padding: 4px 8px; white-space: nowrap; }
+  .pf-days { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 8px; }
+  .pf-day { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .pf-day-label { margin: 0 0 2px; text-align: center; font-size: 10px; font-weight: 700; color: #5C5C8A; }
+
+  /* Cómo funciona */
+  .pf-tabs { margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .pf-tab { display: flex; align-items: center; gap: 18px; padding: 20px 24px; border-radius: 18px; cursor: pointer; min-height: 88px; text-align: left; font: inherit; background: #FFFFFF; color: #1A1A3E; border: 1px solid #DDE0F5; transition: background-color .2s ease, color .2s ease; }
+  .pf-tab .pf-num { flex: none; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; background: #EAECFF; color: #3D3DC8; }
+  .pf-tab .pf-tab-title { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+  .pf-tab .pf-tab-sub { font-size: 0.875rem; font-weight: 500; color: #5C5C8A; }
+  .pf-tab[aria-selected="true"] { background: #1E1E6B; color: #FFFFFF; border-color: #1E1E6B; box-shadow: 0 20px 40px -24px rgba(30,30,107,.8); }
+  .pf-tab[aria-selected="true"] .pf-num { background: #FFB422; color: #1E1E6B; }
+  .pf-tab[aria-selected="true"] .pf-tab-sub { color: #DDE0FF; }
+  .pf-panel { margin-top: 20px; background: #FFFFFF; border-radius: 24px; border: 1px solid #DDE0F5; padding: 44px 44px 44px 48px; box-shadow: 0 30px 60px -40px rgba(30,30,107,.35); }
+  .pf-pane { display: flex; flex-wrap: wrap; gap: 48px; }
+  .pf-pane-text { flex: 1 1 300px; max-width: 340px; display: flex; flex-direction: column; gap: 16px; }
+  .pf-pane-visual { flex: 999 1 480px; min-width: 0; }
+  .pf-eyebrow { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #3D3DC8; }
+  .pf-pane-title { margin: 0; font-size: clamp(1.5rem, 2.4vw, 1.875rem); line-height: 1.15; letter-spacing: -0.015em; font-weight: 800; color: #1A1A3E; }
+  .pf-sub { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; cursor: pointer; text-align: left; font: inherit; background: #FFFFFF; border: 1px solid #E3E6F5; }
+  .pf-sub .pf-num, .pf-spot .pf-num { flex: none; width: 26px; height: 26px; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; background: #EAECFF; color: #3D3DC8; }
+  .pf-sub.on, .pf-spot.on { background: #F4F5FF; border: 1.5px solid #3D3DC8; }
+  .pf-sub.on .pf-num, .pf-spot.on .pf-num { background: #FFB422; color: #1E1E6B; }
+  .pf-rolmock { position: relative; height: 612px; border: 1px solid #E6E8F5; border-radius: 16px; overflow: hidden; background: #FAFAFC; }
+  .pf-rolmock-inner { position: absolute; left: 0; top: 0; width: 1200px; transform: scale(var(--s, .68)); transform-origin: 0 0; background: #FAFAFC; padding: 24px 28px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; }
+  .pf-rep-row { display: flex; align-items: center; gap: 8px; min-height: 20px; }
+  .pf-rep-label { width: 112px; flex: none; font-size: 10.5px; color: #4A4A6A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pf-rep-bar { display: block; height: 14px; border-radius: 3px; flex: none; }
+  .pf-rep-val { font-size: 10px; white-space: nowrap; font-weight: 500; color: #4F7FD0; }
+  .pf-rep-val.out { font-weight: 700; color: #9A5B00; }
+  .pf-pill { font-size: 13px; font-weight: 600; border: 1px solid #CCCCEE; border-radius: 999px; padding: 7px 14px; }
+
+  /* Agenda deep dive */
+  .pf-deep { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+  .pf-deep-mock { flex: 999 1 560px; min-width: 0; border-radius: 18px; border: 1px solid #DDE0F5; background: #FFFFFF; box-shadow: 0 40px 80px -48px rgba(30,30,107,.5); padding: 20px 22px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; }
+  .pf-deep-mock .ev { font-size: 12px; }
+  .pf-deep-list { flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .pf-spot { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border-radius: 16px; cursor: pointer; text-align: left; font: inherit; background: #FFFFFF; border: 1px solid #E3E6F5; }
+  .pf-spot .pf-num { width: 30px; height: 30px; font-size: 13px; }
+  .pf-badge { flex: none; width: 24px; height: 24px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; background: #1E1E6B; color: #FFFFFF; transition: background-color .2s ease, box-shadow .2s ease; }
+  .ev .pf-badge { display: inline-flex; margin-top: 0; font-size: 12px; font-weight: 800; color: #FFFFFF; }
+  .ev .pf-badge.on { color: #1E1E6B; }
+  .pf-badge.on { background: #FFB422; color: #1E1E6B; box-shadow: 0 0 0 5px rgba(255,180,34,.3); }
+
+  @media (max-width: 860px) {
+    .pf-panel { padding: 24px 18px; border-radius: 20px; }
+    .pf-pane { gap: 28px; }
+    .pf-pane-text { max-width: none; }
+  }
+  @media (max-width: 640px) {
+    .pf-days { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .pf-days > .pf-day:nth-child(n+4) { display: none; }
+    .pf-hide-sm { display: none !important; }
+    .pf-deep-mock { padding: 16px 14px; }
+    .pf-assist { left: 12px !important; right: 12px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ev, .bar-grow, .typed, .caret { animation: none !important; }
+  }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Pausa","url":"https://www.pausaco.com/","logo":"https://www.pausaco.com/assets/pausa-mark-indigo.png","sameAs":["https://www.linkedin.com/company/pausaco"],"email":"contactopausa@pausaco.com"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Pausa","url":"https://www.pausaco.com/","inLanguage":"es"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.pausaco.com/"},{"@type":"ListItem","position":2,"name":"Plataforma","item":"https://www.pausaco.com/plataforma.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pausa","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Rol Vivo, registro semanal y agentes de IA en un solo lugar. Cruzá el rol de tu equipo con su tiempo real y convertí la brecha en decisiones.","url":"https://www.pausaco.com/plataforma.html"}
+</script>
+</head>
+<body>
+
+<header style="background:#1E1E6B;position:sticky;top:0;z-index:50">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img src="assets/pausa-word-white.png" alt="Pausa" style="height:18px;width:auto;display:block">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Nuestra solución</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="plataforma.html">Plataforma</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Compañía</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="equipo.html">Equipo</a>
+            <a href="prensa.html">Prensa</a>
+            <a href="reconocimiento.html">Reconocimientos</a>
+            <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="sumate-al-equipo.html">Sumate al equipo</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:2px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em">
+        <a href="plataforma.html" style="padding:4px 6px;color:#FFFFFF">ES</a>
+        <a href="en/plataforma.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">EN</a>
+        <a href="pt/plataforma.html" style="padding:4px 6px;color:rgba(255,255,255,0.55)">PT</a>
+      </div>
+      <a href="index.html#cierre" class="btn-cta-light" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;background:#FFFFFF;color:#1E1E6B;transition:background-color .15s ease">Agendá una demo</a>
+    </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Nuestra solución</span>
+    <a href="plataforma.html">Plataforma</a>
+    <a href="metodologia.html">Metodología</a>
+    <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+    <span class="mobile-nav-section-label">Compañía</span>
+    <a href="equipo.html">Equipo</a>
+    <a href="prensa.html">Prensa</a>
+    <a href="reconocimiento.html">Reconocimientos</a>
+    <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="sumate-al-equipo.html">Sumate al equipo</a>
+    <div class="mobile-nav-lang">
+      <a class="active" href="plataforma.html">ES</a>
+      <a href="en/plataforma.html">EN</a>
+      <a href="pt/plataforma.html">PT</a>
+    </div>
+    <a href="index.html#cierre" class="mobile-nav-cta">Agendá una demo</a>
+  </div>
+</header>
+
+<main style="display:block">
+
+  <!-- Bloque 1 — Hero -->
+  <section style="background:radial-gradient(120% 90% at 70% 30%, #3D3DC8 0%, rgba(61,61,200,0) 62%), #1E1E6B;padding:88px 24px 96px">
+    <div class="pf-wrap" style="display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+      <div style="flex:1 1 380px;max-width:500px;min-width:0;display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;align-self:flex-start;display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,0.14);font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#DDE0FF">La plataforma</p>
+        <h1 style="margin:0;font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.05;letter-spacing:-0.025em;font-weight:800;color:#FFFFFF">Tu semana, leída contra tu rol.</h1>
+        <p style="margin:0;font-size:1.125rem;line-height:1.6;color:#DDE0FF">Pausa trae tu calendario, lo cruza con tu Rol Vivo y te muestra dónde estás hoy frente a dónde querés estar. Con IA que clasifica, pregunta y sugiere, para que esa distancia se convierta en decisiones.</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:8px">
+          <a href="index.html#cierre" class="btn-cta-light" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:999px;background:#FFFFFF;color:#1E1E6B;font-weight:700;font-size:1rem">Agendá una demo</a>
+          <a href="#como-funciona" style="font-weight:700;font-size:1rem;color:#DDE0FF">Ver cómo funciona ↓</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:20px 28px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.16)">
+          <div><p style="margin:0;font-size:0.8125rem;font-weight:700;color:#FFFFFF">Rol Vivo</p><p style="margin:4px 0 0;font-size:0.8125rem;color:#B9C0F5">dónde querés estar</p></div>
+          <div><p style="margin:0;font-size:0.8125rem;font-weight:700;color:#FFFFFF">Agenda</p><p style="margin:4px 0 0;font-size:0.8125rem;color:#B9C0F5">dónde estás hoy</p></div>
+          <div><p style="margin:0;font-size:0.8125rem;font-weight:700;color:#FFFFFF">Reporte</p><p style="margin:4px 0 0;font-size:0.8125rem;color:#B9C0F5">la distancia, a la vista</p></div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 520px;min-width:0;position:relative" aria-hidden="true">
+        <div style="border-radius:16px;overflow:hidden;background:#FFFFFF;box-shadow:0 48px 90px -36px rgba(6,6,30,0.7)">
+          <div style="height:36px;background:#EAECFF;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #DADCF5">
+            <span style="width:10px;height:10px;border-radius:999px;background:#FF5F57"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#FEBC2E"></span>
+            <span style="width:10px;height:10px;border-radius:999px;background:#28C840"></span>
+            <div style="margin-left:10px;height:20px;padding:0 12px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;font-size:11px;color:#5C5C8A">app.pausaco.com/agenda</div>
+          </div>
+          <div style="display:flex">
+            <div class="pf-hide-sm" style="width:44px;flex:none;background:#F8F8FF;border-right:1px solid #EAECFF;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 0">
+              <span style="width:18px;height:18px;border-radius:6px;background:#DADCF5"></span>
+              <span style="width:18px;height:18px;border-radius:6px;background:#DADCF5"></span>
+              <span style="width:18px;height:18px;border-radius:6px;background:#3D3DC8"></span>
+              <span style="width:18px;height:18px;border-radius:6px;background:#DADCF5"></span>
+              <span style="width:18px;height:18px;border-radius:6px;background:#DADCF5"></span>
+            </div>
+            <div style="flex:1;min-width:0;padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-size:15px;font-weight:700;color:#1A1A3E">Agenda</span>
+                <span class="pf-hide-sm" style="font-size:11px;font-weight:600;background:#F0F1FA;border-radius:6px;padding:4px 8px;color:#1A1A3E">Calendario Pausa</span>
+                <span style="margin-left:auto;font-size:11px;font-weight:600;color:#5C5C8A">22 — 26 de septiembre</span>
+                <span style="font-size:11px;font-weight:700;color:#FFFFFF;background:#6D3FF2;border-radius:6px;padding:5px 10px">+ Crear</span>
+                <span class="pf-hide-sm" style="font-size:11px;font-weight:600;border:1px solid #E0E2F0;border-radius:6px;padding:4px 9px;color:#1A1A3E">Por voz</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <span class="pf-chip">Grupo ▾</span>
+                <span class="pf-chip pf-hide-sm">Macrotarea ▾</span>
+                <span class="pf-chip pf-hide-sm">¿Te corresponde? ▾</span>
+                <div class="bar-grow" style="margin-left:auto;width:190px;max-width:50%;height:8px;border-radius:999px;overflow:hidden;display:flex">
+                  <span style="width:22%;background:#3D3DC8"></span><span style="width:30%;background:#D98A00"></span><span style="width:16%;background:#7B5CE0"></span><span style="width:18%;background:#2F7FCC"></span><span style="width:14%;background:#9C9CB8"></span>
+                </div>
+              </div>
+              <div class="pf-days" style="border-top:1px solid #F0F1FA;padding-top:8px">
+                <div class="pf-day">
+                  <p class="pf-day-label">LUN 22</p>
+                  <div class="ev g-prod" style="height:40px;animation-delay:.1s">Weekly de producto<span>9:00 – 9:45</span></div>
+                  <div class="ev g-tec" style="height:74px;animation-delay:.25s">Corrección de errores<span>10:00 – 12:00</span></div>
+                  <div class="ev g-pers" style="height:34px;animation-delay:.4s">Almuerzo<span>13:00</span></div>
+                  <div class="ev g-coord" style="height:52px;animation-delay:.55s">Revisión de QA<span>14:30 – 15:30</span></div>
+                </div>
+                <div class="pf-day">
+                  <p class="pf-day-label">MAR 23</p>
+                  <div class="ev g-eq" style="height:44px;animation-delay:.2s">1:1 con Martín<span>9:30 – 10:15</span></div>
+                  <div class="ev g-tec" style="height:88px;box-shadow:0 0 0 2px #FFB422;animation:evIn .5s .35s both, pulse 2.4s 3s infinite">Ajustes de integración<span>10:30 – 13:00</span></div>
+                  <div class="ev g-pers" style="height:34px;animation-delay:.5s">Almuerzo<span>13:00</span></div>
+                  <div class="ev g-prod" style="height:40px;animation-delay:.65s">Definir alcance v2<span>15:00 – 16:00</span></div>
+                </div>
+                <div class="pf-day">
+                  <p class="pf-day-label">MIÉ 24</p>
+                  <div class="ev g-coord" style="height:50px;animation-delay:.3s">Soporte a consultas<span>9:00 – 10:00</span></div>
+                  <div class="ev g-tec" style="height:62px;animation-delay:.45s">Corrección de errores<span>10:30 – 12:00</span></div>
+                  <div class="ev g-pers" style="height:34px;animation-delay:.6s">Almuerzo<span>13:00</span></div>
+                  <div class="ev g-eq" style="height:48px;animation-delay:.75s">Retro del equipo<span>16:00 – 17:00</span></div>
+                </div>
+                <div class="pf-day">
+                  <p class="pf-day-label">JUE 25</p>
+                  <div class="ev g-prod" style="height:56px;animation-delay:.4s">Brainstorming de producto<span>9:30 – 10:45</span></div>
+                  <div class="ev g-coord" style="height:40px;animation-delay:.55s">Revisión de QA<span>11:00 – 11:45</span></div>
+                  <div class="ev g-tec" style="height:70px;animation-delay:.7s">Corrección de errores<span>12:00 – 14:00</span></div>
+                  <div class="ev g-pers" style="height:34px;animation-delay:.85s">Almuerzo<span>14:00</span></div>
+                </div>
+                <div class="pf-day">
+                  <p class="pf-day-label">VIE 26</p>
+                  <div class="ev g-coord" style="height:40px;animation-delay:.5s">Actualizar tablero<span>9:00 – 9:45</span></div>
+                  <div class="ev g-prod" style="height:56px;animation-delay:.65s">Priorizar backlog<span>10:00 – 11:15</span></div>
+                  <div class="ev g-pers" style="height:34px;animation-delay:.8s">Almuerzo<span>13:00</span></div>
+                  <div class="ev g-eq" style="height:44px;animation-delay:.95s">Cierre semanal<span>16:30 – 17:15</span></div>
+                </div>
+              </div>
+              <div style="height:40px"></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-assist" style="position:absolute;left:90px;right:60px;bottom:18px;display:flex;align-items:center;gap:8px;background:#FFFFFF;border:1px solid #E0E2F5;border-radius:14px;padding:8px 8px 8px 14px;box-shadow:0 18px 40px -16px rgba(30,30,107,0.45)">
+          <span style="flex:1;min-width:0;display:flex;align-items:center;font-size:13px;color:#1A1A3E"><span class="typed">¿Dónde puedo sumar tiempo para investigar con usuarios?</span><span class="caret"></span></span>
+          <span class="pf-hide-sm" style="font-size:11px;font-weight:600;color:#3D3DC8;background:#EEF0FF;border-radius:999px;padding:4px 10px;white-space:nowrap">Foco semanal</span>
+          <span style="flex:none;width:32px;height:32px;border-radius:9px;background:#3D3DC8;display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque 2 — Cómo funciona: consciencia, acción, impacto -->
+  <section id="como-funciona" style="background:#F4F5FF;padding:96px 24px 104px">
+    <div class="pf-wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 40px">
+        <div style="max-width:640px">
+          <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Cómo funciona</p>
+          <h2 style="margin:16px 0 0;font-size:clamp(1.75rem,3.2vw,2.75rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#1A1A3E">Ver con claridad. Decidir qué cambiar. Notar la diferencia.</h2>
+        </div>
+        <p style="margin:0;max-width:420px;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">Pausa está diseñada alrededor de un ciclo que se repite cada semana: <strong style="color:#1A1A3E">consciencia, acción e impacto.</strong></p>
+      </div>
+
+      <div class="pf-tabs" role="tablist">
+        <button type="button" class="pf-tab" role="tab" data-step="c" aria-selected="true">
+          <span class="pf-num">01</span>
+          <span style="display:flex;flex-direction:column;gap:4px"><span class="pf-tab-title">Consciencia</span><span class="pf-tab-sub">Dónde estoy vs. dónde quiero estar</span></span>
+        </button>
+        <button type="button" class="pf-tab" role="tab" data-step="a" aria-selected="false">
+          <span class="pf-num">02</span>
+          <span style="display:flex;flex-direction:column;gap:4px"><span class="pf-tab-title">Acción</span><span class="pf-tab-sub">Qué hago con esa brecha</span></span>
+        </button>
+        <button type="button" class="pf-tab" role="tab" data-step="i" aria-selected="false">
+          <span class="pf-num">03</span>
+          <span style="display:flex;flex-direction:column;gap:4px"><span class="pf-tab-title">Impacto</span><span class="pf-tab-sub">Lo que cambia en mi semana</span></span>
+        </button>
+      </div>
+
+      <div class="pf-panel">
+
+        <!-- 01 · Consciencia -->
+        <div class="pf-pane" data-pane="c">
+          <div class="pf-pane-text">
+            <p class="pf-eyebrow">01 · Consciencia</p>
+            <h3 class="pf-pane-title">Dónde estás hoy, frente a dónde querés estar.</h3>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+              <button type="button" class="pf-sub on" data-sub="rol">
+                <span class="pf-num">1</span>
+                <span style="display:flex;flex-direction:column;gap:3px"><span style="font-size:15px;font-weight:800;color:#1A1A3E">Dónde querés estar</span><span style="font-size:13px;line-height:1.45;color:#5C5C8A">Tu Rol Vivo: macrotareas, grupos y objetivos de tiempo.</span></span>
+              </button>
+              <button type="button" class="pf-sub" data-sub="rep">
+                <span class="pf-num">2</span>
+                <span style="display:flex;flex-direction:column;gap:3px"><span style="font-size:15px;font-weight:800;color:#1A1A3E">Dónde estás hoy</span><span style="font-size:13px;line-height:1.45;color:#5C5C8A">El reporte compara tu semana real con esos objetivos.</span></span>
+              </button>
+            </div>
+            <p data-subtext="rol" style="margin:0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">El Rol Vivo es tu rol hecho visible: las macrotareas que lo componen, agrupadas, y cuánto tiempo querés darle a cada grupo. El Asistente de Rol te ayuda a armarlo, y lo ajustás cuando tu trabajo cambia.</p>
+            <div data-subtext="rep" hidden style="display:flex;flex-direction:column;gap:10px">
+              <p style="margin:0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">La agenda registra en qué se fue tu semana y el reporte lo compara con tu Rol Vivo. Por ejemplo, en Producto:</p>
+              <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex:none;font-size:12px;font-weight:800;color:#3D3DC8;background:#EAECFF;border-radius:6px;padding:3px 7px">10,8%</span><span style="font-size:14px;line-height:1.5;color:#1A1A3E">el tiempo que realmente le dedicaste</span></div>
+              <div style="display:flex;gap:12px;align-items:flex-start"><span style="flex:none;font-size:12px;font-weight:800;color:#3D3DC8;background:#EAECFF;border-radius:6px;padding:3px 7px">&gt;20%</span><span style="font-size:14px;line-height:1.5;color:#1A1A3E">el objetivo que fijaste en tu Rol Vivo</span></div>
+            </div>
+          </div>
+
+          <!-- Rol Vivo mock -->
+          <div class="pf-pane-visual" data-subvisual="rol" aria-hidden="true">
+            <div class="pf-rolmock" id="pf-rolmock">
+              <div class="pf-rolmock-inner">
+                <div style="display:flex;align-items:center;gap:20px;height:48px">
+                  <span style="font-size:28px;font-weight:400;color:#14142B;letter-spacing:-0.01em">Rol Digital</span>
+                  <span style="width:1px;height:30px;background:#E3E4EC"></span>
+                  <span style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:1px solid #E3E4EC;border-radius:10px;background:#FFFFFF;font-size:16px;font-weight:600;color:#14142B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6D3FF2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18M9 7v13M15 7v13"></path></svg>Mi Rol</span>
+                  <span style="flex:1"></span>
+                  <span style="width:46px;height:46px;border:1px solid #E3E4EC;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a2 2 0 0 0 3.4 0"></path></svg></span>
+                  <span style="width:46px;height:46px;border:1px solid #E3E4EC;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:32px;height:108px;padding:0 24px;border:1px solid #E6E7EE;border-radius:14px;background:#FFFFFF;box-shadow:0 1px 3px rgba(20,20,43,.05)">
+                  <span style="display:inline-flex;align-items:center;gap:10px;font-size:19px;color:#6B6B80"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B6B80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"></path></svg>Equipo Producto</span>
+                  <span style="display:inline-flex;align-items:center;gap:10px;font-size:19px;color:#6B6B80"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B6B80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3"></path></svg>Empresa Demo</span>
+                  <span style="flex:1"></span>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px"><span style="display:flex;align-items:center;gap:8px;font-size:34px;font-weight:700;color:#6D3FF2">24<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#6D3FF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h12M3 12h9M3 18h7M15 17l2 2 4-4"></path></svg></span><span style="font-size:15px;color:#6B6B80">Macrotareas</span></div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px"><span style="display:flex;align-items:center;gap:8px;font-size:34px;font-weight:700;color:#6D3FF2">6<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#6D3FF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M3 10h18"></path></svg></span><span style="font-size:15px;color:#6B6B80">Grupos</span></div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:4px"><span style="display:flex;align-items:center;gap:8px;font-size:34px;font-weight:700;color:#6D3FF2">7<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#6D3FF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.5"></circle></svg></span><span style="font-size:15px;color:#6B6B80">Objetivos activos</span></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="flex:1;display:flex;align-items:center;gap:12px;height:48px;padding:0 18px;border:1px solid #E3E4EC;border-radius:12px;background:#FFFFFF;font-size:17px;color:#8A8AA0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B6B80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>Buscar...</span>
+                  <span style="display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:12px;background:#6D3FF2;color:#FFFFFF;font-size:18px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Agregar Macrotarea</span>
+                  <span style="display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border:1px solid #E3E4EC;border-radius:12px;background:#FFFFFF;color:#14142B;font-size:18px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"></path></svg>Compartir Rol</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <div style="display:flex;align-items:center;gap:6px;padding:5px;border-radius:12px;background:#F0F0F5">
+                    <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;border-radius:9px;color:#6D3FF2;font-size:16px;font-weight:600"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6D3FF2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>Por Grupos</span>
+                    <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;color:#5A5A70;font-size:16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A5A70" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg>Por Macrotareas</span>
+                    <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;color:#5A5A70;font-size:16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A5A70" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>Tarjetas</span>
+                  </div>
+                  <span style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border:1px solid #E3E4EC;border-radius:10px;background:#FFFFFF;font-size:16px;font-weight:500;color:#14142B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>Filtrar</span>
+                  <span style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border:1px solid #E3E4EC;border-radius:10px;background:#FFFFFF;font-size:16px;font-weight:500;color:#14142B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14142B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M4 20h16M8 8h6M8 12h9M8 16h12"></path></svg>Ordenar</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:22px;height:62px;padding:0 26px;border:1px solid #E6E7EE;border-radius:14px;background:#FFFFFF">
+                  <span style="font-size:18px;color:#6B6B80">Total objetivos</span>
+                  <span style="position:relative;flex:1;height:10px;border-radius:99px;background:#EEEEF3"><span class="bar-grow" style="position:absolute;left:0;top:0;bottom:0;width:60%;border-radius:99px;background:#6D3FF2"></span></span>
+                  <span style="font-size:22px;font-weight:600;color:#14142B">60%</span>
+                </div>
+                <div style="flex:none;background:#FFFFFF;border:1px solid #E6E7EE;border-radius:14px;box-shadow:0 1px 2px rgba(20,20,43,.04)">
+                  <div style="display:flex;align-items:center;gap:18px;height:86px;padding:0 28px">
+                    <span style="width:24px;height:24px;border-radius:99px;background:#3D3DC8;flex:none;box-shadow:inset 0 0 0 2px rgba(0,0,0,.08)"></span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+                    <span style="font-size:24px;font-weight:600;color:#14142B;letter-spacing:-0.01em">Producto</span>
+                    <span style="min-width:30px;height:30px;box-sizing:border-box;border:1px solid #E3E4EC;background:#F5F5F8;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#6B6B80">7</span>
+                    <span style="flex:1"></span>
+                    <div style="width:360px;display:flex;align-items:center;gap:16px"><span style="position:relative;display:block;width:245px;height:8px;border-radius:99px;background:#ECEDF2"><span class="bar-grow" style="position:absolute;left:0;top:0;bottom:0;width:54%;border-radius:99px;background:#3D3DC8"></span></span><span style="font-size:16px;color:#6B6B80">Mínimo 20%</span></div>
+                    <span style="flex:1"></span>
+                    <span style="display:flex;gap:40px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4L8 20H4v-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:14px;height:78px;padding:0 44px 0 88px;border-top:1px solid #EFEFF4">
+                    <span style="font-size:18px;color:#14142B;background:#EEF0FF;border:1.5px solid #C9CDF2;border-radius:9px;padding:6px 16px">Definición y especificación</span>
+                    <span style="flex:1"></span>
+                    <div style="width:300px;display:flex;align-items:center;gap:14px"><span style="position:relative;display:block;width:190px;height:8px;border-radius:99px;background:#ECEDF2"><span class="bar-grow" style="position:absolute;left:0;top:0;bottom:0;width:70%;border-radius:99px;background:#3D3DC8"></span></span><span style="font-size:15px;color:#6B6B80">Mínimo 5%</span></div>
+                    <span style="display:flex;gap:34px;margin-left:12px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"></path><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15M10 11v6M14 11v6"></path></svg></span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:14px;height:78px;padding:0 44px 0 88px;border-top:1px solid #EFEFF4">
+                    <span style="font-size:18px;color:#14142B;background:#EEF0FF;border:1.5px solid #C9CDF2;border-radius:9px;padding:6px 16px">Priorización de backlog</span>
+                    <span style="flex:1"></span>
+                    <div style="width:300px;display:flex;align-items:center;gap:14px"><span style="position:relative;display:block;width:190px;height:8px;border-radius:99px;background:#ECEDF2"><span class="bar-grow" style="position:absolute;left:0;top:0;bottom:0;width:45%;border-radius:99px;background:#3D3DC8"></span></span><span style="font-size:15px;color:#6B6B80">Máximo 8%</span></div>
+                    <span style="display:flex;gap:34px;margin-left:12px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"></path><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15M10 11v6M14 11v6"></path></svg></span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:14px;height:78px;padding:0 44px 0 88px;border-top:1px solid #EFEFF4">
+                    <span style="font-size:18px;color:#14142B;background:#EEF0FF;border:1.5px solid #C9CDF2;border-radius:9px;padding:6px 16px">Análisis de datos</span>
+                    <span style="flex:1"></span>
+                    <span style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:#D92D20;border:1px solid #F4B8B2;background:#FFF6F5;border-radius:99px;padding:5px 12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D92D20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"></path><path d="M12 10v5M12 18h.01"></path></svg>Sin consumo hace 21 días</span>
+                    <span style="display:flex;gap:34px;margin-left:12px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"></path><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15M10 11v6M14 11v6"></path></svg></span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:14px;height:78px;padding:0 44px 0 88px;border-top:1px solid #EFEFF4">
+                    <span style="font-size:18px;color:#14142B;background:#EEF0FF;border:1.5px solid #C9CDF2;border-radius:9px;padding:6px 16px">Seguimiento de métricas</span>
+                    <span style="flex:1"></span>
+                    <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:#1A1A2E;border:1.5px dashed #C9CDF2;background:#EEF0FF;border-radius:8px;padding:6px 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.5"></circle></svg>Agregar objetivo</span>
+                    <span style="display:flex;gap:34px;margin-left:12px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"></path><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15M10 11v6M14 11v6"></path></svg></span>
+                  </div>
+                </div>
+                <div style="flex:none;background:#FFFFFF;border:1px solid #E6E7EE;border-radius:14px;box-shadow:0 1px 2px rgba(20,20,43,.04)">
+                  <div style="display:flex;align-items:center;gap:18px;height:86px;padding:0 28px">
+                    <span style="width:24px;height:24px;border-radius:99px;background:#1F8A55;flex:none;box-shadow:inset 0 0 0 2px rgba(0,0,0,.08)"></span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+                    <span style="font-size:24px;font-weight:600;color:#14142B;letter-spacing:-0.01em">Investigación con usuarios</span>
+                    <span style="min-width:30px;height:30px;box-sizing:border-box;border:1px solid #E3E4EC;background:#F5F5F8;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#6B6B80">3</span>
+                    <span style="flex:1"></span>
+                    <div style="width:360px;display:flex;align-items:center;gap:16px"><span style="position:relative;display:block;width:245px;height:8px;border-radius:99px;background:#ECEDF2"></span><span style="font-size:16px;color:#6B6B80">Mínimo 5%</span></div>
+                    <span style="flex:1"></span>
+                    <span style="display:flex;gap:40px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4L8 20H4v-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+                  </div>
+                </div>
+                <div style="flex:none;background:#FFFFFF;border:1px solid #E6E7EE;border-radius:14px;box-shadow:0 1px 2px rgba(20,20,43,.04)">
+                  <div style="display:flex;align-items:center;gap:18px;height:86px;padding:0 28px">
+                    <span style="width:24px;height:24px;border-radius:99px;background:#D98A00;flex:none;box-shadow:inset 0 0 0 2px rgba(0,0,0,.08)"></span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+                    <span style="font-size:24px;font-weight:600;color:#14142B;letter-spacing:-0.01em">Ejecución técnica</span>
+                    <span style="min-width:30px;height:30px;box-sizing:border-box;border:1px solid #E3E4EC;background:#F5F5F8;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#6B6B80">4</span>
+                    <span style="flex:1"></span>
+                    <div style="width:360px;display:flex;align-items:center;gap:16px"><span style="position:relative;display:block;width:245px;height:8px;border-radius:99px;background:#ECEDF2"><span class="bar-grow" style="position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:99px;background:#D98A00"></span></span><span style="font-size:16px;color:#6B6B80">Máximo 10%</span></div>
+                    <span style="flex:1"></span>
+                    <span style="display:flex;gap:40px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4L8 20H4v-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+                  </div>
+                </div>
+                <div style="flex:none;background:#FFFFFF;border:1px solid #E6E7EE;border-radius:14px;box-shadow:0 1px 2px rgba(20,20,43,.04)">
+                  <div style="display:flex;align-items:center;gap:18px;height:86px;padding:0 28px">
+                    <span style="width:24px;height:24px;border-radius:99px;background:#7B5CE0;flex:none;box-shadow:inset 0 0 0 2px rgba(0,0,0,.08)"></span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+                    <span style="font-size:24px;font-weight:600;color:#14142B;letter-spacing:-0.01em">Gestión de equipo</span>
+                    <span style="min-width:30px;height:30px;box-sizing:border-box;border:1px solid #E3E4EC;background:#F5F5F8;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#6B6B80">5</span>
+                    <span style="flex:1"></span>
+                    <div style="width:360px;display:flex;align-items:center;gap:16px"><span style="position:relative;display:block;width:245px;height:8px;border-radius:99px;background:#ECEDF2"><span class="bar-grow" style="position:absolute;left:0;top:0;bottom:0;width:82%;border-radius:99px;background:#7B5CE0"></span></span><span style="font-size:16px;color:#6B6B80">Máximo 15%</span></div>
+                    <span style="flex:1"></span>
+                    <span style="display:flex;gap:40px;color:#1A1A2E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4L8 20H4v-4z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+                  </div>
+                </div>
+              </div>
+              <div style="position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(rgba(250,250,252,0),#FAFAFC 85%)"></div>
+              <span style="position:absolute;right:16px;bottom:16px;width:52px;height:52px;border-radius:99px;background:#2F5BEA;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -8px rgba(47,91,234,.6)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span style="position:absolute;right:2px;top:2px;width:11px;height:11px;border-radius:99px;background:#22C55E;border:2px solid #FFFFFF"></span></span>
+            </div>
+          </div>
+
+          <!-- Reporte mock -->
+          <div class="pf-pane-visual" data-subvisual="rep" hidden aria-hidden="true">
+            <div style="display:flex;flex-direction:column;gap:14px;background:#FFFFFF;border:1px solid #E6E8F5;border-radius:16px;padding:18px 20px;color:#1A1A3E">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
+                <span style="font-size:17px;font-weight:600">Reporte</span>
+                <span style="width:1px;height:18px;background:#E3E5F0"></span>
+                <span style="font-size:12px;font-weight:600;background:#F0F1F7;border-radius:7px;padding:5px 10px">General</span>
+                <span style="font-size:12px;color:#5C5C8A">Evolutivo</span>
+                <span class="pf-hide-sm" style="font-size:12px;color:#5C5C8A">Evolutivo Registros</span>
+                <span class="pf-hide-sm" style="font-size:12px;color:#5C5C8A">Reflexión Profunda</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px">
+                <div style="border:1px solid #E3E5F0;border-radius:10px;padding:6px 14px;text-align:center"><p style="margin:0;font-size:10px;color:#5C5C8A">Horas</p><p style="margin:0;font-size:18px">32,5</p></div>
+                <div><p style="margin:0 0 4px;font-size:9px;font-weight:700;letter-spacing:.08em;color:#5C5C8A">PERSONAS</p><span style="display:block;font-size:12px;border:1px solid #E3E5F0;border-radius:8px;padding:7px 12px">Seleccionadas: 1</span></div>
+                <div><p style="margin:0 0 4px;font-size:9px;font-weight:700;letter-spacing:.08em;color:#5C5C8A">PERÍODO</p><span style="display:block;font-size:12px;border:1px solid #E3E5F0;border-radius:8px;padding:7px 12px">22 de septiembre — 26 de septiembre</span></div>
+              </div>
+              <div style="background:#F7F8FD;border:1px solid #E3E6F5;border-radius:12px;padding:14px 16px">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D3DC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path><path d="M19 15l.8 2 2 .8-2 .7-.8 2-.7-2-2-.7 2-.8z"></path></svg>
+                  <span style="font-size:14px;font-weight:700">Análisis de reporte</span>
+                  <span style="font-size:11px;color:#5C5C8A">22 — 26 septiembre</span>
+                </div>
+                <p style="margin:8px 0 0;font-size:12.5px;line-height:1.55;color:#2A2A4A">Tu objetivo más comprometido es <strong>Producto</strong> (10,8% vs. más de 20% esperado). La causa no parece falta de trabajo, sino un <strong>desvío hacia ejecución técnica</strong>: le dedicaste 8 h, más del doble de lo que tu rol prevé. <strong>Investigación con usuarios</strong> quedó en 0%.</p>
+                <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
+                  <span style="font-size:11px;border:1px solid #E0E2F0;background:#FFFFFF;border-radius:8px;padding:5px 10px">Este reporte me aportó valor</span>
+                  <span style="margin-left:auto;font-size:11px;border:1px solid #E0E2F0;background:#FFFFFF;border-radius:8px;padding:5px 10px">Conversar sobre este análisis</span>
+                </div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:12px">
+                <div style="flex:1.35 1 300px;min-width:0;border:1px solid #E6E8F5;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+                  <p style="margin:0 0 2px;font-size:12.5px;font-weight:500">Tiempo según Grupo de Macrotareas</p>
+                  <div class="pf-rep-row"><span class="pf-rep-label">Ejecución técnica</span><span class="pf-rep-bar bar-grow" style="width:54%;background:#6B63F5"></span><span class="pf-rep-val out">24,6%&nbsp; &lt;10%</span></div>
+                  <div class="pf-rep-row"><span class="pf-rep-label">Coordinación</span><span class="pf-rep-bar bar-grow" style="width:37%;background:#6B63F5"></span><span class="pf-rep-val out">16,9%&nbsp; &lt;10%</span></div>
+                  <div class="pf-rep-row"><span class="pf-rep-label">Gestión de equipo</span><span class="pf-rep-bar bar-grow" style="width:27%;background:#6B63F5"></span><span class="pf-rep-val">12,3%&nbsp; &lt;15%</span></div>
+                  <div class="pf-rep-row"><span class="pf-rep-label">Producto</span><span class="pf-rep-bar bar-grow" style="width:24%;background:#6B63F5"></span><span class="pf-rep-val out">10,8%&nbsp; &gt;20%</span></div>
+                  <div class="pf-rep-row"><span class="pf-rep-label">Descanso</span><span class="pf-rep-bar bar-grow" style="width:20%;background:#6AA8F7"></span><span class="pf-rep-val">9,2%</span></div>
+                  <div class="pf-rep-row"><span class="pf-rep-label">Investigación con usuarios</span><span class="pf-rep-bar bar-grow" style="width:3px;background:#6B63F5"></span><span class="pf-rep-val out">0%&nbsp; &gt;5%</span></div>
+                </div>
+                <div style="flex:1 1 240px;min-width:0;border:1px solid #E6E8F5;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+                  <p style="margin:0;font-size:12.5px;font-weight:500">Tiempo según correspondencia al Rol</p>
+                  <div style="flex:1;display:flex;align-items:center;gap:14px">
+                    <svg width="96" height="96" viewBox="0 0 42 42" style="flex:none;transform:rotate(-90deg)">
+                      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#2F6FD6" stroke-width="7" stroke-dasharray="78 22" stroke-dashoffset="0"></circle>
+                      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1E1E6B" stroke-width="7" stroke-dasharray="9 91" stroke-dashoffset="-78"></circle>
+                      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#FFB422" stroke-width="7" stroke-dasharray="8 92" stroke-dashoffset="-87"></circle>
+                      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#A9B4F5" stroke-width="7" stroke-dasharray="5 95" stroke-dashoffset="-95"></circle>
+                    </svg>
+                    <div style="display:flex;flex-direction:column;gap:6px;font-size:11px;color:#2A2A4A">
+                      <span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#2F6FD6;margin-right:6px"></span>Sí: 78%</span>
+                      <span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#1E1E6B;margin-right:6px"></span>No: 9%</span>
+                      <span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#FFB422;margin-right:6px"></span>No, debería delegarla: 8%</span>
+                      <span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#A9B4F5;margin-right:6px"></span>Duda: 5%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 · Acción -->
+        <div class="pf-pane" data-pane="a" hidden>
+          <div class="pf-pane-text">
+            <p class="pf-eyebrow">02 · Acción</p>
+            <h3 class="pf-pane-title">¿Qué tengo que hacer para estar donde quiero estar?</h3>
+            <p style="margin:0;font-size:1rem;line-height:1.65;color:#5C5C8A">Con la brecha a la vista, la pregunta cambia. El asistente la responde con tu propia agenda y te devuelve preguntas para que la decisión sea tuya.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;color:#1A1A3E">
+              <span class="pf-pill">Delegar una tarea</span>
+              <span class="pf-pill">Tener una conversación pendiente</span>
+              <span class="pf-pill">Reservar tiempo de foco</span>
+              <span class="pf-pill">Reorganizar la semana</span>
+            </div>
+          </div>
+          <div class="pf-pane-visual" aria-hidden="true">
+            <div style="border:1px solid #E6E8F5;border-radius:18px;display:flex;flex-direction:column;overflow:hidden;color:#1A1A3E">
+              <div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid #EEF0F8">
+                <span style="width:34px;height:34px;border-radius:10px;background:#3D3DC8;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+                <div><p style="margin:0;font-size:14px;font-weight:700">Asistente Digital</p><p style="margin:0;font-size:12px;color:#1F8A55">En línea</p></div>
+              </div>
+              <div style="flex:1;padding:20px 22px;display:flex;flex-direction:column;gap:14px;background:#FBFBFE">
+                <div class="pf-anim" style="align-self:flex-end;max-width:90%;background:#3D3DC8;color:#FFFFFF;border-radius:16px 16px 4px 16px;padding:11px 16px;font-size:14px;animation:evIn .5s .1s both">¿Qué tareas de esta semana podría delegar?</div>
+                <div class="pf-anim" style="align-self:flex-start;max-width:560px;background:#FFFFFF;border:1px solid #E3E6F7;border-radius:16px 16px 16px 4px;padding:14px 18px;animation:evIn .5s .6s both">
+                  <p style="margin:0;font-size:14px;font-weight:700;color:#1E1E6B">Tareas que podrías delegar</p>
+                  <ul style="margin:8px 0 0;padding-left:18px;font-size:13px;line-height:1.55;color:#3A3A5E;display:flex;flex-direction:column;gap:5px">
+                    <li><strong style="color:#1E1E6B">Revisión de QA</strong> — es coordinación operativa más que trabajo de producto con criterio propio.</li>
+                    <li><strong style="color:#1E1E6B">Actualizar tablero</strong> — tarea de organización, sin peso en tus focos activos.</li>
+                    <li><strong style="color:#1E1E6B">Soporte a consultas</strong> — no está ligado a ninguna macrotarea tuya.</li>
+                  </ul>
+                </div>
+                <div class="pf-anim" style="align-self:flex-start;max-width:560px;background:#FFF6E3;border:1px solid #F5DDA8;border-radius:16px 16px 16px 4px;padding:12px 18px;font-size:13px;line-height:1.55;color:#3A2E0A;animation:evIn .5s 1.2s both">Antes de mover algo: ¿las correcciones de errores fueron puntuales de esta semana o se vienen repitiendo? Si se repiten, puede valer una conversación con tu líder.</div>
+              </div>
+              <div style="display:flex;gap:10px;padding:12px 16px;border-top:1px solid #EEF0F8">
+                <span style="flex:1;height:40px;border:1px solid #E0E2F0;border-radius:12px;display:flex;align-items:center;padding:0 14px;font-size:13px;color:#6A6A8E">Escribí tu mensaje…</span>
+                <span style="width:40px;height:40px;border:1px solid #E0E2F0;border-radius:12px;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0M12 17v5"></path></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 · Impacto -->
+        <div class="pf-pane" data-pane="i" hidden>
+          <div class="pf-pane-text">
+            <p class="pf-eyebrow">03 · Impacto</p>
+            <h3 class="pf-pane-title">Horas que vuelven a lo que importa.</h3>
+            <p style="margin:0;font-size:1rem;line-height:1.65;color:#5C5C8A">Cuando las acciones se sostienen, la agenda cambia. Aparece tiempo para lo que tu rol necesita y que antes no entraba. Lo ves en la agenda y en el reporte, semana contra semana.</p>
+          </div>
+          <div class="pf-pane-visual" style="display:flex;flex-direction:column;gap:16px;color:#1A1A3E" aria-hidden="true">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+              <div style="border:1px solid #E6E8F5;border-radius:16px;padding:20px 22px">
+                <p style="margin:0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5C5C8A">Semana 1</p>
+                <div style="margin-top:12px;height:14px;border-radius:5px;overflow:hidden;display:flex">
+                  <span style="width:11%;background:#3D3DC8"></span><span style="width:25%;background:#D98A00"></span><span style="width:12%;background:#7B5CE0"></span><span style="width:17%;background:#2F7FCC"></span><span style="width:35%;background:#C9C9DA"></span>
+                </div>
+                <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:13px">
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span>Producto</span><strong>3,5 h</strong></div>
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span>Ejecución técnica</span><strong>8 h</strong></div>
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span>Investigación con usuarios</span><strong>0 h</strong></div>
+                </div>
+              </div>
+              <div style="border:2px solid #3D3DC8;border-radius:16px;padding:19px 21px">
+                <p style="margin:0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3D3DC8">Semana 6</p>
+                <div class="bar-grow" style="margin-top:12px;height:14px;border-radius:5px;overflow:hidden;display:flex">
+                  <span style="width:20%;background:#3D3DC8"></span><span style="width:14%;background:#D98A00"></span><span style="width:12%;background:#7B5CE0"></span><span style="width:8%;background:#1F8A55"></span><span style="width:11%;background:#2F7FCC"></span><span style="width:35%;background:#C9C9DA"></span>
+                </div>
+                <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:13px">
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span>Producto</span><strong style="color:#1F7A4B">6,5 h ↑</strong></div>
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span>Ejecución técnica</span><strong>4,5 h ↓</strong></div>
+                  <div style="display:flex;justify-content:space-between;gap:8px"><span>Investigación con usuarios</span><strong style="color:#1F7A4B">2,5 h ↑</strong></div>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid #E6E8F5;border-radius:16px;padding:18px 20px">
+              <p style="margin:0 0 10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5C5C8A">La agenda de la semana 6</p>
+              <div class="pf-days">
+                <div class="pf-day"><div class="ev g-prod" style="height:38px">Weekly de producto<span>9:00</span></div><div class="ev g-inv" style="height:44px;box-shadow:0 0 0 2px #1F8A55">Entrevista con usuarios<span>Nuevo</span></div></div>
+                <div class="pf-day"><div class="ev g-eq" style="height:38px">1:1 con Martín<span>9:30</span></div><div class="ev g-prod" style="height:44px">Foco: definición v2<span>10:30 – 12:30</span></div></div>
+                <div class="pf-day"><div class="ev g-tec" style="height:38px">Corrección de errores<span>10:00</span></div><div class="ev g-coord" style="height:44px;opacity:.55">QA → delegado<span>Equipo</span></div></div>
+                <div class="pf-day"><div class="ev g-prod" style="height:38px">Brainstorming<span>9:30</span></div><div class="ev g-inv" style="height:44px;box-shadow:0 0 0 2px #1F8A55">Análisis de entrevistas<span>Nuevo</span></div></div>
+                <div class="pf-day"><div class="ev g-prod" style="height:38px">Priorizar backlog<span>10:00</span></div><div class="ev g-eq" style="height:44px">Cierre semanal<span>16:30</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+        <button type="button" id="pf-next" style="height:44px;padding:0 20px;border-radius:999px;border:1px solid #3D3DC8;background:#FFFFFF;color:#3D3DC8;font:inherit;font-weight:700;font-size:0.875rem;cursor:pointer">Siguiente: Dónde estás hoy →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque 3 — La agenda, en el centro -->
+  <section style="background:#FFFFFF;padding:104px 24px">
+    <div class="pf-wrap">
+      <div style="max-width:760px">
+        <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">La agenda, en el centro</p>
+        <h2 style="margin:16px 0 0;font-size:clamp(1.75rem,3.2vw,2.75rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#1A1A3E">Donde pasa tu semana, y donde empieza todo.</h2>
+        <p style="margin:18px 0 0;font-size:1.0625rem;line-height:1.6;color:#5C5C8A">La agenda importa tu calendario y lo convierte en información: cada evento queda ligado a una parte de tu rol. Tocá cada punto para ver qué hace.</p>
+      </div>
+
+      <div class="pf-deep">
+        <div class="pf-deep-mock" aria-hidden="true" style="color:#1A1A3E">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+            <span style="font-size:18px;font-weight:700">Agenda</span>
+            <span class="pf-hide-sm" style="font-size:12px;font-weight:600;background:#F0F1FA;border-radius:6px;padding:5px 10px">Calendario Pausa</span>
+            <span style="margin-left:auto;font-size:12px;color:#5C5C8A">¿Falta algo? <span style="color:#3D3DC8;font-weight:700;text-decoration:underline">Sincronizar calendario</span></span>
+            <span class="pf-badge" data-badge="1">1</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:12px;font-weight:600;border:1px solid #E0E2F0;border-radius:8px;padding:6px 12px">Hoy</span>
+            <span style="flex:1;min-width:0;text-align:center;font-size:13px;font-weight:600;border:1px solid #E0E2F0;border-radius:8px;padding:6px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">22 de SEPTIEMBRE — 26 de SEPTIEMBRE</span>
+            <span style="font-size:12px;font-weight:700;color:#FFFFFF;background:#6D3FF2;border-radius:8px;padding:7px 12px;white-space:nowrap">+ Crear</span>
+            <span class="pf-hide-sm" style="font-size:12px;font-weight:600;border:1px solid #E0E2F0;border-radius:8px;padding:6px 12px;white-space:nowrap">Por voz</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="pf-chip" style="font-size:11px">Grupo ▾</span>
+            <span class="pf-chip pf-hide-sm" style="font-size:11px">Macrotarea ▾</span>
+            <span class="pf-chip pf-hide-sm" style="font-size:11px">¿Te corresponde? ▾</span>
+            <div style="margin-left:auto;flex:0 1 auto;min-width:0;display:flex;align-items:center;gap:8px">
+              <span class="pf-badge" data-badge="4">4</span>
+              <div style="width:220px;max-width:100%;height:10px;border-radius:999px;overflow:hidden;display:flex">
+                <span style="width:22%;background:#3D3DC8"></span><span style="width:30%;background:#D98A00"></span><span style="width:16%;background:#7B5CE0"></span><span style="width:18%;background:#2F7FCC"></span><span style="width:14%;background:#9C9CB8"></span>
+              </div>
+            </div>
+          </div>
+          <div class="pf-days" style="gap:10px;border-top:1px solid #F0F1FA;padding-top:10px">
+            <div class="pf-day" style="gap:6px">
+              <p class="pf-day-label" style="font-size:11px">LUN 22</p>
+              <div class="ev g-prod" style="height:46px">Weekly de producto<span>9:00 – 9:45</span></div>
+              <div class="ev g-tec" style="height:92px">Corrección de errores<span>10:00 – 12:00</span></div>
+              <div class="ev g-pers" style="height:40px">Almuerzo<span>13:00</span></div>
+              <div class="ev g-coord" style="height:60px">Revisión de QA<span>14:30 – 15:30</span></div>
+            </div>
+            <div class="pf-day" style="gap:6px">
+              <p class="pf-day-label" style="font-size:11px">MAR 23</p>
+              <div class="ev g-eq" style="height:50px">1:1 con Martín<span>9:30 – 10:15</span></div>
+              <div class="ev g-tec" style="min-height:112px;box-shadow:0 0 0 2px #FFB422">Ajustes de integración<span>10:30 – 13:00</span>
+                <div style="margin-top:7px;background:#FFFFFF;border-radius:7px;padding:6px 7px;display:flex;flex-direction:column;gap:4px">
+                  <div style="display:flex;align-items:center;gap:5px"><span class="pf-badge on" data-badge="2">2</span><span style="display:inline;margin:0;font-size:10px;font-weight:700;color:#3D3DC8">IA sugiere</span></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px"><span style="display:inline;margin:0;font-size:10.5px;font-weight:700;color:#1A1A3E">Ejecución técnica</span><span style="display:inline;margin:0;font-size:10px;font-weight:700;color:#FFFFFF;background:#3D3DC8;border-radius:5px;padding:2px 6px">✓</span></div>
+                </div>
+              </div>
+              <div class="ev g-pers" style="height:40px">Almuerzo<span>13:00</span></div>
+              <div class="ev g-prod" style="height:48px">Definir alcance v2<span>15:00 – 16:00</span></div>
+            </div>
+            <div class="pf-day" style="gap:6px">
+              <p class="pf-day-label" style="font-size:11px">MIÉ 24</p>
+              <div class="ev g-coord" style="min-height:112px;box-shadow:0 0 0 2px #3D3DC8">Soporte a consultas<span>9:00 – 10:00</span>
+                <div style="margin-top:7px;background:#FFFFFF;border-radius:7px;padding:6px 7px;display:flex;flex-direction:column;gap:5px">
+                  <div style="display:flex;align-items:center;gap:5px"><span class="pf-badge" data-badge="3">3</span><span style="display:inline;margin:0;font-size:10.5px;font-weight:700;color:#1A1A3E">¿Te corresponde?</span></div>
+                  <div style="display:flex;gap:4px">
+                    <span style="display:inline;margin:0;flex:1;text-align:center;font-size:10px;font-weight:600;color:#1A1A3E;border:1px solid #E0E2F0;border-radius:5px;padding:3px 0">Sí</span>
+                    <span style="display:inline;margin:0;flex:1;text-align:center;font-size:10px;font-weight:600;color:#1A1A3E;border:1px solid #E0E2F0;border-radius:5px;padding:3px 0">No</span>
+                    <span style="display:inline;margin:0;flex:1;text-align:center;font-size:10px;font-weight:600;color:#1A1A3E;border:1px solid #E0E2F0;border-radius:5px;padding:3px 0">Duda</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ev g-tec" style="height:66px">Corrección de errores<span>10:30 – 12:00</span></div>
+              <div class="ev g-pers" style="height:40px">Almuerzo<span>13:00</span></div>
+              <div class="ev g-eq" style="height:48px">Retro del equipo<span>16:00 – 17:00</span></div>
+            </div>
+            <div class="pf-day" style="gap:6px">
+              <p class="pf-day-label" style="font-size:11px">JUE 25</p>
+              <div class="ev g-prod" style="height:64px">Brainstorming de producto<span>9:30 – 10:45</span></div>
+              <div class="ev g-coord" style="height:46px">Revisión de QA<span>11:00 – 11:45</span></div>
+              <div class="ev g-tec" style="height:84px">Corrección de errores<span>12:00 – 14:00</span></div>
+              <div class="ev g-pers" style="height:40px">Almuerzo<span>14:00</span></div>
+            </div>
+            <div class="pf-day" style="gap:6px">
+              <p class="pf-day-label" style="font-size:11px">VIE 26</p>
+              <div class="ev g-coord" style="height:46px">Actualizar tablero<span>9:00 – 9:45</span></div>
+              <div class="ev g-prod" style="height:64px">Priorizar backlog<span>10:00 – 11:15</span></div>
+              <div class="ev g-pers" style="height:40px">Almuerzo<span>13:00</span></div>
+              <div class="ev g-eq" style="height:50px">Cierre semanal<span>16:30 – 17:15</span></div>
+            </div>
+          </div>
+          <div style="margin:4px clamp(0px,5vw,60px) 0;display:flex;align-items:center;gap:8px;background:#FFFFFF;border:1px solid #E0E2F5;border-radius:14px;padding:8px 8px 8px 14px;box-shadow:0 18px 40px -16px rgba(30,30,107,0.45)">
+            <span class="pf-badge" data-badge="5">5</span>
+            <span style="flex:1;min-width:0;font-size:13px;color:#4A4A72">¿Dónde puedo sumar espacios para mis macrotareas?</span>
+            <span class="pf-hide-sm" style="font-size:11px;font-weight:600;color:#3D3DC8;background:#EEF0FF;border-radius:999px;padding:4px 10px;white-space:nowrap">Foco semanal</span>
+            <span class="pf-hide-sm" style="flex:none;width:32px;height:32px;border-radius:9px;border:1px solid #E0E2F0;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A1A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0M12 17v5"></path></svg></span>
+            <span style="flex:none;width:32px;height:32px;border-radius:9px;background:#3D3DC8;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span>
+          </div>
+        </div>
+
+        <div class="pf-deep-list">
+          <button type="button" class="pf-spot" data-spot="1" aria-expanded="false">
+            <span class="pf-num">1</span>
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:1rem;font-weight:700;color:#1A1A3E">Se sincroniza con tu calendario</span><span class="pf-spot-body" hidden style="font-size:0.875rem;line-height:1.55;color:#5C5C8A">Trae los eventos de Google Calendar u Outlook. No hay que cargar nada a mano: la semana ya está ahí.</span></span>
+          </button>
+          <button type="button" class="pf-spot on" data-spot="2" aria-expanded="true">
+            <span class="pf-num">2</span>
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:1rem;font-weight:700;color:#1A1A3E">Cada evento, contra tu rol</span><span class="pf-spot-body" style="font-size:0.875rem;line-height:1.55;color:#5C5C8A">La IA sugiere a qué macrotarea corresponde cada evento según su historial, contexto y asistentes. Vos confirmás o corregís con un clic.</span></span>
+          </button>
+          <button type="button" class="pf-spot" data-spot="3" aria-expanded="false">
+            <span class="pf-num">3</span>
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:1rem;font-weight:700;color:#1A1A3E">¿Te corresponde?</span><span class="pf-spot-body" hidden style="font-size:0.875rem;line-height:1.55;color:#5C5C8A">Una pausa para reflexionar sobre cada evento: Sí, No o Duda. Esa respuesta alimenta el reporte.</span></span>
+          </button>
+          <button type="button" class="pf-spot" data-spot="4" aria-expanded="false">
+            <span class="pf-num">4</span>
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:1rem;font-weight:700;color:#1A1A3E">La semana en una barra</span><span class="pf-spot-body" hidden style="font-size:0.875rem;line-height:1.55;color:#5C5C8A">La distribución de tu tiempo por grupo de macrotareas, de un vistazo y actualizada mientras registrás.</span></span>
+          </button>
+          <button type="button" class="pf-spot" data-spot="5" aria-expanded="false">
+            <span class="pf-num">5</span>
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:1rem;font-weight:700;color:#1A1A3E">Preguntale a tu agenda</span><span class="pf-spot-body" hidden style="font-size:0.875rem;line-height:1.55;color:#5C5C8A">Por texto o por voz: ¿dónde sumo espacio para esta macrotarea? ¿qué podría delegar esta semana? El asistente responde con tu agenda real.</span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque 4 — IA -->
+  <section style="background:radial-gradient(110% 80% at 20% 0%, #3D3DC8 0%, rgba(61,61,200,0) 60%), #1E1E6B;padding:104px 24px">
+    <div class="pf-wrap">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 40px">
+        <div style="max-width:640px">
+          <p style="margin:0;display:inline-flex;align-items:center;min-height:28px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,0.14);font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#DDE0FF">Inteligencia artificial con propósito</p>
+          <h2 style="margin:22px 0 0;font-size:clamp(1.75rem,3.2vw,2.75rem);line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Una IA que acompaña cada paso del ciclo.</h2>
+        </div>
+        <p style="margin:0;max-width:440px;font-size:1rem;line-height:1.65;color:#DDE0FF">No es un modelo genérico respondiendo sobre tu calendario. Está entrenada con la metodología de Pausa y con más de diecisiete años de experiencia en gestión e interioridad.</p>
+      </div>
+
+      <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;color:#1A1A3E">
+        <div style="background:#FFFFFF;border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px"><span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3D3DC8">En el Rol Vivo</span><span style="font-size:11px;font-weight:700;color:#1E1E6B;background:#EAECFF;border-radius:999px;padding:4px 10px">Dónde querés estar</span></div>
+          <h3 style="margin:0;font-size:1.375rem;font-weight:800;letter-spacing:-0.01em">Asistente de Rol</h3>
+          <p style="margin:0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Te ayuda a armar tu rol: las macrotareas, cómo se agrupan y cuánto tiempo querés dedicarle a cada grupo.</p>
+          <div style="margin-top:auto;background:#F4F5FF;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px" aria-hidden="true">
+            <div style="align-self:flex-start;background:#FFFFFF;border:1px solid #E3E6F7;border-radius:12px 12px 12px 4px;padding:8px 12px;font-size:12px;line-height:1.5">Contame cómo es una semana típica en tu rol.</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#FFFFFF;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:600"><span>● Producto</span><span style="color:#3D3DC8">mín. 25%</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#FFFFFF;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:600"><span>● Gestión de equipo</span><span style="color:#3D3DC8">máx. 20%</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#FFFFFF;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:600"><span>● Ejecución técnica</span><span style="color:#3D3DC8">máx. 15%</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px"><span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3D3DC8">En la Agenda</span><span style="font-size:11px;font-weight:700;color:#1E1E6B;background:#EAECFF;border-radius:999px;padding:4px 10px">Acción</span></div>
+          <h3 style="margin:0;font-size:1.375rem;font-weight:800;letter-spacing:-0.01em">Asistente de Agenda</h3>
+          <p style="margin:0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Te ayuda a llevar el día a día: encontrar dónde agendar tiempo para algo, ver qué podrías delegar, ordenar la semana.</p>
+          <div style="margin-top:auto;background:#F4F5FF;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px" aria-hidden="true">
+            <span style="background:#FFFFFF;border:1px solid #E3E6F7;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:600">¿Dónde agendo 2 h para definir la v2?</span>
+            <span style="background:#FFFFFF;border:1px solid #E3E6F7;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:600">¿Qué tareas de esta semana podría delegar?</span>
+            <span style="background:#FFFFFF;border:1px solid #E3E6F7;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:600">¿Cómo viene mi Foco semanal?</span>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px"><span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3D3DC8">En el Reporte</span><span style="font-size:11px;font-weight:700;color:#1E1E6B;background:#EAECFF;border-radius:999px;padding:4px 10px">Consciencia</span></div>
+          <h3 style="margin:0;font-size:1.375rem;font-weight:800;letter-spacing:-0.01em">Agente de Análisis</h3>
+          <p style="margin:0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Lee tu reporte, te cuenta cómo está hoy tu trabajo y te hace preguntas para que saques tus propias conclusiones.</p>
+          <div style="margin-top:auto;background:#F4F5FF;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px" aria-hidden="true">
+            <div style="background:#FFFFFF;border:1px solid #E3E6F7;border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.5"><strong style="color:#1E1E6B">Qué te está mostrando la foto:</strong> esta semana hubo un corrimiento fuerte hacia ejecución técnica.</div>
+            <div style="background:#FFF6E3;border:1px solid #F5DDA8;border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.5;color:#3A2E0A">¿Esto es algo que querés cambiar o fue una semana excepcional?</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 0;background:rgba(255,255,255,0.08);border-radius:20px;padding:28px 8px">
+        <div style="padding:0 24px">
+          <p style="margin:0;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">17+</p>
+          <p style="margin:8px 0 0;font-size:0.875rem;line-height:1.5;color:#DDE0FF">años de experiencia en gestión e interioridad</p>
+        </div>
+        <div style="padding:0 24px;border-left:1px solid rgba(255,255,255,0.18)">
+          <p style="margin:0;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">1 M+</p>
+          <p style="margin:8px 0 0;font-size:0.875rem;line-height:1.5;color:#DDE0FF">datos procesados y 285.000 horas de conocimiento</p>
+        </div>
+        <div style="padding:0 24px;border-left:1px solid rgba(255,255,255,0.18)">
+          <p style="margin:0;font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.2;letter-spacing:-0.01em;font-weight:800;color:#FFFFFF">Propiedad intelectual</p>
+          <p style="margin:8px 0 0;font-size:0.875rem;line-height:1.5;color:#DDE0FF">Intangibles y capacitaciones convertidos en activos del producto</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque 5 — Integraciones -->
+  <section style="background:#FFFFFF;padding:64px 24px">
+    <div style="max-width:1160px;margin:0 auto">
+      <p style="margin:0;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5C5C8A">Integraciones</p>
+      <h2 style="margin:16px 0 0;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.15;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Se conecta con el calendario que ya usás</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:32px">
+        <div style="border:1px solid #CCCCEE;border-radius:16px;padding:28px;overflow-x:auto">
+          <h3 style="margin:0 0 16px;font-size:1.125rem;font-weight:700;color:#1A1A3E">Google Calendar</h3>
+          <table class="perm-table">
+            <thead><tr><th>Permiso</th><th>Qué significa</th></tr></thead>
+            <tbody>
+              <tr><td>calendar.readonly</td><td>Podemos leer tus eventos. No podemos crear, editar ni borrar.</td></tr>
+              <tr><td>userinfo.email</td><td>Accedemos a tu dirección de email para identificar tu cuenta.</td></tr>
+              <tr><td>openid</td><td>Verificamos tu identidad mediante OpenID Connect.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="border:1px solid #CCCCEE;border-radius:16px;padding:28px;overflow-x:auto">
+          <h3 style="margin:0 0 16px;font-size:1.125rem;font-weight:700;color:#1A1A3E">Microsoft Outlook</h3>
+          <table class="perm-table">
+            <thead><tr><th>Permiso</th><th>Qué significa</th></tr></thead>
+            <tbody>
+              <tr><td>User.Read</td><td>Leemos tu perfil básico: nombre y email.</td></tr>
+              <tr><td>Calendars.Read</td><td>Podemos leer tus eventos. No podemos crear, editar ni borrar.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p style="margin:16px 0 0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Para Google Calendar existe además un permiso opcional y separado de escritura, que le permite a Pausa crear o editar eventos solo cuando vos lo pedís desde la plataforma. <a href="seguridad.html">Ver el detalle en Seguridad →</a></p>
+      <div style="margin-top:24px;background:#EAECFF;border-radius:16px;padding:24px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between">
+        <p style="margin:0;font-size:0.9375rem;line-height:1.6;color:#1A1A3E;max-width:62ch"><strong>¿Sos administrador de IT?</strong> La guía completa de configuración para Microsoft 365 / Entra ID y Google Workspace — incluyendo consentimiento de administrador, restricción por grupos y reglas de firewall — está en la página de seguridad.</p>
+        <a href="seguridad.html" style="font-weight:700;font-size:0.9375rem;white-space:nowrap">Ver la guía para administradores →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque 7 — Seguridad -->
+  <section style="background:#FFFFFF;padding:0 24px 64px">
+    <div style="max-width:1160px;margin:0 auto">
+      <h2 style="margin:0;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.15;letter-spacing:-0.015em;font-weight:700;color:#1A1A3E">Seguridad de nivel empresarial</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:32px">
+        <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px">
+          <h3 style="margin:0;font-size:1rem;font-weight:700;color:#1A1A3E">Cifrado</h3>
+          <p style="margin:8px 0 0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">AES-256 en reposo, TLS 1.2+ en tránsito, HTTPS forzado con HSTS.</p>
+        </div>
+        <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px">
+          <h3 style="margin:0;font-size:1rem;font-weight:700;color:#1A1A3E">Alojamiento</h3>
+          <p style="margin:8px 0 0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Datos de calendario y personales exclusivamente en São Paulo, Brasil.</p>
+        </div>
+        <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px">
+          <h3 style="margin:0;font-size:1rem;font-weight:700;color:#1A1A3E">Publisher verificado</h3>
+          <p style="margin:8px 0 0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Aplicación verificada en Microsoft Entra ID y proyecto verificado en Google Cloud.</p>
+        </div>
+        <div style="border:1px solid #CCCCEE;border-radius:16px;padding:24px">
+          <h3 style="margin:0;font-size:1rem;font-weight:700;color:#1A1A3E">Subprocesadores declarados</h3>
+          <p style="margin:8px 0 0;font-size:0.9375rem;line-height:1.6;color:#5C5C8A">Google Cloud, OpenAI, n8n Cloud y PostHog, con su ubicación y su alcance publicados.</p>
+        </div>
+      </div>
+      <a href="politicas-de-privacidad.html" style="display:inline-block;margin-top:24px;font-weight:700;font-size:0.9375rem">Ver el documento completo →</a>
+    </div>
+  </section>
+
+  <!-- Cierre -->
+  <section style="background:radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;padding:64px 24px">
+    <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+      <h2 style="margin:0;max-width:24ch;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.12;letter-spacing:-0.02em;font-weight:800;color:#FFFFFF">Más claridad. <span style="color:#BFC5FF">Agendemos una conversación.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px">
+        <a href="metodologia.html" style="font-size:1rem;font-weight:700;color:#DDE0FF">Ver el mecanismo completo →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#1A1A3E;padding:48px 24px 28px">
+    <div style="max-width:1160px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <img src="assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
+          <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
+          <div style="display:flex;gap:12px">
+            <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.19-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.22-8.24Zm-3.1 4.05c-.23 0-.6.09-.91.43-.31.34-.99.97-.99 2.36 0 1.39 1.01 2.73 1.15 2.92.14.19 1.95 3.1 4.81 4.22 2.38.94 2.86.75 3.38.7.52-.05 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.67-.82-1.93-.92-.26-.09-.45-.14-.64.14-.19.28-.73.94-.9 1.13-.16.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.61-1.52-.85-2.08-.19-.44-.38-.45-.55-.46h-.36Z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/pausaco" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.75 21.5h4.46V9.75H2.75V21.5Zm7.04 0h4.46v-6.4c0-1.69.32-3.33 2.42-3.33 2.07 0 2.1 1.94 2.1 3.44v6.29h4.46v-7.2c0-3.87-.84-6.85-5.36-6.85-2.17 0-3.63 1.19-4.23 2.32h-.06V9.75H9.79V21.5Z"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Nuestra solución</p>
+            <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
+            <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Metodología</a>
+            <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Desarrollo de habilidades</a>
+            <a href="assessment.html" style="color:#DDE0FF;font-size:0.9375rem">Assessment para líderes</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Compañía</p>
+            <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Equipo</a>
+            <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Prensa</a>
+            <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Reconocimientos</a>
+            <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contacto</a>
+            <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Sumate al equipo</a>
+          </nav>
+          <nav style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Confianza</p>
+            <a href="seguridad.html" style="color:#DDE0FF;font-size:0.9375rem">Seguridad y privacidad</a>
+            <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">Preguntas frecuentes</a>
+          </nav>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+        <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. Todos los derechos reservados.</p>
+        <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+          <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Términos y Condiciones</a>
+          <span style="color:rgba(255,255,255,0.35)">·</span>
+          <a href="politicas-de-privacidad.html" style="color:#9FA6F0">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+var mobileNavPanel = document.getElementById('mobile-nav-panel');
+if (mobileNavToggle && mobileNavPanel) {
+  mobileNavToggle.addEventListener('click', function () {
+    var open = mobileNavPanel.classList.toggle('open');
+    mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileNavPanel.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+(function () {
+  var step = 'c', sub = 'rol';
+  var tabs = document.querySelectorAll('.pf-tab');
+  var panes = document.querySelectorAll('.pf-pane');
+  var subBtns = document.querySelectorAll('.pf-sub');
+  var nextBtn = document.getElementById('pf-next');
+  var rolMock = document.getElementById('pf-rolmock');
+
+  function fitRolMock() {
+    if (!rolMock || !rolMock.clientWidth) return;
+    var s = rolMock.clientWidth / 1200;
+    rolMock.style.setProperty('--s', s.toFixed(4));
+    rolMock.style.height = Math.min(612, Math.round(1000 * s)) + 'px';
+  }
+
+  function render() {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.step === step ? 'true' : 'false'); });
+    panes.forEach(function (p) { p.hidden = p.dataset.pane !== step; });
+    subBtns.forEach(function (b) { b.classList.toggle('on', b.dataset.sub === sub); });
+    document.querySelectorAll('[data-subtext]').forEach(function (el) { el.hidden = el.dataset.subtext !== sub; });
+    document.querySelectorAll('[data-subvisual]').forEach(function (el) { el.hidden = el.dataset.subvisual !== sub; });
+    if (nextBtn) {
+      nextBtn.textContent = step === 'c' && sub === 'rol' ? 'Siguiente: Dónde estás hoy →'
+        : step === 'c' ? 'Siguiente: Acción →'
+        : step === 'a' ? 'Siguiente: Impacto →'
+        : 'Volver a Consciencia ↺';
+    }
+    fitRolMock();
+  }
+
+  tabs.forEach(function (t) { t.addEventListener('click', function () { step = t.dataset.step; render(); }); });
+  subBtns.forEach(function (b) { b.addEventListener('click', function () { sub = b.dataset.sub; render(); }); });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      if (step === 'c' && sub === 'rol') { sub = 'rep'; }
+      else if (step === 'c') { step = 'a'; }
+      else if (step === 'a') { step = 'i'; }
+      else { step = 'c'; sub = 'rol'; }
+      render();
+    });
+  }
+  window.addEventListener('resize', fitRolMock);
+  render();
+
+  var spots = document.querySelectorAll('.pf-spot');
+  var badges = document.querySelectorAll('.pf-badge');
+  function pickSpot(n) {
+    spots.forEach(function (s) {
+      var on = s.dataset.spot === n;
+      s.classList.toggle('on', on);
+      s.setAttribute('aria-expanded', on ? 'true' : 'false');
+      s.querySelector('.pf-spot-body').hidden = !on;
+    });
+    badges.forEach(function (b) { b.classList.toggle('on', b.dataset.badge === n); });
+  }
+  spots.forEach(function (s) { s.addEventListener('click', function () { pickSpot(s.dataset.spot); }); });
+})();
+</script>
+</body>
+</html>

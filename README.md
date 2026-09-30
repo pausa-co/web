@@ -13,7 +13,7 @@ Este repositorio contiene el sitio web estático de Pausa (marketing/landing), d
 ```
 .
 ├── index.html                     # Página principal (ES)
-├── nosotros.html                  # Equipo y filosofía (ES)
+├── equipo.html                    # Equipo (ES)
 ├── reconocimiento.html            # Reconocimientos (ES)
 ├── terminos-y-condiciones.html    # Términos y condiciones (ES)
 ├── politicas-de-privacidad.html   # Política de privacidad (ES)
