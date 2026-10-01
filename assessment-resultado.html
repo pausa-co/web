@@ -49,7 +49,8 @@
     posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2026-05-30',
-        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        person_profiles: 'never',
+        cookieless_mode: 'always',
     })
 </script>
 </head>
