@@ -41,6 +41,7 @@
         defaults: '2026-05-30',
         person_profiles: 'never',
         cookieless_mode: 'always',
+        opt_out_capturing_by_default: /(^|; )ph_internal=1/.test(document.cookie),
     })
 </script>
 <script type="application/ld+json">
