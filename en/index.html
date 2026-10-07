@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/">
 <link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/">
 <link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/">
-<meta name="description" content="We design work experiences that fuel your team's growth. A management platform built to help organizations work more efficiently and sustainably.">
+<meta name="description" content="Role and time management platform with AI and human support. Cross your team's real roles with their time and turn the gap into decisions.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pausa">
 <meta property="og:locale" content="en_US">
@@ -178,7 +178,8 @@
   }
   @media (max-width: 600px) {
     .hero-title { font-size: clamp(1.7rem, 8.5vw, 2.5rem) !important; }
-    .hero-title__rotator { min-width: 0 !important; }
+    /* Bloque propio en móvil: el ancho variable de cada palabra no cambia el alto del título (evita CLS) */
+    .hero-title__rotator { display: block; min-width: 0 !important; margin-bottom: 0; }
   }
   @keyframes cIn{from{opacity:0;transform:translateY(6px) scale(.97)}to{opacity:1;transform:none}}
   @keyframes cIO{0%{opacity:0;transform:translateY(6px)}15%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}

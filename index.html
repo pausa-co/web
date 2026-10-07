@@ -178,7 +178,8 @@
   }
   @media (max-width: 600px) {
     .hero-title { font-size: clamp(1.7rem, 8.5vw, 2.5rem) !important; }
-    .hero-title__rotator { min-width: 0 !important; }
+    /* Bloque propio en móvil: el ancho variable de cada palabra no cambia el alto del título (evita CLS) */
+    .hero-title__rotator { display: block; min-width: 0 !important; margin-bottom: 0; }
   }
   @keyframes cIn{from{opacity:0;transform:translateY(6px) scale(.97)}to{opacity:1;transform:none}}
   @keyframes cIO{0%{opacity:0;transform:translateY(6px)}15%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
