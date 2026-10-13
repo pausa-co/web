@@ -37,7 +37,8 @@
   .team-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .team-card-name { margin: 0; font-size: 1rem; font-weight: 700; color: #1A1A3E; }
   .team-card-role { margin: 0; font-size: 0.875rem; color: #5C5C8A; }
-  .team-card-li { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 999px; background: #EAECFF; color: #3D3DC8; transition: background-color .15s ease; }
+  .team-card-name-row { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .team-card-li { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex: none; border-radius: 999px; background: #EAECFF; color: #3D3DC8; transition: background-color .15s ease; }
   .team-card-li:hover { background: #DDE0FF; }
 </style>
 <script>
@@ -210,26 +211,26 @@
 
   // photo: null shows a generic avatar; set the photo path (e.g. "assets/name.jpg") when available.
   var TEAM = [
-    { name: 'Santiago Cordone', role: 'CEO', photo: '../assets/equipo/santiago-cordone.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Joaquín De La Vega', role: 'CPO', photo: '../assets/equipo/joaquin-de-la-vega.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Cecilia Hermida', role: 'PMO', photo: '../assets/equipo/cecilia-hermida.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Clara Barthe', role: 'Financial Controller', photo: '../assets/equipo/clara-barthe.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Milena Fuchs', role: 'Developer', photo: '../assets/equipo/milena-fuchs.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Rodrigo Arce', role: 'Tech Lead', photo: '../assets/equipo/rodrigo-arce.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Javier Urtubey', role: 'COO', photo: '../assets/equipo/javier-urtubey.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Sofía Ferrari', role: 'Developer', photo: '../assets/equipo/sofia-ferrari.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Federico Acevedo', role: 'CFO', photo: '../assets/equipo/federico-acevedo.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Lucas Acosta', role: 'Head of Customer Success', photo: '../assets/equipo/lucas-acosta.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Santiago Baya Casal', role: 'Developer', photo: '../assets/equipo/santiago-baya-casal.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Miguel Reynal', role: 'Pausa Facilitator', photo: '../assets/equipo/miguel-reynal.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Ariela Schulman', role: 'Pausa Facilitator', photo: '../assets/equipo/ariela-schulman.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Paz Porres', role: 'Pausa Facilitator', photo: '../assets/equipo/paz-porres.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Felipe Caracoix', role: 'Developer', photo: '../assets/equipo/felipe-caracoix.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Juan Guyot', role: 'Pausa Facilitator', photo: '../assets/equipo/juan-guyot.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Juan Pedro Arocena', role: 'Consulting Lead', photo: '../assets/equipo/juan-pedro-arocena.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Eduardo Bruchou', role: 'Head of Growth', photo: '../assets/equipo/eduardo-bruchou.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Teresita de Velazco', role: 'Commercial Partner', photo: '../assets/equipo/teresita-velazco.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' },
-    { name: 'Martina Cardahi', role: 'PM', photo: '../assets/equipo/martina-cardahi.jpg', linkedin: 'https://www.linkedin.com/company/pausaco' }
+    { name: 'Santiago Cordone', role: 'CEO', photo: '../assets/equipo/santiago-cordone.jpg', linkedin: 'https://www.linkedin.com/in/santiago-cordone-b702b849/' },
+    { name: 'Joaquín De La Vega', role: 'CPO', photo: '../assets/equipo/joaquin-de-la-vega.jpg', linkedin: 'https://www.linkedin.com/in/joaquindlvega/' },
+    { name: 'Cecilia Hermida', role: 'PMO', photo: '../assets/equipo/cecilia-hermida.jpg', linkedin: 'https://www.linkedin.com/in/ceciliahermida/' },
+    { name: 'Clara Barthe', role: 'Financial Controller', photo: '../assets/equipo/clara-barthe.jpg', linkedin: 'https://www.linkedin.com/in/clara-barthe-a6266134/' },
+    { name: 'Milena Fuchs', role: 'Developer', photo: '../assets/equipo/milena-fuchs.jpg', linkedin: 'https://www.linkedin.com/in/milena-fuchs/' },
+    { name: 'Rodrigo Arce', role: 'Tech Lead', photo: '../assets/equipo/rodrigo-arce.jpg', linkedin: 'https://www.linkedin.com/in/rodrigoarce/' },
+    { name: 'Javier Urtubey', role: 'COO', photo: '../assets/equipo/javier-urtubey.jpg', linkedin: 'https://www.linkedin.com/in/javier-urtubey-89a47737a/' },
+    { name: 'Sofía Ferrari', role: 'Developer', photo: '../assets/equipo/sofia-ferrari.jpg', linkedin: 'https://www.linkedin.com/in/sofiaoferrari/' },
+    { name: 'Federico Acevedo', role: 'CFO', photo: '../assets/equipo/federico-acevedo.jpg', linkedin: 'https://www.linkedin.com/in/federico-acevedo-b3294935/' },
+    { name: 'Lucas Acosta', role: 'Head of Customer Success', photo: '../assets/equipo/lucas-acosta.jpg', linkedin: 'https://www.linkedin.com/in/lucasjacosta/' },
+    { name: 'Santiago Baya Casal', role: 'Developer', photo: '../assets/equipo/santiago-baya-casal.jpg', linkedin: 'https://www.linkedin.com/in/santiagobayacasal/' },
+    { name: 'Miguel Reynal', role: 'Pausa Facilitator', photo: '../assets/equipo/miguel-reynal.jpg', linkedin: 'https://www.linkedin.com/in/miguelreynal/' },
+    { name: 'Ariela Schulman', role: 'Pausa Facilitator', photo: '../assets/equipo/ariela-schulman.jpg', linkedin: 'https://www.linkedin.com/in/ariela-schulman/' },
+    { name: 'Paz Porres', role: 'Pausa Facilitator', photo: '../assets/equipo/paz-porres.jpg', linkedin: 'https://www.linkedin.com/in/paz-porres-4a2101197/' },
+    { name: 'Felipe Caracoix', role: 'Developer', photo: '../assets/equipo/felipe-caracoix.jpg', linkedin: 'https://www.linkedin.com/in/felipe-caracoix/' },
+    { name: 'Juan Guyot', role: 'Pausa Facilitator', photo: '../assets/equipo/juan-guyot.jpg', linkedin: 'https://www.linkedin.com/in/juan-guyot-94bb67235/' },
+    { name: 'Juan Pedro Arocena', role: 'Consulting Lead', photo: '../assets/equipo/juan-pedro-arocena.jpg', linkedin: 'https://www.linkedin.com/in/juanpedroarocena/' },
+    { name: 'Eduardo Bruchou', role: 'Head of Growth', photo: '../assets/equipo/eduardo-bruchou.jpg', linkedin: 'https://www.linkedin.com/in/eduardo-bruchou/' },
+    { name: 'Teresita de Velazco', role: 'Commercial Partner', photo: '../assets/equipo/teresita-velazco.jpg', linkedin: 'https://www.linkedin.com/in/teresitadevelazcoledesma/' },
+    { name: 'Martina Cardahi', role: 'PM', photo: '../assets/equipo/martina-cardahi.jpg', linkedin: 'https://www.linkedin.com/in/martina-c-46a81994/' }
   ];
 
   var AVATAR_SVG = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" fill="#BFC5FF"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="#BFC5FF"/></svg>';
@@ -243,7 +244,10 @@
     return '' +
       '<div class="team-card">' +
         '<div class="team-card-photo">' + photoInner + '</div>' +
-        '<p class="team-card-name">' + person.name + '</p>' +
+        '<div class="team-card-name-row">' +
+          '<p class="team-card-name">' + person.name + '</p>' +
+          (person.linkedin ? '<a class="team-card-li" href="' + person.linkedin + '" target="_blank" rel="noopener" aria-label="LinkedIn of ' + person.name + '">' + LI_SVG + '</a>' : '') +
+        '</div>' +
         '<p class="team-card-role">' + person.role + '</p>' +
       '</div>';
   }).join('');
