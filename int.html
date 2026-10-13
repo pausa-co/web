@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Acceso interno</title>
+<script>
+  // Cookie propia (1 año), solo para este host (www); no se comparte con app.pausaco.com.
+  document.cookie = 'ph_internal=1; max-age=31536000; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
+  try { localStorage.setItem('ph_internal', '1'); } catch (e) {}
+  if (window.posthog && posthog.opt_out_capturing) posthog.opt_out_capturing();
+  location.replace('/');
+</script>
+</head>
+<body>Redirigiendo…</body>
+</html>
