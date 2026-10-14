@@ -332,9 +332,9 @@
   <!-- 1 · Portada -->
   <section class="dx-screen on" id="s-portada" aria-labelledby="dx-cover-title">
     <div class="dx-cover">
-      <span class="dx-pill">Management diagnostic · 8 questions</span>
+      <span class="dx-pill">Management diagnostic · 7 questions</span>
       <h1 id="dx-cover-title">Where is focus <span>getting lost</span> today?</h1>
-      <p class="dx-cover-lead">Eight situations that come up in many organizations. For each one, tell us how much you relate to it. You can answer thinking about yourself or about your organization, whichever feels more natural.</p>
+      <p class="dx-cover-lead">Seven situations that come up in many organizations. For each one, tell us how much you relate to it. You can answer thinking about yourself or about your organization, whichever feels more natural.</p>
       <form class="dx-cover-form" id="dx-cover-form">
         <div class="dx-cover-fields">
           <label class="dx-field"><span>Company</span><input type="text" name="empresa" id="dx-empresa" autocomplete="organization" placeholder="Optional"></label>
@@ -388,7 +388,7 @@
           </div>
           <p class="dx-entry-title" id="dx-entry-title"></p>
           <p class="dx-entry-text" id="dx-entry-text"></p>
-          <div class="dx-need">
+          <div class="dx-need" id="dx-need">
             <p class="dx-card-title">Need for change</p>
             <p id="dx-need-text"></p>
           </div>
@@ -799,7 +799,11 @@
   var ORDEN_AVENIDAS = ['rol', 'obj', 'tiempo', 'gestion'];
 
   // Cada afirmación describe un dolor: 5 = "Totalmente" me identifico = más dolor.
-  var PREGUNTAS = [
+  // La pregunta de necesidad de cambio ("techo de gestión") está oculta por ahora.
+  // Con true vuelve a la encuesta y al diagnóstico, sin tocar nada más.
+  var MOSTRAR_NECESIDAD = false;
+
+  var TODAS_LAS_PREGUNTAS = [
     { id: 'q1', avenida: 'rol', texto: 'Some tasks end up with no clear owner, or two people end up doing the same thing.', senales: ['Rework', 'Roles defined on the fly', '“I thought you were on it”'] },
     { id: 'q2', avenida: 'rol', texto: 'It isn’t clear who decides what, so decisions get delayed or keep escalating.', senales: ['Everything goes up the chain', 'Conflicts over responsibilities', 'Decisions nobody makes'] },
     { id: 'q3', avenida: 'obj', texto: 'Everything is treated as urgent, and it’s hard to name this week’s top three priorities.', senales: ['Priorities that change without explanation', 'Low-value tasks nobody questions'] },
@@ -809,6 +813,7 @@
     { id: 'q7', avenida: 'gestion', texto: 'Leaders hold on to tasks the team could take on, and a lot of things wait for their approval.', senales: ['Leaders as bottlenecks', 'Leaders doing operational work', 'Teams waiting for sign-off'] },
     { id: 'q8', avenida: 'necesidad', texto: 'The current way of managing has a ceiling: results depend on extra effort.', senales: ['Overtime as the norm', '“It’s always been this way”', 'Team burnout'] }
   ];
+  var PREGUNTAS = TODAS_LAS_PREGUNTAS.filter(function (q) { return MOSTRAR_NECESIDAD || q.avenida !== 'necesidad'; });
 
   var ESCALA = ['Not at all', 'A little', 'Somewhat', 'Quite a bit', 'Completely'];
 
@@ -1009,8 +1014,8 @@
     var promDiag = diag.reduce(function (s, q) { return s + estado.respuestas[q.id]; }, 0) / diag.length;
     // La necesidad de cambio va al revés que el resto: reconocer el techo es buena señal.
     var qNecesidad = PREGUNTAS.filter(function (q) { return q.avenida === 'necesidad'; })[0];
-    var vNecesidad = estado.respuestas[qNecesidad.id];
-    var necesidad = vNecesidad >= 4 ? 'alto' : (vNecesidad === 3 ? 'medio' : 'bajo');
+    var vNecesidad = qNecesidad ? estado.respuestas[qNecesidad.id] : null;
+    var necesidad = vNecesidad === null ? null : (vNecesidad >= 4 ? 'alto' : (vNecesidad === 3 ? 'medio' : 'bajo'));
     var ranking = ORDEN_AVENIDAS.slice().sort(function (a, b) { return porAvenida[b].promedio - porAvenida[a].promedio; });
     return { porAvenida: porAvenida, promedioDiagnostico: promDiag, entrada: banda(promDiag), necesidad: necesidad, ranking: ranking };
   }
@@ -1080,7 +1085,8 @@
     });
     $('dx-entry-title').textContent = ent.titulo;
     $('dx-entry-text').textContent = ent.texto;
-    $('dx-need-text').textContent = NECESIDAD[r.necesidad];
+    $('dx-need').hidden = !r.necesidad;
+    if (r.necesidad) $('dx-need-text').textContent = NECESIDAD[r.necesidad];
   }
 
   $('dx-diag-back').addEventListener('click', function () {
@@ -1177,7 +1183,7 @@
     });
     fila.principal = AVENIDA_PLANILLA[r.ranking[0]];
     fila.punto_de_entrada = ENTRADA_PLANILLA[r.entrada];
-    fila.necesidad_de_cambio = FRICCION_PLANILLA[r.necesidad];
+    if (r.necesidad) fila.necesidad_de_cambio = FRICCION_PLANILLA[r.necesidad];
     fila.origen = location.hostname;
 
     if (window.posthog) posthog.capture('completar_diagnostico_comercial', { principal: r.ranking[0], entrada: r.entrada });
