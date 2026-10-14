@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Management diagnostic | Pausa</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Pausa management diagnostic for sales meetings.">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  /* Página sin acceso directo: se usa en reuniones comerciales, con pantalla compartida.
+     No va en el sitemap ni se linkea desde el sitio. */
+  :root {
+    --ink: #1A1A3E;
+    --indigo: #1E1E6B;
+    --primary: #3D3DC8;
+    --primary-hover: #2D2D99;
+    --soft: #F4F5FF;
+    --line: #CCCCEE;
+    --line-soft: #E4E6FA;
+    --muted: #5C5C8A;
+    --muted-2: #9A9AC0;
+    --lav: #DDE0FF;
+    --amber: #FFB422;
+    --alto: #D92D20;
+    --alto-bg: #FDECEA;
+    --medio: #B76E00;
+    --medio-bg: #FFF4DC;
+    --bajo: #2F7D4F;
+    --bajo-bg: #E6F4EC;
+  }
+  html, body { height: 100%; }
+  body { background: var(--soft); }
+  button { font-family: inherit; }
+
+  .dx-header { background: var(--indigo); position: sticky; top: 0; z-index: 50; }
+  .dx-header-in { max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; gap: 16px; }
+  .dx-header-tag { margin-left: auto; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #B9C0F5; }
+  .dx-header-tag strong { color: #FFFFFF; font-weight: 700; }
+
+  .dx-screen { display: none; min-height: calc(100svh - 64px); }
+  .dx-screen.on { display: flex; flex-direction: column; animation: dx-in .45s cubic-bezier(.22,1,.36,1); }
+  @keyframes dx-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  .dx-wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  .dx-eyebrow { margin: 0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); }
+
+  .dx-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 56px; padding: 0 32px; border: none; border-radius: 999px; background: var(--primary); color: #FFFFFF; font-size: 1.0625rem; font-weight: 700; cursor: pointer; transition: background-color .15s ease, transform .15s ease; }
+  .dx-btn:hover { background: var(--primary-hover); }
+  .dx-btn.light { background: #FFFFFF; color: var(--indigo); }
+  .dx-btn.light:hover { background: var(--lav); }
+  .dx-btn-ghost { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: #FFFFFF; color: var(--ink); font-size: 0.9375rem; font-weight: 600; cursor: pointer; }
+  .dx-btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+  .dx-btn-ghost[disabled] { opacity: .4; cursor: default; }
+  .dx-btn-ghost[disabled]:hover { border-color: var(--line); color: var(--ink); }
+
+  /* ---------- Portada ---------- */
+  #s-portada { background: radial-gradient(110% 90% at 50% 20%, #3D3DC8 0%, rgba(61,61,200,0) 62%), var(--indigo); color: #FFFFFF; justify-content: center; }
+  .dx-cover { max-width: 820px; margin: 0 auto; padding: 72px 24px; text-align: center; }
+  .dx-cover h1 { margin: 24px 0 0; font-size: clamp(2.5rem, 5.4vw, 4.25rem); line-height: 1.04; letter-spacing: -0.025em; font-weight: 800; }
+  .dx-cover h1 span { color: #BFC5FF; }
+  .dx-cover-lead { margin: 24px auto 0; max-width: 54ch; font-size: 1.25rem; line-height: 1.55; color: var(--lav); }
+  .dx-pill { display: inline-flex; align-items: center; height: 30px; padding: 0 16px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--lav); }
+  .dx-cover-form { margin: 40px auto 0; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .dx-cover-fields { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .dx-field { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+  .dx-field span { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #9FA6F0; }
+  .dx-field input { width: 240px; max-width: 100%; height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.08); color: #FFFFFF; font: inherit; font-size: 1rem; }
+  .dx-field input::placeholder { color: rgba(221,224,255,0.5); }
+  .dx-field input:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+
+  /* ---------- Preguntas ---------- */
+  #s-pregunta { background: var(--soft); }
+  .dx-progress { height: 4px; background: var(--line-soft); }
+  .dx-progress-bar { height: 100%; width: 0; background: var(--primary); transition: width .4s cubic-bezier(.22,1,.36,1); }
+  .dx-q { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1000px; margin: 0 auto; width: 100%; padding: 48px 24px; }
+  .dx-q-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .dx-q-count { font-size: 0.875rem; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .dx-q-text { margin: 20px 0 0; font-size: clamp(1.75rem, 3.6vw, 2.875rem); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; color: var(--ink); max-width: 30ch; }
+  .dx-q-signals { margin: 24px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .dx-q-signals-label { font-size: 0.875rem; font-weight: 600; color: var(--muted); margin-right: 4px; }
+  .dx-chip { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid var(--line-soft); font-size: 0.875rem; color: var(--ink); }
+  .dx-scale-label { margin: 48px 0 14px; font-size: 0.875rem; font-weight: 700; color: var(--muted); }
+  .dx-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .dx-opt { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 104px; padding: 16px 8px; border-radius: 16px; border: 2px solid var(--line-soft); background: #FFFFFF; cursor: pointer; transition: border-color .15s ease, background-color .15s ease, transform .15s ease; }
+  .dx-opt:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .dx-opt-num { font-size: 0.8125rem; font-weight: 700; color: var(--muted-2); font-variant-numeric: tabular-nums; }
+  .dx-opt-label { font-size: 1.125rem; font-weight: 700; color: var(--ink); }
+  .dx-opt-meter { display: flex; gap: 3px; }
+  .dx-opt-meter i { width: 10px; height: 4px; border-radius: 2px; background: var(--line-soft); }
+  .dx-opt-meter i.f { background: var(--primary); }
+  .dx-opt[aria-pressed="true"] { border-color: var(--primary); background: var(--primary); }
+  .dx-opt[aria-pressed="true"] .dx-opt-label, .dx-opt[aria-pressed="true"] .dx-opt-num { color: #FFFFFF; }
+  .dx-opt[aria-pressed="true"] .dx-opt-meter i { background: rgba(255,255,255,0.3); }
+  .dx-opt[aria-pressed="true"] .dx-opt-meter i.f { background: #FFFFFF; }
+  .dx-q-nav { margin-top: 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .dx-q-hint { margin-left: auto; font-size: 0.8125rem; color: var(--muted-2); }
+  .dx-q-hint kbd { font-family: inherit; font-weight: 700; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--line); background: #FFFFFF; color: var(--muted); }
+  .dx-q-body { transition: opacity .2s ease, transform .2s ease; }
+  .dx-q-body.leaving { opacity: 0; transform: translateX(-16px); }
+
+  /* ---------- Diagnóstico ---------- */
+  #s-diagnostico { background: var(--soft); }
+  .dx-diag { padding: 56px 0 72px; }
+  .dx-diag h1 { margin: 12px 0 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
+  .dx-diag-headline { margin: 20px 0 0; max-width: 26ch; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; color: var(--ink); }
+  .dx-diag-headline em { font-style: normal; color: var(--primary); }
+  .dx-diag-lead { margin: 16px 0 0; max-width: 60ch; font-size: 1.1875rem; line-height: 1.55; color: var(--muted); }
+  .dx-diag-grid { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+  .dx-card { background: #FFFFFF; border: 1px solid var(--line-soft); border-radius: 20px; padding: 28px; }
+  .dx-card-title { margin: 0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .dx-av { padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
+  .dx-av:last-child { border-bottom: none; padding-bottom: 0; }
+  .dx-av-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .dx-av-name { font-size: 1.1875rem; font-weight: 700; color: var(--ink); }
+  .dx-badge { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+  .dx-badge::before { content: ""; width: 7px; height: 7px; border-radius: 999px; background: currentColor; }
+  .dx-badge.alto { background: var(--alto-bg); color: var(--alto); }
+  .dx-badge.medio { background: var(--medio-bg); color: var(--medio); }
+  .dx-badge.bajo { background: var(--bajo-bg); color: var(--bajo); }
+  .dx-av-bar { margin-top: 12px; height: 10px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
+  .dx-av-bar span { display: block; height: 100%; width: 0; border-radius: 999px; transition: width 1.1s cubic-bezier(.22,1,.36,1); }
+  .dx-av-bar span.alto { background: var(--alto); }
+  .dx-av-bar span.medio { background: var(--amber); }
+  .dx-av-bar span.bajo { background: #6FBF8F; }
+  .dx-av-cost { margin: 12px 0 0; font-size: 1rem; line-height: 1.55; color: var(--muted); }
+  .dx-cai { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .dx-cai-step { padding: 14px 12px; border-radius: 12px; background: var(--soft); text-align: center; }
+  .dx-cai-step b { display: block; font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--muted-2); font-variant-numeric: tabular-nums; }
+  .dx-cai-step span { display: block; margin-top: 4px; font-size: 0.9375rem; font-weight: 700; color: var(--muted); }
+  .dx-cai-step.on { background: var(--primary); }
+  .dx-cai-step.on b { color: #BFC5FF; }
+  .dx-cai-step.on span { color: #FFFFFF; }
+  .dx-entry-title { margin: 20px 0 0; font-size: 1.375rem; line-height: 1.25; font-weight: 800; color: var(--ink); }
+  .dx-entry-text { margin: 8px 0 0; font-size: 1rem; line-height: 1.55; color: var(--muted); }
+  .dx-need { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line-soft); }
+  .dx-need p { margin: 8px 0 0; font-size: 1rem; line-height: 1.55; color: var(--ink); }
+  .dx-diag-actions { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+
+  /* ---------- Cómo ayuda Pausa ---------- */
+  #s-solucion { background: #FFFFFF; }
+  .dx-sol { padding: 48px 0 72px; }
+  .dx-sol h1 { margin: 12px 0 0; font-size: 1.5rem; font-weight: 800; color: var(--ink); }
+  .dx-tabs { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dx-tab { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: #FFFFFF; color: var(--ink); font-size: 0.9375rem; font-weight: 600; cursor: pointer; }
+  .dx-tab:hover { border-color: var(--primary); }
+  .dx-tab[aria-selected="true"] { background: var(--indigo); border-color: var(--indigo); color: #FFFFFF; }
+  .dx-tab-dot { width: 8px; height: 8px; border-radius: 999px; flex: none; }
+  .dx-tab-dot.alto { background: var(--alto); }
+  .dx-tab-dot.medio { background: var(--amber); }
+  .dx-tab-dot.bajo { background: #6FBF8F; }
+  .dx-tab.org { margin-left: 8px; }
+  .dx-tab-dot.org { background: var(--primary); }
+  .dx-pane { margin-top: 32px; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.35fr); gap: 48px; align-items: center; }
+  .dx-pane[hidden] { display: none; }
+  .dx-pane-title { margin: 14px 0 0; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; color: var(--ink); }
+  .dx-pane-text { margin: 16px 0 0; font-size: 1.125rem; line-height: 1.6; color: var(--muted); }
+  .dx-pane-list { margin: 24px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .dx-pane-list li { display: flex; gap: 12px; font-size: 1rem; line-height: 1.5; color: var(--ink); }
+  .dx-pane-list li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 1px; border-radius: 999px; background: var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233D3DC8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat; }
+  .dx-pane-cai { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--soft); font-size: 0.875rem; font-weight: 700; color: var(--primary); }
+  .dx-sol-foot { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .dx-sol-foot p { margin: 0; font-size: 1.125rem; font-weight: 700; color: var(--ink); }
+
+  /* ---------- Mockups de la app ---------- */
+  .ap { position: relative; }
+  .ap-win { background: #FFFFFF; border: 1px solid var(--line-soft); border-radius: 16px; box-shadow: 0 30px 70px -24px rgba(20,20,80,0.28); overflow: hidden; font-size: 13px; color: var(--ink); }
+  .ap-chrome { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; background: #F8F8FF; border-bottom: 1px solid #EAECFF; }
+  .ap-chrome i { width: 9px; height: 9px; border-radius: 999px; background: #DADCF5; }
+  .ap-chrome span { margin-left: 10px; font-size: 11px; font-weight: 600; color: var(--muted-2); }
+  .ap-body { display: flex; min-height: 400px; }
+  .ap-side { width: 52px; flex: none; background: #F8F8FF; border-right: 1px solid #EAECFF; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 18px 0; }
+  .ap-side i { width: 20px; height: 20px; border-radius: 6px; background: #DADCF5; }
+  .ap-side i.on { background: var(--primary); }
+  .ap-main { flex: 1; min-width: 0; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .ap-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .ap-h { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+  .ap-seg { display: inline-flex; padding: 3px; border-radius: 8px; background: var(--soft); gap: 2px; }
+  .ap-seg span { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--muted); }
+  .ap-seg span.on { background: #FFFFFF; color: var(--ink); box-shadow: 0 1px 2px rgba(20,20,80,0.1); }
+  .ap-btn { margin-left: auto; padding: 6px 12px; border-radius: 8px; background: var(--primary); color: #FFFFFF; font-size: 11px; font-weight: 700; }
+  .ap-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .ap-filter { padding: 5px 10px; border-radius: 8px; border: 1px solid var(--line-soft); font-size: 11px; color: var(--muted); }
+  .ap-filter b { color: var(--ink); }
+  .ap-row-org { grid-template-columns: 110px minmax(0,1fr) 70px; }
+  .ap-split { display: flex; height: 14px; border-radius: 4px; overflow: hidden; background: var(--soft); }
+  .ap-split span { height: 100%; width: 0; transition: width 1s cubic-bezier(.22,1,.36,1); }
+  .ap-legend-row { margin-top: 12px; display: flex; gap: 14px; font-size: 11.5px; color: var(--muted); }
+  .ap-legend-row span { display: flex; align-items: center; gap: 6px; }
+  .ap-legend-row i { width: 9px; height: 9px; border-radius: 3px; }
+  .ap-insight-head { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+  .ap-insight-text { margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: var(--ink); }
+  .ap-stat { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line-soft); }
+  .ap-stat b { display: block; font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .ap-stat span { font-size: 11px; color: var(--muted); }
+  .ap-group { border: 1px solid var(--line-soft); border-radius: 10px; padding: 10px 12px; }
+  .ap-group-top { display: flex; align-items: center; gap: 8px; }
+  .ap-dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .ap-group-name { font-weight: 700; }
+  .ap-count { font-size: 11px; font-weight: 700; color: var(--muted); background: var(--soft); border-radius: 999px; padding: 1px 7px; font-variant-numeric: tabular-nums; }
+  .ap-obj { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .ap-meter { position: relative; width: 120px; height: 6px; border-radius: 999px; background: var(--line-soft); }
+  .ap-meter span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; width: 0; transition: width 1s cubic-bezier(.22,1,.36,1); }
+  .ap-meter em { position: absolute; top: -3px; width: 2px; height: 12px; background: var(--ink); border-radius: 1px; }
+  .ap-status { font-size: 11px; font-weight: 700; }
+  .ap-status.bad { color: var(--alto); }
+  .ap-status.ok { color: var(--bajo); }
+  .ap-macros { margin: 8px 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+  .ap-macros span { font-size: 12px; color: var(--muted); }
+  .ap-float { position: absolute; background: #FFFFFF; border: 1px solid var(--line-soft); border-radius: 14px; box-shadow: 0 24px 50px -18px rgba(20,20,80,0.35); padding: 14px 16px; font-size: 12px; color: var(--ink); }
+  .ap-float-title { margin: 0 0 10px; font-size: 12px; font-weight: 700; }
+  .ap-legend { display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
+  .ap-legend span { display: flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+  .ap-legend i { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+  .ap-callout { margin-top: 10px; padding: 8px 10px; border-radius: 8px; background: var(--medio-bg); color: #6B4500; font-size: 11.5px; line-height: 1.4; }
+  .ap-rows { display: flex; flex-direction: column; gap: 10px; }
+  .ap-row { display: grid; grid-template-columns: 150px minmax(0,1fr) 120px; align-items: center; gap: 10px; font-size: 12px; }
+  .ap-row-label { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ap-row-track { position: relative; height: 14px; border-radius: 4px; background: var(--soft); }
+  .ap-row-track span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; width: 0; transition: width 1s cubic-bezier(.22,1,.36,1); }
+  .ap-row-track em { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); border-radius: 1px; }
+  .ap-row-val { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+  .ap-row-val b { color: var(--ink); }
+  .ap-row-val.bad b { color: var(--alto); }
+  .ap-panel { border: 1px solid var(--line-soft); border-radius: 12px; padding: 14px; }
+  .ap-panel-title { margin: 0 0 12px; font-size: 12.5px; font-weight: 700; }
+  .ap-goal { border: 1px solid var(--line-soft); border-radius: 10px; padding: 12px 14px; }
+  .ap-goal-label { margin: 0; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted-2); }
+  .ap-goal-text { margin: 4px 0 0; font-size: 15px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; color: var(--ink); }
+  .ap-goal-time { margin-top: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; }
+  .ap-goal-range { font-size: 11px; color: var(--muted); }
+  .ap-float.below.ap-focos { width: 560px; }
+  .ap-focos-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line-soft); }
+  .ap-focos-head span { font-size: 11px; color: var(--muted-2); }
+  .ap-foco { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 10px; align-items: start; padding: 9px 0; border-bottom: 1px solid var(--line-soft); }
+  .ap-foco:last-child { border-bottom: none; padding-bottom: 0; }
+  .ap-foco-num { font-size: 10.5px; font-weight: 700; color: var(--primary); background: var(--soft); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+  .ap-foco-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .ap-foco-body > b { font-size: 13px; line-height: 1.3; }
+  .ap-foco-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 11px; color: var(--muted); }
+  .ap-foco-goal { font-size: 11.5px; color: var(--muted); }
+  .ap-foco-goal b { font-size: 11.5px; color: var(--primary); }
+  .ap-foco-blocks { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+  .ap-foco-blocks span { font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 5px; background: var(--soft); color: var(--ink); font-variant-numeric: tabular-nums; }
+  .ap-foco .ap-status { white-space: nowrap; }
+  .ap-cal { display: grid; grid-template-columns: 36px repeat(5, minmax(0,1fr)); gap: 0 6px; }
+  .ap-cal-day { font-size: 11px; font-weight: 700; color: var(--muted-2); text-align: center; padding-bottom: 6px; }
+  .ap-cal-hours { display: flex; flex-direction: column; }
+  .ap-cal-hours span { height: 34px; font-size: 10px; color: var(--muted-2); font-variant-numeric: tabular-nums; }
+  .ap-cal-col { position: relative; height: 306px; border-left: 1px solid #F0F1FC; background: repeating-linear-gradient(to bottom, transparent 0 33px, #F0F1FC 33px 34px); }
+  .ap-ev { position: absolute; left: 2px; right: 2px; border-radius: 6px; padding: 4px 6px; font-size: 10.5px; font-weight: 700; line-height: 1.2; color: #FFFFFF; overflow: hidden; }
+  .ap-ev.light { color: var(--ink); }
+  .ap-ev.focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .ap-q { margin: 12px 0 6px; font-size: 11.5px; font-weight: 700; color: var(--ink); }
+  .ap-q:first-of-type { margin-top: 0; }
+  .ap-opts { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ap-opts span { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 11px; font-weight: 600; color: var(--muted); }
+  .ap-opts span.on { background: var(--primary); border-color: var(--primary); color: #FFFFFF; }
+  .ap-kpis { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ap-kpi { flex: 1; min-width: 120px; padding: 10px 12px; border-radius: 10px; background: var(--soft); }
+  .ap-kpi b { display: block; font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .ap-kpi b.bad { color: var(--alto); }
+  .ap-kpi span { font-size: 11px; color: var(--muted); }
+  .ap-chat { display: flex; flex-direction: column; gap: 10px; }
+  .ap-chat-head { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line-soft); }
+  .ap-chat-av { width: 26px; height: 26px; border-radius: 999px; background: var(--primary); display: flex; align-items: center; justify-content: center; }
+  .ap-bubble { max-width: 88%; padding: 9px 12px; border-radius: 14px; font-size: 12px; line-height: 1.45; }
+  .ap-bubble.user { align-self: flex-end; background: var(--primary); color: #FFFFFF; border-bottom-right-radius: 4px; }
+  .ap-bubble.agent { align-self: flex-start; background: var(--soft); color: var(--ink); border-bottom-left-radius: 4px; }
+  .ap-bubble ul { margin: 6px 0 0; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
+  .ap-tag { display: inline-block; margin-left: 4px; padding: 0 6px; border-radius: 4px; background: #FFFFFF; font-size: 10.5px; font-weight: 700; color: var(--primary); }
+
+  /* Tarjeta que monta solo el borde inferior de la ventana, para no tapar datos. */
+  .ap-float.below { position: relative; margin: -22px -16px 0 auto; width: 300px; max-width: calc(100% + 16px); }
+  .ap-main { padding-bottom: 34px; }
+  /* Popover de un evento de la agenda: se superpone al calendario como en la app. */
+  .ap-pop { right: -22px; top: 96px; width: 270px; }
+
+  @media (max-width: 1100px) {
+    .dx-pane { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .ap-pop { position: relative; right: auto; top: auto; margin: -22px -16px 0 auto; }
+  }
+  @media (max-width: 900px) {
+    .dx-diag-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .dx-scale { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .dx-opt { flex-direction: row; justify-content: flex-start; min-height: 56px; padding: 12px 16px; gap: 14px; }
+    .dx-opt-meter { margin-left: auto; }
+    .dx-q-hint { display: none; }
+    .dx-header-tag { display: none; }
+    .ap-side { display: none; }
+    .ap-row { grid-template-columns: 96px minmax(0,1fr) 92px; }
+    .ap-obj .ap-meter { width: 64px; }
+    .ap-cal { grid-template-columns: 28px repeat(5, minmax(0,1fr)); gap: 0 3px; }
+    .ap-ev { font-size: 9px; padding: 3px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dx-screen.on { animation: none; }
+    .dx-q-body, .dx-progress-bar, .dx-av-bar span, .ap-meter span, .ap-row-track span, .ap-split span { transition: none; }
+  }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // Solo medimos el sitio productivo (no localhost, previews de Vercel ni staging)
+    if (location.hostname !== 'www.pausaco.com') { posthog.capture = posthog.get_distinct_id = function () {}; } else posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://b.pausaco.com', // your managed reverse proxy domain
+        ui_host: 'https://us.posthog.com', // necessary because you're using a proxy, this way links will point back to PostHog properly
+        defaults: '2026-05-30',
+        person_profiles: 'never',
+        cookieless_mode: 'always',
+        opt_out_capturing_by_default: /(^|; )ph_internal=1/.test(document.cookie),
+    })
+</script>
+</head>
+<body>
+
+<header class="dx-header">
+  <div class="dx-header-in">
+    <img src="../assets/pausa-word-white.png" alt="Pausa" style="height:18px;width:auto;display:block">
+    <span class="dx-header-tag" id="dx-header-tag">Management diagnostic</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 · Portada -->
+  <section class="dx-screen on" id="s-portada" aria-labelledby="dx-cover-title">
+    <div class="dx-cover">
+      <span class="dx-pill">Management diagnostic · 8 questions</span>
+      <h1 id="dx-cover-title">Where is focus <span>getting lost</span> today?</h1>
+      <p class="dx-cover-lead">Eight situations that come up in many organizations. For each one, tell us how much you relate to it. You can answer thinking about yourself or about your organization, whichever feels more natural.</p>
+      <form class="dx-cover-form" id="dx-cover-form">
+        <div class="dx-cover-fields">
+          <label class="dx-field"><span>Company</span><input type="text" name="empresa" id="dx-empresa" autocomplete="organization" placeholder="Optional"></label>
+          <label class="dx-field"><span>Person</span><input type="text" name="persona" id="dx-persona" autocomplete="off" placeholder="Optional"></label>
+        </div>
+        <button type="submit" class="dx-btn light">Start <span aria-hidden="true">→</span></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 2 · Preguntas -->
+  <section class="dx-screen" id="s-pregunta" aria-live="polite">
+    <div class="dx-progress" aria-hidden="true"><div class="dx-progress-bar" id="dx-progress-bar"></div></div>
+    <div class="dx-q">
+      <div class="dx-q-body" id="dx-q-body">
+        <div class="dx-q-meta">
+          <span class="dx-q-count" id="dx-q-count"></span>
+          <p class="dx-eyebrow" id="dx-q-avenida"></p>
+        </div>
+        <h2 class="dx-q-text" id="dx-q-text"></h2>
+        <div class="dx-q-signals" id="dx-q-signals"></div>
+        <p class="dx-scale-label" id="dx-scale-label">How much do you relate to this?</p>
+        <div class="dx-scale" id="dx-scale" role="group" aria-labelledby="dx-scale-label"></div>
+      </div>
+      <div class="dx-q-nav">
+        <button type="button" class="dx-btn-ghost" id="dx-prev"><span aria-hidden="true">←</span> Back</button>
+        <span class="dx-q-hint">Shortcut: keys <kbd>1</kbd> to <kbd>5</kbd></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Diagnóstico -->
+  <section class="dx-screen" id="s-diagnostico">
+    <div class="dx-wrap dx-diag">
+      <p class="dx-eyebrow">Result</p>
+      <h1 id="dx-diag-title">Diagnostic</h1>
+      <p class="dx-diag-headline" id="dx-diag-headline"></p>
+      <p class="dx-diag-lead" id="dx-diag-lead"></p>
+
+      <div class="dx-diag-grid">
+        <div class="dx-card">
+          <p class="dx-card-title">Where the friction is</p>
+          <div id="dx-avenidas"></div>
+        </div>
+        <div class="dx-card">
+          <p class="dx-card-title">Where Pausa would start</p>
+          <div class="dx-cai" id="dx-cai">
+            <div class="dx-cai-step" data-cai="c"><b>01</b><span>Awareness</span></div>
+            <div class="dx-cai-step" data-cai="a"><b>02</b><span>Action</span></div>
+            <div class="dx-cai-step" data-cai="i"><b>03</b><span>Impact</span></div>
+          </div>
+          <p class="dx-entry-title" id="dx-entry-title"></p>
+          <p class="dx-entry-text" id="dx-entry-text"></p>
+          <div class="dx-need">
+            <p class="dx-card-title">Need for change</p>
+            <p id="dx-need-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dx-diag-actions">
+        <button type="button" class="dx-btn" id="dx-to-sol">See how Pausa solves it <span aria-hidden="true">→</span></button>
+        <button type="button" class="dx-btn-ghost" id="dx-diag-back"><span aria-hidden="true">←</span> Review answers</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Cómo ayuda Pausa -->
+  <section class="dx-screen" id="s-solucion">
+    <div class="dx-wrap dx-sol">
+      <p class="dx-eyebrow">How Pausa solves it</p>
+      <h1>How Pausa helps, starting with what hurts most</h1>
+      <div class="dx-tabs" id="dx-tabs" role="tablist" aria-label="Areas"></div>
+
+      <!-- Claridad de rol -->
+      <div class="dx-pane" data-pane="rol" role="tabpanel" hidden>
+        <div>
+          <p class="dx-eyebrow">Role clarity</p>
+          <h2 class="dx-pane-title">Everyone knows where they should be.</h2>
+          <p class="dx-pane-text" data-text></p>
+          <ul class="dx-pane-list">
+            <li>Each leader’s Digital Role: MacroTasks, groups and how much time each one should get.</li>
+            <li>For every logged task, one question: “Does the task correspond to you according to your role?”</li>
+            <li>“Doubt” answers pinpoint exactly which gray areas need aligning.</li>
+          </ul>
+          <span class="dx-pane-cai" data-cai-label></span>
+        </div>
+        <div class="ap" aria-hidden="true">
+          <div class="ap-win">
+            <div class="ap-chrome"><i></i><i></i><i></i><span>Pausa · Digital Role</span></div>
+            <div class="ap-body">
+              <div class="ap-side"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+              <div class="ap-main">
+                <div class="ap-top">
+                  <span class="ap-h">Digital Role</span>
+                  <span class="ap-seg"><span class="on">By Groups</span><span>By MacroTasks</span><span>Cards</span></span>
+                  <span class="ap-btn">Share Role</span>
+                </div>
+                <div class="ap-stats">
+                  <div class="ap-stat"><b>19</b><span>MacroTasks</span></div>
+                  <div class="ap-stat"><b>5</b><span>Groups</span></div>
+                  <div class="ap-stat"><b>4</b><span>Active goals</span></div>
+                </div>
+                <div class="ap-group">
+                  <div class="ap-group-top">
+                    <span class="ap-dot" style="background:#3D3DC8"></span><span class="ap-group-name">Product</span><span class="ap-count">7</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="36" style="background:#3D3DC8"></span><em style="left:66%"></em></span><span class="ap-status bad">Missing 9.2% for minimum</span></span>
+                  </div>
+                  <div class="ap-macros"><span>Definition and specification</span><span>Backlog prioritization</span><span>Metrics tracking</span></div>
+                </div>
+                <div class="ap-group">
+                  <div class="ap-group-top">
+                    <span class="ap-dot" style="background:#2F6FD6"></span><span class="ap-group-name">Team management</span><span class="ap-count">5</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="41" style="background:#2F6FD6"></span><em style="left:50%"></em></span><span class="ap-status bad">Missing 2.7% for minimum</span></span>
+                  </div>
+                </div>
+                <div class="ap-group">
+                  <div class="ap-group-top">
+                    <span class="ap-dot" style="background:#FFB422"></span><span class="ap-group-name">Coordination</span><span class="ap-count">3</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="56" style="background:#FFB422"></span><em style="left:33%"></em></span><span class="ap-status bad">Exceeds maximum by 6.9%</span></span>
+                  </div>
+                </div>
+                <div class="ap-group">
+                  <div class="ap-group-top">
+                    <span class="ap-dot" style="background:#A9B4F5"></span><span class="ap-group-name">User research</span><span class="ap-count">4</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="18" style="background:#A9B4F5"></span><em style="left:17%"></em></span><span class="ap-status ok">Within range</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-float below">
+            <p class="ap-float-title">Time by fit with the Role</p>
+            <div style="display:flex;align-items:center;gap:14px">
+              <svg width="76" height="76" viewBox="0 0 42 42" style="transform:rotate(-90deg);flex:none">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#3D3DC8" stroke-width="7" stroke-dasharray="64 36"></circle>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1E1E6B" stroke-width="7" stroke-dasharray="19 81" stroke-dashoffset="-64"></circle>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#FFB422" stroke-width="7" stroke-dasharray="17 83" stroke-dashoffset="-83"></circle>
+              </svg>
+              <div class="ap-legend">
+                <span><i style="background:#3D3DC8"></i>Yes · 64%</span>
+                <span><i style="background:#1E1E6B"></i>No · 19%</span>
+                <span><i style="background:#FFB422"></i><b>Doubt · 17%</b></span>
+              </div>
+            </div>
+            <div class="ap-callout"><b>Doubt:</b> “Missing definition about who is responsible” on 6 tasks this week.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Objetivos y prioridades -->
+      <div class="dx-pane" data-pane="obj" role="tabpanel" hidden>
+        <div>
+          <p class="dx-eyebrow">Goals and priorities</p>
+          <h2 class="dx-pane-title">From business goal to this week’s calendar.</h2>
+          <p class="dx-pane-text" data-text></p>
+          <ul class="dx-pane-list">
+            <li>Every time goal carries its business goal: “Increase the conversion rate by 65%” next to “Product: at least 20% of the week.”</li>
+            <li>Every Monday, Weekly focus breaks that goal down into two or three concrete focuses, with suggested blocks in the calendar.</li>
+            <li>At the end of the week, each focus is marked Fulfilled, Not completed or Lost priority: you see whether time went to what matters.</li>
+          </ul>
+          <span class="dx-pane-cai" data-cai-label></span>
+        </div>
+        <div class="ap" aria-hidden="true">
+          <div class="ap-win">
+            <div class="ap-chrome"><i></i><i></i><i></i><span>Pausa · Digital Role</span></div>
+            <div class="ap-body">
+              <div class="ap-side"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+              <div class="ap-main">
+                <div class="ap-top">
+                  <span class="ap-h">Goals</span>
+                  <span class="ap-seg"><span>Weekly</span><span class="on">Monthly</span></span>
+                  <span class="ap-btn">+ Goal</span>
+                </div>
+                <div class="ap-goal">
+                  <p class="ap-goal-label">What do I want to achieve?</p>
+                  <p class="ap-goal-text">Increase the conversion rate by 65%</p>
+                  <div class="ap-goal-time">
+                    <span class="ap-dot" style="background:#3D3DC8"></span><span class="ap-group-name">Product</span>
+                    <span class="ap-goal-range">Goal: Min 20%</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="36" style="background:#3D3DC8"></span><em style="left:66%"></em></span><span class="ap-status bad">Missing 9.2% for minimum</span></span>
+                  </div>
+                </div>
+                <div class="ap-goal">
+                  <p class="ap-goal-label">What do I want to achieve?</p>
+                  <p class="ap-goal-text">Have two team leads run their own squad this semester</p>
+                  <div class="ap-goal-time">
+                    <span class="ap-dot" style="background:#2F6FD6"></span><span class="ap-group-name">Team management</span>
+                    <span class="ap-goal-range">Goal: Min 15%</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="41" style="background:#2F6FD6"></span><em style="left:50%"></em></span><span class="ap-status bad">Missing 2.7% for minimum</span></span>
+                  </div>
+                </div>
+                <div class="ap-goal">
+                  <p class="ap-goal-label">What do I want to achieve?</p>
+                  <p class="ap-goal-text">Free up coordination time for product work</p>
+                  <div class="ap-goal-time">
+                    <span class="ap-dot" style="background:#FFB422"></span><span class="ap-group-name">Coordination</span>
+                    <span class="ap-goal-range">Goal: Max 10%</span>
+                    <span class="ap-obj"><span class="ap-meter"><span data-w="56" style="background:#FFB422"></span><em style="left:33%"></em></span><span class="ap-status bad">Exceeds maximum by 6.9%</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-float below ap-focos">
+            <div class="ap-focos-head">
+              <p class="ap-float-title" style="margin:0">Weekly focus</p>
+              <span>October 13–17</span>
+            </div>
+            <div class="ap-foco">
+              <span class="ap-foco-num">Focus 1</span>
+              <div class="ap-foco-body">
+                <b>Analyze the conversion funnel and pick two experiments</b>
+                <span class="ap-foco-meta"><span class="ap-dot" style="background:#3D3DC8"></span>Metrics tracking · 20% of time <span class="ap-foco-blocks"><span>Tue 9:00–11:00</span><span>Thu 9:00–11:00</span></span></span>
+                <span class="ap-foco-goal">Contributes to: <b>Increase the conversion rate by 65%</b></span>
+              </div>
+              <span class="ap-status ok">Fulfilled</span>
+            </div>
+            <div class="ap-foco">
+              <span class="ap-foco-num">Focus 2</span>
+              <div class="ap-foco-body">
+                <b>Define the checkout redesign</b>
+                <span class="ap-foco-meta"><span class="ap-dot" style="background:#3D3DC8"></span>Definition and specification · 15% of time <span class="ap-foco-blocks"><span>Wed 14:00–17:00</span></span></span>
+                <span class="ap-foco-goal">Contributes to: <b>Increase the conversion rate by 65%</b></span>
+              </div>
+              <span class="ap-status bad">Lost priority</span>
+            </div>
+            <div class="ap-foco">
+              <span class="ap-foco-num">Focus 3</span>
+              <div class="ap-foco-body">
+                <b>Development 1:1s with the two team leads</b>
+                <span class="ap-foco-meta"><span class="ap-dot" style="background:#2F6FD6"></span>Team management · 8% of time <span class="ap-foco-blocks"><span>Fri 10:00–11:30</span></span></span>
+                <span class="ap-foco-goal">Contributes to: <b>Have two team leads run their own squad</b></span>
+              </div>
+              <span class="ap-status ok">Fulfilled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uso del tiempo -->
+      <div class="dx-pane" data-pane="tiempo" role="tabpanel" hidden>
+        <div>
+          <p class="dx-eyebrow">Use of time</p>
+          <h2 class="dx-pane-title">See where time goes, and win it back.</h2>
+          <p class="dx-pane-text" data-text></p>
+          <ul class="dx-pane-list">
+            <li>It connects to the calendar you already use: the real week gets logged without filling in spreadsheets.</li>
+            <li>Each event is reflected on in seconds: is it mine? did it come to me, or did I go after it?</li>
+            <li>The report shows how much time went to tasks that weren’t yours, and why.</li>
+          </ul>
+          <span class="dx-pane-cai" data-cai-label></span>
+        </div>
+        <div class="ap" aria-hidden="true">
+          <div class="ap-win">
+            <div class="ap-chrome"><i></i><i></i><i></i><span>Pausa · Agenda</span></div>
+            <div class="ap-body">
+              <div class="ap-side"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+              <div class="ap-main">
+                <div class="ap-top">
+                  <span class="ap-h">Agenda</span>
+                  <span class="ap-seg"><span>Day</span><span class="on">Week</span></span>
+                  <span style="margin-left:auto;font-size:12px;font-weight:600;color:var(--muted)">October 13–17</span>
+                </div>
+                <div class="ap-cal">
+                  <div></div>
+                  <div class="ap-cal-day">Mon</div><div class="ap-cal-day">Tue</div><div class="ap-cal-day">Wed</div><div class="ap-cal-day">Thu</div><div class="ap-cal-day">Fri</div>
+                  <div class="ap-cal-hours"><span>9:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span><span>17:00</span></div>
+                  <div class="ap-cal-col">
+                    <div class="ap-ev" style="top:0;height:33px;background:#FFB422;color:var(--ink)">Operations daily</div>
+                    <div class="ap-ev" style="top:34px;height:67px;background:#1E1E6B">Purchasing committee</div>
+                    <div class="ap-ev" style="top:136px;height:67px;background:#3D3DC8">Quarterly roadmap</div>
+                    <div class="ap-ev" style="top:204px;height:50px;background:#FFB422;color:var(--ink)">Urgent request from management</div>
+                  </div>
+                  <div class="ap-cal-col">
+                    <div class="ap-ev" style="top:0;height:33px;background:#FFB422;color:var(--ink)">Operations daily</div>
+                    <div class="ap-ev focus" style="top:68px;height:67px;background:#1E1E6B">QA review</div>
+                    <div class="ap-ev" style="top:170px;height:84px;background:#1E1E6B">Support requests</div>
+                  </div>
+                  <div class="ap-cal-col">
+                    <div class="ap-ev" style="top:0;height:33px;background:#FFB422;color:var(--ink)">Operations daily</div>
+                    <div class="ap-ev" style="top:34px;height:50px;background:#2F6FD6">1:1 with the team</div>
+                    <div class="ap-ev" style="top:136px;height:101px;background:#FFB422;color:var(--ink)">Supplier meeting</div>
+                  </div>
+                  <div class="ap-cal-col">
+                    <div class="ap-ev" style="top:0;height:33px;background:#FFB422;color:var(--ink)">Operations daily</div>
+                    <div class="ap-ev" style="top:68px;height:67px;background:#1E1E6B">Weekly report prep</div>
+                    <div class="ap-ev" style="top:204px;height:67px;background:#A9B4F5;color:var(--ink)">Customer interview</div>
+                  </div>
+                  <div class="ap-cal-col">
+                    <div class="ap-ev" style="top:0;height:33px;background:#FFB422;color:var(--ink)">Operations daily</div>
+                    <div class="ap-ev" style="top:34px;height:101px;background:#FFB422;color:var(--ink)">Production incident</div>
+                    <div class="ap-ev" style="top:170px;height:50px;background:#2F6FD6">Team planning</div>
+                  </div>
+                </div>
+                <div class="ap-kpis">
+                  <div class="ap-kpi"><b>38.5 h</b><span>logged this week</span></div>
+                  <div class="ap-kpi"><b class="bad">9 h</b><span>on tasks that weren’t yours</span></div>
+                  <div class="ap-kpi"><b class="bad">2 h</b><span>of focus on Product (goal: 8 h)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-float ap-pop">
+            <p class="ap-float-title">QA review · Tue 10:00</p>
+            <p class="ap-q">Does the task correspond to you according to your role?</p>
+            <div class="ap-opts"><span>Yes</span><span class="on">No</span><span>Doubt</span></div>
+            <p class="ap-q">This task:</p>
+            <div class="ap-opts"><span class="on">Came to me</span><span>I decided to proactively seek it out</span></div>
+            <p class="ap-q">Why did you do it?</p>
+            <div class="ap-opts"><span class="on">Because it was hard for me to say no</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestión y liderazgo -->
+      <div class="dx-pane" data-pane="gestion" role="tabpanel" hidden>
+        <div>
+          <p class="dx-eyebrow">Management and leadership</p>
+          <h2 class="dx-pane-title">Delegate with data, not gut feeling.</h2>
+          <p class="dx-pane-text" data-text></p>
+          <ul class="dx-pane-list">
+            <li>Each leader flags which tasks they should delegate, optimize or stop doing.</li>
+            <li>Pausa calculates how much time could be freed up each week.</li>
+            <li>The Digital Assistant suggests concrete tasks to delegate, based on the real calendar.</li>
+          </ul>
+          <span class="dx-pane-cai" data-cai-label></span>
+        </div>
+        <div class="ap" aria-hidden="true">
+          <div class="ap-win">
+            <div class="ap-chrome"><i></i><i></i><i></i><span>Pausa · Report</span></div>
+            <div class="ap-body">
+              <div class="ap-side"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+              <div class="ap-main">
+                <div class="ap-top">
+                  <span class="ap-h">Report</span>
+                  <span class="ap-seg"><span>General</span><span>Evolution</span><span class="on">Deep Reflection</span></span>
+                </div>
+                <div class="ap-kpis">
+                  <div class="ap-kpi"><b>12.5 h</b><span>per week that could be freed up</span></div>
+                  <div class="ap-kpi"><b>32%</b><span>of the leader’s calendar</span></div>
+                </div>
+                <div class="ap-panel">
+                  <p class="ap-panel-title">Time to Free</p>
+                  <div class="ap-rows">
+                    <div class="ap-row"><span class="ap-row-label">Should delegate</span><span class="ap-row-track"><span data-w="90" style="background:#3D3DC8"></span></span><span class="ap-row-val"><b>4.5 h</b></span></div>
+                    <div class="ap-row"><span class="ap-row-label">Not my responsibility</span><span class="ap-row-track"><span data-w="60" style="background:#1E1E6B"></span></span><span class="ap-row-val"><b>3 h</b></span></div>
+                    <div class="ap-row"><span class="ap-row-label">Should optimize</span><span class="ap-row-track"><span data-w="50" style="background:#2F6FD6"></span></span><span class="ap-row-val"><b>2.5 h</b></span></div>
+                    <div class="ap-row"><span class="ap-row-label">Should stop doing</span><span class="ap-row-track"><span data-w="30" style="background:#FFB422"></span></span><span class="ap-row-val"><b>1.5 h</b></span></div>
+                    <div class="ap-row"><span class="ap-row-label">In delegation process</span><span class="ap-row-track"><span data-w="20" style="background:#A9B4F5"></span></span><span class="ap-row-val"><b>1 h</b></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-float below">
+            <div class="ap-chat">
+              <div class="ap-chat-head">
+                <span class="ap-chat-av"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+                <b style="font-size:12.5px">Digital Assistant</b>
+              </div>
+              <div class="ap-bubble user">Which of this week’s tasks could I delegate?</div>
+              <div class="ap-bubble agent">These three don’t depend on your judgment and add up to 4.5 h:
+                <ul>
+                  <li><b>QA review</b><span class="ap-tag">2 h</span></li>
+                  <li><b>Weekly report prep</b><span class="ap-tag">1.5 h</span></li>
+                  <li><b>Support requests</b><span class="ap-tag">1 h</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Organización: no es una avenida del diagnóstico, cierra la recorrida -->
+      <div class="dx-pane" data-pane="org" role="tabpanel" hidden>
+        <div>
+          <p class="dx-eyebrow">Organization</p>
+          <h2 class="dx-pane-title">And all of this, across the whole organization.</h2>
+          <p class="dx-pane-text">What each leader sees about their own week, leadership sees across the whole organization: by team, by leader and over time. No spreadsheets or hand-built reports.</p>
+          <ul class="dx-pane-list">
+            <li>Role fit for each team, side by side: where the gray areas are and where time is going to the wrong place.</li>
+            <li>Focus achieved and average logged per team, to see which leaders stick to their priorities.</li>
+            <li>An AI analysis of how leaders are doing in the period, with suggested next steps.</li>
+          </ul>
+          <span class="dx-pane-cai">For leadership and HR</span>
+        </div>
+        <div class="ap" aria-hidden="true">
+          <div class="ap-win">
+            <div class="ap-chrome"><i></i><i></i><i></i><span>Pausa · Report</span></div>
+            <div class="ap-body">
+              <div class="ap-side"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+              <div class="ap-main">
+                <div class="ap-top">
+                  <span class="ap-h">Report</span>
+                  <span class="ap-filter">People: <b>Leaders (12)</b></span>
+                  <span class="ap-filter">Period: <b>Current month</b></span>
+                </div>
+                <div class="ap-kpis">
+                  <div class="ap-kpi"><b>68%</b><span>Role correspondence</span></div>
+                  <div class="ap-kpi"><b>54%</b><span>Focus achieved</span></div>
+                  <div class="ap-kpi"><b>34.5 h</b><span>Average logged</span></div>
+                </div>
+                <div class="ap-panel">
+                  <p class="ap-panel-title">Role correspondence by team</p>
+                  <div class="ap-rows">
+                    <div class="ap-row ap-row-org"><span class="ap-row-label">Sales</span><span class="ap-split"><span data-w="78" style="background:#3D3DC8"></span><span data-w="14" style="background:#1E1E6B"></span><span data-w="8" style="background:#FFB422"></span></span><span class="ap-row-val"><b>78%</b> yes</span></div>
+                    <div class="ap-row ap-row-org"><span class="ap-row-label">Product</span><span class="ap-split"><span data-w="64" style="background:#3D3DC8"></span><span data-w="19" style="background:#1E1E6B"></span><span data-w="17" style="background:#FFB422"></span></span><span class="ap-row-val"><b>64%</b> yes</span></div>
+                    <div class="ap-row ap-row-org"><span class="ap-row-label">Operations</span><span class="ap-split"><span data-w="52" style="background:#3D3DC8"></span><span data-w="31" style="background:#1E1E6B"></span><span data-w="17" style="background:#FFB422"></span></span><span class="ap-row-val bad"><b>52%</b> yes</span></div>
+                    <div class="ap-row ap-row-org"><span class="ap-row-label">Finance</span><span class="ap-split"><span data-w="81" style="background:#3D3DC8"></span><span data-w="12" style="background:#1E1E6B"></span><span data-w="7" style="background:#FFB422"></span></span><span class="ap-row-val"><b>81%</b> yes</span></div>
+                    <div class="ap-row ap-row-org"><span class="ap-row-label">People</span><span class="ap-split"><span data-w="69" style="background:#3D3DC8"></span><span data-w="18" style="background:#1E1E6B"></span><span data-w="13" style="background:#FFB422"></span></span><span class="ap-row-val"><b>69%</b> yes</span></div>
+                  </div>
+                  <div class="ap-legend-row"><span><i style="background:#3D3DC8"></i>Yes</span><span><i style="background:#1E1E6B"></i>No</span><span><i style="background:#FFB422"></i>Doubt</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-float below" style="width:400px">
+            <div class="ap-insight-head">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D3DC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.5L12 15l-1.8-4.5L5.5 9l4.7-1.4z"></path><path d="M19 15l.8 2 2 .8-2 .7-.8 2-.7-2-2-.7 2-.8z"></path></svg>
+              <b>From the team analysis</b>
+            </div>
+            <p class="ap-insight-text">Operations is the team with the most time on tasks that aren’t theirs (31%), almost all of it spent coordinating with other areas. Product has most of the role doubts.</p>
+            <p class="ap-insight-text"><b>Suggested next step:</b> agree with Operations and Product on who decides on cross-team requests.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dx-sol-foot">
+        <button type="button" class="dx-btn-ghost" id="dx-sol-back"><span aria-hidden="true">←</span> Back to diagnostic</button>
+        <button type="button" class="dx-btn-ghost" id="dx-restart" style="margin-left:auto">New diagnostic</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  // Las respuestas se guardan en n8n (mismo esquema que el formulario de contacto).
+  var DIAGNOSTICO_WEBHOOK_URL = 'https://pausa.app.n8n.cloud/webhook/pausa-diagnostico-comercial';
+  var IDIOMA = 'EN';
+  var AVENIDA_PLANILLA = { rol: 'Claridad de rol', obj: 'Objetivos y prioridades', tiempo: 'Uso del tiempo', gestion: 'Gestión y liderazgo' };
+  var FRICCION_PLANILLA = { alto: 'Alta', medio: 'Media', bajo: 'Baja' };
+  var ENTRADA_PLANILLA = { alto: 'Consciencia', medio: 'Consciencia → Acción', bajo: 'Acción → Impacto' };
+  // Columna de cada respuesta en la planilla (1 = Nada · 5 = Totalmente).
+  var COLUMNA_PREGUNTA = {
+    q1: 'p1_tareas_sin_dueno', q2: 'p2_no_claro_quien_decide', q3: 'p3_todo_urgente',
+    q4: 'p4_objetivos_lejos_del_dia_a_dia', q5: 'p5_tiempo_a_ojo', q6: 'p6_agenda_de_otros',
+    q7: 'p7_lideres_cuello_de_botella', q8: 'p8_techo_de_gestion'
+  };
+
+  // Avenidas del assessment de Pausa. "Necesidad de cambio" es habilitante: no suma al
+  // punto de entrada, se muestra aparte. Confianza cultural y cercanía al calendario
+  // quedan afuera a propósito: no son dolor y los indaga el comercial en la charla.
+  var AVENIDAS = {
+    rol: { nombre: 'Role clarity' },
+    obj: { nombre: 'Goals and priorities' },
+    tiempo: { nombre: 'Use of time' },
+    gestion: { nombre: 'Management and leadership' }
+  };
+  var ORDEN_AVENIDAS = ['rol', 'obj', 'tiempo', 'gestion'];
+
+  // Cada afirmación describe un dolor: 5 = "Totalmente" me identifico = más dolor.
+  var PREGUNTAS = [
+    { id: 'q1', avenida: 'rol', texto: 'Some tasks end up with no clear owner, or two people end up doing the same thing.', senales: ['Rework', 'Roles defined on the fly', '“I thought you were on it”'] },
+    { id: 'q2', avenida: 'rol', texto: 'It isn’t clear who decides what, so decisions get delayed or keep escalating.', senales: ['Everything goes up the chain', 'Conflicts over responsibilities', 'Decisions nobody makes'] },
+    { id: 'q3', avenida: 'obj', texto: 'Everything is treated as urgent, and it’s hard to name this week’s top three priorities.', senales: ['Priorities that change without explanation', 'Low-value tasks nobody questions'] },
+    { id: 'q4', avenida: 'obj', texto: 'Business goals are defined, but they feel far from day-to-day work: the week fills up with other things.', senales: ['Goals reviewed once a quarter', 'Teams that can’t explain what they’re working toward', 'Fuzzy deliverables'] },
+    { id: 'q5', avenida: 'tiempo', texto: 'If someone asks where last week’s time went, the answer is a rough guess.', senales: ['Surprise at the real workload', 'Hard to explain where time goes'] },
+    { id: 'q6', avenida: 'tiempo', texto: 'Other people set the agenda, and strategic work always gets pushed back.', senales: ['Back-to-back meetings', 'Firefighting', 'Requests that arrive without warning'] },
+    { id: 'q7', avenida: 'gestion', texto: 'Leaders hold on to tasks the team could take on, and a lot of things wait for their approval.', senales: ['Leaders as bottlenecks', 'Leaders doing operational work', 'Teams waiting for sign-off'] },
+    { id: 'q8', avenida: 'necesidad', texto: 'The current way of managing has a ceiling: results depend on extra effort.', senales: ['Overtime as the norm', '“It’s always been this way”', 'Team burnout'] }
+  ];
+
+  var ESCALA = ['Not at all', 'A little', 'Somewhat', 'Quite a bit', 'Completely'];
+
+  // Textos por avenida y banda de dolor (alto / medio / bajo).
+  var COSTO = {
+    rol: {
+      alto: 'Tasks fall through the cracks, work gets redone, and decisions stall because it isn’t clear whose call it is.',
+      medio: 'There are a few gray areas, and they’re enough to cause rework and friction between people and teams.',
+      bajo: 'Roles are clear. That’s the best foundation for gaining focus and results.'
+    },
+    obj: {
+      alto: 'Business goals live in a slide deck, not in the calendar. If everything is urgent, the team moves a lot, but not necessarily where it matters.',
+      medio: 'Goals exist, but they don’t always reach day-to-day work or hold up through the week.',
+      bajo: 'Priorities are clear. The next step is measuring how much time actually turns into results.'
+    },
+    tiempo: {
+      alto: 'Time goes to urgent matters and to agendas set by others. Strategic work gets pushed back, and without data no one knows by how much.',
+      medio: 'There’s a sense of where time goes, but no data to decide what to change or to protect what matters.',
+      bajo: 'Time is fairly focused. The challenge is keeping it that way when pressure rises.'
+    },
+    gestion: {
+      alto: 'Leaders become bottlenecks: they hold on to tasks the team could take on and have little time left to lead.',
+      medio: 'There is delegation, but not always of the right things or in a sustained way: some tasks drift back to the leader.',
+      bajo: 'Delegation works. There’s a solid base to strengthen the management system.'
+    }
+  };
+
+  var SOLUCION = {
+    rol: {
+      alto: 'With the Role Assistant, each leader digitizes their role: the MacroTasks it’s made of, grouped, and how much time each group should get. For the first time, it’s written down where each person should be.',
+      medio: 'Pausa compares “where I should be” with “where I am.” Every logged task answers whether it fits the role, and the “doubt” answers provide the data to clear up gray areas with concrete alignment.',
+      bajo: 'With a clear role as the foundation, Pausa measures week by week how much time fits the role, and turns it into focus and results.'
+    },
+    obj: {
+      alto: 'Pausa helps define each role’s goals and put time behind them: “Increase the conversion rate by 65%” becomes how much of the week has to go to Product. And every week, Weekly focus turns that goal into concrete blocks in the calendar.',
+      medio: 'Pausa connects business goals with day-to-day work: each goal has its time allocated, Weekly focus brings it into the calendar and, at the end of the week, you see what was achieved and what lost priority.',
+      bajo: 'Pausa measures week by week how much time goes to business goals, and flags early when one starts losing ground.'
+    },
+    tiempo: {
+      alto: 'Pausa provides the visibility that doesn’t exist today: where the week went, which part belonged to each person, and how much of the agenda was imposed by others.',
+      medio: 'With the real week in view, Pausa helps redirect time, focus and energy toward goals, and protect the time won back.',
+      bajo: 'Pausa helps sustain focus when pressure rises, and shifts attention to role and delegation.'
+    },
+    gestion: {
+      alto: 'Pausa builds delegation awareness from data: each leader sees which tasks they should let go of and how much time they would free up. It also helps design management routines with the team.',
+      medio: 'Pausa organizes existing routines and backs them with data, and identifies concrete candidates for delegation, task by task.',
+      bajo: 'Pausa strengthens the existing management system with role-fit data from the whole team.'
+    }
+  };
+
+  var NECESIDAD = {
+    alto: 'There’s already recognition that the current way has a ceiling. That recognition is the best starting point for change.',
+    medio: 'There are signs that the current way has a limit. Data helps size it up and decide where to start.',
+    bajo: 'Today, extra effort makes up for it. Often that cost isn’t visible until it’s measured, and that’s where Pausa comes in.'
+  };
+
+  var ENTRADA = {
+    alto: { cai: 'c', titulo: 'Awareness: role, goals and logging', texto: 'First, see clearly. Each leader defines where they should be and starts logging where they actually are.', etiqueta: 'Stage: Awareness' },
+    medio: { cai: 'a', titulo: 'From awareness to action: clearing up gray areas', texto: 'Compare where each person should be with where they are, and use that data to align roles and priorities.', etiqueta: 'Stage: Awareness → Action' },
+    bajo: { cai: 'i', titulo: 'From action to impact: delegation, strategy and capabilities', texto: 'With a solid base, the focus shifts to freeing up time for strategy and building capabilities in the team.', etiqueta: 'Stage: Action → Impact' }
+  };
+
+  var NIVEL_LABEL = { alto: 'High friction', medio: 'Medium friction', bajo: 'Low friction' };
+
+  // Bandas del assessment (pestaña "Referencia"): se aplican sobre la escala original,
+  // donde 5 es lo sano, redondeando al entero más cercano (2,5 ya cuenta como 3).
+  // Bajo (1-2) en esa escala = dolor alto acá.
+  function banda(promedioDolor) {
+    var salud = Math.round(6 - promedioDolor);
+    if (salud <= 2) return 'alto';
+    if (salud === 3) return 'medio';
+    return 'bajo';
+  }
+
+  var estado = { indice: 0, respuestas: {}, empresa: '', persona: '', id: '', enviado: null };
+  var resultado = null;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var screens = ['s-portada', 's-pregunta', 's-diagnostico', 's-solucion'];
+
+  function mostrar(id) {
+    screens.forEach(function (s) { $(s).classList.toggle('on', s === id); });
+    window.scrollTo(0, 0);
+  }
+
+  function nuevoId() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'dx-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  // ---------- Portada ----------
+  var params = new URLSearchParams(location.search);
+  if (params.get('empresa')) $('dx-empresa').value = params.get('empresa');
+
+  $('dx-cover-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    estado.empresa = $('dx-empresa').value.trim();
+    estado.persona = $('dx-persona').value.trim();
+    estado.id = nuevoId();
+    estado.indice = 0;
+    estado.respuestas = {};
+    estado.enviado = null;
+    $('dx-header-tag').innerHTML = estado.empresa
+      ? 'Management diagnostic · <strong></strong>'
+      : 'Management diagnostic';
+    if (estado.empresa) $('dx-header-tag').querySelector('strong').textContent = estado.empresa;
+    if (window.posthog) posthog.capture('iniciar_diagnostico_comercial');
+    renderPregunta();
+    mostrar('s-pregunta');
+  });
+
+  // ---------- Preguntas ----------
+  var scale = $('dx-scale');
+  ESCALA.forEach(function (label, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dx-opt';
+    b.dataset.valor = String(i + 1);
+    var meter = '';
+    for (var k = 0; k < 5; k++) meter += '<i' + (k <= i ? ' class="f"' : '') + '></i>';
+    b.innerHTML = '<span class="dx-opt-num">' + (i + 1) + '</span><span class="dx-opt-label">' + label + '</span><span class="dx-opt-meter" aria-hidden="true">' + meter + '</span>';
+    b.addEventListener('click', function () { responder(i + 1); });
+    scale.appendChild(b);
+  });
+
+  function renderPregunta() {
+    var q = PREGUNTAS[estado.indice];
+    var total = PREGUNTAS.length;
+    $('dx-q-count').textContent = (estado.indice + 1) + ' of ' + total;
+    $('dx-q-avenida').textContent = q.avenida === 'necesidad' ? 'Need for change' : AVENIDAS[q.avenida].nombre;
+    $('dx-q-text').textContent = q.texto;
+    var sig = $('dx-q-signals');
+    sig.innerHTML = '<span class="dx-q-signals-label">Telltale signs:</span>';
+    q.senales.forEach(function (s) {
+      var c = document.createElement('span');
+      c.className = 'dx-chip';
+      c.textContent = s;
+      sig.appendChild(c);
+    });
+    var actual = estado.respuestas[q.id];
+    scale.querySelectorAll('.dx-opt').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(Number(b.dataset.valor) === actual));
+    });
+    $('dx-prev').disabled = false;
+    $('dx-progress-bar').style.width = (estado.indice / total * 100) + '%';
+  }
+
+  var avanzando = false;
+  function responder(valor) {
+    if (avanzando) return;
+    var q = PREGUNTAS[estado.indice];
+    estado.respuestas[q.id] = valor;
+    scale.querySelectorAll('.dx-opt').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(Number(b.dataset.valor) === valor));
+    });
+    avanzando = true;
+    var body = $('dx-q-body');
+    setTimeout(function () {
+      if (estado.indice < PREGUNTAS.length - 1) {
+        body.classList.add('leaving');
+        setTimeout(function () {
+          estado.indice += 1;
+          renderPregunta();
+          body.classList.remove('leaving');
+          avanzando = false;
+        }, 200);
+      } else {
+        $('dx-progress-bar').style.width = '100%';
+        avanzando = false;
+        terminar();
+      }
+    }, 260);
+  }
+
+  $('dx-prev').addEventListener('click', anterior);
+  function anterior() {
+    if (estado.indice === 0) { mostrar('s-portada'); return; }
+    estado.indice -= 1;
+    renderPregunta();
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (!$('s-pregunta').classList.contains('on')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (/^[1-5]$/.test(e.key)) { e.preventDefault(); responder(Number(e.key)); }
+    else if (e.key === 'ArrowLeft' || e.key === 'Backspace') { e.preventDefault(); anterior(); }
+  });
+
+  // ---------- Diagnóstico ----------
+  function calcular() {
+    var porAvenida = {};
+    ORDEN_AVENIDAS.forEach(function (a) {
+      var vals = PREGUNTAS.filter(function (q) { return q.avenida === a; }).map(function (q) { return estado.respuestas[q.id]; });
+      var prom = vals.reduce(function (s, v) { return s + v; }, 0) / vals.length;
+      porAvenida[a] = { promedio: prom, banda: banda(prom) };
+    });
+    var diag = PREGUNTAS.filter(function (q) { return q.avenida !== 'necesidad'; });
+    var promDiag = diag.reduce(function (s, q) { return s + estado.respuestas[q.id]; }, 0) / diag.length;
+    // La necesidad de cambio va al revés que el resto: reconocer el techo es buena señal.
+    var qNecesidad = PREGUNTAS.filter(function (q) { return q.avenida === 'necesidad'; })[0];
+    var vNecesidad = estado.respuestas[qNecesidad.id];
+    var necesidad = vNecesidad >= 4 ? 'alto' : (vNecesidad === 3 ? 'medio' : 'bajo');
+    var ranking = ORDEN_AVENIDAS.slice().sort(function (a, b) { return porAvenida[b].promedio - porAvenida[a].promedio; });
+    return { porAvenida: porAvenida, promedioDiagnostico: promDiag, entrada: banda(promDiag), necesidad: necesidad, ranking: ranking };
+  }
+
+  function terminar() {
+    resultado = calcular();
+    renderDiagnostico();
+    mostrar('s-diagnostico');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.querySelectorAll('#dx-avenidas .dx-av-bar span').forEach(function (s) { s.style.width = s.dataset.w + '%'; });
+      });
+    });
+    guardar();
+  }
+
+  function renderDiagnostico() {
+    var r = resultado;
+    var top = r.ranking[0];
+    var segundo = r.ranking[1];
+    $('dx-diag-title').textContent = estado.empresa ? 'Diagnostic for ' + estado.empresa : 'Diagnostic';
+
+    var headline = $('dx-diag-headline');
+    headline.textContent = '';
+    if (r.porAvenida[top].banda === 'bajo') {
+      headline.textContent = 'There’s a solid base. The challenge is turning it into impact.';
+      $('dx-diag-lead').textContent = 'No strong friction shows up. The opportunity is to sustain focus and free up time for strategic work.';
+    } else {
+      headline.appendChild(document.createTextNode('The biggest friction is in '));
+      var em = document.createElement('em');
+      em.textContent = AVENIDAS[top].nombre.toLowerCase();
+      headline.appendChild(em);
+      if (r.porAvenida[segundo].banda !== 'bajo') {
+        headline.appendChild(document.createTextNode(', closely followed by '));
+        var em2 = document.createElement('em');
+        em2.textContent = AVENIDAS[segundo].nombre.toLowerCase();
+        headline.appendChild(em2);
+      }
+      headline.appendChild(document.createTextNode('.'));
+      var altos = ORDEN_AVENIDAS.filter(function (a) { return r.porAvenida[a].banda === 'alto'; }).length;
+      $('dx-diag-lead').textContent = altos >= 2
+        ? 'There are ' + ['', 'one', 'two', 'three', 'four'][altos] + ' areas with high friction. Below: what each one causes and where Pausa would start.'
+        : 'Below: what each friction causes and where Pausa would start.';
+    }
+
+    var cont = $('dx-avenidas');
+    cont.innerHTML = '';
+    r.ranking.forEach(function (a) {
+      var d = r.porAvenida[a];
+      var el = document.createElement('div');
+      el.className = 'dx-av';
+      el.innerHTML =
+        '<div class="dx-av-top"><span class="dx-av-name"></span><span class="dx-badge ' + d.banda + '">' + NIVEL_LABEL[d.banda] + '</span></div>' +
+        '<div class="dx-av-bar"><span class="' + d.banda + '" data-w="' + Math.round(d.promedio / 5 * 100) + '"></span></div>' +
+        '<p class="dx-av-cost"></p>';
+      el.querySelector('.dx-av-name').textContent = AVENIDAS[a].nombre;
+      el.querySelector('.dx-av-cost').textContent = COSTO[a][d.banda];
+      cont.appendChild(el);
+    });
+
+    var ent = ENTRADA[r.entrada];
+    document.querySelectorAll('#dx-cai .dx-cai-step').forEach(function (s) {
+      var on = r.entrada === 'medio' ? (s.dataset.cai === 'c' || s.dataset.cai === 'a')
+        : r.entrada === 'bajo' ? (s.dataset.cai === 'a' || s.dataset.cai === 'i')
+        : s.dataset.cai === 'c';
+      s.classList.toggle('on', on);
+    });
+    $('dx-entry-title').textContent = ent.titulo;
+    $('dx-entry-text').textContent = ent.texto;
+    $('dx-need-text').textContent = NECESIDAD[r.necesidad];
+  }
+
+  $('dx-diag-back').addEventListener('click', function () {
+    estado.indice = PREGUNTAS.length - 1;
+    renderPregunta();
+    mostrar('s-pregunta');
+  });
+
+  // ---------- Cómo ayuda Pausa ----------
+  var tabs = $('dx-tabs');
+  function renderSolucion() {
+    var r = resultado;
+    tabs.innerHTML = '';
+    r.ranking.forEach(function (a, i) {
+      var t = document.createElement('button');
+      t.type = 'button';
+      t.className = 'dx-tab';
+      t.setAttribute('role', 'tab');
+      t.dataset.av = a;
+      t.innerHTML = '<span class="dx-tab-dot ' + r.porAvenida[a].banda + '" aria-hidden="true"></span><span></span>';
+      t.lastChild.textContent = AVENIDAS[a].nombre;
+      t.addEventListener('click', function () { activarTab(a); });
+      tabs.appendChild(t);
+    });
+    var org = document.createElement('button');
+    org.type = 'button';
+    org.className = 'dx-tab org';
+    org.setAttribute('role', 'tab');
+    org.dataset.av = 'org';
+    org.innerHTML = '<span class="dx-tab-dot org" aria-hidden="true"></span><span>Organization</span>';
+    org.addEventListener('click', function () { activarTab('org'); });
+    tabs.appendChild(org);
+    document.querySelectorAll('.dx-pane').forEach(function (p) {
+      var a = p.dataset.pane;
+      if (!SOLUCION[a]) return;
+      p.querySelector('[data-text]').textContent = SOLUCION[a][r.porAvenida[a].banda];
+      p.querySelector('[data-cai-label]').textContent = ENTRADA[r.porAvenida[a].banda].etiqueta;
+    });
+    activarTab(r.ranking[0]);
+  }
+
+  function activarTab(a) {
+    tabs.querySelectorAll('.dx-tab').forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.av === a)); });
+    document.querySelectorAll('.dx-pane').forEach(function (p) {
+      var on = p.dataset.pane === a;
+      p.hidden = !on;
+      p.querySelectorAll('[data-w]').forEach(function (s) { s.style.width = '0'; });
+      if (on) {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            p.querySelectorAll('[data-w]').forEach(function (s) { s.style.width = s.dataset.w + '%'; });
+          });
+        });
+      }
+    });
+    if (window.posthog) posthog.capture('ver_solucion_diagnostico_comercial', { avenida: a });
+  }
+
+  $('dx-to-sol').addEventListener('click', function () {
+    renderSolucion();
+    mostrar('s-solucion');
+  });
+  $('dx-sol-back').addEventListener('click', function () { mostrar('s-diagnostico'); });
+  $('dx-restart').addEventListener('click', function () {
+    $('dx-persona').value = '';
+    $('dx-header-tag').textContent = 'Management diagnostic';
+    mostrar('s-portada');
+  });
+
+  // ---------- Guardado ----------
+  // Se manda al terminar. Si después se corrigen respuestas y se vuelve a terminar,
+  // se reenvía con el mismo id para que n8n actualice la fila en vez de duplicarla.
+  function guardar() {
+    var r = resultado;
+    var firma = JSON.stringify(estado.respuestas);
+    if (estado.enviado === firma) return;
+    estado.enviado = firma;
+
+    // Una fila plana: n8n la vuelca tal cual en la planilla, y cada clave es una columna.
+    // Los valores van siempre en español, sea cual sea el idioma de la página, para que
+    // la planilla sea una sola.
+    var fila = {
+      id: estado.id,
+      fecha: new Date().toISOString(),
+      empresa: estado.empresa,
+      persona: estado.persona,
+      idioma: IDIOMA
+    };
+    PREGUNTAS.forEach(function (q) { fila[COLUMNA_PREGUNTA[q.id]] = estado.respuestas[q.id]; });
+    ORDEN_AVENIDAS.forEach(function (a) {
+      fila[a + '_friccion'] = FRICCION_PLANILLA[r.porAvenida[a].banda];
+      // Promedio en la escala del assessment original (5 = sano), para cruzarlo con el Excel.
+      fila[a + '_promedio_assessment'] = Math.round((6 - r.porAvenida[a].promedio) * 10) / 10;
+    });
+    fila.principal = AVENIDA_PLANILLA[r.ranking[0]];
+    fila.punto_de_entrada = ENTRADA_PLANILLA[r.entrada];
+    fila.necesidad_de_cambio = FRICCION_PLANILLA[r.necesidad];
+    fila.origen = location.hostname;
+
+    if (window.posthog) posthog.capture('completar_diagnostico_comercial', { principal: r.ranking[0], entrada: r.entrada });
+
+    fetch(DIAGNOSTICO_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(fila),
+      keepalive: true
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook ' + res.status);
+    }).catch(function (err) {
+      // No interrumpe la reunión: el diagnóstico se ve igual aunque no se haya guardado.
+      estado.enviado = null;
+      console.error('No se pudo guardar el diagnóstico', err);
+    });
+  }
+})();
+</script>
+</body>
+</html>
