@@ -70,20 +70,28 @@
   .premio-stat-link:hover .premio-stat-arrow { transform: translateX(4px); }
 
   .hero-video-wrap::before { content: ""; position: absolute; inset: -14% 0; background: radial-gradient(closest-side, rgba(159,166,240,0.45), rgba(159,166,240,0)); filter: blur(24px); z-index: 0; pointer-events: none; }
-  .hero-video { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 16/9; padding: 0; border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; overflow: hidden; background: #14144F; cursor: pointer; box-shadow: 0 40px 80px -28px rgba(5,5,40,0.7), 0 0 0 6px rgba(255,255,255,0.06); transition: transform .35s ease, box-shadow .35s ease; }
+  .hero-video { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 16/9; padding: 0; font: inherit; border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; overflow: hidden; background: #14144F; cursor: pointer; box-shadow: 0 40px 80px -28px rgba(5,5,40,0.7), 0 0 0 6px rgba(255,255,255,0.06); transition: transform .35s ease, box-shadow .35s ease; }
   .hero-video:hover { transform: translateY(-4px); box-shadow: 0 48px 90px -28px rgba(5,5,40,0.75), 0 0 0 6px rgba(255,255,255,0.1); }
   .hero-video:focus-visible { outline: 3px solid #BFC5FF; outline-offset: 4px; }
-  .hero-video img, .hero-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .hero-video img { object-fit: cover; transition: transform .6s ease; }
-  .hero-video:hover img { transform: scale(1.03); }
-  .hero-video__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,30,107,0.05) 40%, rgba(20,20,79,0.85) 100%); }
+  .hero-video:not(.is-playing) { background: radial-gradient(90% 120% at 50% 50%, #5656DE 0%, #3333B4 45%, #1A1A66 100%); }
+  .hero-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .hero-video__rings { position: absolute; left: 50%; top: 50%; width: 150%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 999px; background: repeating-radial-gradient(circle, rgba(255,255,255,0) 0 46px, rgba(255,255,255,0.08) 46px 47px); -webkit-mask-image: radial-gradient(circle, #000 20%, transparent 62%); mask-image: radial-gradient(circle, #000 20%, transparent 62%); transition: transform .6s ease; }
+  .hero-video:hover .hero-video__rings { transform: translate(-50%, -50%) scale(1.06); }
+  .hero-video__top { position: absolute; left: 22px; right: 22px; top: 20px; display: flex; align-items: center; justify-content: space-between; }
+  .hero-video__logo { height: 14px; width: auto; opacity: 0.9; }
+  .hero-video__title { position: absolute; left: 22px; bottom: 18px; color: #FFFFFF; text-align: left; font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+  .hero-video__title span { color: #BFC5FF; }
   .hero-video__play { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 999px; background: #FFFFFF; color: #3D3DC8; display: flex; align-items: center; justify-content: center; padding-left: 4px; box-shadow: 0 0 0 10px rgba(255,255,255,0.18), 0 16px 34px -10px rgba(5,5,40,0.6); transition: transform .3s ease, box-shadow .3s ease; }
   .hero-video:hover .hero-video__play { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(255,255,255,0.22), 0 16px 34px -10px rgba(5,5,40,0.6); }
-  .hero-video__meta { position: absolute; left: 20px; right: 20px; bottom: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #FFFFFF; text-align: left; }
-  .hero-video__title { font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; }
-  .hero-video__time { flex: none; height: 24px; padding: 0 10px; border-radius: 999px; background: rgba(255,255,255,0.16); display: inline-flex; align-items: center; font-size: 0.75rem; font-weight: 700; }
+  .hero-video__time { flex: none; height: 24px; padding: 0 10px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); display: inline-flex; align-items: center; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; }
   .hero-video.is-playing { cursor: default; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .hero-video, .hero-video img, .hero-video__play { transition: none; } }
+  @media (max-width: 480px) {
+    .hero-video__play { width: 56px; height: 56px; margin: -40px 0 0 -28px; box-shadow: 0 0 0 7px rgba(255,255,255,0.18), 0 12px 26px -10px rgba(5,5,40,0.6); }
+    .hero-video__play svg { width: 20px; height: 20px; }
+    .hero-video__top { left: 16px; right: 16px; top: 14px; }
+    .hero-video__title { left: 16px; bottom: 12px; font-size: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-video, .hero-video__rings, .hero-video__play { transition: none; } }
   .hero-media-wrap { position: relative; }
   .hero-media { position: relative; width: 100%; aspect-ratio: 16/9; background: #FFFFFF; overflow: hidden; }
   .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #FFFFFF; }
@@ -369,15 +377,15 @@
       </div>
       <div id="hero-wrap" class="hero-video-wrap" style="flex:1 1 460px;min-width:0;max-width:560px;position:relative">
         <button type="button" class="hero-video" id="hero-video" data-yt="11oNsV4Ea_M" aria-label="Reproducir video: Menos vorágine. Más foco. (1:22)">
-          <img src="https://i.ytimg.com/vi/11oNsV4Ea_M/hqdefault.jpg" alt="" width="480" height="360" decoding="async">
-          <span class="hero-video__shade" aria-hidden="true"></span>
+          <span class="hero-video__rings" aria-hidden="true"></span>
+          <span class="hero-video__top" aria-hidden="true">
+            <img src="assets/pausa-word-white.png" alt="" class="hero-video__logo">
+            <span class="hero-video__time">Video · 1:22</span>
+          </span>
           <span class="hero-video__play" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.93-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"></path></svg>
           </span>
-          <span class="hero-video__meta" aria-hidden="true">
-            <span class="hero-video__title">Menos vorágine. Más foco.</span>
-            <span class="hero-video__time">1:22</span>
-          </span>
+          <span class="hero-video__title" aria-hidden="true">Menos vorágine.<br><span>Más foco.</span></span>
         </button>
       </div>
     </div>
