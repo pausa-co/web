@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Check In · Pausa</title>
+<link rel="canonical" href="https://www.pausaco.com/checkin.html">
+<meta name="description" content="Un minuto de silencio y una palabra para empezar la reunión de equipo. Sin registro, desde cualquier dispositivo.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pausa">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://www.pausaco.com/checkin.html">
+<meta property="og:title" content="Check In · Pausa">
+<meta property="og:description" content="Un minuto de silencio y una palabra para empezar la reunión de equipo.">
+<meta property="og:image" content="https://www.pausaco.com/assets/og-pausa.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // Solo medimos el sitio productivo (no localhost, previews de Vercel ni staging)
+    if (location.hostname !== 'www.pausaco.com') { posthog.capture = posthog.get_distinct_id = function () {}; } else posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://b.pausaco.com', // your managed reverse proxy domain
+        ui_host: 'https://us.posthog.com', // necessary because you're using a proxy, this way links will point back to PostHog properly
+        defaults: '2026-05-30',
+        person_profiles: 'never',
+        cookieless_mode: 'always',
+        opt_out_capturing_by_default: /(^|; )ph_internal=1/.test(document.cookie),
+    })
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<style>
+  body { background: #F4F4FD; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+  [hidden] { display: none !important; }
+
+  .ci-top { max-width: 1160px; width: 100%; margin: 0 auto; padding: 28px 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .ci-room-tag { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 999px; background: #EAECFF; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; color: #3D3DC8; }
+  .ci-room-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: #B0B0D0; }
+  .ci-room-tag.live .dot { background: #3D3DC8; box-shadow: 0 0 0 4px rgba(61,61,200,0.15); }
+  .ci-logo { display: block; margin-left: auto; }
+  .ci-logo img { height: 18px; width: auto; display: block; }
+
+  main { flex: 1; width: 100%; max-width: 1160px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-direction: column; }
+  .ci-head { text-align: center; }
+  .ci-title { margin: 0; font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.04; letter-spacing: -0.03em; font-weight: 800; color: #1A1A3E; }
+  .ci-sub { margin: 12px 0 0; font-size: clamp(1.0625rem, 1.8vw, 1.375rem); line-height: 1.5; color: #5C5C8A; }
+
+  .card { background: #FFFFFF; border-radius: 24px; box-shadow: 0 1px 2px rgba(26,26,62,0.04), 0 12px 32px -18px rgba(26,26,62,0.18); }
+  .label { margin: 0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #5C5C8A; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 52px; padding: 0 28px; border: none; border-radius: 999px; font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background-color .15s ease, color .15s ease, opacity .15s ease; }
+  .btn-primary { background: #3D3DC8; color: #FFFFFF; }
+  .btn-primary:hover { background: #2D2D99; }
+  .btn-primary:disabled { opacity: .45; cursor: default; background: #3D3DC8; }
+  .btn-ghost { background: transparent; color: #3D3DC8; height: 44px; padding: 0 18px; font-weight: 500; }
+  .btn-ghost:hover { background: #EAECFF; }
+  .btn-soft { background: #EAECFF; color: #3D3DC8; }
+  .btn-soft:hover { background: #DDE0FF; }
+
+  /* Paso 1: preparar silencio */
+  .ci-setup { margin: 40px auto 0; width: 100%; max-width: 560px; padding: 36px 32px; text-align: center; }
+  .seg { display: inline-flex; gap: 4px; padding: 4px; margin-top: 14px; border-radius: 999px; background: #F4F4FD; }
+  .seg button { height: 44px; min-width: 88px; padding: 0 18px; border: none; border-radius: 999px; background: transparent; font-family: inherit; font-size: 1rem; font-weight: 500; color: #5C5C8A; cursor: pointer; transition: background-color .15s ease, color .15s ease; }
+  .seg button[aria-pressed="true"] { background: #FFFFFF; color: #3D3DC8; font-weight: 700; box-shadow: 0 1px 2px rgba(26,26,62,0.08), 0 4px 12px -6px rgba(26,26,62,0.2); }
+  .ci-setup .btn-primary { margin-top: 28px; width: 100%; max-width: 320px; height: 56px; font-size: 1.0625rem; }
+  .ci-setup-foot { margin-top: 18px; display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; }
+  .ci-hint { margin: 20px 0 0; font-size: 0.9375rem; line-height: 1.6; color: #5C5C8A; }
+  .ci-hint strong { color: #1A1A3E; }
+
+  /* Silencio */
+  .ci-silence { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; padding: 24px 0; }
+  .ring { position: relative; width: min(64vw, 52vh, 380px); aspect-ratio: 1; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); display: block; }
+  .ring .track { stroke: #E3E4FA; }
+  .ring .fill { stroke: #3D3DC8; stroke-linecap: round; transition: stroke .3s ease; }
+  .ring-time { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring-time span { font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 800; letter-spacing: -0.03em; color: #1A1A3E; font-variant-numeric: tabular-nums; line-height: 1; }
+  .ring-time small { margin-top: 10px; font-size: 0.9375rem; color: #8A8AAE; }
+  .ring.paused .fill { stroke: #A9AAF0; }
+  .ci-silence-ctrl { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; opacity: .55; transition: opacity .3s ease; }
+  .ci-silence-ctrl:hover, .ci-silence-ctrl:focus-within { opacity: 1; }
+  body.is-silence .ci-top { opacity: .35; transition: opacity .6s ease; }
+  body.is-checkin main { padding-top: 8px; }
+  body.is-checkin .ci-title { font-size: clamp(2rem, 3.6vw, 2.75rem); }
+  body.is-checkin .ci-sub { margin-top: 6px; font-size: 1.0625rem; }
+  body.is-checkin .ci-grid { margin-top: 24px; }
+
+  /* Paso 2: check-in */
+  .ci-grid { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: stretch; }
+  .ci-ask { padding: 28px 28px 24px; }
+  .ci-bottom { margin-top: 20px; display: flex; gap: 20px; align-items: center; }
+  .ci-bottom .ci-ask { flex: 1; min-width: 0; padding: 22px 28px 10px; }
+  .ci-bottom .ci-ask .ci-form { margin-top: 14px; }
+  .ci-bottom .ci-ask .ci-msg { margin-top: 6px; }
+  .ci-new { flex: none; height: 56px; align-self: flex-end; margin-bottom: 36px; }
+  .ci-ask h2 { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.3; font-weight: 700; color: #1A1A3E; letter-spacing: -0.01em; }
+  .ci-ask h2 span { color: #8A8AAE; font-weight: 500; }
+  .ci-form { margin-top: 20px; display: flex; gap: 10px; }
+  .ci-input-wrap { position: relative; flex: 1; min-width: 0; }
+  .ci-input { width: 100%; height: 56px; padding: 0 64px 0 20px; border: 1px solid #CCCCEE; border-radius: 999px; font-family: inherit; font-size: 1.0625rem; color: #1A1A3E; background: #FFFFFF; transition: border-color .15s ease, box-shadow .15s ease; }
+  .ci-input:focus { outline: none; border-color: #3D3DC8; box-shadow: 0 0 0 4px rgba(61,61,200,0.12); }
+  .ci-input::placeholder { color: #A0A0C0; }
+  .ci-count { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 0.8125rem; color: #A0A0C0; font-variant-numeric: tabular-nums; pointer-events: none; }
+  .ci-form .btn { height: 56px; }
+  .ci-msg { margin: 12px 4px 0; min-height: 1.4em; font-size: 0.9375rem; color: #5C5C8A; }
+
+  .ci-join { padding: 24px; text-align: center; }
+  .ci-code { margin: 8px 0 0; font-size: 2.75rem; font-weight: 800; letter-spacing: 0.16em; color: #3D3DC8; line-height: 1.1; padding-left: 0.16em; }
+  .ci-qr { margin: 16px auto 0; width: 248px; max-width: 100%; aspect-ratio: 1; padding: 12px; border-radius: 16px; background: #FFFFFF; border: 1px solid #EAECFF; }
+  .ci-qr img, .ci-qr canvas { width: 100% !important; height: 100% !important; display: block; }
+  .ci-join-url { margin: 14px 0 0; font-size: 0.8125rem; line-height: 1.5; color: #5C5C8A; word-break: break-all; }
+  .ci-join-url a { font-weight: 700; }
+  .ci-copy { margin-top: 14px; height: 44px; padding: 0 22px; font-size: 0.9375rem; }
+  .ci-copy.done { background: #3D3DC8; color: #FFFFFF; }
+
+  .ci-board { padding: 28px; min-height: max(360px, calc(100vh - 520px)); display: flex; flex-direction: column; }
+  .ci-board-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .ci-total { margin: 0; font-size: 1.0625rem; color: #5C5C8A; }
+  .ci-total strong { font-size: 1.5rem; font-weight: 800; color: #1A1A3E; margin-right: 4px; }
+  .cloud { flex: 1; margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; align-content: center; gap: 10px 26px; padding: 16px 0; }
+  .cloud-empty { margin: 0; text-align: center; font-size: 1rem; color: #A0A0C0; }
+  .word { display: inline-flex; align-items: baseline; gap: 6px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; color: #1E1E6B; animation: rise .6s ease both; transition: font-size .5s ease, color .5s ease; text-align: center; overflow-wrap: anywhere; }
+  .word sup { font-size: 0.8125rem; font-weight: 700; color: #8A8AAE; letter-spacing: 0; }
+  .word.c1 { color: #3D3DC8; }
+  .word.c2 { color: #6B6BE0; }
+  .word.c3 { color: #1A1A3E; font-weight: 500; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: none; } }
+
+
+  /* Participante */
+  .ci-guest { margin: 40px auto 0; width: 100%; max-width: 560px; padding: 32px 28px; }
+  .ci-thanks { text-align: center; padding: 12px 0 4px; }
+  .ci-thanks .check { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; background: #EAECFF; display: flex; align-items: center; justify-content: center; color: #3D3DC8; }
+  .ci-thanks p { margin: 16px 0 0; font-size: 1.25rem; font-weight: 700; color: #1A1A3E; }
+  .ci-thanks small { display: block; margin-top: 8px; font-size: 1rem; color: #5C5C8A; }
+  .ci-thanks .word-echo { margin-top: 18px; display: inline-block; padding: 8px 18px; border-radius: 999px; background: #F4F4FD; color: #3D3DC8; font-weight: 700; }
+
+  .ci-foot { padding: 0 24px 24px; text-align: center; font-size: 0.8125rem; color: #A0A0C0; }
+  .ci-foot a { color: #8A8AAE; }
+
+  @media (min-width: 861px) and (max-height: 900px) {
+    .ci-top { padding-top: 18px; }
+    body.is-checkin .ci-title { font-size: 2.25rem; }
+    body.is-checkin .ci-sub { font-size: 1rem; margin-top: 2px; }
+    body.is-checkin .ci-grid { margin-top: 16px; }
+    .ci-join { padding: 18px 24px; }
+    .ci-code { margin-top: 4px; font-size: 2.25rem; }
+    .ci-qr { width: 208px; margin-top: 10px; }
+    .ci-join-url { margin-top: 10px; }
+    .ci-copy { margin-top: 10px; }
+    .ci-bottom { margin-top: 16px; }
+    .ci-bottom .ci-ask { padding: 18px 24px 6px; }
+    .ci-bottom .ci-ask .ci-form { margin-top: 10px; }
+    .ci-new { margin-bottom: 30px; }
+  }
+  @media (max-width: 860px) {
+    .ci-grid { grid-template-columns: 1fr; }
+    .ci-join { order: -1; }
+    .ci-bottom { flex-direction: column; align-items: stretch; }
+    .ci-new { align-self: stretch; margin-bottom: 0; }
+    .ci-join { display: grid; grid-template-columns: auto 1fr; gap: 4px 20px; text-align: left; align-items: center; }
+    .ci-join .label, .ci-code, .ci-join-url, .ci-copy { grid-column: 2; }
+    .ci-copy { justify-self: start; }
+    .ci-qr { grid-column: 1; grid-row: 1 / span 4; margin: 0; width: 140px; padding: 8px; }
+    .ci-code { font-size: 2.25rem; padding-left: 0; }
+  }
+  @media (max-width: 560px) {
+    .ci-top { padding-top: 20px; }
+    main { padding: 24px 16px 32px; }
+    .ci-setup, .ci-guest { padding: 28px 20px; margin-top: 28px; }
+    .ci-ask, .ci-board, .ci-bottom .ci-ask { padding: 22px 18px; }
+    .ci-board { min-height: 260px; }
+    .ci-form { flex-direction: column; }
+    .ci-form .btn { width: 100%; }
+    .ci-join { grid-template-columns: 1fr; text-align: center; }
+    .ci-join .label, .ci-code, .ci-join-url, .ci-copy { grid-column: 1; }
+    .ci-copy { justify-self: center; }
+    .ci-qr { display: none; }
+    .seg button { min-width: 0; padding: 0 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .word { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ci-top">
+  <span id="room-tag" class="ci-room-tag" hidden><span class="dot"></span><span id="room-tag-text"></span></span>
+  <a class="ci-logo" href="index.html" aria-label="Pausa"><img src="assets/pausa-word-indigo.png" alt="Pausa"></a>
+</div>
+
+<main>
+
+  <!-- Encabezado (se oculta durante el silencio) -->
+  <header class="ci-head" id="head">
+    <h1 class="ci-title">Check In</h1>
+    <p class="ci-sub">¿Cómo llego a este espacio?</p>
+  </header>
+
+  <!-- Paso 1: preparar el silencio -->
+  <section id="step-setup" class="card ci-setup" hidden>
+    <p class="label" id="dur-label">Un momento de silencio</p>
+    <div class="seg" role="group" aria-labelledby="dur-label" id="dur">
+      <button type="button" data-min="1" aria-pressed="true">1 min</button>
+      <button type="button" data-min="2" aria-pressed="false">2 min</button>
+      <button type="button" data-min="5" aria-pressed="false">5 min</button>
+    </div>
+    <div><button type="button" class="btn btn-primary" id="start">Empezar silencio</button></div>
+    <p class="ci-hint">Mientras tanto, cada persona puede entrar desde su celular a la sala <strong id="setup-code"></strong>.</p>
+    <div class="ci-setup-foot">
+      <button type="button" class="btn btn-ghost" id="skip-setup">Ir directo al check-in</button>
+    </div>
+  </section>
+
+  <!-- Silencio -->
+  <section id="step-silence" class="ci-silence" hidden aria-live="off">
+    <div class="ring" id="ring">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="track" cx="100" cy="100" r="92" fill="none" stroke-width="4"></circle>
+        <circle class="fill" id="ring-fill" cx="100" cy="100" r="92" fill="none" stroke-width="4"></circle>
+      </svg>
+      <div class="ring-time"><span id="time" role="timer">1:00</span><small id="time-note">Respirá. Llegá.</small></div>
+    </div>
+    <div class="ci-silence-ctrl">
+      <button type="button" class="btn btn-ghost" id="pause">Pausar</button>
+      <button type="button" class="btn btn-ghost" id="mute" aria-pressed="false">Sonido: sí</button>
+      <button type="button" class="btn btn-ghost" id="skip">Saltear</button>
+    </div>
+  </section>
+
+  <!-- Paso 2: check-in (pantalla compartida) -->
+  <section id="step-checkin" hidden>
+    <div class="ci-grid">
+      <div class="card ci-board">
+        <div class="ci-board-head">
+          <p class="ci-total" id="total" aria-live="polite"><strong>0</strong>personas hicieron check-in</p>
+          <p class="label" id="conn" style="letter-spacing:.06em">Conectando…</p>
+        </div>
+        <div class="cloud" id="cloud">
+          <p class="cloud-empty" id="cloud-empty">Las respuestas van a aparecer acá.</p>
+        </div>
+      </div>
+      <aside class="card ci-join" aria-label="Cómo sumarse">
+        <p class="label">Sumate con el código</p>
+        <p class="ci-code" id="code"></p>
+        <div class="ci-qr" id="qr" aria-hidden="true"></div>
+        <p class="ci-join-url" id="join-url"></p>
+        <button type="button" class="btn btn-soft ci-copy" id="copy-link">Copiar link</button>
+      </aside>
+    </div>
+
+    <div class="ci-bottom">
+      <div class="card ci-ask">
+        <h2>¿Cómo llegás hoy? <span>En una palabra o frase corta.</span></h2>
+        <form class="ci-form" id="host-form" autocomplete="off">
+          <div class="ci-input-wrap">
+            <input class="ci-input" id="host-input" type="text" maxlength="40" placeholder="Ej.: con calma, cansado, entusiasmada…" aria-label="Tu check-in">
+            <span class="ci-count" id="host-count">40</span>
+          </div>
+          <button type="submit" class="btn btn-primary" id="host-send" disabled>Compartir</button>
+        </form>
+        <p class="ci-msg" id="host-msg" aria-live="polite"></p>
+      </div>
+      <button type="button" class="btn btn-soft ci-new" id="new-meeting">Nueva reunión</button>
+    </div>
+  </section>
+
+  <!-- Participante (entra con ?sala=ABCD) -->
+  <section id="step-guest" class="card ci-guest" hidden>
+    <div id="guest-ask">
+      <div class="ci-ask" style="padding:0">
+        <h2>¿Cómo llegás hoy? <span>En una palabra o frase corta.</span></h2>
+        <form class="ci-form" id="guest-form" autocomplete="off">
+          <div class="ci-input-wrap">
+            <input class="ci-input" id="guest-input" type="text" maxlength="40" placeholder="Tu palabra" aria-label="Tu check-in">
+            <span class="ci-count" id="guest-count">40</span>
+          </div>
+          <button type="submit" class="btn btn-primary" id="guest-send" disabled>Compartir</button>
+        </form>
+        <p class="ci-msg" id="guest-msg" aria-live="polite"></p>
+      </div>
+    </div>
+    <div id="guest-done" class="ci-thanks" hidden>
+      <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <p>Gracias por llegar.</p>
+      <small>Tu respuesta ya está en la pantalla compartida.</small>
+      <span class="word-echo" id="guest-echo"></span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ci-foot">Un momento para llegar, con <a href="index.html">Pausa</a>.</footer>
+
+<script>
+(function () {
+  // Las salas viajan por ntfy.sh (pub/sub público, sin cuenta). Cada sala es un topic
+  // efímero; el host solo escucha lo publicado desde que abrió la reunión.
+  var RELAY = 'https://ntfy.sh/';
+  var TOPIC_PREFIX = 'pausaco-checkin-v1-';
+  var LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // sin I ni O para no confundir
+  var MAX = 40;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var params = new URLSearchParams(location.search);
+  var guestCode = (params.get('sala') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4);
+
+  function show(id) {
+    ['step-setup', 'step-silence', 'step-checkin', 'step-guest'].forEach(function (s) { $(s).hidden = s !== id; });
+    $('head').hidden = id === 'step-silence';
+    document.body.classList.toggle('is-silence', id === 'step-silence');
+    document.body.classList.toggle('is-checkin', id === 'step-checkin');
+  }
+
+  function track(name, props) { try { posthog.capture(name, props); } catch (e) {} }
+
+  function clean(text) { return text.replace(/\s+/g, ' ').trim().slice(0, MAX); }
+
+  function bindCounter(input, counter, button) {
+    input.addEventListener('input', function () {
+      counter.textContent = MAX - input.value.length;
+      button.disabled = !clean(input.value);
+    });
+  }
+
+  function publish(code, text) {
+    return fetch(RELAY + TOPIC_PREFIX + code, { method: 'POST', body: text }).then(function (r) {
+      if (!r.ok) throw new Error('relay ' + r.status);
+    });
+  }
+
+  // ---------- Participante ----------
+  if (guestCode.length === 4) {
+    $('room-tag').hidden = false;
+    $('room-tag').classList.add('live');
+    $('room-tag-text').textContent = 'SALA ' + guestCode;
+    show('step-guest');
+    var gi = $('guest-input'), gs = $('guest-send');
+    bindCounter(gi, $('guest-count'), gs);
+    gi.focus();
+    $('guest-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var text = clean(gi.value);
+      if (!text) return;
+      gs.disabled = true;
+      $('guest-msg').textContent = 'Enviando…';
+      publish(guestCode, text).then(function () {
+        $('guest-ask').hidden = true;
+        $('guest-done').hidden = false;
+        $('guest-echo').textContent = text;
+        track('checkin_guest_shared');
+      }).catch(function () {
+        gs.disabled = false;
+        $('guest-msg').textContent = 'No pudimos enviarlo. Revisá tu conexión y probá de nuevo.';
+      });
+    });
+    return;
+  }
+
+  // ---------- Host (pantalla compartida) ----------
+  var state = { code: '', since: 0, minutes: 1, muted: false };
+  var source = null;
+  var seen = {};
+  var groups = {}; // clave normalizada -> { label, count, el }
+  var total = 0;
+
+  function newCode() {
+    var c = '';
+    var rnd = new Uint32Array(4);
+    crypto.getRandomValues(rnd);
+    for (var i = 0; i < 4; i++) c += LETTERS[rnd[i] % LETTERS.length];
+    return c;
+  }
+
+  function saveSession() {
+    try { sessionStorage.setItem('pausa-checkin', JSON.stringify({ code: state.code, since: state.since })); } catch (e) {}
+  }
+
+  function loadSession() {
+    try {
+      var s = JSON.parse(sessionStorage.getItem('pausa-checkin') || 'null');
+      if (s && s.code && Date.now() / 1000 - s.since < 3 * 3600) return s;
+    } catch (e) {}
+    return null;
+  }
+
+  function joinUrl() {
+    return location.origin + location.pathname + '?sala=' + state.code;
+  }
+
+  function renderRoom() {
+    $('room-tag').hidden = false;
+    $('room-tag-text').textContent = 'SALA ' + state.code;
+    $('setup-code').textContent = state.code;
+    $('code').textContent = state.code;
+    var url = joinUrl();
+    var pretty = url.replace(/^https?:\/\//, '');
+    $('join-url').innerHTML = '';
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = pretty;
+    $('join-url').append('Entrá a ', a);
+    renderQr(url);
+  }
+
+  function renderQr(url) {
+    var box = $('qr');
+    box.innerHTML = '';
+    if (!window.QRCode) {
+      // la librería carga con defer; reintentamos cuando esté
+      window.addEventListener('load', function once() { window.removeEventListener('load', once); if (window.QRCode) renderQr(url); else box.hidden = true; });
+      return;
+    }
+    box.hidden = false;
+    new QRCode(box, { text: url, width: 256, height: 256, colorDark: '#1E1E6B', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M });
+  }
+
+  function setConn(text, live) {
+    $('conn').textContent = text;
+    $('room-tag').classList.toggle('live', !!live);
+  }
+
+  function connect() {
+    if (source) source.close();
+    setConn('Conectando…', false);
+    source = new EventSource(RELAY + TOPIC_PREFIX + state.code + '/sse?since=' + state.since);
+    source.addEventListener('open', function () { setConn('En vivo', true); });
+    source.onerror = function () { setConn('Reconectando…', false); };
+    source.onmessage = function (ev) {
+      var msg;
+      try { msg = JSON.parse(ev.data); } catch (e) { return; }
+      if (msg.event !== 'message' || seen[msg.id]) return;
+      seen[msg.id] = true;
+      addAnswer(msg.message || '');
+      setConn('En vivo', true);
+    };
+  }
+
+  function keyOf(text) {
+    return text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[.,;:!¡?¿"'()…-]+/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function addAnswer(raw) {
+    var text = clean(raw);
+    if (!text) return;
+    var key = keyOf(text) || text.toLowerCase();
+    var g = groups[key];
+    if (!g) {
+      g = groups[key] = { label: text, count: 0, el: document.createElement('span') };
+      g.el.className = 'word';
+      $('cloud').appendChild(g.el);
+    }
+    g.count++;
+    total++;
+    $('cloud-empty').hidden = true;
+    renderTotal();
+    restyle();
+  }
+
+  function renderTotal() {
+    $('total').innerHTML = '<strong>' + total + '</strong>' + (total === 1 ? 'persona hizo check-in' : 'personas hicieron check-in');
+  }
+
+  function restyle() {
+    var keys = Object.keys(groups);
+    var many = keys.length > 24;
+    keys.forEach(function (k, i) {
+      var g = groups[k];
+      var base = many ? 1.05 : 1.3;
+      var size = Math.min(base + (g.count - 1) * 0.7, 4.2);
+      g.el.style.fontSize = 'clamp(' + (size * 0.72).toFixed(2) + 'rem, ' + (size * 1.6).toFixed(2) + 'vw, ' + size.toFixed(2) + 'rem)';
+      g.el.className = 'word ' + (g.count > 1 ? 'c1' : ['c2', '', 'c3'][i % 3]);
+      g.el.textContent = g.label;
+      if (g.count > 1) {
+        var sup = document.createElement('sup');
+        sup.textContent = '×' + g.count;
+        g.el.appendChild(sup);
+      }
+    });
+  }
+
+  function resetBoard() {
+    seen = {}; groups = {}; total = 0;
+    var cloud = $('cloud');
+    Array.prototype.slice.call(cloud.querySelectorAll('.word')).forEach(function (n) { n.remove(); });
+    $('cloud-empty').hidden = false;
+    renderTotal();
+  }
+
+  function startMeeting(fresh) {
+    var prev = !fresh && loadSession();
+    state.code = prev ? prev.code : newCode();
+    state.since = prev ? prev.since : Math.floor(Date.now() / 1000);
+    saveSession();
+    resetBoard();
+    renderRoom();
+    connect();
+    show('step-setup');
+  }
+
+  // Duración
+  $('dur').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    state.minutes = +b.dataset.min;
+    Array.prototype.forEach.call(this.querySelectorAll('button'), function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+  });
+
+  // ---------- Silencio ----------
+  var R = 92, C = 2 * Math.PI * R;
+  var fill = $('ring-fill');
+  fill.style.strokeDasharray = C;
+  var timer = { total: 0, elapsed: 0, last: 0, running: false, raf: 0 };
+  var audio = null;
+
+  function fmt(s) {
+    s = Math.max(0, Math.ceil(s));
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  function drawRing() {
+    var p = Math.min(timer.elapsed / timer.total, 1);
+    fill.style.strokeDashoffset = C * (1 - p);
+    $('time').textContent = fmt(timer.total - timer.elapsed);
+  }
+
+  function tick(now) {
+    if (!timer.running) return;
+    timer.elapsed += (now - timer.last) / 1000;
+    timer.last = now;
+    drawRing();
+    if (timer.elapsed >= timer.total) { finishSilence(true); return; }
+    timer.raf = requestAnimationFrame(tick);
+  }
+
+  function setPaused(paused) {
+    timer.running = !paused;
+    $('ring').classList.toggle('paused', paused);
+    $('pause').textContent = paused ? 'Seguir' : 'Pausar';
+    $('time-note').textContent = paused ? 'En pausa' : 'Respirá. Llegá.';
+    if (!paused) { timer.last = performance.now(); timer.raf = requestAnimationFrame(tick); }
+    else cancelAnimationFrame(timer.raf);
+  }
+
+  function startSilence() {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === 'suspended') audio.resume();
+    } catch (e) { audio = null; }
+    timer.total = state.minutes * 60;
+    timer.elapsed = 0;
+    drawRing();
+    show('step-silence');
+    setPaused(false);
+    track('checkin_silence_started', { minutes: state.minutes });
+  }
+
+  function finishSilence(completed) {
+    timer.running = false;
+    cancelAnimationFrame(timer.raf);
+    if (completed) {
+      timer.elapsed = timer.total;
+      drawRing();
+      if (!state.muted) bell();
+      setTimeout(goCheckin, 1600);
+    } else {
+      goCheckin();
+    }
+  }
+
+  function goCheckin() {
+    show('step-checkin');
+    $('host-input').focus();
+  }
+
+  // Campana suave sintetizada (sin archivos de audio)
+  function bell() {
+    if (!audio) return;
+    var t = audio.currentTime + 0.05;
+    var master = audio.createGain();
+    master.gain.value = 0.22;
+    master.connect(audio.destination);
+    [[528, 1, 5.5], [1056, 0.32, 3.5], [1584, 0.14, 2.4], [2640, 0.06, 1.4]].forEach(function (p) {
+      var o = audio.createOscillator(), g = audio.createGain();
+      o.type = 'sine';
+      o.frequency.value = p[0];
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(p[1], t + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + p[2]);
+      o.connect(g); g.connect(master);
+      o.start(t); o.stop(t + p[2] + 0.1);
+    });
+  }
+
+  $('start').addEventListener('click', startSilence);
+  $('skip-setup').addEventListener('click', function () { goCheckin(); });
+  $('pause').addEventListener('click', function () { setPaused(timer.running); });
+  $('skip').addEventListener('click', function () { finishSilence(false); });
+  $('mute').addEventListener('click', function () {
+    state.muted = !state.muted;
+    this.setAttribute('aria-pressed', state.muted ? 'true' : 'false');
+    this.textContent = state.muted ? 'Sonido: no' : 'Sonido: sí';
+  });
+  document.addEventListener('keydown', function (e) {
+    if ($('step-silence').hidden) return;
+    if (e.code === 'Space') { e.preventDefault(); setPaused(timer.running); }
+  });
+
+  // ---------- Check-in del host ----------
+  var hi = $('host-input'), hs = $('host-send');
+  bindCounter(hi, $('host-count'), hs);
+  $('host-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = clean(hi.value);
+    if (!text) return;
+    hi.value = '';
+    $('host-count').textContent = MAX;
+    hs.disabled = true;
+    publish(state.code, text).then(function () {
+      $('host-msg').textContent = '';
+    }).catch(function () {
+      // sin conexión: al menos queda en esta pantalla
+      addAnswer(text);
+      $('host-msg').textContent = 'Sin conexión: la respuesta quedó solo en esta pantalla.';
+    });
+    hi.focus();
+  });
+
+  $('copy-link').addEventListener('click', function () {
+    var btn = this, url = joinUrl();
+    function done(ok) {
+      btn.textContent = ok ? '¡Link copiado!' : 'No se pudo copiar';
+      btn.classList.toggle('done', ok);
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function () { btn.textContent = 'Copiar link'; btn.classList.remove('done'); }, 2000);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(fallbackCopy(url)); });
+    } else done(fallbackCopy(url));
+    track('checkin_link_copied');
+  });
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove();
+    return ok;
+  }
+
+  $('new-meeting').addEventListener('click', function () {
+    if (total > 0 && !confirm('¿Empezar una nueva reunión? Se borran las respuestas de esta pantalla.')) return;
+    startMeeting(true);
+    track('checkin_new_meeting');
+  });
+
+  startMeeting(false);
+})();
+</script>
+</body>
+</html>
