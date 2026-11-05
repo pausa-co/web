@@ -90,3 +90,27 @@
   .cx-strip-card blockquote { font-size: 1.1875rem; }
 }
 @media (prefers-reduced-motion: reduce) { .cx-video, .cx-video__play, .cx-other, .cx-link svg { transition: none; } }
+
+/* Home: carrusel de casos que se mueve de izquierda a derecha, sin fin */
+.cx-marquee { position: relative; overflow: hidden; margin: 0 -24px; padding: 8px 0 16px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); }
+.cx-marquee-track { display: flex; width: max-content; animation: cxMarquee 60s linear infinite; }
+.cx-marquee:hover .cx-marquee-track, .cx-marquee:focus-within .cx-marquee-track { animation-play-state: paused; }
+.cx-marquee-group { display: flex; gap: 24px; padding-right: 24px; }
+@keyframes cxMarquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.cx-mq-card { flex: none; width: 380px; background: #F4F5FF; border-radius: 18px; padding: 28px 30px; display: flex; flex-direction: column; gap: 22px; color: #1A1A3E; transition: box-shadow .2s ease, transform .2s ease; }
+.cx-mq-card:hover { color: #1A1A3E; transform: translateY(-3px); box-shadow: 0 24px 40px -28px rgba(30,30,107,.45); }
+.cx-mq-logo { height: 36px; display: flex; align-items: center; }
+.cx-mq-logo img { max-height: 32px; max-width: 150px; width: auto; display: block; }
+.cx-mq-quote { margin: 0; font-size: 1.1875rem; line-height: 1.4; font-weight: 700; text-wrap: pretty; }
+.cx-mq-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cx-mq-more { flex: none; font-size: 0.875rem; font-weight: 700; color: #3D3DC8; }
+@media (max-width: 640px) {
+  .cx-mq-card { width: 300px; padding: 24px; }
+  .cx-mq-quote { font-size: 1.0625rem; }
+  .cx-mq-more { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cx-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .cx-marquee-track { animation: none; padding: 0 24px; }
+  .cx-marquee-group[aria-hidden="true"] { display: none; }
+}
