@@ -341,30 +341,139 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
     <priority>0.1</priority>
   </url>
-
   <url>
     <loc>https://www.pausaco.com/casos-de-exito.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/casos-de-exito.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.pausaco.com/en/casos-de-exito.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/casos-de-exito.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/casos-de-exito.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/casos-de-exito.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/casos-de-exito.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.pausaco.com/caso-inauco.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-inauco.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/caso-inauco.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-inauco.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/caso-inauco.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-inauco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-inauco.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.pausaco.com/caso-trf.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-trf.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/caso-trf.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-trf.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/caso-trf.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-trf.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-trf.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.pausaco.com/caso-bioeutectics.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-bioeutectics.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.pausaco.com/en/caso-bioeutectics.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-bioeutectics.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/caso-bioeutectics.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-bioeutectics.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-bioeutectics.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://www.pausaco.com/caso-mdo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-mdo.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/en/caso-mdo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-mdo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.pausaco.com/pt/caso-mdo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pausaco.com/en/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.pausaco.com/pt/caso-mdo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/caso-mdo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
