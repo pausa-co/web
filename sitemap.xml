@@ -341,6 +341,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pausaco.com/terminos-y-condiciones.html"/>
     <priority>0.1</priority>
   </url>
+  <!-- Workshop 26/11 (solo ES) -->
+  <url>
+    <loc>https://www.pausaco.com/workshop-foco-y-equilibrio.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://www.pausaco.com/casos-de-exito.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pausaco.com/casos-de-exito.html"/>

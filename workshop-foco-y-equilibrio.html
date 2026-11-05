@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Workshop online gratuito · Foco y equilibrio para líderes | Pausa</title>
+<link rel="canonical" href="https://www.pausaco.com/workshop-foco-y-equilibrio.html">
+<meta name="description" content="Workshop online y gratuito de 90 minutos para líderes de equipo, con Teresita de Velazco y Miguel Reynal. Jueves 26 de noviembre, 15:00 h (Argentina), por Google Meet.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pausa">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://www.pausaco.com/workshop-foco-y-equilibrio.html">
+<meta property="og:title" content="Si la IA trabaja para nosotros, ¿por qué estamos cada vez más cansados?">
+<meta property="og:description" content="Workshop online y gratuito de 90 minutos para líderes de equipo. Jueves 26 de noviembre, 15:00 h (Argentina), por Google Meet.">
+<!-- og:image: por ahora la OG general del sitio (falta una propia del workshop, 1200x630) -->
+<meta property="og:image" content="https://www.pausaco.com/assets/og-pausa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pausa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Si la IA trabaja para nosotros, ¿por qué estamos cada vez más cansados?">
+<meta name="twitter:description" content="Workshop online y gratuito de 90 minutos para líderes de equipo. Jueves 26 de noviembre, 15:00 h (Argentina), por Google Meet.">
+<meta name="twitter:image" content="https://www.pausaco.com/assets/og-pausa.png">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* Header del sitio (mismo patrón que la home: transparente sobre el glow, blanco al scrollear) */
+  #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background-color .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; background: transparent; }
+  #site-header.scrolled { background: #FFFFFF; border-bottom-color: #CCCCEE; }
+  #site-header .nav-link { color: rgba(255,255,255,0.85); }
+  #site-header.scrolled .nav-link { color: #1A1A3E; }
+  #site-header .cta-pill { background: #FFFFFF; color: #1E1E6B; }
+  #site-header.scrolled .cta-pill { background: #3D3DC8; color: #FFFFFF; }
+  #word-logo-white { display: block; }
+  #word-logo-indigo { display: none; }
+  #site-header.scrolled #word-logo-white { display: none; }
+  #site-header.scrolled #word-logo-indigo { display: block; }
+  #site-header .mobile-nav-toggle { color: #FFFFFF; }
+  #site-header.scrolled .mobile-nav-toggle { color: #1A1A3E; }
+  @media (max-width: 860px) { #site-header nav.desktop-nav { display: none !important; } }
+
+  /* ---- Landing del workshop (todo bajo .ws) ---- */
+  .ws {
+    --pausa-blue:#3D3DC8; --pausa-blue-dark:#1E1E6B; --pausa-blue-mid:#2D2D99; --pausa-blue-light:#EAECFF;
+    --text-dark:#1A1A3E; --text-mid:#55557F; --border:#CCCCEE; --white:#FFFFFF;
+    --on-dark:#FFFFFF; --on-dark-mid:#C9CBF5; --err:#B3261E;
+    --glow: radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B;
+    display: block; font-size: 1.0625rem; line-height: 1.65;
+  }
+  .ws h1, .ws h2, .ws h3 { margin: 0; text-wrap: balance; letter-spacing: -0.015em; line-height: 1.12; }
+  .ws p { margin: 0; }
+  .ws .wrap { max-width: 1160px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+  @media (max-width:640px) { .ws .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
+  .ws section { padding-block: 104px; scroll-margin-top: 72px; }
+  @media (max-width:640px) { .ws section { padding-block: 64px; } }
+  .ws .dark { background: var(--glow); color: var(--on-dark); }
+  .ws .lav { background: var(--pausa-blue-light); }
+
+  .ws .pill { display: inline-block; font-size: .6875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; border: 1px solid var(--pausa-blue); color: var(--pausa-blue); border-radius: 999px; padding: 6px 14px; }
+  .ws .dark .pill { border-color: rgba(255,255,255,.55); color: var(--on-dark); }
+  .ws .h2 { font-size: clamp(1.85rem,3.4vw,2.75rem); font-weight: 800; letter-spacing: -0.022em; }
+  .ws .h2 em { font-style: normal; color: var(--pausa-blue); }
+  .ws .dark .h2 em { color: var(--on-dark-mid); }
+  .ws .lead { font-size: 1.1875rem; color: var(--text-mid); max-width: 58ch; }
+  .ws .dark .lead { color: var(--on-dark-mid); }
+  .ws .sh { display: grid; gap: 16px; justify-items: start; margin-bottom: 52px; }
+
+  .ws .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 700 1rem/1 inherit; font-family: inherit; border-radius: 999px; padding: 17px 30px; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background .15s, transform .15s; }
+  .ws .btn:hover { transform: translateY(-1px); }
+  .ws .btn:focus-visible { outline: 2px solid var(--pausa-blue); outline-offset: 3px; }
+  .ws .dark .btn:focus-visible, .ws .sticky .btn:focus-visible { outline-color: var(--white); }
+  .ws .btn-primary { background: var(--pausa-blue); color: var(--white); }
+  .ws .btn-primary:hover { background: var(--pausa-blue-mid); color: var(--white); }
+  .ws .btn-primary[disabled] { opacity: .7; cursor: not-allowed; transform: none; }
+  .ws .btn-light { background: var(--white); color: var(--pausa-blue-dark); }
+  .ws .btn-light:hover { background: var(--pausa-blue-light); color: var(--pausa-blue-dark); }
+  .ws .arrow { font-size: 1.1em; line-height: 1; }
+
+  /* 1. Hero */
+  .ws .hero { padding-top: 148px; padding-bottom: 96px; position: relative; overflow: hidden; }
+  .ws .tag { display: inline-flex; align-items: center; gap: 10px; font-size: .8125rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.24); border-radius: 999px; padding: 7px 14px 7px 10px; }
+  .ws .tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--on-dark); animation: ws-pulse 2s infinite; }
+  @keyframes ws-pulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.55); } 70% { box-shadow: 0 0 0 9px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+  .ws .hero h1 { max-width: 18ch; font-size: clamp(2.55rem,5.6vw,4.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; margin-top: 22px; }
+  .ws .hero h1 span { color: var(--on-dark-mid); }
+  .ws .hero .sub { font-size: 1.25rem; margin-top: 24px; color: var(--on-dark); max-width: 52ch; line-height: 1.5; }
+  .ws .when { display: grid; grid-template-columns: repeat(3,auto); justify-content: start; margin: 34px 0 0; padding: 0; list-style: none; border: 1px solid rgba(255,255,255,.24); border-radius: 18px; background: rgba(255,255,255,.06); max-width: 100%; width: fit-content; }
+  .ws .when > li { padding: 14px 20px; display: grid; gap: 2px; border-right: 1px solid rgba(255,255,255,.18); min-width: 0; }
+  .ws .when > li:last-child { border-right: 0; }
+  .ws .when small { font-size: .6875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-mid); }
+  .ws .when b { font-size: 1.0625rem; font-weight: 700; white-space: nowrap; }
+  @media (max-width:560px) { .ws .when { grid-template-columns: 1fr 1fr; } .ws .when > li:nth-child(2) { border-right: 0; } .ws .when > li:last-child { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,.18); } }
+  .ws .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 32px; }
+  .ws .seats { font-size: .9375rem; color: var(--on-dark-mid); }
+  .ws .seats b { color: var(--on-dark); }
+  .ws .hosts { display: flex; align-items: center; gap: 14px; margin-top: 36px; }
+  .ws .faces { display: flex; }
+  .ws .faces img { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--pausa-blue-dark); object-fit: cover; display: block; }
+  .ws .faces img + img { margin-left: -12px; }
+  .ws .hosts p { font-size: .9375rem; color: var(--on-dark-mid); line-height: 1.4; }
+  .ws .hosts p b { color: var(--on-dark); font-weight: 700; }
+
+  /* 2. Para quién */
+  .ws .fit { padding-block: 72px; }
+  .ws .fit-grid { display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); gap: 48px; align-items: start; }
+  @media (max-width:860px) { .ws .fit-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .ws .checks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px 32px; }
+  @media (max-width:640px) { .ws .checks { grid-template-columns: 1fr; } }
+  .ws .checks li { display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 12px; }
+  .ws .checks li::before { content: ""; width: 22px; height: 22px; border-radius: 50%; background: var(--pausa-blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat; margin-top: 3px; }
+
+  /* 3. Dolores: QuoteCard en marquesina */
+  .ws .dolores { overflow: hidden; }
+  .ws .q { background: var(--glow); color: var(--on-dark); border-radius: 18px; padding: 28px 24px 24px; display: grid; gap: 12px; align-content: start; margin: 0; flex: none; width: 340px; min-height: 200px; }
+  @media (max-width:640px) { .ws .q { width: 280px; } }
+  .ws .q::before { content: "\201C"; font-size: 2.75rem; line-height: .6; font-weight: 800; color: var(--on-dark-mid); }
+  .ws .q p { font-size: 1.125rem; font-weight: 500; line-height: 1.4; }
+  .ws .q small { font-size: .8125rem; color: var(--on-dark-mid); }
+  .ws .marquee { overflow: hidden; padding-block: 4px; -webkit-mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+  .ws .marquee:focus-visible { outline: 2px solid var(--pausa-blue); outline-offset: 4px; }
+  .ws .track { display: flex; gap: 20px; width: max-content; animation: ws-run 60s linear infinite; }
+  .ws .dup { display: flex; gap: 20px; }
+  .ws .marquee:hover .track, .ws .marquee:focus .track, .ws .marquee:focus-within .track, .ws .marquee.paused .track { animation-play-state: paused; }
+  @keyframes ws-run { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 10px)); } }
+  .ws .after { margin-top: 36px; font-size: 1.1875rem; color: var(--pausa-blue); font-weight: 500; font-style: italic; }
+
+  /* 4. Idea central */
+  .ws .idea { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); gap: 72px; align-items: center; }
+  @media (max-width:960px) { .ws .idea { grid-template-columns: 1fr; gap: 32px; } }
+  .ws .idea .big { font-size: clamp(2.1rem,4.4vw,3.6rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; }
+  .ws .idea .big em { font-style: normal; color: var(--pausa-blue); }
+  .ws .idea .body { display: grid; gap: 18px; max-width: 54ch; }
+  .ws .idea .body p:last-child { font-weight: 700; color: var(--pausa-blue); }
+
+  /* 5. Recorrido */
+  .ws #recorrido { padding-top: 0; }
+  .ws .moves { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; padding: 0; margin: 0; list-style: none; counter-reset: m; }
+  @media (max-width:960px) { .ws .moves { grid-template-columns: 1fr; } }
+  .ws .move { background: var(--white); border-radius: 20px; padding: 30px 28px; display: grid; gap: 10px; align-content: start; counter-increment: m; }
+  .ws .move::before { content: counter(m, decimal-leading-zero); font-size: 2.75rem; font-weight: 800; color: var(--pausa-blue); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .ws .move h3 { font-size: 1.5rem; font-weight: 800; }
+  .ws .move p { color: var(--text-mid); }
+  .ws .close-line { margin-top: 20px; background: var(--pausa-blue); color: var(--white); border-radius: 20px; padding: 22px 28px; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; justify-content: space-between; }
+  .ws .close-line b { font-size: 1.25rem; }
+  .ws .close-line span { color: var(--on-dark-mid); }
+
+  /* 6. Te llevás */
+  .ws .take { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 40px; padding: 0; margin: 0; list-style: none; }
+  @media (max-width:960px) { .ws .take { grid-template-columns: 1fr; gap: 28px; } }
+  .ws .take li { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--pausa-blue); padding-top: 20px; }
+  .ws .take h3 { font-size: 1.25rem; }
+  .ws .take p { color: var(--text-mid); }
+
+  /* 7. Facilitadores */
+  .ws .spk { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+  @media (max-width:860px) { .ws .spk { grid-template-columns: 1fr; } }
+  .ws .person { background: var(--white); border-radius: 24px; padding: 32px; display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 28px; align-items: start; }
+  @media (max-width:520px) { .ws .person { grid-template-columns: 1fr; padding: 24px; } }
+  .ws .person img { width: 132px; height: 132px; border-radius: 20px; object-fit: cover; display: block; }
+  .ws .person h3 { font-size: 1.5rem; font-weight: 800; }
+  .ws .person .role { font-size: .9375rem; font-weight: 700; color: var(--pausa-blue); margin-top: 6px; }
+  .ws .person .bio { color: var(--text-mid); margin-top: 14px; }
+  .ws .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+  .ws .chips li { font-size: .8125rem; font-weight: 500; background: var(--pausa-blue-light); color: var(--text-dark); border-radius: 999px; padding: 6px 12px; }
+  .ws .li { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: .875rem; font-weight: 700; color: var(--pausa-blue); text-decoration: none; }
+  .ws .li:hover { text-decoration: underline; }
+
+  /* 8. Inscripción */
+  .ws .reg { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 64px; align-items: start; }
+  @media (max-width:960px) { .ws .reg { grid-template-columns: 1fr; gap: 40px; } }
+  .ws .reg .h2 { margin-top: 16px; }
+  .ws .reg .lead { margin-top: 16px; }
+  .ws .card { background: var(--white); color: var(--text-dark); border-radius: 24px; padding: 36px; }
+  @media (max-width:640px) { .ws .card { padding: 24px 18px; } }
+  .ws .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .ws .card h3 { font-size: 1.375rem; }
+  .ws .card .cap { font-size: .875rem; color: var(--text-mid); margin-top: 6px; }
+  .ws .badge { font-size: .75rem; font-weight: 700; color: var(--pausa-blue); background: var(--pausa-blue-light); border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+  .ws form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 24px; }
+  @media (max-width:640px) { .ws form { grid-template-columns: 1fr; } }
+  .ws .f { display: grid; gap: 6px; min-width: 0; }
+  .ws .f.full { grid-column: 1/-1; }
+  .ws label { font-size: .875rem; font-weight: 700; }
+  .ws label small { font-weight: 400; color: var(--text-mid); }
+  .ws input, .ws select, .ws textarea { font: 400 1rem/1.4 inherit; font-family: inherit; color: var(--text-dark); background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; width: 100%; min-width: 0; }
+  .ws textarea { min-height: 84px; resize: vertical; }
+  .ws input:focus-visible, .ws select:focus-visible, .ws textarea:focus-visible { outline: 2px solid var(--pausa-blue); outline-offset: 1px; border-color: var(--pausa-blue); }
+  .ws .f.bad input, .ws .f.bad select { border-color: var(--err); }
+  .ws .msg { font-size: .8125rem; color: var(--err); }
+  .ws .msg:empty { display: none; }
+  .ws .consent { grid-column: 1/-1; display: grid; grid-template-columns: 20px minmax(0,1fr); gap: 10px; font-size: .875rem; color: var(--text-mid); align-items: start; }
+  .ws .consent input { width: 18px; height: 18px; margin-top: 2px; padding: 0; accent-color: var(--pausa-blue); }
+  .ws .consent label { font-weight: 400; }
+  .ws .consent a { color: var(--pausa-blue); text-decoration: underline; }
+  .ws .form-msg { grid-column: 1/-1; margin-top: -8px; }
+  .ws .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .ws form .btn { grid-column: 1/-1; width: 100%; margin-top: 6px; }
+  .ws .form-error { grid-column: 1/-1; font-size: .9375rem; color: var(--err); }
+  .ws .form-error:empty { display: none; }
+  .ws .thanks { display: grid; gap: 14px; padding: 12px 0 4px; }
+  .ws .thanks .ok { width: 52px; height: 52px; border-radius: 50%; background: var(--pausa-blue-light); display: grid; place-items: center; }
+  .ws .thanks p { color: var(--text-mid); }
+  .ws .thanks h3:focus { outline: none; }
+  .ws [hidden] { display: none !important; }
+
+  /* 9. Preguntas */
+  .ws .faq-grid { display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); gap: 56px; align-items: start; }
+  @media (max-width:860px) { .ws .faq-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .ws .faq-grid .sh { margin-bottom: 0; }
+  .ws details { border-bottom: 1px solid var(--border); padding-block: 20px; }
+  .ws details:first-of-type { border-top: 1px solid var(--border); }
+  .ws summary { cursor: pointer; font-weight: 700; font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  .ws summary::-webkit-details-marker { display: none; }
+  .ws summary::after { content: "+"; color: var(--pausa-blue); font-weight: 800; font-size: 1.375rem; line-height: 1; }
+  .ws details[open] summary::after { content: "–"; }
+  .ws summary:focus-visible { outline: 2px solid var(--pausa-blue); outline-offset: 4px; border-radius: 4px; }
+  .ws details p { margin-top: 10px; color: var(--text-mid); }
+
+  /* Barra fija mobile */
+  .ws .sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--pausa-blue-dark); color: var(--on-dark); padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: none; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 -6px 24px rgba(30,30,107,.25); }
+  .ws .sticky p { font-size: .8125rem; line-height: 1.3; color: var(--on-dark-mid); }
+  .ws .sticky p b { color: var(--on-dark); font-size: .9375rem; display: block; }
+  .ws .sticky .btn { padding: 13px 18px; font-size: .9375rem; flex: none; }
+  @media (max-width:759px) { .ws .sticky { display: flex; } #site-footer { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)) !important; } }
+  .ws .sticky.off { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ws .tag .dot { animation: none; }
+    .ws .btn { transition: none; }
+    .ws .btn:hover { transform: none; }
+    .ws .marquee { overflow-x: auto; }
+    .ws .dup { display: none; }
+    .ws .track { animation: none; }
+  }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ji Yi init fn mn Ur pn bn cn capture calculateEventProperties Sn register register_once register_for_session unregister unregister_for_session Tn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Mn identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Cn xn createPersonProfile setInternalOrTestUser In hn Pn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing debug Vr Rt getPageViewId captureTraceFeedback captureTraceMetric an".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // Solo medimos el sitio productivo (no localhost, previews de Vercel ni staging)
+    if (location.hostname !== 'www.pausaco.com') { posthog.capture = posthog.get_distinct_id = function () {}; } else posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://b.pausaco.com', // your managed reverse proxy domain
+        ui_host: 'https://us.posthog.com', // necessary because you're using a proxy, this way links will point back to PostHog properly
+        defaults: '2026-05-30',
+        person_profiles: 'never',
+        cookieless_mode: 'always',
+        opt_out_capturing_by_default: /(^|; )ph_internal=1/.test(document.cookie),
+    })
+</script>
+<!-- JSON-LD Event. location = URL de la landing (nunca el link de Meet) -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Event","name":"Si la IA trabaja para nosotros, ¿por qué estamos cada vez más cansados? Workshop de foco y equilibrio","description":"Workshop online y gratuito de 90 minutos para líderes de equipo, con Teresita de Velazco y Miguel Reynal. Jueves 26 de noviembre, 15:00 h (Argentina), por Google Meet.","startDate":"2026-11-26T15:00:00-03:00","endDate":"2026-11-26T16:30:00-03:00","eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"VirtualLocation","url":"https://www.pausaco.com/workshop-foco-y-equilibrio.html"},"image":["https://www.pausaco.com/assets/og-pausa.png"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":0,"priceCurrency":"ARS","url":"https://www.pausaco.com/workshop-foco-y-equilibrio.html","availability":"https://schema.org/InStock"},"organizer":{"@type":"Organization","name":"Pausa","url":"https://www.pausaco.com/"},"performer":[{"@type":"Person","name":"Teresita de Velazco Ledesma"},{"@type":"Person","name":"Miguel Reynal"}],"inLanguage":"es"}
+</script>
+</head>
+<body>
+
+<header id="site-header">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" aria-label="Pausa" style="display:flex;align-items:center;flex:none">
+      <img id="word-logo-white" src="assets/pausa-word-white.png" alt="Pausa" style="height:18px;width:auto">
+      <img id="word-logo-indigo" src="assets/pausa-word-indigo.png" alt="Pausa" style="height:18px;width:auto">
+    </a>
+    <nav class="desktop-nav" style="display:flex;align-items:center;gap:24px;margin-left:auto;font-size:0.9375rem;font-weight:500">
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle nav-link">Nuestra solución</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="plataforma.html">Plataforma</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+            <a href="casos-de-exito.html">Casos de éxito</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle nav-link">Compañía</button>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-panel">
+            <a href="equipo.html">Equipo</a>
+            <a href="prensa.html">Prensa</a>
+            <a href="reconocimiento.html">Reconocimientos</a>
+            <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="sumate-al-equipo.html">Sumate al equipo</a>
+          </div>
+        </div>
+      </div>
+      <a href="#inscripcion" class="cta-pill" data-cta="header" style="display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;font-weight:700;font-size:0.9375rem">Reservar mi lugar</a>
+    </nav>
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav-panel">
+    <span class="mobile-nav-section-label">Nuestra solución</span>
+    <a href="plataforma.html">Plataforma</a>
+    <a href="metodologia.html">Metodología</a>
+    <a href="desarrollo-de-habilidades.html">Desarrollo de habilidades</a>
+    <a href="casos-de-exito.html">Casos de éxito</a>
+    <span class="mobile-nav-section-label">Compañía</span>
+    <a href="equipo.html">Equipo</a>
+    <a href="prensa.html">Prensa</a>
+    <a href="reconocimiento.html">Reconocimientos</a>
+    <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="sumate-al-equipo.html">Sumate al equipo</a>
+    <a href="#inscripcion" class="mobile-nav-cta" data-cta="header">Reservar mi lugar</a>
+  </div>
+</header>
+
+<main id="top" class="ws">
+
+  <!-- 1. HERO -->
+  <section class="dark hero">
+    <div class="wrap">
+      <span class="tag"><span class="dot" aria-hidden="true"></span>Workshop online y gratuito</span>
+      <h1>Si la IA trabaja para nosotros, <span>¿por qué estamos cada vez más cansados?</span></h1>
+      <p class="sub">Foco y equilibrio para vos y tu equipo. Noventa minutos para frenar, mirar en qué se te va el tiempo y elegir por dónde empezar a recuperarlo.</p>
+      <ul class="when" aria-label="Cuándo y dónde">
+        <li><small>Cuándo</small><b>Jueves 26 de nov.</b></li>
+        <li><small>Horario</small><b>15:00 a 16:30 h</b></li>
+        <li><small>Dónde</small><b>Google Meet</b></li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-light" href="#inscripcion" data-cta="hero"><span class="cta-label">Reservar mi lugar</span> <span class="arrow" aria-hidden="true">→</span></a>
+        <p class="seats"><b>Cupos limitados.</b> Hora de Argentina.</p>
+      </div>
+      <div class="hosts">
+        <div class="faces"><img src="assets/equipo/teresita-velazco.jpg" alt="" width="48" height="48"><img src="assets/equipo/miguel-reynal.jpg" alt="" width="48" height="48"></div>
+        <p>Facilitan <b>Teresita de Velazco</b><br>y <b>Miguel Reynal</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PARA QUIÉN -->
+  <section class="lav fit">
+    <div class="wrap fit-grid">
+      <h2 class="h2">Es para vos si…</h2>
+      <ul class="checks">
+        <li>Liderás un equipo y el día se te va resolviendo urgencias, respondiendo consultas y destrabando temas.</li>
+        <li>Tus responsabilidades principales quedan siempre para después.</li>
+        <li>Ya usás IA y otras herramientas, pero no sentís que trabajes con más foco.</li>
+        <li>Querés un espacio para pensar, no otra charla más para escuchar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. ¿TE SUENA? -->
+  <section class="dolores">
+    <div class="wrap">
+      <div class="sh">
+        <span class="pill">¿Te suena?</span>
+        <h2 class="h2">Hacés mucho, cada vez más rápido. <em>Y aun así no llegás.</em></h2>
+      </div>
+    </div>
+    <div class="marquee" id="marquee" tabindex="0" aria-label="Frases que escuchamos en los equipos. Pasá el mouse o tocá para pausar.">
+      <div class="track">
+        <figure class="q"><p>Termino la semana agotado y lo importante sigue pendiente.</p><small>Trabajé mucho, pero no sé bien en qué.</small></figure>
+        <figure class="q"><p>Uso IA y resuelvo más rápido, pero el tiempo ganado se llena de reuniones y pedidos.</p><small>Más velocidad, la misma sensación.</small></figure>
+        <figure class="q"><p>Salto entre mails, chats y reuniones. Empiezo muchas cosas y termino pocas.</p><small>La atención, en mil partes.</small></figure>
+        <figure class="q"><p>Mi agenda la manejan otros. Lo estratégico queda para cuando haya tiempo.</p><small>Y ese tiempo no llega.</small></figure>
+        <figure class="q"><p>Todo es urgente. Las prioridades cambian a cada rato y me cuesta decir que no.</p><small>Reacciono en lugar de elegir.</small></figure>
+        <figure class="q"><p>Respondo todas las consultas y el equipo depende de mí para avanzar.</p><small>El cuello de botella soy yo.</small></figure>
+        <div class="dup" aria-hidden="true">
+          <figure class="q"><p>Termino la semana agotado y lo importante sigue pendiente.</p><small>Trabajé mucho, pero no sé bien en qué.</small></figure>
+          <figure class="q"><p>Uso IA y resuelvo más rápido, pero el tiempo ganado se llena de reuniones y pedidos.</p><small>Más velocidad, la misma sensación.</small></figure>
+          <figure class="q"><p>Salto entre mails, chats y reuniones. Empiezo muchas cosas y termino pocas.</p><small>La atención, en mil partes.</small></figure>
+          <figure class="q"><p>Mi agenda la manejan otros. Lo estratégico queda para cuando haya tiempo.</p><small>Y ese tiempo no llega.</small></figure>
+          <figure class="q"><p>Todo es urgente. Las prioridades cambian a cada rato y me cuesta decir que no.</p><small>Reacciono en lugar de elegir.</small></figure>
+          <figure class="q"><p>Respondo todas las consultas y el equipo depende de mí para avanzar.</p><small>El cuello de botella soy yo.</small></figure>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="after">Si te reconocés en dos o más, este espacio es para vos.</p>
+    </div>
+  </section>
+
+  <!-- 4. IDEA CENTRAL -->
+  <section class="lav">
+    <div class="wrap idea">
+      <h2 class="big">Hacer más rápido no es lo mismo que <em>estar enfocado.</em></h2>
+      <div class="body">
+        <p>La IA nos permite resolver tareas más rápido y hacer cosas que antes requerían mucho más esfuerzo. Pero esa capacidad no siempre se traduce en más foco ni en una jornada más equilibrada.</p>
+        <p>El tiempo que se libera vuelve a llenarse de pedidos, reuniones y nuevos compromisos. Podemos hacer cada vez más y seguir sintiendo que no llegamos.</p>
+        <p>Cuando podés ver en qué se va tu tiempo, podés cambiarlo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. EL ENCUENTRO -->
+  <section class="lav" id="recorrido">
+    <div class="wrap">
+      <div class="sh">
+        <span class="pill">El encuentro</span>
+        <h2 class="h2">Noventa minutos en vivo <em>para frenar, pensar y elegir tu foco.</em></h2>
+      </div>
+      <ol class="moves">
+        <li class="move"><h3>Mirar</h3><p>Tomar consciencia de en qué se va tu tiempo y qué queda afuera. Pasar de la sensación al dato.</p></li>
+        <li class="move"><h3>Elegir</h3><p>Definir qué importa de verdad, poner el foco ahí y pensar qué hace falta para protegerlo.</p></li>
+        <li class="move"><h3>Sostener</h3><p>El foco es una práctica, no un estado. Cómo convertirlo en hábito para vos y tu equipo.</p></li>
+      </ol>
+      <div class="close-line"><b>Y te vas con una acción concreta para la semana siguiente.</b><span>La reflexión atraviesa todo el encuentro.</span></div>
+    </div>
+  </section>
+
+  <!-- 6. QUÉ TE LLEVÁS -->
+  <section>
+    <div class="wrap">
+      <div class="sh">
+        <span class="pill">Qué te llevás</span>
+        <h2 class="h2">No te vas con teoría. <em>Te vas con tu semana a la vista.</em></h2>
+      </div>
+      <ul class="take">
+        <li><h3>Claridad sobre tu tiempo</h3><p>En qué se te va la semana y qué tarea importante está quedando afuera.</p></li>
+        <li><h3>Tus prioridades y tu foco</h3><p>Una o dos cosas que realmente importan, y qué hace falta para protegerlas en la agenda.</p></li>
+        <li><h3>Una acción para empezar</h3><p>Un compromiso concreto y chico para recuperar foco y equilibrio, vos y tu equipo.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. QUIÉNES LO FACILITAN -->
+  <section class="lav" id="facilitadores">
+    <div class="wrap">
+      <div class="sh">
+        <span class="pill">Quiénes lo facilitan</span>
+        <h2 class="h2">Coaching, liderazgo e inteligencia artificial, <em>en la misma conversación.</em></h2>
+      </div>
+      <div class="spk">
+        <article class="person">
+          <img src="assets/equipo/teresita-velazco.jpg" alt="Teresita de Velazco Ledesma" width="132" height="132" loading="lazy">
+          <div>
+            <h3>Teresita de Velazco Ledesma</h3>
+            <p class="role">Partner en Pausa · Coach ejecutiva</p>
+            <p class="bio">Hace más de diez años que acompaña a líderes y equipos. Es socia de Hire Partners, consultora de recursos humanos, fue coach ejecutiva y facilitadora de programas de liderazgo en IAE Business School y prepara a los speakers de TEDxSan Isidro.</p>
+            <ul class="chips"><li>Coach ontológica · Newfield Network</li><li>Liderazgo y desarrollo</li></ul>
+            <a class="li" href="https://www.linkedin.com/in/teresitadevelazcoledesma/" target="_blank" rel="noopener">Ver perfil en LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="person">
+          <img src="assets/equipo/miguel-reynal.jpg" alt="Miguel Reynal" width="132" height="132" loading="lazy">
+          <div>
+            <h3>Miguel Reynal</h3>
+            <p class="role">Acompañante de procesos en Pausa · Agentes de IA</p>
+            <p class="bio">Trabajó diez años en la justicia de familia hasta que decidió cambiar de rumbo y formarse como coach. Hoy acompaña a líderes y equipos a mirar su tiempo y su rol, y entrena a los agentes de inteligencia artificial de Pausa.</p>
+            <ul class="chips"><li>Coach ontológico · View Connection</li><li>Entrenamiento de agentes de IA</li></ul>
+            <a class="li" href="https://www.linkedin.com/in/miguelreynal/" target="_blank" rel="noopener">Ver perfil en LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. INSCRIPCIÓN -->
+  <section class="dark" id="inscripcion">
+    <div class="wrap reg">
+      <div>
+        <span class="pill">Inscripción</span>
+        <h2 class="h2">Reservá tu lugar</h2>
+        <p class="lead">Jueves 26 de noviembre, de 15:00 a 16:30 h (Argentina), por Google Meet. Es gratuito y los cupos son limitados.</p>
+      </div>
+
+      <div class="card">
+        <!-- Formulario abierto -->
+        <div id="form-wrap">
+          <div class="card-head">
+            <div><h3>Tus datos</h3><p class="cap">Te lleva menos de un minuto.</p></div>
+            <span class="badge">Cupos limitados</span>
+          </div>
+          <form id="workshop-form" novalidate>
+            <div class="f"><label for="nombre">Nombre y apellido</label><input id="nombre" name="Nombre" autocomplete="name" required aria-describedby="nombre-msg"><span class="msg" id="nombre-msg"></span></div>
+            <div class="f"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required aria-describedby="email-msg"><span class="msg" id="email-msg"></span></div>
+            <div class="f"><label for="empresa">Empresa</label><input id="empresa" name="Empresa" autocomplete="organization" required aria-describedby="empresa-msg"><span class="msg" id="empresa-msg"></span></div>
+            <div class="f"><label for="cargo">Cargo</label><input id="cargo" name="Cargo" autocomplete="organization-title" required aria-describedby="cargo-msg"><span class="msg" id="cargo-msg"></span></div>
+            <div class="f full"><label for="equipo">Personas a cargo</label>
+              <select id="equipo" name="PersonasACargo" required aria-describedby="equipo-msg">
+                <option value="">Elegí una opción</option>
+                <option>Ninguna</option><option>1 a 5</option><option>6 a 15</option><option>16 a 50</option><option>Más de 50</option>
+              </select><span class="msg" id="equipo-msg"></span></div>
+            <div class="f full"><label for="desafio">¿Qué te gustaría que sea distinto en tu semana? <small>(opcional)</small></label><textarea id="desafio" name="Desafio" maxlength="500"></textarea></div>
+            <div class="hp" aria-hidden="true"><label for="website">No completar</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+            <div class="consent"><input type="checkbox" id="consent" name="Consentimiento" required aria-describedby="consent-msg"><label for="consent">Acepto que Pausa use estos datos para gestionar mi inscripción y enviarme información sobre el workshop. <a href="politicas-de-privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>.</label></div>
+            <span class="msg form-msg" id="consent-msg"></span>
+            <p class="form-error" id="form-error" role="alert"></p>
+            <button class="btn btn-primary" type="submit" id="submit">Reservar mi lugar <span class="arrow" aria-hidden="true">→</span></button>
+          </form>
+        </div>
+
+        <!-- Inscripciones cerradas (se muestra después del 26/11 16:30 h ART) -->
+        <div id="closed-wrap" hidden>
+          <div class="card-head">
+            <div><h3>Las inscripciones para esta edición están cerradas.</h3><p class="cap">Dejanos tu mail y te avisamos de la próxima.</p></div>
+          </div>
+          <form id="lista-form" novalidate>
+            <div class="f full"><label for="lista-nombre">Nombre y apellido</label><input id="lista-nombre" name="Nombre" autocomplete="name" required aria-describedby="lista-nombre-msg"><span class="msg" id="lista-nombre-msg"></span></div>
+            <div class="f full"><label for="lista-email">Email</label><input id="lista-email" name="Email" type="email" autocomplete="email" required aria-describedby="lista-email-msg"><span class="msg" id="lista-email-msg"></span></div>
+            <div class="hp" aria-hidden="true"><label for="lista-website">No completar</label><input id="lista-website" name="website" tabindex="-1" autocomplete="off"></div>
+            <div class="consent"><input type="checkbox" id="lista-consent" name="Consentimiento" required aria-describedby="lista-consent-msg"><label for="lista-consent">Acepto que Pausa use estos datos para avisarme de la próxima edición del workshop. <a href="politicas-de-privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>.</label></div>
+            <span class="msg form-msg" id="lista-consent-msg"></span>
+            <p class="form-error" id="lista-error" role="alert"></p>
+            <button class="btn btn-primary" type="submit" id="lista-submit">Avisarme de la próxima <span class="arrow" aria-hidden="true">→</span></button>
+          </form>
+        </div>
+
+        <!-- Éxito -->
+        <div class="thanks" id="thanks" hidden>
+          <div class="ok" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D3DC8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+          <h3 id="thanks-title" tabindex="-1">Listo, tu lugar está reservado</h3>
+          <p id="thanks-dup" hidden>Ya estabas inscripto: te reenviamos la invitación.</p>
+          <p>Te mandamos un mail con la invitación al calendario y el link de Google Meet. Si no lo ves en unos minutos, revisá spam o promociones.</p>
+          <p>Nos vemos el jueves 26 de noviembre a las 15:00 h.</p>
+        </div>
+        <div class="thanks" id="lista-thanks" hidden>
+          <div class="ok" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D3DC8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+          <h3 id="lista-thanks-title" tabindex="-1">Listo, te avisamos de la próxima.</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PREGUNTAS -->
+  <section>
+    <div class="wrap faq-grid">
+      <div class="sh"><span class="pill">Preguntas</span><h2 class="h2">Antes de anotarte</h2></div>
+      <div>
+        <details><summary>¿Tiene costo?</summary><p>No, es gratuito.</p></details>
+        <details><summary>¿Por dónde es?</summary><p>Por Google Meet. El link te llega con la confirmación.</p></details>
+        <details><summary>¿Queda grabado?</summary><p>No. Es en vivo y participativo.</p></details>
+        <details><summary>¿Puedo sumar a alguien de mi equipo?</summary><p>Sí. Cada persona se inscribe con su propio mail.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra fija mobile -->
+  <div class="sticky off" id="sticky">
+    <p><b>Jueves 26 · 15:00 h</b>Online y gratuito · Cupos limitados</p>
+    <a class="btn btn-light" href="#inscripcion" data-cta="sticky"><span class="cta-label">Reservar lugar</span></a>
+  </div>
+</main>
+
+<footer id="site-footer" style="background:#1E1E6B;padding:56px 24px 32px">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+        <img src="assets/pausa-word-white.png" loading="lazy" alt="Pausa" style="height:20px;width:auto;display:block">
+        <a href="mailto:contactopausa@pausaco.com" style="font-size:1rem;color:#DDE0FF">contactopausa@pausaco.com</a>
+        <div style="display:flex;gap:12px">
+          <a href="https://wa.me/5491153876359" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.19-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.22-8.24Zm-3.1 4.05c-.23 0-.6.09-.91.43-.31.34-.99.97-.99 2.36 0 1.39 1.01 2.73 1.15 2.92.14.19 1.95 3.1 4.81 4.22 2.38.94 2.86.75 3.38.7.52-.05 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.67-.82-1.93-.92-.26-.09-.45-.14-.64.14-.19.28-.73.94-.9 1.13-.16.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.61-1.52-.85-2.08-.19-.44-.38-.45-.55-.46h-.36Z"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/pausaco" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon" style="width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:background-color .15s ease">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.75 21.5h4.46V9.75H2.75V21.5Zm7.04 0h4.46v-6.4c0-1.69.32-3.33 2.42-3.33 2.07 0 2.1 1.94 2.1 3.44v6.29h4.46v-7.2c0-3.87-.84-6.85-5.36-6.85-2.17 0-3.63 1.19-4.23 2.32h-.06V9.75H9.79V21.5Z"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Nuestra solución</p>
+          <a href="plataforma.html" style="color:#DDE0FF;font-size:0.9375rem">Plataforma</a>
+          <a href="metodologia.html" style="color:#DDE0FF;font-size:0.9375rem">Metodología</a>
+          <a href="desarrollo-de-habilidades.html" style="color:#DDE0FF;font-size:0.9375rem">Desarrollo de habilidades</a>
+          <a href="assessment.html" style="color:#DDE0FF;font-size:0.9375rem">Assessment para líderes</a>
+          <a href="casos-de-exito.html" style="color:#DDE0FF;font-size:0.9375rem">Casos de éxito</a>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Compañía</p>
+          <a href="equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Equipo</a>
+          <a href="prensa.html" style="color:#DDE0FF;font-size:0.9375rem">Prensa</a>
+          <a href="reconocimiento.html" style="color:#DDE0FF;font-size:0.9375rem">Reconocimientos</a>
+          <a href="contacto.html" style="color:#DDE0FF;font-size:0.9375rem">Contacto</a>
+          <a href="sumate-al-equipo.html" style="color:#DDE0FF;font-size:0.9375rem">Sumate al equipo</a>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#9FA6F0">Confianza</p>
+          <a href="seguridad.html" style="color:#DDE0FF;font-size:0.9375rem">Seguridad y privacidad</a>
+          <a href="preguntas-frecuentes.html" style="color:#DDE0FF;font-size:0.9375rem">Preguntas frecuentes</a>
+        </nav>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.18);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline">
+      <p style="margin:0;font-size:0.875rem;color:#9FA6F0">© Pausa 2026. Todos los derechos reservados.</p>
+      <div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;font-size:0.875rem">
+        <a href="terminos-y-condiciones.html" style="color:#9FA6F0">Términos y Condiciones</a>
+        <span style="color:rgba(255,255,255,0.35)">·</span>
+        <a href="politicas-de-privacidad.html" style="color:#9FA6F0">Política de Privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Header scroll state
+  var header = document.getElementById('site-header');
+  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 60); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile nav toggle
+  var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+  var mobileNavPanel = document.getElementById('mobile-nav-panel');
+  if (mobileNavToggle && mobileNavPanel) {
+    mobileNavToggle.addEventListener('click', function () {
+      var open = mobileNavPanel.classList.toggle('open');
+      mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileNavPanel.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileNavPanel.classList.remove('open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  function track(event, props) {
+    if (window.posthog) posthog.capture(event, props || {});
+  }
+
+  // ---- Cierre automático de inscripciones ----
+  // Para QA: ?ahora=2026-11-27T00:00:00Z simula una fecha posterior.
+  var CIERRE = new Date('2026-11-26T19:30:00Z'); // 16:30 h ART
+  var simulada = new URLSearchParams(window.location.search).get('ahora');
+  var ahora = simulada && !isNaN(Date.parse(simulada)) ? new Date(simulada) : new Date();
+  var CERRADO = ahora >= CIERRE;
+
+  // CTA de header, hero y barra fija
+  document.querySelectorAll('[data-cta]').forEach(function (a) {
+    a.addEventListener('click', function () { track('workshop_cta_click', { ubicacion: a.getAttribute('data-cta') }); });
+  });
+
+  // Barra fija mobile: oculta mientras se ve el hero o #inscripcion
+  var sticky = document.getElementById('sticky');
+  var reg = document.getElementById('inscripcion');
+  var hero = document.querySelector('.hero');
+  if (!CERRADO && 'IntersectionObserver' in window) {
+    var seen = { hero: true, reg: false };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { seen[e.target === hero ? 'hero' : 'reg'] = e.isIntersecting; });
+      sticky.classList.toggle('off', seen.hero || seen.reg);
+    }, { threshold: 0.1 });
+    io.observe(hero); io.observe(reg);
+  }
+
+  // Marquesina: también se pausa con un toque (mobile)
+  var marquee = document.getElementById('marquee');
+  marquee.addEventListener('click', function () { marquee.classList.toggle('paused'); });
+
+  // ---- Formularios ----
+  var LEAD_WEBHOOK_URL = 'https://pausa.app.n8n.cloud/webhook/pausa-workshop-registro';
+  var ERROR_MSG = 'No pudimos registrar tu inscripción. Probá de nuevo en un momento o escribinos a contactopausa@pausaco.com.';
+
+  function getUtmParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+
+  function basePayload(workshopId) {
+    return {
+      workshopId: workshopId,
+      idioma: 'ES',
+      paginaOrigen: window.location.href,
+      referrer: document.referrer || '',
+      utmSource: getUtmParam('utm_source'),
+      utmMedium: getUtmParam('utm_medium'),
+      utmCampaign: getUtmParam('utm_campaign'),
+      utmContent: getUtmParam('utm_content'),
+      posthogDistinctId: (window.posthog && posthog.get_distinct_id && posthog.get_distinct_id()) || '',
+      enviadoEn: new Date().toISOString()
+    };
+  }
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function makeValidator(rules) {
+    function check(id) {
+      var el = document.getElementById(id);
+      var res = rules[id](el.value);
+      var ok = res === true;
+      el.closest('.f').classList.toggle('bad', !ok);
+      document.getElementById(id + '-msg').textContent = ok ? '' : res;
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      return ok;
+    }
+    Object.keys(rules).forEach(function (id) {
+      document.getElementById(id).addEventListener('blur', function () { check(id); });
+    });
+    return function validate(consentId) {
+      var firstBad = null;
+      Object.keys(rules).forEach(function (id) { if (!check(id) && !firstBad) firstBad = id; });
+      var c = document.getElementById(consentId);
+      document.getElementById(consentId + '-msg').textContent = c.checked ? '' : 'Necesitamos tu consentimiento para gestionar la inscripción.';
+      c.setAttribute('aria-invalid', c.checked ? 'false' : 'true');
+      if (!c.checked && !firstBad) firstBad = consentId;
+      if (firstBad) document.getElementById(firstBad).focus();
+      return !firstBad;
+    };
+  }
+
+  function send(payload) {
+    return fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook error ' + res.status);
+      return res.json().catch(function () { return {}; });
+    });
+  }
+
+  function showSuccess(hideId, showId, titleId) {
+    document.getElementById(hideId).hidden = true;
+    document.getElementById(showId).hidden = false;
+    document.getElementById(titleId).focus();
+  }
+
+  // Inscripción
+  var form = document.getElementById('workshop-form');
+  var validateMain = makeValidator({
+    nombre: function (v) { return v.trim().length >= 3 || 'Escribí tu nombre y apellido.'; },
+    email: function (v) { return EMAIL_RE.test(v.trim()) || 'Revisá el email: falta la @ o el dominio.'; },
+    empresa: function (v) { return v.trim().length >= 2 || 'Contanos en qué empresa trabajás.'; },
+    cargo: function (v) { return v.trim().length >= 2 || 'Contanos tu cargo.'; },
+    equipo: function (v) { return !!v || 'Elegí cuántas personas tenés a cargo.'; }
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var errBox = document.getElementById('form-error');
+    errBox.textContent = '';
+    // Honeypot: no se envía, se muestra éxito
+    if (document.getElementById('website').value) { showSuccess('form-wrap', 'thanks', 'thanks-title'); return; }
+    if (!validateMain('consent')) return;
+
+    var btn = document.getElementById('submit');
+    var btnHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Reservando…';
+    track('workshop_form_submit');
+
+    var data = new FormData(form);
+    var payload = basePayload('2026-11-26-foco-equilibrio');
+    payload.Nombre = (data.get('Nombre') || '').trim();
+    payload.Email = (data.get('Email') || '').trim();
+    payload.Empresa = (data.get('Empresa') || '').trim();
+    payload.Cargo = (data.get('Cargo') || '').trim();
+    payload.PersonasACargo = data.get('PersonasACargo') || '';
+    payload.Desafio = (data.get('Desafio') || '').trim().slice(0, 500);
+    payload.Consentimiento = true;
+
+    send(payload).then(function (json) {
+      var dup = !!(json && json.duplicado);
+      document.getElementById('thanks-dup').hidden = !dup;
+      track('workshop_form_success', { duplicado: dup });
+      showSuccess('form-wrap', 'thanks', 'thanks-title');
+    }).catch(function (err) {
+      track('workshop_form_error', { error: String(err && err.message || err) });
+      btn.disabled = false;
+      btn.innerHTML = btnHtml;
+      errBox.textContent = ERROR_MSG;
+    });
+  });
+
+  // Lista de la próxima edición (estado cerrado)
+  var listaForm = document.getElementById('lista-form');
+  var validateLista = makeValidator({
+    'lista-nombre': function (v) { return v.trim().length >= 3 || 'Escribí tu nombre y apellido.'; },
+    'lista-email': function (v) { return EMAIL_RE.test(v.trim()) || 'Revisá el email: falta la @ o el dominio.'; }
+  });
+  listaForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var errBox = document.getElementById('lista-error');
+    errBox.textContent = '';
+    if (document.getElementById('lista-website').value) { showSuccess('closed-wrap', 'lista-thanks', 'lista-thanks-title'); return; }
+    if (!validateLista('lista-consent')) return;
+
+    var btn = document.getElementById('lista-submit');
+    var btnHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+    track('workshop_form_submit', { lista: true });
+
+    var payload = basePayload('lista-proxima-edicion');
+    payload.Nombre = document.getElementById('lista-nombre').value.trim();
+    payload.Email = document.getElementById('lista-email').value.trim();
+    payload.Consentimiento = true;
+
+    send(payload).then(function () {
+      track('workshop_form_success', { lista: true });
+      showSuccess('closed-wrap', 'lista-thanks', 'lista-thanks-title');
+    }).catch(function (err) {
+      track('workshop_form_error', { lista: true, error: String(err && err.message || err) });
+      btn.disabled = false;
+      btn.innerHTML = btnHtml;
+      errBox.textContent = ERROR_MSG;
+    });
+  });
+
+  // Aplicar estado cerrado
+  if (CERRADO) {
+    document.getElementById('form-wrap').hidden = true;
+    document.getElementById('closed-wrap').hidden = false;
+    sticky.classList.add('off');
+    sticky.hidden = true;
+    document.querySelectorAll('[data-cta]').forEach(function (a) {
+      var label = a.querySelector('.cta-label');
+      (label || a).textContent = 'Avisarme de la próxima';
+    });
+  }
+})();
+</script>
+</body>
+</html>
