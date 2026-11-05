@@ -1,0 +1,92 @@
+/* Casos de éxito — listado, detalle de cada caso y franja de la home */
+.cx-wrap { max-width: 1160px; margin: 0 auto; }
+.cx-eyebrow { margin: 0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #5C5C8A; }
+.cx-link { font-weight: 700; display: inline-flex; align-items: center; gap: 8px; color: #3D3DC8; }
+.cx-link:hover { color: #2D2D99; }
+.cx-link svg { transition: transform .2s ease; }
+.cx-link:hover svg { transform: translateX(3px); }
+
+/* Persona: foto o, mientras no haya foto, iniciales */
+.cx-avatar { flex: none; width: 60px; height: 60px; border-radius: 999px; object-fit: cover; display: inline-flex; align-items: center; justify-content: center; background: #EAECFF; color: #3D3DC8; font-weight: 800; font-size: 1.125rem; letter-spacing: 0.02em; }
+.cx-avatar--lg { width: 72px; height: 72px; font-size: 1.3125rem; }
+.cx-avatar--sm { width: 52px; height: 52px; font-size: 1rem; }
+.cx-person { display: flex; align-items: center; gap: 16px; }
+.cx-person-text { display: flex; flex-direction: column; gap: 2px; }
+.cx-person-name { font-weight: 800; font-size: 1.0625rem; color: #1A1A3E; }
+.cx-person-role { font-size: 0.875rem; line-height: 1.4; color: #5C5C8A; }
+
+/* Encabezado oscuro, igual que el resto de las páginas internas */
+.cx-top { background: radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B; padding: 72px 24px 64px; }
+.cx-pill { margin: 0; align-self: flex-start; display: inline-flex; align-items: center; height: 28px; padding: 0 14px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #DDE0FF; }
+.cx-top h1 { margin: 0; font-size: clamp(2.25rem, 4.4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 800; color: #FFFFFF; text-wrap: balance; }
+.cx-top-sub { margin: 0; max-width: 60ch; font-size: 1.125rem; line-height: 1.6; color: #DDE0FF; text-wrap: pretty; }
+.cx-logo-white { filter: brightness(0) invert(1); }
+
+/* Listado */
+.cx-list { display: flex; flex-direction: column; gap: 20px; }
+.cx-row { background: #F4F5FF; border-radius: 20px; padding: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 28px 56px; transition: box-shadow .2s ease; }
+.cx-row:hover { box-shadow: 0 30px 60px -40px rgba(30,30,107,.45); }
+.cx-row-logo { flex: 0 1 220px; min-height: 72px; display: flex; align-items: center; }
+.cx-row-logo img { max-width: 100%; width: auto; display: block; }
+.cx-row-body { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.cx-row-quote { margin: 0; font-size: clamp(1.25rem, 2.1vw, 1.625rem); line-height: 1.35; font-weight: 700; letter-spacing: -0.01em; color: #1A1A3E; text-wrap: pretty; }
+.cx-row-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.cx-row .cx-avatar { background: #FFFFFF; }
+
+/* Detalle */
+.cx-hero { background: radial-gradient(120% 90% at 50% 30%, #3D3DC8 0%, rgba(61,61,200,0) 65%), #1E1E6B; padding: 32px 24px 72px; }
+.cx-back { font-size: 0.9375rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; color: #DDE0FF; }
+.cx-back:hover { color: #FFFFFF; }
+.cx-hero-logo { align-self: flex-start; max-height: 56px; max-width: 100%; width: auto; height: auto; display: block; }
+.cx-hero h1 { margin: 0; font-size: clamp(1.625rem, 3.2vw, 2.5rem); line-height: 1.18; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF; text-wrap: pretty; }
+.cx-hero-by { font-size: 1rem; color: #B9C0F5; }
+.cx-voice { display: flex; flex-wrap: wrap; gap: 28px 56px; padding-top: 40px; border-top: 1px solid #E3E4EC; }
+.cx-voice + .cx-voice { margin-top: 48px; }
+.cx-voice-who { flex: 0 1 220px; display: flex; flex-direction: column; gap: 12px; }
+.cx-voice-body { flex: 1 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.cx-voice-lead { margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.35; font-weight: 700; letter-spacing: -0.01em; color: #1A1A3E; border-left: 4px solid #3D3DC8; padding-left: 22px; text-wrap: pretty; }
+.cx-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.cx-card { margin: 0; background: #F4F5FF; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+.cx-card figcaption { font-size: 0.6875rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #3D3DC8; }
+.cx-card blockquote { margin: 0; font-size: 1.0625rem; line-height: 1.5; font-weight: 600; color: #1A1A3E; }
+
+/* Otros casos */
+.cx-others { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.cx-other { background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 18px; color: #1A1A3E; transition: transform .2s ease, box-shadow .2s ease; }
+.cx-other:hover { transform: translateY(-3px); box-shadow: 0 24px 40px -28px rgba(30,30,107,.45); color: #1A1A3E; }
+.cx-other-logo { height: 52px; display: flex; align-items: center; }
+.cx-other-logo img { max-height: 44px; max-width: 100%; width: auto; display: block; }
+.cx-other-quote { font-size: 1.0625rem; line-height: 1.45; font-weight: 700; }
+.cx-other-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.875rem; color: #5C5C8A; }
+.cx-other-foot strong { font-weight: 700; font-size: 0.9375rem; color: #3D3DC8; }
+
+/* Franja de la home */
+.cx-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.cx-strip-card { margin: 0; background: #F4F5FF; border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 28px; justify-content: space-between; }
+.cx-strip-card blockquote { margin: 0; font-size: 1.3125rem; line-height: 1.4; font-weight: 700; color: #1A1A3E; text-wrap: pretty; }
+.cx-strip-card figcaption .cx-person-name { font-size: 1rem; font-weight: 700; }
+
+/* Video del caso: portada de marca hasta el clic, después el reproductor de YouTube */
+.cx-video { position: relative; display: block; width: 100%; aspect-ratio: 16/9; padding: 0; font: inherit; border: 0; border-radius: 24px; overflow: hidden; cursor: pointer; background: radial-gradient(75% 85% at 50% 42%, #3C3CC4 0%, #2A2A9A 45%, #1B1B5E 85%, #15154A 100%); box-shadow: 0 30px 60px -30px rgba(10,10,50,0.5); transition: transform .35s ease, box-shadow .35s ease; }
+.cx-video:hover { transform: translateY(-4px); box-shadow: 0 40px 70px -30px rgba(10,10,50,0.55); }
+.cx-video:focus-visible { outline: 3px solid #3D3DC8; outline-offset: 4px; }
+.cx-video.is-playing { cursor: default; transform: none; background: #14144F; }
+.cx-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.cx-video__cover { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4.5%; padding-bottom: 2%; }
+.cx-video__brand { width: 50%; height: auto; opacity: 0.92; }
+.cx-video__label { color: #9FA6F0; font-size: clamp(0.75rem, 2.3vw, 1.875rem); font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-left: 0.22em; }
+.cx-video__client { width: 34%; height: auto; margin-top: 1%; }
+.cx-video__play { position: absolute; right: 4%; bottom: 6%; width: 72px; height: 72px; border-radius: 999px; background: #FFFFFF; color: #3D3DC8; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 10px rgba(255,255,255,0.16), 0 16px 34px -10px rgba(5,5,40,0.6); transition: transform .3s ease; }
+.cx-video:hover .cx-video__play { transform: scale(1.08); }
+
+@media (max-width: 640px) {
+  .cx-row { gap: 20px; }
+  .cx-row-logo { min-height: 0; }
+  .cx-video { border-radius: 18px; }
+  .cx-video__play { width: 44px; height: 44px; box-shadow: 0 0 0 6px rgba(255,255,255,0.16); }
+  .cx-video__play svg { width: 18px; height: 18px; }
+  .cx-row { padding: 28px 24px; }
+  .cx-strip-card { padding: 26px; }
+  .cx-strip-card blockquote { font-size: 1.1875rem; }
+}
+@media (prefers-reduced-motion: reduce) { .cx-video, .cx-video__play, .cx-other, .cx-link svg { transition: none; } }
