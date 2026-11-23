@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessment de Gestión de Equipos | Pausa</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* Página sin acceso directo: reemplaza al Google Form "Assessment - GDM(ES)" y le sigue
+     mandando las respuestas, así que caen en la misma planilla. Se comparte solo por link:
+     no va en el sitemap ni se linkea desde el sitio. Un solo archivo con selector de idioma
+     (y no las copias en en/ y pt/) para que cambiar de idioma no borre lo que se completó. */
+  :root {
+    --ink: #1A1A3E;
+    --indigo: #1E1E6B;
+    --primary: #3D3DC8;
+    --primary-hover: #2D2D99;
+    --soft: #F4F5FF;
+    --line: #CCCCEE;
+    --line-soft: #E4E6FA;
+    --muted: #5C5C8A;
+    --lav: #DDE0FF;
+    --error: #B42318;
+    --error-bg: #FDECEA;
+    --aviso: #8A5300;
+    --aviso-bg: #FFF4DC;
+  }
+  body { background: var(--soft); }
+  button, input, textarea { font-family: inherit; }
+
+  .as-header { background: var(--indigo); position: sticky; top: 0; z-index: 50; }
+  .as-header-in { max-width: 880px; margin: 0 auto; padding: 0 16px; height: 64px; display: flex; align-items: center; gap: 16px; }
+  .as-lang { margin-left: auto; display: flex; padding: 4px; border-radius: 999px; background: rgba(255,255,255,0.12); }
+  .as-lang button { min-width: 44px; height: 36px; padding: 0 12px; border: none; border-radius: 999px; background: transparent; color: var(--lav); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; }
+  .as-lang button:hover { color: #FFFFFF; }
+  .as-lang button[aria-pressed="true"] { background: #FFFFFF; color: var(--indigo); }
+  .as-lang button:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+
+  .as-cover { background: radial-gradient(110% 120% at 50% 0%, #3D3DC8 0%, rgba(61,61,200,0) 65%), var(--indigo); color: #FFFFFF; }
+  .as-cover-in { max-width: 880px; margin: 0 auto; padding: 48px 16px 56px; }
+  .as-pill { display: inline-flex; align-items: center; min-height: 30px; padding: 4px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--lav); }
+  .as-cover h1 { margin: 20px 0 0; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; font-weight: 800; }
+  .as-cover p, .as-cover li { font-size: 1.0625rem; line-height: 1.6; color: var(--lav); }
+  .as-cover p { margin: 16px 0 0; max-width: 64ch; }
+  .as-cover ul { margin: 8px 0 0; padding-left: 20px; max-width: 64ch; }
+
+  .as-main { max-width: 880px; margin: 0 auto; padding: 32px 16px 96px; display: flex; flex-direction: column; gap: 24px; }
+  .as-card { background: #FFFFFF; border: 1px solid var(--line-soft); border-radius: 16px; padding: 28px; }
+  .as-card h2 { margin: 0; font-size: 1.25rem; line-height: 1.3; font-weight: 800; color: var(--ink); }
+  .as-card-num { display: block; margin-bottom: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); }
+  .as-how { background: var(--lav); border-color: var(--lav); }
+  .as-how p { margin: 8px 0 0; font-size: 1rem; line-height: 1.6; color: var(--ink); }
+
+  .as-field { display: flex; flex-direction: column; gap: 8px; }
+  .as-field + .as-field { margin-top: 24px; }
+  .as-label { font-size: 1rem; font-weight: 700; line-height: 1.45; color: var(--ink); }
+  .as-label small { font-weight: 500; color: var(--muted); }
+  .as-input, .as-textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: #FFFFFF; color: var(--ink); font-size: 1rem; }
+  .as-input { height: 48px; padding: 0 14px; }
+  .as-textarea { min-height: 96px; padding: 12px 14px; line-height: 1.5; resize: vertical; }
+  .as-input:focus-visible, .as-textarea:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; border-color: var(--primary); }
+  .as-input[aria-invalid="true"] { border-color: var(--error); }
+  .as-field-error { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--error); }
+
+  .as-item { margin: 24px 0 0; padding: 24px 0 0; border: none; border-top: 1px solid var(--line-soft); min-width: 0; }
+  .as-item legend { padding: 0; float: left; width: 100%; font-size: 1.0625rem; font-weight: 700; line-height: 1.45; color: var(--ink); }
+  .as-item legend + * { clear: both; }
+  .as-signals { margin: 8px 0 0; padding-top: 4px; font-size: 0.9375rem; line-height: 1.55; color: var(--muted); }
+  .as-signals strong { font-weight: 700; color: var(--ink); }
+  .as-scale { margin-top: 16px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.2fr); gap: 8px; }
+  .as-opt { position: relative; }
+  .as-opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .as-opt span { display: flex; align-items: center; justify-content: center; height: 48px; border: 1px solid var(--line); border-radius: 12px; background: #FFFFFF; font-size: 1.0625rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
+  .as-opt:hover span { border-color: var(--primary); }
+  .as-opt input:checked + span { background: var(--primary); border-color: var(--primary); color: #FFFFFF; }
+  .as-opt input:focus-visible + span { outline: 2px solid var(--primary); outline-offset: 2px; }
+  .as-opt.ns span { font-size: 0.9375rem; color: var(--muted); }
+  .as-opt.ns input:checked + span { background: var(--ink); border-color: var(--ink); color: #FFFFFF; }
+  .as-scale-ends { margin-top: 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.2fr); gap: 8px; font-size: 0.8125rem; line-height: 1.35; color: var(--muted); }
+  .as-scale-ends span:first-child { grid-column: 1 / span 2; }
+  .as-scale-ends span:nth-child(2) { grid-column: 4 / span 2; text-align: right; }
+  .as-scale-ends span:nth-child(3) { text-align: center; }
+  .as-clear { margin-top: 8px; min-height: 44px; padding: 0; border: none; background: none; font-size: 0.875rem; font-weight: 600; color: var(--primary); cursor: pointer; }
+  .as-clear:hover { color: var(--primary-hover); text-decoration: underline; }
+  .as-item-pend .as-opt span { border-color: #E3B04B; }
+
+  .as-free { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+
+  .as-send { position: sticky; bottom: 0; z-index: 40; margin-top: 8px; padding: 16px; border: 1px solid var(--line-soft); border-radius: 16px; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); box-shadow: 0 -12px 32px -20px rgba(10,10,50,0.35); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+  .as-progress { flex: 1 1 220px; display: flex; flex-direction: column; gap: 8px; font-size: 0.9375rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .as-progress-track { height: 6px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
+  .as-progress-track span { display: block; height: 100%; width: 0; background: var(--primary); transition: width .3s ease; }
+  .as-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 28px; border: none; border-radius: 999px; background: var(--primary); color: #FFFFFF; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background-color .15s ease; }
+  .as-btn:hover { background: var(--primary-hover); }
+  .as-btn[disabled] { opacity: .6; cursor: default; }
+  .as-btn-ghost { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid var(--line); border-radius: 999px; background: #FFFFFF; color: var(--ink); font-size: 0.9375rem; font-weight: 600; cursor: pointer; }
+  .as-btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+  .as-notice { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; font-size: 0.9375rem; line-height: 1.5; font-weight: 600; }
+  .as-notice p { margin: 0; flex: 1 1 260px; }
+  .as-notice.aviso { background: var(--aviso-bg); color: var(--aviso); }
+  .as-notice.error { background: var(--error-bg); color: var(--error); }
+
+  .as-thanks { max-width: 640px; margin: 0 auto; padding: 96px 16px; text-align: center; }
+  .as-thanks-mark { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; background: var(--primary); color: #FFFFFF; display: flex; align-items: center; justify-content: center; }
+  .as-thanks h2 { margin: 24px 0 0; font-size: 2rem; line-height: 1.15; font-weight: 800; color: var(--ink); }
+  .as-thanks p { margin: 12px 0 32px; font-size: 1.125rem; line-height: 1.55; color: var(--muted); }
+
+  [hidden] { display: none !important; }
+
+  @media (max-width: 640px) {
+    .as-cover-in { padding: 32px 16px 40px; }
+    .as-card { padding: 20px; border-radius: 14px; }
+    .as-scale, .as-scale-ends { gap: 6px; }
+    .as-send { padding: 12px; }
+    .as-progress { flex-basis: 120px; font-size: 0.8125rem; }
+    .as-send .as-btn { min-height: 48px; padding: 0 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .as-progress-track span, .as-opt span { transition: none; }
+  }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // Solo medimos el sitio productivo (no localhost, previews de Vercel ni staging)
+    if (location.hostname !== 'www.pausaco.com') { posthog.capture = posthog.get_distinct_id = function () {}; } else posthog.init('phc_wKs2q5KqXfMAuRKb8Pat6ZekKxPJsdCMX8WNuNK9p4en', {
+        api_host: 'https://b.pausaco.com', // your managed reverse proxy domain
+        ui_host: 'https://us.posthog.com', // necessary because you're using a proxy, this way links will point back to PostHog properly
+        defaults: '2026-05-30',
+        person_profiles: 'never',
+        cookieless_mode: 'always',
+        opt_out_capturing_by_default: /(^|; )ph_internal=1/.test(document.cookie),
+    })
+</script>
+</head>
+<body>
+
+<header class="as-header">
+  <div class="as-header-in">
+    <img src="assets/pausa-word-white.png" alt="Pausa" style="height:18px;width:auto;display:block">
+    <div class="as-lang" role="group" id="as-lang" aria-label="Idioma">
+      <button type="button" data-lang="es" lang="es" aria-pressed="true" title="Español">ES</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false" title="English">EN</button>
+      <button type="button" data-lang="pt" lang="pt" aria-pressed="false" title="Português">PT</button>
+    </div>
+  </div>
+</header>
+
+<main id="as-app">
+  <section class="as-cover">
+    <div class="as-cover-in">
+      <span class="as-pill" data-t="pill"></span>
+      <h1>Grupo Don Mario</h1>
+      <p data-t="intro"></p>
+      <p data-t="introDos"></p>
+      <ul>
+        <li data-t="introA"></li>
+        <li data-t="introB"></li>
+      </ul>
+    </div>
+  </section>
+
+  <form class="as-main" id="as-form" novalidate>
+    <section class="as-card as-how">
+      <h2 data-t="howTitle"></h2>
+      <p data-t="howText"></p>
+    </section>
+
+    <section class="as-card">
+      <div class="as-field">
+        <label class="as-label" for="as-nombre"><span data-t="nameLabel"></span> <small data-t="required"></small></label>
+        <input class="as-input" id="as-nombre" name="nombre" type="text" autocomplete="name" aria-describedby="as-nombre-error" required>
+        <p class="as-field-error" id="as-nombre-error" data-t="nameError" hidden></p>
+      </div>
+      <div class="as-field">
+        <label class="as-label" for="as-intro"><span data-t="introQ"></span> <small data-t="optional"></small></label>
+        <textarea class="as-textarea" id="as-intro" name="intro" rows="4"></textarea>
+      </div>
+    </section>
+
+    <div id="as-avenidas"></div>
+
+    <div class="as-send" id="as-send">
+      <div class="as-progress">
+        <span id="as-progress-text"></span>
+        <div class="as-progress-track" aria-hidden="true"><span id="as-progress-bar"></span></div>
+      </div>
+      <button class="as-btn" type="submit" id="as-submit"></button>
+      <div class="as-notice aviso" id="as-pend" role="status" hidden>
+        <p id="as-pend-text"></p>
+        <button class="as-btn-ghost" type="button" id="as-pend-revisar" data-t="review"></button>
+        <button class="as-btn-ghost" type="button" id="as-pend-enviar" data-t="sendAnyway"></button>
+      </div>
+      <div class="as-notice error" id="as-error" role="alert" hidden>
+        <p data-t="sendError"></p>
+        <button class="as-btn-ghost" type="button" id="as-reintentar" data-t="retry"></button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<section class="as-thanks" id="as-thanks" hidden aria-live="polite">
+  <div class="as-thanks-mark" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+  </div>
+  <h2 data-t="thanksTitle" tabindex="-1" id="as-thanks-title"></h2>
+  <p data-t="thanksText"></p>
+  <button class="as-btn" type="button" id="as-otra" data-t="another"></button>
+</section>
+
+<script>
+(function () {
+  // El Google Form sigue siendo el que escribe en la planilla "Assessment (Respuestas)":
+  // esta página le manda las respuestas a su endpoint público, con los mismos campos.
+  // Si se agregan o cambian preguntas en el form, hay que actualizar los entry ids de acá
+  // (están en FB_PUBLIC_LOAD_DATA_ del viewform).
+  var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScI_W2exeIy7U2pXBZzuyc7PhDbOs3riOi0GSL0KfhJ39lQCQ/formResponse';
+  var ENTRY_NOMBRE = 'entry.2025003190';
+  var ENTRY_INTRO = 'entry.832589685';
+  // Los valores tienen que coincidir con las opciones del form, en cualquier idioma.
+  var ESCALA = ['1', '2', '3', '4', '5', 'NS'];
+  var CLAVE_BORRADOR = 'pausa-assessment-gdm-borrador';
+  var IDIOMAS = ['es', 'en', 'pt'];
+
+  var TEXTOS = {
+    es: {
+      title: 'Assessment de Gestión de Equipos | Pausa',
+      langLabel: 'Idioma',
+      pill: 'Assessment de Gestión de Equipos',
+      intro: 'Pausa es una plataforma de gestión que ayuda a las organizaciones a trabajar de forma más eficiente y sostenible. Parte de la claridad del rol de cada persona, mide dónde se va realmente el tiempo y ayuda a decidir qué delegar, reorganizar o priorizar.',
+      introDos: 'Este assessment nos permite saber dos cosas:',
+      introA: 'si el equipo está en condiciones de comenzar a usar Pausa, y',
+      introB: 'si Pausa es la herramienta adecuada para acompañar los desafíos que hoy ven los líderes en sus equipos.',
+      howTitle: '¿Cómo completar el assessment?',
+      howText: 'Puntuá cada afirmación pensando en el equipo o líder que estás evaluando (1 = totalmente en desacuerdo, 5 = totalmente de acuerdo). Si no tenés visibilidad para responder, elegí NS. Las «señales a observar» que aparecen debajo de cada afirmación te ayudan a decidir el puntaje, y al final de cada sección podés sumar contexto en el campo abierto.',
+      nameLabel: 'Nombre',
+      required: '(obligatorio)',
+      optional: '(opcional)',
+      nameError: 'Escribí un nombre para poder enviar.',
+      introQ: 'Antes de empezar, en tus propias palabras: ¿cómo describirías hoy la gestión de tu equipo? ¿Qué es lo que más te cuesta o te gustaría mejorar en el día a día?',
+      signals: 'Señales a observar:',
+      low: '1 · Totalmente en desacuerdo',
+      high: '5 · Totalmente de acuerdo',
+      ns: 'NS',
+      nsLong: 'No sé',
+      clear: 'Borrar respuesta',
+      free: 'Contexto sobre {avenida}',
+      freePh: 'Ejemplos, matices o lo que quieras sumar.',
+      progress: '{n} de {t} afirmaciones respondidas',
+      submit: 'Enviar respuestas',
+      sending: 'Enviando…',
+      pendOne: 'Quedó 1 afirmación sin responder. Si no tenés visibilidad, podés marcar NS.',
+      pendMany: 'Quedaron {n} afirmaciones sin responder. Si no tenés visibilidad, podés marcar NS.',
+      review: 'Revisar',
+      sendAnyway: 'Enviar igual',
+      sendError: 'No pudimos enviar tus respuestas. Revisá tu conexión y volvé a intentar: lo que completaste no se perdió.',
+      retry: 'Reintentar',
+      thanksTitle: '¡Gracias!',
+      thanksText: 'Recibimos tus respuestas.',
+      another: 'Completar otro assessment'
+    },
+    en: {
+      title: 'Team Management Assessment | Pausa',
+      langLabel: 'Language',
+      pill: 'Team Management Assessment',
+      intro: 'Pausa is a management platform that helps organizations work more efficiently and sustainably. It starts from each person’s role clarity, measures where time really goes, and helps decide what to delegate, reorganize or prioritize.',
+      introDos: 'This assessment tells us two things:',
+      introA: 'whether the team is ready to start using Pausa, and',
+      introB: 'whether Pausa is the right tool to support the challenges leaders see in their teams today.',
+      howTitle: 'How to complete the assessment',
+      howText: 'Rate each statement thinking about the team or leader you are assessing (1 = strongly disagree, 5 = strongly agree). If you don’t have enough visibility to answer, choose DK (don’t know). The “signals to look for” under each statement help you decide the score, and at the end of each section you can add context in the open field.',
+      nameLabel: 'Name',
+      required: '(required)',
+      optional: '(optional)',
+      nameError: 'Enter a name so you can submit.',
+      introQ: 'Before you start, in your own words: how would you describe the way your team is managed today? What do you find hardest, or what would you like to improve day to day?',
+      signals: 'Signals to look for:',
+      low: '1 · Strongly disagree',
+      high: '5 · Strongly agree',
+      ns: 'DK',
+      nsLong: 'Don’t know',
+      clear: 'Clear answer',
+      free: 'Context on {avenida}',
+      freePh: 'Examples, nuances or anything you’d like to add.',
+      progress: '{n} of {t} statements answered',
+      submit: 'Submit answers',
+      sending: 'Sending…',
+      pendOne: '1 statement is still unanswered. If you don’t have visibility, you can choose DK.',
+      pendMany: '{n} statements are still unanswered. If you don’t have visibility, you can choose DK.',
+      review: 'Review',
+      sendAnyway: 'Submit anyway',
+      sendError: 'We couldn’t send your answers. Check your connection and try again: nothing you filled in has been lost.',
+      retry: 'Try again',
+      thanksTitle: 'Thank you!',
+      thanksText: 'We’ve received your answers.',
+      another: 'Fill in another assessment'
+    },
+    pt: {
+      title: 'Assessment de Gestão de Equipes | Pausa',
+      langLabel: 'Idioma',
+      pill: 'Assessment de Gestão de Equipes',
+      intro: 'A Pausa é uma plataforma de gestão que ajuda as organizações a trabalhar de forma mais eficiente e sustentável. Parte da clareza do papel de cada pessoa, mede para onde o tempo realmente vai e ajuda a decidir o que delegar, reorganizar ou priorizar.',
+      introDos: 'Este assessment nos permite saber duas coisas:',
+      introA: 'se a equipe está em condições de começar a usar a Pausa, e',
+      introB: 'se a Pausa é a ferramenta adequada para acompanhar os desafios que hoje os líderes veem em suas equipes.',
+      howTitle: 'Como preencher o assessment?',
+      howText: 'Pontue cada afirmação pensando na equipe ou no líder que você está avaliando (1 = discordo totalmente, 5 = concordo totalmente). Se você não tiver visibilidade para responder, escolha NS (não sei). Os «sinais a observar» que aparecem abaixo de cada afirmação ajudam a decidir a pontuação, e ao final de cada seção você pode acrescentar contexto no campo aberto.',
+      nameLabel: 'Nome',
+      required: '(obrigatório)',
+      optional: '(opcional)',
+      nameError: 'Escreva um nome para poder enviar.',
+      introQ: 'Antes de começar, com suas próprias palavras: como você descreveria hoje a gestão da sua equipe? O que é mais difícil ou o que você gostaria de melhorar no dia a dia?',
+      signals: 'Sinais a observar:',
+      low: '1 · Discordo totalmente',
+      high: '5 · Concordo totalmente',
+      ns: 'NS',
+      nsLong: 'Não sei',
+      clear: 'Apagar resposta',
+      free: 'Contexto sobre {avenida}',
+      freePh: 'Exemplos, nuances ou o que você quiser acrescentar.',
+      progress: '{n} de {t} afirmações respondidas',
+      submit: 'Enviar respostas',
+      sending: 'Enviando…',
+      pendOne: 'Ficou 1 afirmação sem resposta. Se você não tiver visibilidade, pode marcar NS.',
+      pendMany: 'Ficaram {n} afirmações sem resposta. Se você não tiver visibilidade, pode marcar NS.',
+      review: 'Revisar',
+      sendAnyway: 'Enviar mesmo assim',
+      sendError: 'Não conseguimos enviar suas respostas. Verifique sua conexão e tente novamente: o que você preencheu não foi perdido.',
+      retry: 'Tentar novamente',
+      thanksTitle: 'Obrigado!',
+      thanksText: 'Recebemos suas respostas.',
+      another: 'Preencher outro assessment'
+    }
+  };
+
+  // Mismo orden y mismos entry ids que el Google Form. "libre" es el campo abierto de cada
+  // avenida (Cercanía al calendario no tiene).
+  var AVENIDAS = [
+    {
+      titulo: { es: 'Claridad de rol', en: 'Role clarity', pt: 'Clareza de papel' },
+      items: [
+        {
+          entry: 'entry.2080906242',
+          texto: {
+            es: 'Cada persona del equipo tiene claro su rol y sus responsabilidades principales.',
+            en: 'Everyone on the team is clear about their role and main responsibilities.',
+            pt: 'Cada pessoa da equipe tem claro o seu papel e as suas principais responsabilidades.'
+          },
+          senales: {
+            es: 'Tareas que «caen» sin dueño claro; personas que no saben qué se espera de ellas; roles que se definen sobre la marcha.',
+            en: 'Tasks that “fall through the cracks” with no clear owner; people who don’t know what is expected of them; roles defined on the fly.',
+            pt: 'Tarefas que «caem» sem dono claro; pessoas que não sabem o que se espera delas; papéis definidos no improviso.'
+          }
+        },
+        {
+          entry: 'entry.693899596',
+          texto: {
+            es: 'Está claro quién decide, quién ejecuta, quién consulta y quién es informado, sin zonas grises relevantes.',
+            en: 'It is clear who decides, who executes, who is consulted and who is informed, with no significant grey areas.',
+            pt: 'Está claro quem decide, quem executa, quem é consultado e quem é informado, sem zonas cinzentas relevantes.'
+          },
+          senales: {
+            es: 'Re-trabajo; decisiones que se escalan o se demoran; dos personas haciendo lo mismo; conflictos por responsabilidades.',
+            en: 'Rework; decisions that get escalated or delayed; two people doing the same thing; conflicts over responsibilities.',
+            pt: 'Retrabalho; decisões que são escaladas ou demoram; duas pessoas fazendo a mesma coisa; conflitos por responsabilidades.'
+          }
+        }
+      ],
+      libre: 'entry.234962452'
+    },
+    {
+      titulo: { es: 'Objetivos y prioridades', en: 'Goals and priorities', pt: 'Objetivos e prioridades' },
+      items: [
+        {
+          entry: 'entry.1892780231',
+          texto: {
+            es: 'El equipo tiene objetivos, entregables y prioridades definidos y conocidos.',
+            en: 'The team has defined, well-known goals, deliverables and priorities.',
+            pt: 'A equipe tem objetivos, entregas e prioridades definidos e conhecidos.'
+          },
+          senales: {
+            es: 'Equipos que no pueden explicar para qué trabajan; prioridades que cambian sin explicación; entregables difusos.',
+            en: 'Teams that can’t explain what they are working towards; priorities that change without explanation; vague deliverables.',
+            pt: 'Equipes que não conseguem explicar para que trabalham; prioridades que mudam sem explicação; entregas difusas.'
+          }
+        },
+        {
+          entry: 'entry.1251998338',
+          texto: {
+            es: 'El líder distingue qué tareas son críticas, operativas, recurrentes o de bajo valor.',
+            en: 'The leader distinguishes which tasks are critical, operational, recurring or low-value.',
+            pt: 'O líder distingue quais tarefas são críticas, operacionais, recorrentes ou de baixo valor.'
+          },
+          senales: {
+            es: 'Todo se trata como urgente; tareas de bajo valor que nadie cuestiona; ausencia de criterios de priorización.',
+            en: 'Everything is treated as urgent; low-value tasks nobody questions; no prioritization criteria.',
+            pt: 'Tudo é tratado como urgente; tarefas de baixo valor que ninguém questiona; ausência de critérios de priorização.'
+          }
+        }
+      ],
+      libre: 'entry.1484806305'
+    },
+    {
+      titulo: { es: 'Uso del tiempo', en: 'Use of time', pt: 'Uso do tempo' },
+      items: [
+        {
+          entry: 'entry.1583228536',
+          texto: {
+            es: 'El líder tiene visibilidad real de cómo se distribuye el tiempo de su equipo.',
+            en: 'The leader has real visibility into how the team’s time is distributed.',
+            pt: 'O líder tem visibilidade real de como o tempo da equipe é distribuído.'
+          },
+          senales: {
+            es: 'Estimaciones «a ojo»; sorpresa ante la carga real; dificultad para explicar en qué se va el tiempo.',
+            en: 'Ballpark estimates; surprise at the actual workload; difficulty explaining where time goes.',
+            pt: 'Estimativas «no olho»; surpresa diante da carga real; dificuldade para explicar para onde vai o tempo.'
+          }
+        },
+        {
+          entry: 'entry.1478866958',
+          texto: {
+            es: 'El tiempo del líder y su equipo se dedica a las prioridades, y el líder logra protegerlo frente a lo urgente o impuesto.',
+            en: 'The leader’s and the team’s time goes to priorities, and the leader manages to protect it from what is urgent or imposed.',
+            pt: 'O tempo do líder e da equipe é dedicado às prioridades, e o líder consegue protegê-lo diante do urgente ou imposto.'
+          },
+          senales: {
+            es: 'Agendas llenas de reuniones; sensación de apagar incendios; agenda definida por otros; lo estratégico siempre postergado.',
+            en: 'Calendars full of meetings; a sense of constant firefighting; agendas set by others; strategic work always postponed.',
+            pt: 'Agendas cheias de reuniões; sensação de apagar incêndios; agenda definida por outros; o estratégico sempre adiado.'
+          }
+        }
+      ],
+      libre: 'entry.1841274257'
+    },
+    {
+      titulo: { es: 'Gestión y liderazgo', en: 'Management and leadership', pt: 'Gestão e liderança' },
+      items: [
+        {
+          entry: 'entry.2128275177',
+          texto: {
+            es: 'El líder sostiene rutinas de seguimiento, priorización y revisión de carga con su equipo.',
+            en: 'The leader keeps up follow-up, prioritization and workload review routines with the team.',
+            pt: 'O líder mantém rotinas de acompanhamento, priorização e revisão de carga com a equipe.'
+          },
+          senales: {
+            es: 'Reuniones sin agenda o sin seguimiento; revisión de carga solo ante crisis; ausencia de espacios de priorización.',
+            en: 'Meetings with no agenda or follow-up; workload reviewed only in a crisis; no space for prioritization.',
+            pt: 'Reuniões sem pauta ou sem acompanhamento; revisão de carga só em crises; ausência de espaços de priorização.'
+          }
+        },
+        {
+          entry: 'entry.1439985122',
+          texto: {
+            es: 'El líder delega de forma efectiva y no concentra tareas que su equipo podría asumir.',
+            en: 'The leader delegates effectively and doesn’t hold on to tasks the team could take on.',
+            pt: 'O líder delega de forma efetiva e não concentra tarefas que a equipe poderia assumir.'
+          },
+          senales: {
+            es: 'Líderes cuello de botella; equipos que esperan aprobación para todo; líderes haciendo tareas operativas.',
+            en: 'Leaders as bottlenecks; teams waiting for approval on everything; leaders doing operational tasks.',
+            pt: 'Líderes como gargalo; equipes que esperam aprovação para tudo; líderes fazendo tarefas operacionais.'
+          }
+        }
+      ],
+      libre: 'entry.1113072228'
+    },
+    {
+      titulo: { es: 'Necesidad y deseo de cambio', en: 'Need and desire for change', pt: 'Necessidade e desejo de mudança' },
+      items: [
+        {
+          entry: 'entry.483558638',
+          texto: {
+            es: 'El líder reconoce que su forma actual de gestionar tiene límites o no está alcanzando.',
+            en: 'The leader recognizes that their current way of managing has limits or is falling short.',
+            pt: 'O líder reconhece que sua forma atual de gerir tem limites ou não está sendo suficiente.'
+          },
+          senales: {
+            es: 'Sobrecarga o mal clima que el líder no registra como problema; «siempre fue así».',
+            en: 'Overload or a poor climate the leader doesn’t see as a problem; “it’s always been this way”.',
+            pt: 'Sobrecarga ou clima ruim que o líder não percebe como problema; «sempre foi assim».'
+          }
+        },
+        {
+          entry: 'entry.1449508389',
+          texto: {
+            es: 'El líder muestra deseo y apertura para cambiar su forma de gestionar.',
+            en: 'The leader shows willingness and openness to change how they manage.',
+            pt: 'O líder mostra desejo e abertura para mudar sua forma de gerir.'
+          },
+          senales: {
+            es: 'Resignación; mejora solo como pedido externo; defensividad ante preguntas sobre carga; curiosidad por nuevas formas.',
+            en: 'Resignation; improvement only as an outside request; defensiveness about workload questions; curiosity about new ways of working.',
+            pt: 'Resignação; melhoria só como pedido externo; defensividade diante de perguntas sobre carga; curiosidade por novas formas.'
+          }
+        }
+      ],
+      libre: 'entry.897641930'
+    },
+    {
+      titulo: { es: 'Confianza cultural', en: 'Cultural trust', pt: 'Confiança cultural' },
+      items: [
+        {
+          entry: 'entry.1997827929',
+          texto: {
+            es: 'En el equipo hay confianza para transparentar carga de trabajo y errores.',
+            en: 'There is enough trust in the team to be open about workload and mistakes.',
+            pt: 'Na equipe há confiança para tornar transparentes a carga de trabalho e os erros.'
+          }
+        },
+        {
+          entry: 'entry.1582675460',
+          texto: {
+            es: 'El equipo percibiría esta herramienta de gestión como una solución de mejora y no de control.',
+            en: 'The team would see this management tool as a way to improve, not as a means of control.',
+            pt: 'A equipe perceberia esta ferramenta de gestão como uma solução de melhoria e não de controle.'
+          },
+          senales: {
+            es: 'Antecedentes de herramientas usadas para controlar; experiencias previas con desconfianza; relación con la dirección.',
+            en: 'Past tools used for control; previous experiences of mistrust; relationship with senior management.',
+            pt: 'Histórico de ferramentas usadas para controlar; experiências anteriores de desconfiança; relação com a direção.'
+          }
+        }
+      ],
+      libre: 'entry.151470420'
+    },
+    {
+      titulo: { es: 'Cercanía al calendario', en: 'Calendar proximity', pt: 'Proximidade com o calendário' },
+      items: [
+        {
+          entry: 'entry.1422894230',
+          texto: {
+            es: 'El trabajo del equipo pasa mayormente por el calendario.',
+            en: 'Most of the team’s work goes through the calendar.',
+            pt: 'O trabalho da equipe passa principalmente pelo calendário.'
+          },
+          senales: {
+            es: 'Trabajo de campo o por turnos; tareas que no se agendan; uso desparejo del calendario.',
+            en: 'Field or shift work; tasks that never get scheduled; uneven use of the calendar.',
+            pt: 'Trabalho de campo ou por turnos; tarefas que não são agendadas; uso desigual do calendário.'
+          }
+        }
+      ]
+    }
+  ];
+
+  var TOTAL = AVENIDAS.reduce(function (s, a) { return s + a.items.length; }, 0);
+
+  var form = document.getElementById('as-form');
+  var contAvenidas = document.getElementById('as-avenidas');
+  var inputNombre = document.getElementById('as-nombre');
+  var inputIntro = document.getElementById('as-intro');
+  var errorNombre = document.getElementById('as-nombre-error');
+  var btnSubmit = document.getElementById('as-submit');
+  var avisoPend = document.getElementById('as-pend');
+  var avisoError = document.getElementById('as-error');
+
+  var estado = { nombre: '', intro: '', puntajes: {}, libres: {} };
+  var idioma = elegirIdioma();
+  var enviando = false;
+  var confirmoPendientes = false;
+
+  // ---------- Idioma ----------
+  // ?lang=en|pt manda (para compartir el link ya en el idioma de quien responde);
+  // si no, el último elegido en este navegador, y si no, el del navegador.
+  function elegirIdioma() {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (IDIOMAS.indexOf(q) >= 0) return q;
+    var guardado = leer('pausa-assessment-idioma');
+    if (IDIOMAS.indexOf(guardado) >= 0) return guardado;
+    var nav = (navigator.language || 'es').slice(0, 2).toLowerCase();
+    return IDIOMAS.indexOf(nav) >= 0 ? nav : 'es';
+  }
+
+  function t(clave, vars) {
+    var s = TEXTOS[idioma][clave];
+    if (vars) Object.keys(vars).forEach(function (k) { s = s.replace('{' + k + '}', vars[k]); });
+    return s;
+  }
+
+  function cambiarIdioma(nuevo) {
+    if (nuevo === idioma) return;
+    idioma = nuevo;
+    escribir('pausa-assessment-idioma', idioma);
+    var url = new URL(location.href);
+    if (idioma === 'es') url.searchParams.delete('lang'); else url.searchParams.set('lang', idioma);
+    history.replaceState(null, '', url);
+    pintarTextos();
+    pintarAvenidas();
+  }
+
+  document.getElementById('as-lang').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-lang]');
+    if (b) cambiarIdioma(b.getAttribute('data-lang'));
+  });
+
+  function pintarTextos() {
+    document.documentElement.lang = idioma;
+    document.title = t('title');
+    document.getElementById('as-lang').setAttribute('aria-label', t('langLabel'));
+    document.querySelectorAll('#as-lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === idioma));
+    });
+    document.querySelectorAll('[data-t]').forEach(function (el) {
+      el.textContent = t(el.getAttribute('data-t'));
+    });
+    btnSubmit.textContent = enviando ? t('sending') : t('submit');
+    pintarProgreso();
+  }
+
+  // ---------- Preguntas ----------
+  function el(tag, attrs, hijos) {
+    var n = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === 'text') n.textContent = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    });
+    (hijos || []).forEach(function (h) { if (h) n.appendChild(h); });
+    return n;
+  }
+
+  function pintarAvenidas() {
+    contAvenidas.textContent = '';
+    AVENIDAS.forEach(function (av, i) {
+      var card = el('section', { 'class': 'as-card', 'aria-labelledby': 'as-av-' + i });
+      card.appendChild(el('h2', { id: 'as-av-' + i }, [
+        el('span', { 'class': 'as-card-num', text: String(i + 1) + ' / ' + AVENIDAS.length }),
+        document.createTextNode(av.titulo[idioma])
+      ]));
+
+      av.items.forEach(function (it) {
+        var fs = el('fieldset', { 'class': 'as-item', 'data-entry': it.entry });
+        fs.appendChild(el('legend', { text: it.texto[idioma] }));
+        if (it.senales) {
+          var p = el('p', { 'class': 'as-signals' }, [el('strong', { text: t('signals') })]);
+          p.appendChild(document.createTextNode(' ' + it.senales[idioma]));
+          fs.appendChild(p);
+        }
+        var escala = el('div', { 'class': 'as-scale' });
+        ESCALA.forEach(function (v) {
+          var esNs = v === 'NS';
+          var input = el('input', { type: 'radio', name: it.entry, value: v });
+          if (esNs) input.setAttribute('aria-label', t('nsLong'));
+          if (estado.puntajes[it.entry] === v) input.checked = true;
+          escala.appendChild(el('label', { 'class': 'as-opt' + (esNs ? ' ns' : ''), title: esNs ? t('nsLong') : v }, [
+            input,
+            el('span', { 'aria-hidden': esNs ? 'true' : 'false', text: esNs ? t('ns') : v })
+          ]));
+        });
+        fs.appendChild(escala);
+        fs.appendChild(el('div', { 'class': 'as-scale-ends', 'aria-hidden': 'true' }, [
+          el('span', { text: t('low') }),
+          el('span', { text: t('high') }),
+          el('span', { text: t('nsLong') })
+        ]));
+        var limpiar = el('button', { type: 'button', 'class': 'as-clear', 'data-limpiar': it.entry, text: t('clear') });
+        if (!estado.puntajes[it.entry]) limpiar.hidden = true;
+        fs.appendChild(limpiar);
+        card.appendChild(fs);
+      });
+
+      if (av.libre) {
+        var id = 'as-libre-' + i;
+        var area = el('textarea', { 'class': 'as-textarea', id: id, name: av.libre, rows: '3', placeholder: t('freePh') });
+        area.value = estado.libres[av.libre] || '';
+        card.appendChild(el('div', { 'class': 'as-field as-free' }, [
+          el('label', { 'class': 'as-label', 'for': id }, [
+            document.createTextNode(t('free', { avenida: av.titulo[idioma] }) + ' '),
+            el('small', { text: t('optional') })
+          ]),
+          area
+        ]));
+      }
+      contAvenidas.appendChild(card);
+    });
+    marcarPendientes();
+  }
+
+  function respondidas() {
+    return Object.keys(estado.puntajes).filter(function (k) { return estado.puntajes[k]; }).length;
+  }
+
+  function pintarProgreso() {
+    var n = respondidas();
+    document.getElementById('as-progress-text').textContent = t('progress', { n: n, t: TOTAL });
+    document.getElementById('as-progress-bar').style.width = (n / TOTAL * 100) + '%';
+    if (!avisoPend.hidden) {
+      var falta = TOTAL - n;
+      if (falta === 0) avisoPend.hidden = true;
+      else document.getElementById('as-pend-text').textContent = falta === 1 ? t('pendOne') : t('pendMany', { n: falta });
+    }
+  }
+
+  // Resalta las afirmaciones sin responder solo después de un intento de envío.
+  function marcarPendientes() {
+    var mostrar = !avisoPend.hidden;
+    contAvenidas.querySelectorAll('.as-item').forEach(function (fs) {
+      fs.classList.toggle('as-item-pend', mostrar && !estado.puntajes[fs.getAttribute('data-entry')]);
+    });
+  }
+
+  // ---------- Estado y borrador ----------
+  function leer(clave) { try { return localStorage.getItem(clave); } catch (e) { return null; } }
+  function escribir(clave, valor) { try { localStorage.setItem(clave, valor); } catch (e) { /* sin storage: sigue andando */ } }
+  function borrar(clave) { try { localStorage.removeItem(clave); } catch (e) { /* idem */ } }
+
+  function guardarBorrador() { escribir(CLAVE_BORRADOR, JSON.stringify(estado)); }
+
+  function cargarBorrador() {
+    try {
+      var b = JSON.parse(leer(CLAVE_BORRADOR) || 'null');
+      if (b && typeof b === 'object') {
+        estado.nombre = b.nombre || '';
+        estado.intro = b.intro || '';
+        estado.puntajes = b.puntajes || {};
+        estado.libres = b.libres || {};
+      }
+    } catch (e) { /* borrador corrupto: se ignora */ }
+    inputNombre.value = estado.nombre;
+    inputIntro.value = estado.intro;
+  }
+
+  form.addEventListener('change', function (e) {
+    var x = e.target;
+    if (x.type === 'radio') {
+      estado.puntajes[x.name] = x.value;
+      var limpiar = form.querySelector('[data-limpiar="' + x.name + '"]');
+      if (limpiar) limpiar.hidden = false;
+      x.closest('.as-item').classList.remove('as-item-pend');
+      guardarBorrador();
+      pintarProgreso();
+    }
+  });
+
+  form.addEventListener('input', function (e) {
+    var x = e.target;
+    if (x === inputNombre) {
+      estado.nombre = x.value;
+      if (x.value.trim()) { errorNombre.hidden = true; x.removeAttribute('aria-invalid'); }
+    } else if (x === inputIntro) {
+      estado.intro = x.value;
+    } else if (x.tagName === 'TEXTAREA') {
+      estado.libres[x.name] = x.value;
+    } else return;
+    guardarBorrador();
+  });
+
+  form.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-limpiar]');
+    if (!b) return;
+    var entry = b.getAttribute('data-limpiar');
+    delete estado.puntajes[entry];
+    form.querySelectorAll('input[name="' + entry + '"]').forEach(function (r) { r.checked = false; });
+    b.hidden = true;
+    guardarBorrador();
+    pintarProgreso();
+  });
+
+  // ---------- Envío ----------
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    intentarEnvio();
+  });
+
+  document.getElementById('as-pend-revisar').addEventListener('click', function () {
+    var primera = contAvenidas.querySelector('.as-item-pend');
+    if (primera) {
+      primera.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var r = primera.querySelector('input');
+      if (r) r.focus({ preventScroll: true });
+    }
+  });
+  document.getElementById('as-pend-enviar').addEventListener('click', function () {
+    confirmoPendientes = true;
+    intentarEnvio();
+  });
+  document.getElementById('as-reintentar').addEventListener('click', function () { intentarEnvio(); });
+
+  function intentarEnvio() {
+    if (enviando) return;
+    if (!estado.nombre.trim()) {
+      errorNombre.hidden = false;
+      inputNombre.setAttribute('aria-invalid', 'true');
+      inputNombre.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      inputNombre.focus({ preventScroll: true });
+      return;
+    }
+    if (respondidas() < TOTAL && !confirmoPendientes) {
+      avisoPend.hidden = false;
+      pintarProgreso();
+      marcarPendientes();
+      return;
+    }
+    avisoPend.hidden = true;
+    marcarPendientes();
+    enviar();
+  }
+
+  function enviar() {
+    var datos = new URLSearchParams();
+    datos.append(ENTRY_NOMBRE, estado.nombre.trim());
+    datos.append(ENTRY_INTRO, (estado.intro || '').trim());
+    AVENIDAS.forEach(function (av) {
+      av.items.forEach(function (it) {
+        if (estado.puntajes[it.entry]) datos.append(it.entry, estado.puntajes[it.entry]);
+      });
+      if (av.libre) datos.append(av.libre, (estado.libres[av.libre] || '').trim());
+    });
+    datos.append('fvv', '1');
+    datos.append('pageHistory', '0');
+
+    enviando = true;
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = t('sending');
+    avisoError.hidden = true;
+
+    // Google Forms no expone CORS: la respuesta es opaca y no se puede leer el status.
+    // Si fetch resuelve, el form recibió el envío; si rechaza, no hubo conexión.
+    fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: datos, keepalive: true })
+      .then(function () {
+        if (window.posthog) posthog.capture('enviar_assessment_gdm', { idioma: idioma, completo: respondidas() === TOTAL });
+        borrar(CLAVE_BORRADOR);
+        mostrarGracias();
+      })
+      .catch(function (err) {
+        console.error('No se pudo enviar el assessment', err);
+        avisoError.hidden = false;
+      })
+      .then(function () {
+        enviando = false;
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = t('submit');
+      });
+  }
+
+  function mostrarGracias() {
+    document.getElementById('as-app').hidden = true;
+    document.getElementById('as-thanks').hidden = false;
+    window.scrollTo(0, 0);
+    document.getElementById('as-thanks-title').focus();
+  }
+
+  document.getElementById('as-otra').addEventListener('click', function () {
+    estado = { nombre: '', intro: '', puntajes: {}, libres: {} };
+    confirmoPendientes = false;
+    inputNombre.value = '';
+    inputIntro.value = '';
+    pintarAvenidas();
+    pintarProgreso();
+    document.getElementById('as-thanks').hidden = true;
+    document.getElementById('as-app').hidden = false;
+    window.scrollTo(0, 0);
+    inputNombre.focus();
+  });
+
+  cargarBorrador();
+  pintarTextos();
+  pintarAvenidas();
+})();
+</script>
+</body>
+</html>
